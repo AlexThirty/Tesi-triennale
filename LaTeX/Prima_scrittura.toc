@@ -1,0 +1,47 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {chapter}{\numberline {1}Prime definizioni}{5}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Entropia per variabili aleatorie discrete}{5}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Processi Stocastici e Tasso di Entropia}{8}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Propriet\IeC {\`a} di Equipartizione Asintotica (AEP)}{10}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Corse dei Cavalli e Kelly Gambling}{11}{section.1.4}% 
+\contentsline {section}{\numberline {1.5}Corse dipendenti e Tasso di Entropia}{13}{section.1.5}% 
+\contentsline {section}{\numberline {1.6}Variabili aleatorie continue}{14}{section.1.6}% 
+\contentsline {chapter}{\numberline {2}Il Mercato Azionario}{15}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Definizioni}{15}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Condizioni di Kuhn-Tucker}{17}{section.2.2}% 
+\contentsline {section}{\numberline {2.3}Mercati stazionari, AEP e AOP}{19}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Risultati su portafogli ottimali e generalit\IeC {\`a}}{19}{subsection.2.3.1}% 
+\contentsline {subsection}{\numberline {2.3.2}Principio di Ottimalit\IeC {\`a} Asintotica}{22}{subsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.3.3}Propriet\IeC {\`a} di Equipartizione Asintotica}{23}{subsection.2.3.3}% 
+\contentsline {chapter}{\numberline {3}Portafogli Universali di Cover}{27}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Portafogli universali a orizzonte finito}{28}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Portafoglio Universale a orizzonte infinito}{32}{section.3.2}% 
+\contentsline {chapter}{\numberline {4}Algoritmi di Predizione Universali}{37}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Raggiungimento del tasso di raddoppio ottimale}{37}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Metodo delle Frequenze Empiriche}{40}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Algoritmo di Lempel-Ziv}{42}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Codici e Scommesse}{44}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}I codici}{44}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Dualit\IeC {\`a} Codici-Scommesse}{46}{subsection.4.4.2}% 
+\contentsline {chapter}{\numberline {5}Sperimentazioni}{49}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Metodi di scelta dei portafogli}{49}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Primo ordine}{49}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Secondo Ordine}{49}{subsection.5.1.2}% 
+\contentsline {section}{\numberline {5.2}Metodi e risultati sperimentali}{50}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}Quantit\IeC {\`a} di analisi}{50}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}Metodo empirico sui rendimenti}{51}{subsection.5.2.2}% 
+\contentsline {subsubsection}{Risultati}{53}{subsubsection*.2}% 
+\contentsline {subsection}{\numberline {5.2.3}Metodo empirico sui rapporti rendimento-incertezza}{54}{subsection.5.2.3}% 
+\contentsline {subsubsection}{Risultati}{54}{subsubsection*.5}% 
+\contentsline {subsection}{\numberline {5.2.4}Metodo ad albero (Lempel-Ziv)}{55}{subsection.5.2.4}% 
+\contentsline {subsubsection}{Risultati}{56}{subsubsection*.8}% 
+\contentsline {subsection}{\numberline {5.2.5}Metodo del portafoglio universale di Cover}{57}{subsection.5.2.5}% 
+\contentsline {subsection}{\numberline {5.2.6}Metodo Nearest-Neighbour}{58}{subsection.5.2.6}% 
+\contentsline {subsubsection}{Risultati}{59}{subsubsection*.13}% 
+\contentsline {chapter}{\numberline {A}Definizioni}{61}{appendix.Alph1}% 
+\contentsline {section}{\numberline {A.1}Speranza condizionale e distribuzioni condizionate}{61}{section.Alph1.1}% 
+\contentsline {section}{\numberline {A.2}Martingale}{63}{section.Alph1.2}% 
+\contentsline {section}{\numberline {A.3}Sistemi dinamici misurabili}{63}{section.Alph1.3}% 
+\contentsline {chapter}{\numberline {B}Codici}{65}{appendix.Alph2}% 
+\contentsline {section}{\numberline {B.1}Metodo delle frequenze empiriche}{65}{section.Alph2.1}% 

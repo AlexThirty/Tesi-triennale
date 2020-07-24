@@ -1,0 +1,354 @@
+\documentclass[a4paper,10pt]{book}
+
+
+
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\graphicspath{{Images/}}
+
+
+\usepackage{titling}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathrsfs,mathtools}
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xy}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = {blue},
+	urlcolor = {red},
+	citecolor = {blue},
+	%pdfenconing=auto
+}
+\usepackage{wrapfig}
+\usepackage[T1,OT1]{fontenc} 
+\usepackage{bm}
+
+
+\usepackage{grffile}
+\usepackage{pgf,tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric,calc,arrows}
+
+
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}{Corollary}
+\newtheorem*{cor*}{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{prob}{Problem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{hint}{Hint}
+\newtheorem{sol}{Solution}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{rem*}{Remark}
+\newtheorem*{notation}{Notation}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+
+
+
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\scal}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+\newcommand{\dx}{\text{d}x}
+\newcommand{\dy}{\text{d}y}
+\newcommand{\dt}{\text{d}t}
+
+\newcommand{\grad}{\nabla}
+\newcommand{\perim}{\mathcal{P}}%%%%%%%%%%%%%%%
+%%ATTENZIONE: HO TOLTO LE PARENTESI, ORA \perim METTE SOLO LA P
+\newcommand{\symmdiff}{\Delta}
+\newcommand{\bdry}{\partial}
+\newcommand{\clos}[1]{\overline{#1}}
+\newcommand{\lebesgue}{\ensuremath{\mathscr{L}}}
+
+
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\supp}{supp}
+
+
+
+%definizioni che servono solo per la tesi magistrale
+\newcommand{\FF}{\mathcal{F}}	%funzionale completo dell'energia
+\newcommand{\FFF}{\widetilde{\mathcal{F}}} %funzionale dell'energia sui sottoinsiemi disgiunti
+\newcommand{\GG}{\mathcal{G}}	%funzionale con potenza positiva al posto del perimetro
+\newcommand{\RR}{\mathcal{R}}	%funzionale di Riesz
+\newcommand{\riesz}[1]{\iint_{#1 \times #1}\frac{1}{|x-y|^{N-\alpha}}\dx\dy}
+\newcommand{\genriesz}[2]{\iint_{#1 \times #1}#2(|x-y|)\dx\dy}
+
+
+
+%debug
+\newcommand{\avviso}[1]{{\textcolor{red}{\textbf{#1}}}}
+
+
+
+
+\title{On a generalization of the Gamow liquid drop model}
+\author{Davide Carazzato}
+\date{\today}
+
+
+
+
+
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\include{abstract}
+\include{measure-theory}
+\include{first-results}
+\include{pow-like-functional}
+\include{shape-small-mass}
+
+
+\bibliographystyle{abbrv}
+\bibliography{bibliografy_thesis}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Problem statement and first definitions}
+The problem we are interested to study is the following
+\begin{prob}
+	Let $N\in\N$ be the ambient dimension and $\alpha\in(1,N)$ be fixed parameter, then define the functional $\mathcal{F}$ on sets of finite perimeter as
+	\begin{equation}\label{eq:energy}
+		\FF(u)\coloneqq \perim{E}+\iint_{E\times E}\frac{1}{|x-y|^{N-\alpha}}\dx\dy,
+	\end{equation}
+	then we want to minimize $\FF$ on sets of finite perimeter (in order to be finite) with fixed total mass $m$. Looking at the rescaling property of the terms that compose this functional it is easy to see that
+	\begin{equation}\label{eq:rescal}
+		\FF(\lambda E) = \lambda^{N-1}\perim{E} + \lambda^{N+\alpha}\iint_{E\times E}\frac{1}{|x-y|^{N-\alpha}}\dx\dy,
+	\end{equation}
+	so that it is clear that, in order to minimize this functional, we must take into account the parameter $m$ (that is much different from the case of the perimeter, in which we have a much easier scaling property). Just to make the notation lighter  we define the \textit{Riesz (interaction) energy} as
+	\begin{equation*}
+		\RR(E,F) \coloneqq \iint_{E\times F}\frac{1}{|x-y|^{N-\alpha}}\dx\dx,\qquad \RR(E) \coloneqq \RR(E,E).
+	\end{equation*}
+	
+	As a consequence of \eqref{eq:rescal}, it is exactly equivalent to study the family of functionals
+	\begin{equation*}
+		\FF_{\epsilon}(E) \coloneqq \perim{E} + \epsilon \RR(E)
+	\end{equation*}
+	and, if it will be convenient, we will study the functionals $\FF_{\epsilon}$ in place of $\FF$, for instance when we will look for some asymptotic behaviour of minimizers as $m\to 0$ (i.e. when $\epsilon\to 0$).
+\end{prob}
+\begin{notation}
+	Here we will fix some notations to denote some quantities that appear also in other problems related to this, as the standard isoperimetric problem.
+	\begin{defn}
+		We define the \textit{Frankel asymmetry} of a set $E\subset \R^{N}$ as
+		\[
+			\delta(E) \coloneqq \inf_{x\in\R^{N}} |E\symmdiff B(x,r)|
+		\]
+		where the radius $r$ is chosen in order to satisfy the identity $|E|=|B(x,r)|$.
+	\end{defn}
+	\begin{defn}
+		We define some sort of deficit of the perimeter for every set $E$ with finite Lebesgue measure as
+		\[
+			D(E) \coloneqq \perim{E}-N\omega_{N}^{\frac{1}{N}}|E|^{\frac{N-1}{N}},
+		\]
+		that equals to the difference between the perimeter of $E$ and the perimeter of a ball with the same volume of $E$.
+	\end{defn}
+	It is a well known fact that there is a relation between the quantities defined above, indeed it holds the following theorem
+	\begin{thm}[Isoperimetric inequality]\label{thm:isoperim}
+		There exists a constant $C_{N}>0$ that depends only on $N$ and $|E|$ such that, for every set $E\subset \R^{N}$ of finite perimeter it holds that
+		\begin{equation*}
+			\delta(E) \leq C_{N}\sqrt{D(E)}.
+		\end{equation*}
+	\end{thm}
+	We now define some measure theoretic counterparts of some topological notions as closure and connectedness:
+	\begin{defn}
+		Given a measurable set $E\subset \R^{N}$ we define the upper density of a point $x\in\R^{n}$ as
+		\[
+			\overline{D}(E,x)\coloneqq \limsup_{r\to 0}\frac{|E\cap B(x,r)|}{|B(x,r)|},
+		\]
+		with this notion we can define the \textit{essential closure} and the \textit{essential boundary} respectively as
+		\[
+			\clos{E}^{M} \coloneqq \{x\in \R^{N}:\ \overline{D}(E,x)>0\}\quad\text{and}\quad \bdry^{M}E\coloneqq \{x\in\R^{N}:\ \overline{D}(E,x)>0, \overline{D}(\R^{N}\setminus E,x)>0\}
+		\]
+	\end{defn}
+	\begin{defn}
+		We say that a set $E$ of finite perimeter is \textit{decomposable} if there exists a partition $A,B$ of $E$ such that $\perim{E} = \perim{A}+\perim{B}$ and both $A$ and $B$ have positive measure.
+	\end{defn}
+	\begin{defn}
+		Sometimes it will be useful to express the Riesz energy in terms of a potential, that is
+		\begin{equation*}
+			v_{E}(x) \coloneqq \int_{E}\frac{1}{|x-y|^{N-\alpha}}\dy,
+		\end{equation*}
+		so that $\displaystyle\RR(E) = \int_{E}v_{E}(x)\dx$. It is useful to notice that, if $E\cap F = \emptyset$, then $v_{E\cup F} = v_{E}+v_{F}$.
+	\end{defn}
+\end{notation}
+We now prove a useful fact about the potential $v_{E}$ defined above, that tells us that $v_{E}$ can be controlled (in some norms) by just knowing the \textit{size} of the set $E$.
+\begin{prop}\label{prop:boundlip_v}
+		Let $E$ be a set with $|E|\leq m$, then it holds that $\norm{v_{E}}_{\infty}\leq C$ with $C>0$ that depends only on $\alpha, N$ and $m$. If moreover $\alpha\in (1,N)$, then $\norm{v_{E}}_{W^{1,\infty}}\leq C'$ for some $C'>0$ still depending only on $alpha, N$ and $m$.
+\end{prop}
+\begin{proof}
+	Lets prove the $L^{\infty}$ bound, for which it is enough to notice that
+	\begin{equation*}
+		v_{E}(x) = \int_{E}\frac{1}{|x-y|^{N-\alpha}}\dy = \int_{E\cap B(x,1)}\frac{1}{|x-y|^{N-\alpha}}\dy + \int_{\R^{N}\setminus B(x,1)}\frac{1}{|x-y|^{N-\alpha}}\dy 
+	\end{equation*}
+	so that
+	\begin{equation*}
+		|v_{E}(x)|\leq \int_{B(0,1)}\frac{1}{|y|^{N-\alpha}}\dy + |E|,
+	\end{equation*}
+	thus we obtained a uniform bound which depends only on $N, \alpha$ and $m$.
+	
+	To prove the $W^{1,\infty}$ estimate we simply derive $v_{E}$ and get
+	\begin{equation*}
+		|\grad v_{E}(x)|\leq (N-\alpha)\int_{E}\frac{1}{|x-y|^{N-\alpha+1}}\dy\leq (N-\alpha)\int_{B(0,1)}\frac{1}{|y|^{N-\alpha+1}}\dy+(N-\alpha)|E|
+	\end{equation*}
+	that is the desired kind of bound if $N-\alpha+1\in (0,N)$, that is equivalent to $\alpha\in (1,N)$.
+\end{proof}
+\begin{defn}
+	A set $E\subset \R^{N}$ of finite perimeter is said to be a \textit{quasi minimizer of the perimeter} with prescribed mass $m$ if there exist a constant $C>0$ such that, for all $F\subset \R^{N}$ of finite perimeter, with $|F| = m$ and $E\symmdiff F$ bounded, one has
+	\begin{equation*}
+		\perim{E}\leq \perim{F}+C|E\symmdiff F|.
+	\end{equation*}
+\end{defn}
+This property is related to minimizers of $\FF$, in fact it holds the following
+\begin{prop}
+	If $\Omega\subset\R^{N}$ is a minimizer of \eqref{eq:energy} with prescribed mass $m$, then $\Omega$ is a quasi minimizer of the perimeter.
+\end{prop}
+\begin{proof}
+	As a consequence of our hypothesis, it is true that for all sets $E\subset \R^{N}$ of finite perimeter and mass $m$ it holds that
+	\begin{equation*}
+		\perim{\Omega}-\perim{E}\leq \RR(E)-\RR(\Omega),
+	\end{equation*}
+	then
+	\begin{align*}
+		\int_{E}v_{E}\dx-\int_{\Omega}v_{\Omega}\dx &= \int_{E\cap\Omega}(v_{E}-v_{\Omega})\dx + \int_{E\setminus\Omega}v_{E}\dx-\int_{\Omega\setminus E}v_{\Omega}\dx=\\
+		&= \int_{E\cap\Omega}(v_{E\setminus\Omega}-v_{\Omega\setminus E})\dx + \int_{E\setminus\Omega}v_{E}\dx-\int_{\Omega\setminus E}v_{\Omega}\dx = \\
+		&= \int_{E\setminus\Omega}v_{E\cap\Omega}\dx-\int_{\Omega\setminus E}v_{E\cap\Omega}\dx + \int_{E\setminus\Omega}v_{E}\dx-\int_{\Omega\setminus E}v_{\Omega}\dx\leq \\
+		&\leq 2\int_{E\symmdiff\Omega}(v_{E}+v_{\Omega})\dx \leq 4C|E\symmdiff\Omega|,
+	\end{align*}
+	where we used the \autoref{prop:boundlip_v} in the last inequality, so we proved the proposition.
+\end{proof}
+This proposition has a quite interesting consequence, that is summarized in this lemma
+\begin{lemma}
+	Let $\Omega\subset \R^{N}$ be a minimizer of \eqref{eq:energy} with mass $|\Omega|=m$, then $\Omega$ is essentially bounded (i.e. $\clos{\Omega}^{M}$ is bounded) and indecomposable.
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
+
+More in general, we can consider a potential of type
+\begin{equation}\label{eq:new-energy}
+	\RR(E,F) \coloneqq \iint_{E\times F}g(x-y)\dx\dy\qquad \text{and}\qquad \FF_{\epsilon}(E)\coloneqq \perim{E}+\epsilon\RR(E)
+\end{equation}
+with $g>0$ as general as possible\footnote{We will see later what this means, in principle we could even drop the radial assumption sometimes, nevertheless we will assume that $g$ decreases when the modulus of the argument increases and goes to $0$ as the argument goes to infinity. This is justified also by our initial physical problem.} and try to minimize it for a fixed mass $m$, to fix ideas lets fix $m=1$. Moreover we are going to suppose $g$ to be bounded in many theorems, this will not be an issue since we can always use the monotone convergence theorem to recover the general result. Of course, in order to have a nontrivial problem, we are going to suppose that $\RR(B,B)<+\infty$, otherwise the functional is always infinite and the problem does not make sense. Even in this generality some facts hold, such as
+\begin{prop}
+	Let $\FF_{\epsilon}$ be the functional defined in \eqref{eq:new-energy}, then, for $\epsilon>0$ small enough minimizers exist and, denoting $E_{\epsilon}$ any of such minimizers, it holds that
+	\begin{equation*}
+		\delta(E_{\epsilon})\to 0\text{ as }\epsilon\to 0.
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	
+	DA FARE L'ESISTENZA!!!!\\
+	In order to conclude the proof let us consider some minimizers $E_{\epsilon}$, then $\FF_{\epsilon}(E_{\epsilon})\leq \FF_{\epsilon}(B)$, and so
+	\[
+		\perim{E_{\epsilon}}-\perim{B} \leq \epsilon (\RR(B)-\RR(E)) \leq \epsilon \RR(B),
+	\]
+	using \autoref{thm:isoperim} that $\RR(B)$ is a fixed number we conclude.
+\end{proof}
+We are now going to decompose the Riesz functional of a generic set $E$ in terms of the Riesz interaction functional applied to some smaller (or simpler) sets: let $B$ be a ball with $|B|=|E|$, then call $E^{+}\coloneqq E\setminus B$ and $E^{-}\coloneqq B\setminus E$, so using just the definition of $\RR$ we get
+\begin{align*}
+	\RR(E,E) = \RR(E,B)+\RR(E,E^{+})-\RR(E,E^{-}) =& \RR(B,B) +\RR(E^{+},B)-\RR(E^{-},B) +\\
+	&+\RR(B,E^{+})+\RR(E^{+},E^{+})-\RR(E^{-},E^{+}) -\\
+	&-\RR(B,E^{-})-\RR(E^{+},E^{-})+\RR(E^{-},E^{-}).
+\end{align*}
+Rearranging that expression we obtain
+\begin{equation*}
+	\RR(E,E)-\RR(B,B) = 2(\RR(E^{+},B)-\RR(E^{-},B)) + \RR(E^{+},E^{+})+\RR(E^{-},E^{-})-2\RR(E^{+},E^{-}),
+\end{equation*}
+that is useful because, under certain assumptions on $g$, it holds that
+\begin{equation}\label{eq:interaction-inequality}
+\RR(E^{+},E^{+})+\RR(E^{-},E^{-})\geq2\RR(E^{+},E^{-})
+\end{equation}
+(i.e. the sum of the last three terms in the right hand side is positive), so 
+\begin{equation}\label{eq:Riesz-ineq-phi}
+	\RR(E)-\RR(B)\geq  2(\RR(E^{+},B)-\RR(E^{-},B))
+\end{equation}
+and, defining $\Phi:\R_{+}\to \R$ as\footnote{This definition makes sense because the integral does not depend on the choice of $y$.}
+\begin{equation*}
+	\Phi(t) \coloneqq \int_{B}g(y-x)\dx\qquad \text{with }|y|=t,
+\end{equation*}
+we can express \eqref{eq:Riesz-ineq-phi} as
+\begin{equation*}
+	\RR(E)-\RR(B) \geq 2\int_{E^{+}}\Phi(|y|)\dy - 2\int_{E^{-}}\Phi(|y|)\dy.
+\end{equation*}
+
+A sufficient condition on $g$ that implies the inequality \eqref{eq:interaction-inequality} is that $g$ is \textit{subharmonic} in $\R^{N}\setminus\{0\}$ and \textit{radial}: let $g$ be given, then take $\displaystyle g_{k}(x) \coloneqq g\left(x+\frac{x}{k|x|}\right)$, namely the function $g$ "translated" radially by $1/k$. It is clearly enough to prove the inequality for $g_{k}$, because then we can use monotone convergence theorem to recover the result for a general $g$. We observe that $g_{k}$ is subharmonic in $\R^{N}\setminus\{0\}$ and bounded, then it is enough to prove the inequality
+\begin{equation}\label{eq:ineq-finite-sum}
+	\sum_{i,j=1}^{M}g_{k}(x_{i}-x_{j})+\sum_{i,j=1}^{M}g_{k}(y_{i}-y_{j}) \geq 2\sum_{i,j=1}^{M}g_{k}(x_{i}-y_{j})
+\end{equation}
+\begin{figure}[H]
+		\begin{minipage}[c]{0.55\textwidth}
+			\includegraphics[width=\textwidth]{bounded-integrand.eps}
+		\end{minipage}\hfill
+		\begin{minipage}[c]{0.4\textwidth}
+			\caption{Graphical representation (looking only to the radial dependence) of some $g_{k}$ for a generic $g$.}
+			\label{fig:3}
+		\end{minipage}
+	\end{figure}
+
+for every finite set of points $\{x_{i}\}$ and $\{y_{j}\}$, i.e. we are approximating $E$ and $F$ with a finite number of points or, equivalently, we are approximating the measure $\chi_{E}\lebesgue^{N}$ with a finite sum of deltas. In the sequel we will just write $g$ in place of $g_{k}$, keeping in mind that it is bounded. The strategy to prove \eqref{eq:ineq-finite-sum} is to try penalizing it, putting us in the worst case, and prove that it can be simplified if we are in the worst possible instance.\\
+We observe that, if two point of those sets coincide, they can be eliminated: assume that $x_{0} = y_{0}$, then, since $g$ is bounded (in particular is is finite in $0$), we notice that both in the right and in the left hand side we find the same summands containing $x_{0}$ or $y_{0}$, so that we can cancel them and work with $M-1$ points.\\
+In order to worsen the inequality \eqref{eq:ineq-finite-sum} we consider translations of one set of points, for instance $\{y_{i}\}$, performing translations of this set it is clear that the left hand side in not affected (since we only consider relative distances of points in each set), while the right hand side changes, so that we try to maximize it to prove the inequality in general. Let us consider the function $f(v)\coloneqq \sum_{i,j=1}^{M} g(x_{i}-(y_{j}+v))$, it holds that $f$ is subharmonic\footnote{Because it is a sum of subharmonic functions.} in the domain $D\coloneqq \{v\in\R^{N}:\ v\neq x_{i}-y_{j}\forall i,j\}$, moreover $f(x)\to 0$ as $|x|\to\infty$ because $g$ has the same property, and then $f$ has a maximum. But the maximum cannot stay in $D$ because otherwise, using that $f$ is subharmonic (it is here where we use that $g$ is subharmonic), we would get a contradiction because $f$ is not constant. So the maximum is attained in a point outside $D$, i.e. the maximum is attained translating the set $\{y_{j}\}$ in such a way that one of its points coincides with some of the $x_{i}$'s, then we can use the observation made before to erase one these two coinciding points. Proceeding in this way we can reduce ourself to the case of sets containig just one point, and then it is obvious because $g$ attains its maximum in $x=0$.
+
+
+
+
+
+
+
+
+

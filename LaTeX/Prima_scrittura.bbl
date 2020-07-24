@@ -1,0 +1,59 @@
+\begin{thebibliography}{GUW08}
+
+\bibitem[AC88]{algoet1988}
+Paul~H. Algoet and Thomas~M. Cover.
+\newblock Asymptotic optimality and asymptotic equipartition properties of
+  log-optimum investment.
+\newblock {\em Ann. Probab.}, 16(2):876--898, 04 1988.
+
+\bibitem[Alg92]{algoet1992}
+Paul Algoet.
+\newblock Universal schemes for prediction, gambling and portfolio selection.
+\newblock {\em Ann. Probab.}, 20(2):901--941, 04 1992.
+
+\bibitem[CO96]{CoverOrden1996}
+T.~M. {Cover} and E.~{Ordentlich}.
+\newblock Universal portfolios with side information.
+\newblock {\em IEEE Transactions on Information Theory}, 42(2):348--363, March
+  1996.
+
+\bibitem[CT06]{CTElInfTeo}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock {\em Elements of Information Theory (Wiley Series in
+  Telecommunications and Signal Processing)}.
+\newblock Wiley-Interscience, USA, 2006.
+
+\bibitem[GUW08]{NN}
+László Györfi, Frederic Udina, and Harro Walk.
+\newblock Experiments on universal portfolio selection using data from real
+  markets.
+\newblock 02 2008.
+
+\bibitem[Kle13]{Klenke}
+A.~Klenke.
+\newblock {\em Probability Theory: A Comprehensive Course}.
+\newblock Universitext. Springer London, 2013.
+
+\bibitem[LZ78]{LZ78}
+A.~{Lempel} and J.~{Ziv}.
+\newblock Compression of individual sequences via variable-rate coding.
+\newblock {\em IEEE Transactions on Information Theory}, 24(5):530--536, Sep.
+  1978.
+
+\bibitem[MM08]{Mennucci}
+A.~C.~G. {Mennucci} and S.~K. {Mitter}.
+\newblock {\em Probabilità e informazione}.
+\newblock Edizioni della Normale, Pisa, Italia, 2008.
+
+\bibitem[OC98]{cost1998}
+Erik Ordentlich and Thomas~M. Cover.
+\newblock The cost of achieving the best portfolio in hindsight.
+\newblock {\em Mathematics of Operations Research}, 23(4):960--982, 1998.
+
+\bibitem[Tho06]{ThorpKelly}
+E.~O. Thorp.
+\newblock The kelly criterion in blackjack, sports betting and the stock
+  market.
+\newblock {\em Handbook of Asset and Liability Management}, 1:385--428, 2006.
+
+\end{thebibliography}

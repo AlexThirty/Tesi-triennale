@@ -1,0 +1,2003 @@
+\documentclass[a4paper,11pt]{book}
+
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+%\usepackage[bottom=3cm,top=3.5cm,left=2.8cm,right=3.3cm]{geometry}
+\usepackage[bottom=5cm]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\graphicspath{{Immagini/}}
+
+\usepackage{titling,titlesec}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xy}
+\usepackage{multicol,multirow}
+\usepackage{cite}
+
+\usepackage{frontespizio}
+
+\usepackage{xcolor, colortbl, tabularx, soul}
+\usepackage{mathrsfs,mathtools}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE]{\slshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\slshape\nouppercase{\rightmark}}
+\setlength{\headheight}{14pt}
+
+\makeatletter 
+ 	\let\titlecopy\@title 
+ 	\let\authorcopy\@author
+\makeatother
+
+
+
+
+\usepackage{hyperref} % References become hyperlinks.
+\hypersetup{
+	colorlinks = true,
+	linkcolor = {black},
+	urlcolor = {red},
+	citecolor = {black},
+	%pdfenconing=auto,
+}
+\usepackage{wrapfig}
+\usepackage{arydshln}
+\usepackage[T1]{fontenc} 
+\usepackage{bm}
+
+\usepackage{grffile,pgf,tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric,calc,arrows}
+
+
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{lemma}[teo]{Lemma}
+\newtheorem{prop}[teo]{Proposizione}
+\newtheorem{post}{Postulato}
+\newtheorem{cor}[teo]{Corollario}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[chapter]
+\newtheorem{exmp}[defn]{Esempio}
+\newtheorem{costr}[defn]{Costruzione}
+\newtheorem{oss}[defn]{Osservazione}
+\newtheorem{prob}{Problema}
+\newtheorem*{prob*}{Problema}
+\newtheorem{hint}{Suggerimento}
+\newtheorem{sol}{Soluzione}
+\newtheorem*{notaz}{Notazione}
+
+\theoremstyle{remark}
+\newtheorem*{nota}{Nota}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\scal}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\eval}[3]{\Big[ #1 \Big]_{#2}^{#3}}
+%\newcommand{\sob}[3]{W^{#1, #2}(#3)}
+%\newcommand{\sobzero}[3]{W_{0}^{#1, #2}(#3)}
+%\newcommand{\sobloc}[3]{W_{\text{loc}}^{#1, #2}(#3)}
+\newcommand{\weakconv}{\rightharpoonup}
+\newcommand{\weakconvs}{\overset{\ast}{\rightharpoonup}}
+
+
+\newcommand{\dx}{\text{d}x}
+\newcommand{\dt}{\text{d}t}
+\newcommand{\dy}{\text{d}y}
+\newcommand{\diff}{\text{d}}
+
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\dive}{div}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\clos}{clos}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\extr}{extr}
+\DeclareMathOperator{\conv}{conv}
+
+\newcommand\restr[2]{\ensuremath{\left.#1\right|_{#2}}}
+
+
+\newcommand{\boh}{\textcolor{red}{\Huge\textbf{???}}}
+\newcommand{\attenzione}{\textcolor{red}{\Huge\textbf{!!!}}}
+\newcommand{\vitali}{\textcolor{red}{\Huge\textbf{Vitali}}}
+
+
+\begin{comment}
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\def\my_hrulefill{\leavevmode\leaders\hrule height 1.2pt\hfill\kern\z@}
+
+\def\@makechapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedleft \reset@font
+            \scshape \@chapapp{} \thechapter
+        \par\nobreak
+        \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    %\vspace*{1\p@}%
+    {\color{gray}\my_hrulefill}
+    \par\nobreak
+    \vskip 100\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedleft \reset@font
+            \scshape \vphantom{\@chapapp{} \thechapter}
+        \par\nobreak
+        \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    %\vspace*{1\p@}%
+    {\color{gray}\my_hrulefill}
+    \par\nobreak
+    \vskip 100\p@
+  }}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries}}
+
+\makeatother
+\end{comment}
+
+\titleformat{\chapter}[display]
+  {\large}
+  {\centering{\filright\MakeUppercase{\chaptertitlename} \Large\thechapter}}
+  {1ex}
+  {\vspace{1ex}\centering\LARGE\scshape\bfseries}
+  [\vspace{1ex}\titlerule]
+\begin{comment}
+\titleformat{\section}[block]
+  {\Large\bfseries\scshape}
+  {\thesection}
+  {1em}
+  {}
+\end{comment}
+
+\title{\textbf{Metodi topologici per risolvere inclusioni differenziali}}
+\author{Davide Carazzato\\Relatore: Luigi Ambrosio}
+%\date{\today}
+
+
+\begin{document}
+\begin{frontespizio}
+    \Universita{Pisa}
+    \Logo[3cm]{./Immagini/cherubino_pant541}
+    \Dipartimento{Matematica}
+    \Corso[Laurea]{Matematica}
+    \Annoaccademico{2017--2018}
+    \Titoletto{\Large Tesi di laurea triennale}
+    \Titolo{Metodi topologici per risolvere inclusioni differenziali}
+    % \Sottotitolo{Alcune considerazioni mutevoli}
+    \Candidato{Davide Carazzato}
+    %\Matricola{536877}
+    \Relatore{Prof. Luigi Ambrosio}
+    \Punteggiatura{}
+    \Rientro{1.5 cm}
+    \Margini{1cm}{2cm}{1cm}{1cm}
+\end{frontespizio}
+\frontmatter
+\pagestyle{plain}
+%\maketitle
+\tableofcontents
+
+
+\null\newpage
+\thispagestyle{plain}
+
+\pagestyle{fancy}
+
+
+%\pagestyle{headings}
+\chapter{Introduzione}
+In questa tesi ci concentreremo quasi esclusivamente sul problema dell'\textit{inclusione differenziale}, ovvero:
+\begin{prob}[Inclusione differenziale]\label{prob:1}
+	Dato un insieme $K$ di matrici $m\times n$ si vuole trovare una funzione lipschitziana non affine $f:\Omega\to \R^m$ (dove $\Omega\subset \R^n$ è aperto connesso e limitato) che soddisfi
+	\[
+		Df(x)\in K\qquad\text{per quasi ogni }x\text{ in }\Omega.
+	\]
+\end{prob}
+Esso trae spunto dallo studio dei cristalli: se descriviamo un cristallo come un mezzo elastico omogeneo e $\Omega$ è una configurazione di riferimento, è ragionevole che l'energia necessaria per deformarlo tramite una trasformazione $u:\Omega\to\R^3$ sia esprimibile come
+\[
+	I(u) = \int_{\Omega}W(Du)\dx,
+\]
+dove $W:\M^{3\times 3}\to\R$ rappresenta la densità di energia contenuta nel cristallo vista come funzione della deformazione infinitesimale.\\
+Chiaramente il cristallo andrà a disporsi in modo da minimizzare l'energia, dunque la sua configurazione sarà quella data da $\overline{u}$ dove $I(\overline{u})$ è minimo. Evidentemente, detti $m=\inf_{M\in\M^{3\times 3}} W(M)$ e $S=\LL(\Omega)$ la misura di Lebesgue del dominio, abbiamo che
+\begin{equation*}\label{eq:9}
+	I(u) \geq \int_{\Omega}m\dx = mS.
+\end{equation*}
+Quello che si osserva sperimentalmente è che spesso le strutture che si formano \textit{realizzano} questo $\inf$! Quindi per capire quali sono le configurazioni possibili basta cercare delle funzioni che abbiano (quasi ovunque) il differenziale uguale ad un minimo di $W$, in particolare l'esistenza di soluzioni non affini corrisponde alla possibilità di trovare delle microstrutture nel cristallo.
+
+Può capitare che il Problema \ref{prob:1} non abbia soluzione, a livello sperimentale si vede in questi casi una regione di transizione in cui i gradienti non minimizzano la funzione $W$. In questa evenienza il modo più semplice di riformulare il problema precedente è il seguente:
+\begin{prob}\label{prob:2}
+	Dato $K$ come sopra si cerca una successione di funzioni lipschitziane $f_k:\Omega\to\R^m$ che soddisfi le seguenti proprietà:
+	\begin{enumerate}
+		\item le costanti di Lipschitz sono uniformemente limitate;
+		\item $\dist(Df_k,K)\to 0$ in misura rispetto alla misura di Lebesgue;
+		\item $Df_{k}$ non tende ad una costante rispetto alla misura di Lebesgue.
+	\end{enumerate}
+\end{prob}
+Il problema posto in questo modo risulta abbastanza naturale, infatti la prima richiesta è di tipo tecnico, necessaria per le dimostrazioni, la seconda risponde alla necessità di trovare una successione che minimizzi il funzionale $I$ scritto prima, mentre la terza è ragionevole per due motivi: da una parte perché imponendo solo le prime due condizioni il problema risulta banale (una successione costante $f_{k}=f$ con $f$ una appropriata funzione affine risolverebbe il problema), dall'altra quest'ultima richiesta rispecchia la volontà di cercare anche in questo caso delle microstrutture nel cristallo, seppur con delle regioni di transizione, come si osserva sperimentalmente.
+
+%Questo secondo problema nasce invece in ambito più astratto nei casi in cui non esiste una funzione $u$ che minimizza $I$, ma si cerca di capire quanto vale $\inf I(u)$, se esso coincide con la stima data nella \eqref{eq:9} o se, per qualche motivo, è maggiore di tale valore.
+Nel primo capitolo richiameremo alcuni fatti ben noti di teoria della misura e di analisi funzionale che ci serviranno più avanti e introdurremo le prime definizioni necessarie.
+%Dopo aver richiamato alcuni fatti ben noti nel primo capitolo, inizieremo a trattare il Problema \ref{prob:1} quando $K$ è finito. 
+
+Nel secondo capitolo inizieremo a trattare il Problema \ref{prob:1} quando $K$ è finito. Mostreremo alcuni risultati di rigidità per il problema in esame, in particolare dimostreremo che condizione necessaria e sufficiente affinché il problema sia risolubile quando $|K|\leq 4$ è la presenza di connessioni di rango $1$ in $K$, ovvero la presenza di due matrici in $K$ con differenza di rango $1$. Ci soffermeremo sui casi $|K|=2$ e $|K|=3$, mentre enunceremo senza dimostrazione alcuni risultati per $|K|=4$ e $|K|=5$. Quest'ultimo caso è differente dai precedenti e mostra come il problema si complichi all'aumentare di $|K|$. Tale punto di rottura fa capire che è interessante studiare il primo problema anche con $K$ finito e che la cardinalità di $K$ ha un forte peso sulle dimostrazioni e sui risultati.
+
+Nel terzo capitolo andremo a risolvere il Problema \ref{prob:2} ancora con $K$ finito. Inizialmente mostreremo molto sinteticamente che risultati si ottengono per $|K|=2$ e $|K|=3$: in questi casi la risposta al problema è molto simile, anche se riadattata, a quella che ottenevamo nel risolvere il problema esatto. Descriveremo poi la costruzione di Tartar con cui troveremo una soluzione al Problema \ref{prob:2} diversa da quelle che ottenevamo per $|K|\leq3$. Mostreremo successivamente che la costruzione di Tartar ha anche applicazioni in ambiti differenti dalle inclusioni differenziali, infatti la useremo per trovare un controesempio alla disuguaglianza di Korn per $p=1$. Una versione di tale disuguaglianza è: dati $\Omega\subset\R^{n}$ un dominio limitato con bordo lipschitziano e $p\in(1,+\infty)$, allora esiste una costante $c=c(p,\Omega)$ tale che
+\[
+	\min_{S=-S^T} \int_{\Omega}|Du-S|^p\dx\leq c\int_{\Omega}\left|Du+Du^T \right|^p\dx\qquad\forall u\in W^{1,p}(\Omega;\R^n).
+\]
+Vedremo che per $p=1$ non vale una stima del genere, infatti grazie alla costruzione di Tartar si produce una successione di funzioni per la quale siamo in grado di sbilanciare la distribuzione dei gradienti in modo da dare sempre più peso alle matrici antisimmetriche senza però che i gradienti si stabilizzino su una matrice sola. In particolare otterremo una successione di funzioni $f_{k}:(0,1)^{n}\to\R^{n}$ in un opportuno spazio di Sobolev (che risulterà essere $W^{1,\infty}((0,1)^n;\R^n)$) tale che
+\[
+	\forall F\in \M^{n\times n}\qquad\int_{(0,1)^n}|Df_k-F|\dx\geq Sk\int_{(0,1)^n}|Df_k+Df_k^T|\dx
+\]
+per una qualche costante $S>0$. Oltretutto osserveremo che le funzioni $f_{k}$ sono state prese lipschitziane solo per avere una costruzione immediata ma, usando la convoluzione, tali funzioni si possono prendere lisce. Dopo aver ottenuto questo risultato basterà modificare leggermente le funzioni $f_{k}$ per costruire un controesempio per un'altra disuguaglianza (ottenuta più di recente) simile per certi aspetti a quella di Korn.
+
+%In questa trattazione mostreremo inizialmente alcuni risultati di rigidità che si incontrano quando si risolve il primo problema con $K$ un insieme finito, successivamente mostreremo che con la costruzione di Tartar si produce una soluzione al secondo problema nella prima configurazione in cui è possibile (cioè con il minimo numero di matrici).\\
+%Mostreremo poi che la costruzione di Tartar ha anche altre applicazioni in cui si vuole far oscillare molto il differenziale di una funzione ma mantenendo la costruzione di tale funzione il più semplice possibile: con essa produrremo un controesempio alla disuguaglianza di Korn nel caso $p=1$.\\
+Infine nell'ultimo capitolo andremo ad attaccare nuovamente il problema dell'inclusione differenziale esatta (con un possibile dato affine al bordo, ovvero cerchiamo soluzioni all'inclusione differenziale che coincidano con una funzione affine sul bordo del dominio $\Omega$) ma nel caso in cui l'insieme $K$ sia notevolmente più grande di prima. Per gestire degli insiemi $K$ più complicati dei precedenti l'idea che useremo sarà sostanzialmente quella di prendere un insieme \textit{universo} $\mathcal{U}\subset \M^{m\times n}$ che contiene $K$ e cercare risolvere il problema semplificato (visto che si può scegliere in un insieme più ampio) dell'inclusione differenziale usando come insieme dei gradienti ammissibili questo $\mathcal{U}$. Poi, sotto alcune ipotesi, usando l'argomento di Baire riusciremo a dire che in realtà moltissime soluzioni che abbiamo trovato risolvono anche l'inclusione differenziale con insieme $K$ (dove quel \textit{moltissime} è inteso nel senso di Baire che verrà chiarito dopo).\\
+Il fatto cruciale che servirà per applicare l'argomento di Baire (notato per la prima volta da Kirchheim) è il seguente: dato $X\subset (\Lip(\Omega;\R^{m}),\norm{\cdot}_{\infty})$ uno spazio completo, la mappa differenziale $D:X\to L^{p}(\Omega;\M^{m\times n})$ è continua per moltissime funzioni $f\in X$. Dimostrato questo daremo due risultati molto generali dallo spirito leggermente diverso:
+\begin{itemize}
+	\item per il primo risultato considereremo un generico $\mathcal{U}\subset\M^{m\times n}$ che contiene $K$ e, dopo aver definito cosa intendiamo per \textit{stabilità} dei gradienti in $\mathcal{U}$ vicino a $K$, dimostreremo che se i gradienti in $\mathcal{U}$ sono stabili solo vicino a $K$ allora succede quanto detto prima, ovvero moltissime soluzioni dell'inclusione differenziale con $\mathcal{U}$ come insieme dei gradienti ammissibili (nella classe opportuna) in realtà risolvono l'inclusione originale;
+	\item per il secondo invece definiremo inizialmente alcuni tipi di punti estremali (che in un certo senso diranno ancora dove i gradienti sono stabili) e poi dimostreremo che se $K$ ha alcune proprietà topologiche allora, in una classe opportuna di soluzioni dell'inclusione differenziale con insieme $K$, avviene che moltissime soluzioni $f$ in realtà hanno differenziale $Df$ che sta quasi ovunque nei punti estremali di $K$.
+\end{itemize}
+In quest'ultimo capitolo che utilizza il teorema di Baire seguiremo una parte del lavoro di Kirchheim \cite{kirchheim}, che produce degli strumenti molto potenti che permettono di risolvere problemi notevolmente più complicati di quelli mostrati in questa tesi, come per esempio il problema delle inclusioni differenziali non omogenee, dove si cerca una funzione $f:\Omega\to\R^{m}$ tale che
+\[
+	Df(x)\in K(x,f(x))\qquad \text{per q.o. }x\in \Omega,
+\]
+per una data funzione $K:\Omega\times\R^{m}\to\mathcal{P}(\M^{m\times n})$.\\
+Un altro fatto che mostra la potenza degli strumenti di Kirchheim è invece l'applicazione finale che presentiamo: il problema che prendiamo in esame è proposto nel libro di Marcellini e Dacorogna \cite{marcellini}, però grazie agli strumenti che abbiamo sviluppato siamo in grado di rilassare un'ipotesi, fare una dimostrazione molto veloce e ottenere un risultato un po' più preciso del loro.
+
+
+
+\mainmatter
+\chapter{Richiami e definizioni}
+%Diamo qui alcune definizioni e ricordiamo alcuni risultati che ci saranno utili successivamente.
+Ricordiamo ora alcuni risultati ben noti che ci serviranno in seguito. Per la parte di teoria della misura ci si può riferire a \cite{stein}, mentre per quella di analisi funzionale a \cite{brezis} e \cite{buttazzo}.
+
+\section{Teoria della misura}
+%In questa sezione ricordiamo dei risultati di base che possono essere trovati per esempio nel libro di Brezis \cite{brezis}.
+\begin{defn}[Convergenza in misura]
+	Dati $\Omega\subset \R^n$ e $\mu$ una misura di Borel positiva su $\Omega$, diciamo che una successione di funzioni $f_k:\Omega\to\R$ $\mu$-misurabili \textit{tende in misura} a $g$ (lo indichiamo con $f_k\xrightarrow{\mu}g$) se
+	\[
+		\forall \epsilon>0\quad \lim_{k\to\infty} \mu\{|f_k-g|>\epsilon\} = 0.
+	\]
+	Una definizione simile si può dare anche per funzioni $\mu$-misurabili $f_{k}:\Omega\to\R^{m}$ chiedendo che:
+	\[
+		\forall \epsilon>0\quad \lim_{k\to\infty} \mu\{x\in\Omega\ |\ \norm{f_k(x)-g(x)}>\epsilon\} = 0.
+	\]
+\end{defn}
+Durante tutta la trattazione, a meno che non sia indicato diversamente, la misura che utilizzeremo sarà quella di \textit{Lebesgue} che indicheremo con $\LL$ in tutti gli spazi euclidei $\R^n$.
+\begin{prop}\label{prop:4}
+	Dato $\Omega\subset\R^{n}$ di misura finita, se $f_{k}:\Omega\to\R^{m}$ è una successione di funzioni tale che $f_{k}\xrightarrow{\LL}g$ e in più le funzioni $f_{k}$ sono uniformemente limitate\footnote{Ovvero esiste $R>0$ tale che $f_{k}(\Omega)\subset B_{\R^{m}}(0,R)$ per ogni $k\in\N$.}, allora la convergenza avviene in $L^{1}(\Omega;\R^{m})$.\\
+	Se le funzioni $f_{k}$ stanno in $L^{p}(\Omega)$ e convergono a $f$ in $L^{p}$, allora esiste una sottosuccessione $\{f_{n_{k}}\}$ che converge puntualmente quasi ovunque, ovvero esiste un insieme $E\subset \Omega$ di misura nulla tale che
+	\[
+		\forall x\in \Omega\setminus E\qquad f_{n_{k}}(x)\to f(x).
+	\]
+\end{prop}
+\begin{defn}
+	Un punto $x\in E\subset \R$ di un insieme misurabile si dice \textit{punto di densità} se
+	\[
+		\lim_{r\to0} \frac{\LL(I_r\cap E)}{\LL(I_r)} = 1\qquad \text{con }I_r = (x-r,x+r).
+	\]
+\end{defn}
+\begin{prop}
+	Sia $E\subset\R$ un insieme misurabile, allora quasi ogni $x\in E$ è un punto di densità.
+\end{prop}
+\begin{teo}[Lusin]\label{teo:10}
+	Sia $\Omega\subset \R^{n}$ aperto limitato e sia $u:\Omega\to\R$ misurabile con $u\in L^{\infty}$. Allora per ogni $\epsilon>0$ esiste una funzione continua $v:\Omega\to\R$ tale che $\norm{v}_{\infty}\leq\norm{u}_{\infty}$ e
+	\[
+		\LL(\{x\in\Omega\ |\ v(x)\neq u(x)\})<\epsilon.
+	\]
+\end{teo}
+\begin{oss}
+	Vale anche che se $u:\Omega\to\R^{m}$ è misurabile allora per ogni $\delta>0$ esiste $v:\Omega\to\R^{m}$ continua tale che $\LL(\{x\in\Omega\ |\ v(x)\neq u(x)\})<\delta$, infatti basta applicare il teorema di Lusin ad ogni componente con $\epsilon=\delta/m$.
+\end{oss}
+
+\begin{defn}
+	Dati $(X,\mu)$ uno spazio di misura, $Y$ un insieme e una funzione $f:X\to Y$ definiamo il \textit{pushforward} di $\mu$ tramite $f$ come la misura (che denoteremo con $f_{\#}\mu$) su $Y$ tale che
+	\[
+		\forall E\subset Y\text{ con }f^{-1}(E)\ \mu\text{-misurabile}\qquad f_{\#}\mu(E) = \mu(f^{-1}(E)).
+	\]
+\end{defn}
+\begin{defn}\label{defn:2}
+	Data una funzione $f:\Omega\subset\R^{n}\to \R^{m}$ con $\Omega$ di misura finita definiamo \textit{distribuzione dei valori} di $f$ come il pushforward normalizzato\footnote{Cioè si chiede che la distribuzione dei valori di $f$ sia una misura di probabilità su $\R^{m}$.} della misura di Lebesgue $\LL$ (ristretta a $\Omega$) tramite $f$.
+\end{defn}
+\begin{teo}[di ricoprimento di Vitali]\label{teo:11}
+	Sia $U\subset\R^{n}$ un aperto limitato non vuoto con $\LL(\partial U)=0$ e sia $\Omega\subset\R^{n}$ aperto. Allora esiste una famiglia numerabile di $(x_{i},r_{i})_{i\in\N}$ tale che, detti $U_{i}=x_{i}+r_{i}U$ per ogni $i\in\N$, valgono le seguenti proprietà:
+	\begin{itemize}
+		\item se $i\neq j$ allora $U_{i}\cap U_{j}=\emptyset$;{}
+		\item per ogni $i\in\N$ si ha che $U_{i}\subset \Omega$;{}
+		\item $\LL(\Omega\setminus\bigcup_{i\in\N}U_{i})=0$.
+	\end{itemize}
+\end{teo}
+\begin{proof}
+	Senza perdita di generalità possiamo supporre che $\LL(\Omega)<+\infty$, infatti se $\LL(\Omega)=+\infty$ allora a meno di insiemi di misura nulla l'insieme $\Omega$ si può scrivere come unione numerabile di aperti con misura finita. La dimostrazione si basa sul fatto topologico ben noto che $\Omega$ si può scrivere, a meno di un sottoinsieme di misura nulla, come unione numerabile di cubi disgiunti del tipo $y_{i}+(-l_{i},l_{i})^{n}$. Fissiamo il cubo $Q=(-1,1)^{n}$ e prendiamo $x\in\R^{n}$ e $r>0$ in modo tale che $x+r\overline{U}\subset Q$ (che esistono perché $U$ è limitato), definiamo inoltre $V=x+rU$ e
+	\[
+		\lambda=\frac{\LL(Q\setminus V)}{\LL(Q)} = \frac{\LL(Q\setminus\overline{V})}{\LL(Q)} < 1,
+	\]
+	dove la seconda uguaglianza è dovuta al fatto che $\LL(\partial U)=0$. Quindi, definendo $V_{i}=y_{i}+l_{i}V$, abbiamo che $\overline{V_{i}}\subset y_{i}+(-l_{i},l_{i})^{n}$ e $\LL(\Omega\setminus\bigcup_{i}V_{i})/\LL(\Omega) = \lambda$. Fissiamo un qualsiasi $\lambda'\in(\lambda,1)$ e definiamo le altre traslazioni in modo induttivo: prendiamo $M>0$ abbastanza grande tale che $\LL(\Omega\setminus\bigcup_{i=1}^{M}V_{i})/\LL(\Omega)<\lambda'<1$ e ripetiamo il ragionamento appena fatto per ricoprire l'aperto $\Omega_{1}=\Omega\setminus\bigcup_{i=1}^{M}\overline{V_{i}}$, così applicheremo lo stesso procedimento descritto prima ad una successione di aperti $\Omega_{1}, \Omega_{2},\ldots$ ($\lambda$ e $\lambda'$ sono fissati). Aver fissato $\lambda$ e $\lambda'$ a priori fa sì che ad ogni iterazione la misura dell'insieme che rimane da ricoprire si riduca almeno di un fattore $\lambda'$: $\LL(\Omega_{i+1})<\lambda'\LL(\Omega_{i})$. Quindi è chiaro che prendendo tutti gli insiemi $V_{j}$ che troviamo ad ogni iterazione copriamo $\Omega$ a meno di un insieme di misura nulla: se $E\subset \Omega$ è misura positiva, allora dopo un numero abbastanza grande di iterazioni viene ricoperto almeno parzialmente poiché la successione $\LL(\Omega_{i})$ tende a $0$. Così si conclude la dimostrazione.
+\end{proof}
+\begin{teo}[di Vitali, seconda versione]\label{teo:12}
+	Sia $E$ un sottoinsieme misurabile di $\R$ con $\LL(E)<+\infty$ e sia $\mathcal{F}$ una famiglia di intervalli chiusi che sia un {\rm ricoprimento fine} di $E$, ovvero tale che
+	\begin{itemize}
+		\item $\mathcal{F}$ ricopre $E$, cioè $\LL(E\setminus\bigcup_{I\in\mathcal{F}}I)=0$;
+		%\item ogni $I\in \mathcal{F}$ ha misura positiva;
+		\item per ogni $x\in E$ e per ogni $\delta>0$ esiste $0<\delta'<\delta$ tale che $B(x,\delta')\in\mathcal{F}$.%$x\in I$ e $\LL(I)<\delta$.
+	\end{itemize}
+	Allora esiste famiglia numerabile $\mathcal{G}\subset\mathcal{F}$ tale che $\LL(E\setminus \bigcup_{I\in\mathcal{G}}I) = 0$ e gli intervalli che stanno in $\mathcal{G}$ sono a due a due disgiunti.
+\end{teo}
+%\begin{proof}
+%	Sia $\mathcal{F}'$ la famiglia di intervalli aperti ottenuta prendendo ogni intervallo in $\mathcal{F}$ e togliendo gli estremi. Sia ora $B$ un aperto tale che $E\subset B\subset \bigcup_{A\in\mathcal{F}'}A$
+%\end{proof}
+\section{Analisi funzionale}
+
+\begin{comment}
+\begin{proof}
+	Dimostriamo che $f$ è differenziabile con gradiente uguale a $\nabla f(x)$ in ogni punto di Lebesgue $x$ per $\nabla f$. Definiamo $R=\dist(x,\partial \Omega)$ e introduciamo le funzioni
+	\[
+		f_r(y) \coloneqq \frac{f(x+ry)-f(x)}{r}\qquad \text{per }y\in \overline{B}_1, r\in (0,R)
+	\]
+	e osserviamo che la proprietà di differenziabilità richiesta coincide con la convergenza uniforme in $\overline{B}_1$ di $f_r(y)$ a $f_0(y) = \scal{\nabla f(x)}{y}$ per $r\to 0^+$.\\
+	Dato che $f$ è lipschitziana in $B_R(x)$, le funzioni $f_r$ sono equilimitate ed equicontinue in $\overline{B}_1$. Per il teorema di Ascoli-Arzelà abbiamo solo bisogno di mostrare che ogni limite uniforme $\widetilde{f}$ di $f_{r_h}$ per qualche successione infinitesima $(r_h)$ coincide con $f_0$. Con un semplice cambio di variabili si ottiene che $\nabla_yf_r(y) = \nabla_yf(x+ry)$, dunque
+	\begin{gather*}
+		\lim_{h\to \infty}\int_{B_1}|\nabla f_{r_h}(y)-\nabla f(x)|\diff y = \lim_{h\to \infty}\int_{B_1}|\nabla_yf(x+ry)-\nabla f(x)|\diff y=\\
+		=\lim_{h\to \infty}\frac{1}{r_h^n}\int_{B_{r_h}(x)}|\nabla f(z)-\nabla f(x)|\diff z = 0,
+	\end{gather*}
+	ma l'ultimo integrale è nullo se $x$ è un punto di Lebesgue per $\nabla f$. Dato che, dalla Proposizione \ref{prop:2} segue che $f_{r_h}\to\widetilde{f}$ debolmente$*$ in $W^{1,\infty}$, otteniamo che $\nabla \widetilde{f}=\nabla f(x)$, dunque $\widetilde{f}(y)=\scal{\nabla f(x)}{y}+c$ è una funzione affine. Dato che $f_r(0)=0$ si ha che $\widetilde{f}(0)=0$, e quindi $c=0$ e $\widetilde{f}=f_0$.
+\end{proof}
+\end{comment}
+
+\begin{defn}
+	Sia $X$ uno spazio di Banach e sia $E\subset X^{*}$ un sottoinsieme del suo duale. Definiamo \textit{topologia debole} $\sigma(X,E)$ su $X$ rispetto a $E$ la topologia di spazio vettoriale topologico meno fine che rende continui tutti gli operatori in $E$. Chiameremo invece \textit{topologia forte} la topologia su $X$ indotta dalla sua norma. Se non specificato diversamente, con topologia debole indicheremo $\sigma(X,X^{*})$.
+\end{defn}
+
+\begin{defn}
+	Sia $X$ uno spazio di Banach e $\{x_{n}\}\subset X$ una successione. Diremo che tale successione \textit{converge debolmente} a $x\in X$ se
+	\[
+		\forall F\in X^{*}\qquad \lim_{n\to \infty}Fx_{n}=Fx,
+	\]
+	e lo indicheremo con $x_{n}\weakconv x$.
+	Se invece $\{F_{n}\}\subset X^{*}$ è una successione nel duale di $X$, allora diremo che tale successione \textit{converge debolmente}$*$ a $F\in X^{*}$ (indicato con $F_{n}\weakconvs F$) se
+	\[
+		\forall x\in X\qquad \lim_{n\to\infty}F_{n}x = Fx.
+	\]
+\end{defn}
+
+\begin{defn}
+	Sia $X$ uno spazio di Banach e sia $X^{*}$ il suo duale. Allora si può dare a $X^{*}$ una struttura di spazio di Banach con la norma duale: per ogni $F\in X^{*}$ definiamo
+	\[
+		\norm{F}_{*}\coloneqq \sup_{x}Fx\qquad \text{con }x\in X, \norm{x}\leq 1.
+	\]
+\end{defn}
+
+\begin{prop}\label{prop:8}
+	Sia $X$ uno spazio di Banach e sia $x\in X$. Allora
+	\[
+		\norm{x} = \sup_{F}Fx\qquad\text{con }F\in X^{*}, \norm{F}_{*}\leq 1.
+	\]
+\end{prop}
+
+\begin{prop}
+	Siano $\Omega\subset\R^{n}$ un aperto limitato e $p{\in}[1,+\infty)$. Allora $(L^{p}(\Omega))^{*} = L^{q}(\Omega)$, dove $q=\frac{p}{p-1}$ ed è inteso che se $p=1$ allora $q=\infty$, associando ad una funzione $g\in L^{q}(\Omega)$ il funzionale $\phi_{g}\in (L^{p}(\Omega))^{*}$ definito come
+	\[
+		\forall f\in L^{p}(\Omega)\qquad \phi_{g}(f) = \int_{\Omega}f(x)g(x)\dx.
+	\]
+\end{prop}
+
+\begin{oss}[Convergenza debole per spazi $L^{p}$]
+	Dalla proposizione precedente segue che se $f_k:\Omega\subset\R^n\to\R^{m}$ è una successione di funzioni con $f_k\in L^p(\Omega;\R^{m})$ ($1\leq p<\infty$), tale successione converge debolmente a $f$ in $L^p(\Omega;\R^{m})$ se, detto $q=\frac{p}{p-1}$ (come prima $q=\infty$ se $p=1$), vale che
+	\[
+		\forall g\in L^q(\Omega)\qquad \int_{\Omega} f_k(x)g(x)\dx \to \int_{\Omega}f(x)g(x)\dx.
+	\]
+	Nel caso in cui $f_k\in L^{\infty}(\Omega;\R^{m})$, allora la successione converge debolmente$*$ a $f$ se
+	\[
+		\forall g\in L^1(\Omega)\qquad \int_{\Omega} f_k(x)g(x)\dx \to \int_{\Omega}f(x)g(x)\dx.
+	\]
+\end{oss}
+\begin{comment}
+\begin{prop}\label{prop:2}
+	Sia $(u_h)$ una successione in $W^{1,p}(\Omega)$ convergente in $L^p(\Omega)$ a qualche funzione $u$, allora vale che se $1\leq p\leq \infty$ e per ogni $i\in\{1,\ldots,n\}$ esiste una $g_i\in L^p(\Omega)$ tale che $\partial_iu_h\weakconv g_i$ in $L^p(\Omega)$ (se $p=\infty$ allora la convergenza è debole$*$) allora $u\in W^{1,p}(\Omega)$ e $g_i=\partial_iu$.
+\end{prop}
+
+
+\begin{defn}[Prodotto di convoluzione]
+	Date $f,g:\R^n\to \R$ definiamo il loro \textit{prodotto di convoluzione} come
+	\[
+		f*g(x) = \int_{\R^n}f(y)g(x-y)\dy
+	\]
+	quando questa funzione è ben definita.
+\end{defn}
+Alcune proprietà del prodotto di convoluzione sono la \textit{commutatività} e l'\textit{associatività}, inoltre vale che, se $f\in L^p(\R^n)$ e $g\in L^q(\R^n)$ con $1/p+1/q=1+1/r$ e $1\leq p,q,r\leq \infty$, allora $f*g$ è definita e
+\[
+	f*g\in L^r(\R^n)\quad\text{con}\quad\norm{f*g}_r\leq \norm{f}_p\norm{g}_q.
+\]
+La convoluzione mantiene anche alcune proprietà di regolarità di una delle due funzioni: se $f\in L^1_{loc}(\R^n)$ e $g\in C_c(\R^n)$ allora $f*g$ è definita e continua, se inoltre $g\in C^{\infty}_c(\R^n)$ allora $f*g\in C^{\infty}(\R^n)$ e vale che
+\[
+	\partial_{\alpha}(f*g)(x)=\int_{\R^n}f(y)\partial_{\alpha}g(x-y)\dy = (f*\partial_{\alpha}g)(x).
+\]
+Una applicazione del prodotto di convoluzione è la possibilità di trovare una successione di funzioni lisce che approssimi una data funzione $f$: detta $\rho\in C^{\infty}_c(\R^n)$ una funzione liscia con supporto contenuto in $B(0,1)$ tale che $\rho(x)\geq 0$, $\rho(x)=\rho(-x)$ per ogni $x\in \R^n$ e $\int_{\R^n} \rho(x)\dx = 1$, per $\epsilon > 0$ definiamo $\rho_{\epsilon}(x) \coloneqq \epsilon^{-n}\rho(x/\epsilon)$, tali $\rho_{\epsilon}$ vengono detti \textit{mollificatori}. Se $f\in L^p_{loc}(\R^n)$ allora per la successione $f_{\epsilon}=f*\rho_{\epsilon}\in C^{\infty}(\R^n)$ vale che
+\[
+	\lim_{\epsilon\to 0^+}\norm{f_{\epsilon}-f}_{L^p(A)}=0\qquad\forall A\subset \R^n\text{ compatto},
+\]
+inoltre se $f$ è continua allora $f_{\epsilon}\to f$ uniformemente su ogni compatto.
+\end{comment}
+
+
+
+\begin{defn}
+	Uno spazio di Banach $X$ è detto \textit{riflessivo} se l'inclusione canonica nel biduale $X^{**}$ è un isomorfismo.
+\end{defn}
+
+
+\begin{prop}
+	Sia $X$ uno spazio di Banach separabile\footnote{Ovvero contiene un sottoinsieme denso numerabile.} e sia $\{F_{n}\}$ una successione limitata nel duale $X^{*}$. Allora esiste una sottosuccessione $\{F_{n_{k}}\}$ di $\{F_{n}\}$ che converge debolmente$*$ in $X^{*}$.
+\end{prop}
+\begin{prop}\label{prop:5}
+	Sia $X$ uno spazio di Banach riflessivo e sia $\{x_{n}\}$ una successione limitata in $X$ (ovvero esiste $M>0$ tale che $\norm{x_{n}}\leq M$ per ogni $n\in\N$). Allora esiste una sottosuccessione $\{x_{n_{k}}\}$ di $\{x_{n}\}$ che converge debolmente a un elemento $x\in X$.
+\end{prop}
+
+\begin{oss}
+	Se $\Omega\subset\R^{n}$ è un aperto limitato e $p\in(1,+\infty)$, allora $L^{p}(\Omega)$ è riflessivo e quindi si può applicare la proposizione precedente.
+\end{oss}
+\begin{prop}\label{prop:9}
+	Sia $X$ uno spazio di Banach e sia $C\subset X$ un suo sottoinsieme convesso. Allora $C$ è chiuso rispetto alla topologia debole se e solo se è chiuso rispetto alla topologia forte.
+\end{prop}
+
+
+%\begin{prop}[Debole compattezza]
+%	Siano $\Omega\subset\R^{n}$ un aperto limitato, $p\in {[1,+\infty)}$ e $\{f_{k}\}_{k\in\N}\subset L^{p}(\Omega)$ una successione di funzioni. Se esiste $M>0$ tale che $\norm{f_{k}}_{p}\leq M$ per ogni $k\in\N$, allora esistono una sottosuccessione $\{f_{n_{k}}\}_{k\in\N}$ ed una funzione $f\in L^{p}(\Omega)$ tali che la successione $\{f_{n_{k}}\}_{k\in\N}$ converge debolmente a $f$ in $L^{p}(\Omega)$.
+%\end{prop}
+
+\begin{defn}
+	Sia $(X,d)$ uno spazio metrico. Una funzione $f:X\to\R$ è detta \textit{semicontinua inferiormente} se per ogni $M\in\R$ il sottolivello $\{x\in X\ |\ f(x)\leq M\}$ è chiuso. Se $X$ è separabile allora tale proprietà si può esprimere equivalentemente come: per ogni $x\in X$ e per ogni successione $\{x_{n}\}_{n\in\N}\subset X$ convergente a $x$ vale che
+	\[
+		f(x)\leq \liminf_{n\to\infty}f(x_{n}).
+	\]
+\end{defn}
+\begin{prop}[Semicontinuità inferiore della norma]\label{prop:7}
+	Sia $X$ uno spazio di Banach e $\{x_{n}\}$ una successione in $X$. Se $\{x_{n}\}$ converge debolmente ad un elemento $x\in X$ allora la successione è limitata e
+	\[
+		\norm{x}\leq \liminf_{n\to\infty}\norm{x_{n}}.
+	\]
+\end{prop}
+\begin{prop}\label{prop:6}
+	Siano $\Omega\subset\R^{n}$ un aperto limitato, $p{\in}[1,+\infty)$ e $\{f_{k}\}_{k\in\N}\subset L^{p}(\Omega)$ una successione che converge debolmente a $f\in L^{p}(\Omega)$. Se $\phi:\R\to\R$ è una funzione convessa e limitata dal basso, allora si ha che
+	\[
+		\int_{\Omega}\phi(f(x))\dx \leq \liminf_{k\to\infty}\int_{\Omega}\phi(f_{k}(x))\dx.
+	\]
+\end{prop}
+
+\begin{proof}
+	Sia $\psi:L^{p}(\Omega)\to \R$ il funzionale definito da $\psi(f) = \int_{\Omega}\phi(f(x))\dx$, evidentemente i sottolivelli di $\psi$ sono convessi, sono anche chiusi rispetto alla convergenza in $L^{p}(\Omega)$: se $\{f_{k}\}$ è una successione che converge a $f$ in $L^{p}$ allora, per la Proposizione \ref{prop:4}, esiste una sottosuccessione $\{f_{n_{k}}\}$ di $\{f_{k}\}$ che converge puntualmente q.o. a $f$, dunque anche $\{\phi(f_{k})\}$ converge puntualmente quasi ovunque a $\phi(f)$, quindi usando il teorema di Fatou ($\phi$ è limitata dal basso) otteniamo la semicontinuità inferiore per convergenza forte in $L^{p}(\Omega)$. Poi usiamo la Proposizione \ref{prop:9} per concludere che i sottolivelli di $\psi$ sono anche chiusi rispetto alla convergenza debole in $L^{p}(\Omega)$.
+\end{proof}
+
+\begin{defn}[Derivata debole]
+	Siano $f:\Omega\subset\R^n\to\R^m$ una funzione tale che $f\in L^1_{loc}(\Omega;\R^{m})$. Per  $k\in\{1,\ldots,n\}$ una funzione $g_k:\Omega\subset\R^n\to\R^{m}$ con $g_k\in L^1_{loc}(\Omega;\R^{m})$ è detta \textit{derivata debole} di $f$ (o \textit{nel senso delle distribuzioni}) rispetto alla variabile $x_k$ se
+	\[
+		\int_{\Omega} f(x)\frac{\partial\phi}{\partial x_k}(x)\dx = -\int_{\Omega} g_k(x)\phi(x)\dx\qquad \forall \phi\in C^{\infty}_c(\Omega;\R).
+	\]
+	In particolare vale che:
+	\begin{itemize}
+		\item la derivata debole, se esiste, è unica;
+		\item se $f\in C^1(\Omega;\R^{m})$ allora $g_k = \partial f/\partial x_k$;
+		\item le derivate deboli commutano sempre;
+		\item se $f$ ha tutte le derivate deboli uguali a $0$ in un aperto connesso allora $f$ coincide quasi ovunque con una costante in quell'aperto.
+	\end{itemize}
+\end{defn}
+
+Dato che la derivata debole di una funzione $f:\Omega\subset\R^{n}\to\R^{m}$ coincide con la derivata classica se $f\in C^{1}(\Omega;\R^{m})$, non ci saranno problemi nel considerare tutte le derivate come derivate deboli senza doverlo rimarcare ogni volta.
+
+\begin{defn}[Spazi di Sobolev]
+	Data $f:\Omega\to\R$ e dato $1\leq p\leq \infty$ diciamo che $f\in W^{1,p}(\Omega)$ se $f\in L^p(\Omega)$ e ha derivate deboli che stanno tutte in $L^p(\Omega)$.\\
+	Lo spazio $W^{1,p}(\Omega)$ diventa uno spazio di Banach (di Hilbert se $p=2$) con la norma
+	\[
+		\norm{f}_{W^{1,p}(\Omega)} = \left(\norm{f}^p_p+\sum_{i=1}^n \norm{\partial_i f}_p^p \right)^{1/p}
+	\]
+	se $1\leq p < \infty$; per $p=\infty$ si prende la norma
+	\[
+		\norm{f}_{W^{1,\infty}(\Omega)}=\norm{f}_{\infty}+\sum_{i=1}^n \norm{\partial_i f}_{\infty}.
+	\]
+	Denotiamo con $W_0^{1,p}(\Omega)$ la chiusura di $C^{\infty}_c(\Omega)$ in $W^{1,p}(\Omega)$, inoltre se $f:\Omega\to\R^m$ allora diremo che $f\in W^{1,p}(\Omega;\R^m)$ se tutte se sue componenti stanno in $W^{1,p}(\Omega)$.
+\end{defn}
+
+\begin{teo}[Rademacher]\label{teo:9}
+	Ogni funzione $f\in W^{1,\infty}(\Omega)$ è differenziabile q.o. in $\Omega$ e il differenziale coincide q.o. con il suo differenziabile in senso debole $\nabla f$.
+\end{teo}
+
+
+\section{Prime definizioni}
+\begin{notaz}
+	Se $A$ è una matrice reale $m\times n$, i cui coefficienti sono $a_{ij}$ con $1\leq i\leq m$ e $1\leq j\leq n$, indicheremo con $|A|$ la sua norma euclidea definita come 
+	\[
+		|A|^2 = \sum_{i=1}^m\sum_{j=1}^n (a_{ij})^2.
+	\]
+	Inoltre quando necessario identificheremo $\M^{m\times n}$ con $\R^{mn}$ con la norma euclidea.
+\end{notaz}
+\begin{defn}
+	Date $A,B\in \M^{m\times n}(\R)$, diremo che c'è una connessione di rango $1$ tra loro se $\rk(A-B)=1$. Dato un insieme $K\subset\M^{m\times n}$, diremo che esso \textit{contiene connessioni di rango $1$} se esistono $A,B\in K$ tali che $\rk(A-B)=1$.
+\end{defn}
+\begin{defn}
+	Siano $A,B\in\M^{m\times n}$ due matrici, allora chiamiamo \textit{segmento} con estremi $A$ e $B$ l'insieme
+	\[
+		[A,B]=\{(1-t)A+tB\ |\ t\in[0,1]\}\subset \M^{m\times n},
+	\]
+	definiamo inoltre $(A,B) = [A,B]\setminus\{A,B\}$. Diremo che $[A,B]$ è un $\delta$-segmento di rango $1$ se $\rk(A-B)=1$ e $|A-B|\geq \delta$.
+\end{defn}
+\begin{defn}[Laminato]\label{defn:4}
+	Siano $A,B\in \M^{m\times n}$ tali che $\rk(A-B)=1$ e sia $F=\lambda A+(1-\lambda)B$ con $\lambda\in(0,1)$. Un \textit{laminato} di ordine $1$ con media $F$ è una misura di probabilità $\mu=\lambda \delta_A+(1-\lambda)\delta_B$\footnote{Qui $\delta_A$ indica la misura di probabilità concentrata solo sulla matrice $A$.} su $\M^{m\times n}$. Un laminato di ordine $k$ con media $F$ è ottenuto da un laminato di ordine $k-1$ con media $F$ sostituendo una qualche $\delta_{A_i}$ con un laminato di ordine $1$ con media $A_i$ (notiamo che così facendo non cambia la media del laminato). Il \textit{supporto} di un laminato è l'insieme delle matrici
+	\[
+		\supp(\mu)=\{A\in\M^{m\times n}\ |\ \mu(A)\neq 0 \}.
+	\]
+\end{defn}
+
+\begin{defn}\label{defn:3}
+	Dato $\Omega\subset\R^{n}$ aperto diciamo che una funzione $f:\Omega\to\R^{m}$ è $\sigma$-\textit{affine a tratti} se esiste una famiglia numerabile di aperti $B_{i}\subset \Omega$ tale che $B_{i}\cap B_{j}=\emptyset$ se $i\neq j$, $\LL(\Omega\setminus\bigcup_{i}B_{i}) = 0$ e $f|_{B_{i}}$ sia affine.
+\end{defn}
+\begin{defn}\label{defn:5}
+	Dati $\Omega\subset\R^n$ aperto e limitato e $\mathcal{U}\subset\M^{m\times n}$ definiamo
+	\[
+        \mathscr{P} = \mathscr{P}(\Omega,\mathcal{U}) = \{f\in \Lip(\overline{\Omega};\R^m)\ |\ f\text{ è }\sigma\text{-affine a tratti e }Df(x)\in\mathcal{U}\text{ q.o. in }\Omega\}.
+	\]
+	Se inoltre una funzione $g:\partial\Omega\to\R^m$ è assegnata, allora definiamo
+	\[
+		\mathscr{P}(\Omega,\mathcal{U},g)=\{f\in\mathscr{P}(\Omega,\mathcal{U})\ |\ f(x) = g(x)\ \forall x\in\partial\Omega\}.
+	\]
+	Data una matrice $A\in\M^{m\times n}$, a volte indicheremo con $\mathscr{P}(\Omega,\mathcal{U},A)$ lo spazio $\mathscr{P}(\Omega,\mathcal{U},g)$ dove $g(x)=Ax$.
+\end{defn}
+
+
+\chapter{Rigidità con $K$ finito}
+In questo capitolo studieremo il problema dell'inclusione differenziale esatta con $K$ finito, in particolare ci concentreremo su insiemi $K$ con sole $2$ o $3$ matrici, invece enunceremo solamente i risultati che si ottengono con $4$ e $5$ matrici dato che sono molto più complicati da trattare. Quest'ultimo caso è il punto di rottura quando si prende in esame il problema con $K$ finito: fino a $4$ matrici si richiederà che $K$ contenga connessioni di rango $1$ affinché ci siano soluzioni non affini, mentre se $K$ contiene $5$ matrici questa condizione non è più necessaria. La strada che seguiremo è essenzialmente quella descritta da M{\"u}ller \cite{muller} per quanto riguarda i casi con $2$ e $3$ matrici mentre i casi con $4$ e $5$ sono trattati da Kirchheim \cite{kirchheim} e li citiamo solamente.
+\section{Due matrici}
+Cerchiamo di studiare il problema molto semplificato con $K\subset\M^{m\times n}$ che contiene solo due matrici, vedremo che in questo caso riusciremo a descrivere tutti e soli gli insiemi $K$ per cui esistono soluzioni:
+\begin{teo}\label{teo:1}
+	Sia $\Omega\subset\R^n$ un aperto connesso e sia $u:\Omega\to\R^m$ una funzione lipschitziana con $Du\in\{A,B\}$ quasi ovunque, allora vale che
+	\begin{enumerate}[i)]
+		\item se $\rk(B-A)\geq 2$, allora $Du=A$ q.o. oppure $Du=B$ q.o.
+		\item se $B-A=a\otimes w$ ($a\in\R^m$ e $w\in\R^n$) allora $u$ può essere scritta localmente come 
+		\begin{equation}\label{eq:3}
+		u(x) = Ax+ah(x\cdot w)+k
+		\end{equation}
+		con $k$ costante, dove $h:\Omega\to\R$ è lipschitziana e $h'\in \{0,1\}$ quasi ovunque. Se $\Omega$ è convesso questa rappresentazione vale globalmente.
+	\end{enumerate}
+\end{teo}
+
+\begin{proof}
+	Iniziamo dimostrando il primo punto: a meno di traslazioni possiamo assumere $A=0$ e quindi $Du = B\chi_{E}$ per qualche $E\subset \Omega$ misurabile, visto che $\rk(B-A)\geq 2$ possiamo inoltre supporre che $Du^1 = e_1\chi_E$ e $Du^2 = e_2\chi_E$ (cambiando coordinate in partenza e in arrivo). Dalla prima equazione otteniamo che $\partial_{1}u^{1}=\chi_E$ e $\partial_{j}u^{1}=0$ per ogni $j\neq1$, quindi per la simmetria delle derivate deboli vale
+	\[
+		\partial_{j}\chi_E=\partial_{j}\partial_{1}u^{1}=\partial_{1}\partial_{j}u^{1}=0\qquad \forall j\neq 1.
+	\]
+	Dunque $\partial_{j}\chi_E=0$ per ogni $j\neq1$, allo stesso modo dalla seconda equazione si ottiene che $\partial_{j}\chi_E=0$ per ogni $j\neq 2$, ma allora $D\chi_E = 0$ in senso debole, quindi $\chi_E = 1$ q.o. oppure $\chi_E = 0$ q.o. dato che $\Omega$ è connesso.\\
+	%e dalla simmetria delle derivate deboli si ottiene che $\partial_j\chi_E = 0$ per $j\neq 1$, dalla seconda si deduce che $\partial_j\chi_E = 0$ per $j\neq 2$, dunque vale che $D\chi_E = 0$ in senso debole, quindi $\chi_E = 1$ q.o. oppure $\chi_E = 0$ q.o. dato che $\Omega$ è connesso.\\
+	Per dimostrare la seconda parte possiamo assumere $A=0$, $a=e_1$, $w=e_1$, quindi $Du^1 = e_1\chi_E$ e $Du^k=0$ per $k > 1$, da cui si ha che $u^2,\ldots,u^m$ sono costanti e $\partial_k u^1 = 0$ per $k=2,\ldots,m$. Quindi $u^1$ (e dunque $u$) è localmente funzione della sola $x^1$, come desiderato. Se $\Omega$ è convesso allora $u^1$ è costante sugli iperpiani $\{x^1=\text{cost}\}$ che intersecano $\Omega$, a quindi la \eqref{eq:3} vale globalmente. In realtà l'ipotesi di convessità può essere rilassata: è sufficiente che $\Omega\cap \{x^1=\text{c}\}$ sia connesso per ogni $c$, se questa condizione non è verificata allora la formula sopra scritta vale solo localmente.
+\end{proof}
+
+%Come esempi significativi si possono portare: una corona circolare per la non connessione di $\Omega\cap\{x_1=\text{cost}\}$, la palla (piena) con una rientranza per un insieme non convesso ma dove vale globalmente la formula.
+
+\section{Tre matrici}
+Dallo studio del problema con due matrici emerge subito che, qualora l'insieme $K$ contenga connessioni di rango $1$, si può trovare sempre una soluzione non affine. Dunque studieremo direttamente il caso in cui $K$ non contenga connessioni di rango $1$ e otterremo sostanzialmente lo stesso risultato di prima.\\
+Vediamo un lemma utile per riportarci a dei casi più semplici:
+\begin{lemma}\label{lemma:1}%PAG 96 KIRCHHEIM
+	Sia $K\subset \M^{m\times n}$ un insieme finito e senza connessioni di rango $1$, supponiamo che esista una funzione lipschitziana ma non affine $g:\Omega\subset\R^n\to\R^m$ tale che $Dg\in K$ quasi ovunque. Allora esistono $N\in \M^{n\times 2}$, $M\in \M^{2\times m}$ e una funzione $f:\Omega'\subset\R^2\to \R^2$ lipschitziana tali che:
+	\begin{itemize}
+		\item $H=\{MAN|A\in K\}$ non contiene connessioni di rango $1$;
+		\item $Df\in H$ q.o. e $f$ non è affine.
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	Mostriamo inizialmente che, data una matrice $A\in \M^{m\times n}$ con $\rk A\geq 2$ si ha che l'insieme delle $(M,N)\in \M^{2\times m}\times \M^{n\times 2}$ tali che $\rk(MAN)=2$ è un aperto denso: date $M_0,\ N_0$ tali che $\rk(M_0AN_0) = 2$ si ha che $\det(M_0AN_0) \neq 0$, ma la funzione $(M,N)\to\det(MAN)$ è una funzione continua dei coefficienti di $M,N$, quindi esiste un intorno di $(M_0,N_0)$ in cui $\det(MAN)\neq 0$\footnote{Stiamo identificando $\M^{m\times n}$ con $\R^{mn}$ dotato della metrica euclidea.}, e questo mostra che è un aperto. Fissate ora $M_0,N_0$ consideriamo la funzione
+	\[
+		\psi_{M,N}(t)=\det\left[(M_0+t(M-M_0))A(N_0+t(N-N_0))\right]
+	\]
+	che calcola il determinante lungo la retta che passa per $(M_0,N_0)$ e con direzione $(M-M_0,N-N_0)$. La funzione $\psi_{M,N}$ è un polinomio in $t$, se esistesse un intorno di $(M_0,N_0)$ tale che $\rk(MAN)<2$ per ogni $(M,N)$ nell'intorno avremmo che $\psi_{M,N}$ sarebbe il polinomio nullo per ogni $(M,N)$, ma allora avremmo che $\det(MAN) = 0\ \forall (M,N)\in \M^{2\times m}\times \M^{n\times 2}$ (poiché le rette affini passanti per un dato punto coprono tutto uno spazio vettoriale), ma è molto semplice verificare che questo non accade.\\
+	Se $g$ non è affine esiste $\overline{x}\in \Omega$ ed esistono dei punti $y,z\in B(\overline{x},r)\subset B(\overline{x},5r)\subset \Omega$ tali che
+	\[
+		g(y+z-\overline{x})+g(\overline{x})\neq g(y)+g(z).
+	\]
+	Scegliamo $M_0\in \M^{2\times m}$ e $N_0\in \M^{n\times 2}$ tali che
+	\[
+		N_0e_1 = y-\overline{x},\quad N_0e_2=z-\overline{x},\qquad M_0(g(y+z-\overline{x})+g(\overline{x})-g(y)-g(z))\neq 0.
+	\]
+	Dato che l'insieme $K\times K$ è finito possiamo trovare una coppia $(M,N)$ arbitrariamente vicina a $(M_0,N_0)$ ed un $\epsilon>0$ tali che
+	\begin{gather}
+		\rk(M(A-B)N) = 2\quad\forall (A,B)\in K\times K\text{ con }A\neq B\label{eq:6.1}\\
+		M(g(N(e_1+e_2)+w)+g(w)) \neq M(g(Ne_1+w)+g(Ne_2+w))\quad\text{se }|\overline{x}-w|<\epsilon\label{eq:6.2}\\
+		|Ne_1|+|Ne_2| < 3r.\label{eq:6.3}
+	\end{gather}
+	La \eqref{eq:6.1} deriva dal fatto che intersezione finita di aperti densi è un aperto denso, la \eqref{eq:6.2} deriva invece dalla continuità: se $M$ e $N$ sono sufficientemente vicine a $M_0$ e $N_0$ perché valga che $M(g(N(e_1+e_2)+\overline{x})+g(\overline{x})) \neq M(g(Ne_1+\overline{x})+g(Ne_2+\overline{x}))$ allora questo vale in un intorno di $\overline{x}$. Scegliendo $N$ sufficientemente vicina a $N_0$ vale anche la \eqref{eq:6.3}.\\
+	Utilizziamo il teorema di Fubini per dimostrare che per quasi ogni $\hat{x}\in\R^n$ con $N(e_1+e_2)+\hat{x}\in \Omega$ vale che
+	\begin{equation}\label{eq:8}
+		D_p(Mg(Np+\hat{x}))\in H\qquad\text{per q.o. }p\in\R^2\text{ con }Np+\hat{x}\in\Omega.
+	\end{equation}
+	Infatti se l'insieme $T\subset \R^n$ delle traslazioni per cui non vale la proprietà \eqref{eq:8} avesse misura non nulla, allora l'insieme $\{x\in\Omega|Dg(x)\not\in K\}$ avrebbe misura non nulla poiché conterrebbe l'insieme
+	\[
+		E=\{x\in\R^n|\exists \hat{x}\in T,\exists p\in \R^2\text{ tale che }x=Np+\hat{x}, Dg(x)\not\in K\},
+	\]
+	la cui misura sarebbe non nulla poiché è l'integrale di $\chi_E$ (si vede che è non nulla grazie al teorema di Fubini), e questo è assurdo.\\
+	Ora è sufficiente prendere $\hat{x}$ abbastanza vicino a $\overline{x}$ per cui valga la \eqref{eq:8}, e $\Omega'$ un intorno abbastanza piccolo di $e_1+e_2\in\R^2$ tale che $Ny+\hat{x}\in\Omega\ \forall y\in\Omega'$ (si può fare poiché $N(e_1+e_2)+\hat{x}\in\Omega$) e quindi considerare $f:\Omega'\to\R^2$ definita come
+	\[
+		f(y) = Mg(Ny+\hat{x}).
+	\]
+\end{proof}
+
+
+Dimostriamo ora che anche con un insieme di tre matrici non si trovano soluzioni esatte a meno che ci siano connessioni di rango $1$:
+\begin{teo}\label{teo:2}
+	Sia $K=\{A_1,A_2,A_3\}$ e supponiamo che $\rk(A_i-A_j)\neq 1\ \forall i,j=1,2,3$. Dati $\Omega$ come nel Teorema \ref{teo:1} e $u:\Omega\to\R^{m}$ lipschitziana, se $Du\in K$ quasi ovunque allora $Du$ è costante quasi ovunque.
+\end{teo}
+
+
+
+\begin{proof}
+	Possiamo ridurci al caso $n=m=2$ grazie al Lemma \ref{lemma:1}. A meno di traslazioni e di comporre con una funzione affine possiamo supporre che $A_1=0$ e $A_2=\Id$, ora operando per coniugio possiamo anche supporre che $A_3$ sia in forma di Jordan (lasciando invariate $A_1$ e $A_2$), ovvero è di uno dei seguenti tipi
+	\[
+		\begin{pmatrix}
+			\lambda & -\mu\\
+			\mu & \lambda
+		\end{pmatrix}\text{ con }\lambda^2+\mu^2\neq 0\qquad
+		\begin{pmatrix}
+			\lambda & a\\
+			0&\mu
+		\end{pmatrix}\text{ con }\lambda\neq 0, \mu\neq 0,1
+	\]
+	dove le condizioni sui coefficienti sono dovute all'assenza di connessioni di rango $1$.\\
+	Nel primo caso $u$ soddisfa le equazioni di Cauchy-Riemann, dunque è analitica e quindi il suo differenziale è continuo, essendo $K$ discreto il differenziale deve essere costante.\\
+	Nel secondo caso si ha che $\partial_1u^2 = 0$ su tutto $\Omega$, quindi localmente $u^2(x) = f(x^2)$ per qualche $f:\R\to\R$, e dunque $\partial_2u^2=f'(x^2)$.	Dato che $\mu\neq 0,1$, il valore di $\partial_2u^2$ determina univocamente una delle $A_i$, quindi $Du(x) = g(x^2)$, in particolare si ha che $\partial_1\partial_1u=\partial_2\partial_1u=\partial_1\partial_2u=0$ (nel senso delle distribuzioni).\\
+	Allora $\partial_1u$ è costante, cioè $Du(x)$ è (per q.o. $x\in \Omega$) della forma
+	\begin{align*}
+		Du(x) = \begin{pmatrix}[c|c]
+			\multirow{2}{*}{$v$} & \multirow{2}{*}{$\widetilde{g}(x)$}\\
+			&\\
+			\end{pmatrix}\qquad \text{con }v\in \R^2\text{ e }\widetilde{g}:\Omega\to\R^2,
+	\end{align*}
+	dunque, presi $x,\overline{x}\in \Omega$ tali che $Du(x)\in K$ e $Du(\overline{x})\in K$, vale che $\rk(Du(x)-Du(\overline{x})) \leq 1$ e quindi $Du$ è costantemente una sola delle matrici $A_i$ poiché $K$ non contiene connessioni di rango $1$.
+\end{proof}
+
+\section{Più matrici}
+Si può dimostrare, ma è molto più complicato, che anche quando $|K|=4$ si ottiene un risultato in linea con quanto detto finora (vedere il lavoro di Kirchheim \cite{kirchheim} per le dimostrazioni):
+\begin{teo}
+	Sia $\Omega\subset\R^{n}$ come nel Teorema \ref{teo:1} e sia $K=\{A_{1},A_{2},A_{3},A_{4}\}\subset\M^{m\times n}$ un insieme contenente $4$ matrici tali che $\rk(A_{i}-A_{j})\neq 1$ per $i,j\in\{1,2,3,4\}$. Se $f:\Omega\to\R^{m}$ è una funzione lipschitziana tale che $Df\in K$ q.o. in $\Omega$ allora $f$ è affine.
+\end{teo}
+
+Finora tutti i risultati di esistenza erano identici: la presenza di connessioni di rango $1$ in $K$ è condizione necessaria e sufficiente per capire se esistono soluzioni non affini al problema dell'inclusione differenziale; adesso vediamo invece cosa accade se $|K|=5$. Questo è proprio il punto in cui si perde rigidità, addirittura nel lavoro di Kirchheim \cite{kirchheim} si trovano \textit{molti} insiemi $K$ senza connessioni di rango $1$, contenuti nell'insieme delle matrici \textit{simmetriche} e \textit{stabili rispetto a piccole perturbazioni} per cui esiste una soluzione non affine:
+\begin{teo}
+	Esistono cinque matrici $P,Q,R,S,T\in\M^{2\times 2}_{sym}$ e $\epsilon>0$ tali che, per ogni scelta di
+	\[
+		P_{1}\in B(P,\epsilon),\quad Q_{1}\in B(Q,\epsilon),\quad R_{1}\in B(R,\epsilon),\quad S_{1}\in B(S,\epsilon),\quad T_{1}\in B(T,\epsilon)
+	\]
+	in $\M^{2\times 2}_{sym}$, l'insieme $K=\{P_{1},Q_{1},R_{1},S_{1},T_{1}\}$ è non-rigido (ovvero esiste una soluzione lipschitziana non affine all'inclusione differenziale con insieme $K$) e senza connessioni di rango $1$.
+\end{teo}
+
+\begin{oss}
+	La soluzione $f$ che si trova in questo caso deve essere molto complicata: se $\Omega\subset \R^{n}$ è il dominio di $f$, allora per ogni $x\in \Omega$, per ogni intorno $U$ di $x$ contenuto in $\Omega$ e per ogni $A\in K$ l'insieme $\{x\in U\ |\ Df(x)=A\}$ deve avere misura non nulla. Infatti se non fosse così saremmo in contraddizione con quanto detto per $|K|=4$.
+\end{oss}
+\begin{comment}
+
+Vediamo ora come applicare i risultati appena dimostrati per risolvere il caso con quattro matrici:
+\begin{teo}\label{teo:3}
+	Sia $K=\{A_1,A_2,A_3,A_4\}$ con $\rk(A_i-A_j)\neq 1\ \forall i,j$. Dati $\Omega$ e $u$ come nel teorema \ref{teo:2}, se $Du\in K$ q.o. allora $Du$ è costante q.o.
+\end{teo}
+
+\begin{proof}
+NOOOOOOOOOOOOOOOOOOOOOOO
+	Possiamo supporre come prima che $A_1=0$ e che $A_2=\Id$, $m=n=2$, chiamo $A=A_3, B=A_4$ e fisso una generica matrice $M\in GL_2(\R)$. Considero ora $g(x) = Mu(x)M^{-1}$, allora $Dg(x) = MDu(x)M^{-1}$.\\
+	Prendo $h(x) = u(x)-g(x)$ e chiamo
+	\[
+		H=\{0, A-MAM^{-1},B-MBM^{-1}\}
+	\]
+	Si ha che $Dh(x) = Du(x)-MDu(x)M^{-1} \in H$ ($h$ è definita in $\Omega$), ma per il teorema \ref{teo:2} deve accadere che $\rk(A-MAM^{-1}) = 1$ o $\rk(B-MBM^{-1}) = 1$ o che $\rk(A-MAM^{-1}-B+MBM^{-1}) = 1$.\\
+	Fissiamo ora $M=\begin{pmatrix}
+	                	0 & 1\\
+	                	1 & 0
+	                \end{pmatrix}$,
+	per tale $M$ si ha che $M^{-1}= M$ e che $M\begin{pmatrix}
+							a & b\\
+							c & d
+							\end{pmatrix}M^{-1} = \begin{pmatrix}
+													d& c\\
+													b& a
+												\end{pmatrix}$.\\
+	Se $A=\begin{pmatrix}
+		a & b\\
+		c & d
+		\end{pmatrix}$, abbiamo che 
+		\[A-MAM^{-1} = \begin{pmatrix}
+									a-d & b-c\\
+									c-b & d-a
+									\end{pmatrix}\qquad \det(A-MAM^{-1}) = -(a-d)^2-(b-c)^2
+		\]
+		Dunque $\det(A-MAM^{-1}) = 0$ se e solo se $A-MAM^{-1} = 0$. Percui non può accadere che $\rk(A-MAM^{-1}) = 1$ o che $\rk(B-MBM^{-1}) = 1$. Se ora $B=\begin{pmatrix}
+							\alpha & \beta\\
+							\gamma & \delta
+							\end{pmatrix}$, abbiamo che
+		\[
+			A-MAM^{-1}-B+MBM^{-1} = \begin{pmatrix}
+				a-d-(\alpha-\delta) & b-c-(\beta-\gamma)\\
+				c-b-(\gamma-\beta) & d-a-(\delta-\alpha)
+				\end{pmatrix}
+		\]
+		che è della stessa forma di $A-MAM^{-1}$, dunque nemmeno quasta può avere rango $1$.\\
+		Deve dunque accadere, a meno di scambiare $A$ e $B$, che $A-MAM^{-1} = 0$, ma allora ci ritroveremmo nelle ipotesi del teorema \ref{teo:1}, e allora dovrebbe accadere che $\rk(B-MBM^{-1}) = 1$ o $B-MBM^{-1} = 0$\footnote{Questo perché si devono utilizzare sempre tutte e quattro le matrici, altrimenti mi ritroverei in un caso più semplice.}, il primo caso non può accadere quindi avrei che anche $B-MBM^{-1} = 0$. Questo porta alla conclusione che sia $A$ che $B$ commutano con $M$, ma dai conti fatti prima si deduce che
+		\[
+			A=\begin{pmatrix}
+				a & b\\
+				b & a
+				\end{pmatrix}\qquad B=\begin{pmatrix}
+									\alpha & \beta\\
+									\beta & \alpha
+									\end{pmatrix}
+		\]
+		Queste sono simmetriche, dunque diagonalizzabili, e commutano tra loro\footnote{Entrambe sono della forma $a\Id+bJ$ con $J=\begin{pmatrix}
+									0 & 1\\
+									1 & 0
+									\end{pmatrix}$, dunque commutano.}, quindi sono simultaneamente diagonalizzabili.
+		A meno di coniugio posso supporre che
+		\[
+			A=\begin{pmatrix}
+				a & 0\\
+				0 & b
+				\end{pmatrix}\quad B=\begin{pmatrix}
+									c & 0\\
+									0 & d
+									\end{pmatrix}\qquad \text{con }a,b,c,d\neq 0,1,\ c\neq a,\ d\neq b
+		\]
+		Ora si conclude in modo molto simile al secondo caso del teorema \ref{teo:2}.
+\end{proof}
+\end{comment}
+
+\chapter{Costruzione di Tartar}
+In questo capitolo mostreremo come usare la costruzione di Tartar essenzialmente per trovare una successione di funzioni in cui modificheremo la distribuzione dei gradienti così da ottenere il risultato voluto. Tale costruzione si basa sul fatto che un certo insieme di quattro matrici $\{A_{1},A_{2},A_{3},A_{4}\}\subset\M^{2\times 2}_{sym}$ (che mostreremo dopo) ha la proprietà che esiste un altro insieme di quattro matrici $\{J_{1},J_{2},J_{3},J_{4}\}\subset\M^{2\times 2}_{sym}$ per cui ciascuna $J_{i}$ è la media di una $J_{k}$ e una $A_{k}$ e inoltre $\rk(J_{i}-A_{i})=1$. Questo ci permetterà di muovere i gradienti in modo opportuno senza arrivare ad un punto in cui non riusciamo a proseguire. Vedremo poi che questa idea si applica anche ad altri contesti in cui risulta utile poter costruire funzioni di cui controlliamo la distribuzione dei gradienti.
+
+\section{Soluzione approssimata}
+Come anticipato ora non cerchiamo più funzioni che soddisfino $Df\in K$ q.o. ma ci limitiamo ad esaminare delle successioni di funzioni lipschitziane $f_k$ che soddisfino le seguenti condizioni:
+\begin{enumerate}
+	\item le costanti di Lipschitz devono essere uniformemente limitate;
+	\item$\dist(Df_k,K)\xrightarrow{\LL}0$;
+	\item $Df_{k}$ non tende ad una costante in misura.
+\end{enumerate}
+
+Anche se, come già detto, quando $K$ contiene connessioni di rango $1$ siamo in grado di trovare soluzioni \textit{esatte} non affini (e dunque anche successioni di funzioni che risolvono il nostro problema), vediamo che se $K$ contiene due matrici con differenza di rango $1$ si può avere una successione che soddisfi le condizioni sopra dette e, in più, soddisfi una particolare condizione al contorno:
+\begin{teo}\label{teo:4}
+	Date $A,B,F\in \M^{m\times n}(\R)$ tali che $B-A=a\otimes w$ e $F=\lambda A+(1-\lambda)B$ con $\lambda\in[0,1]$, allora esiste una successione di funzioni lipschitziane $u_k:\Omega\to\R^{m}$ con costante di Lipschitz uniformemente limitata tale che
+	\begin{gather*}
+		\dist(Du_k,\{A,B\})\xrightarrow{\LL} 0,\\
+		u_k(x) = Fx \quad\text{in }\partial \Omega.
+	\end{gather*}
+\end{teo}
+
+\begin{proof}
+	A meno di traslazioni si può supporre che $F=0$, $A=-(1-\lambda)a\otimes w$, $B=\lambda a\otimes w$.\\
+	Consideriamo $h$ l'estensione $1$-periodica di
+	\[
+		\hat{h}(t) = \begin{cases}
+		       	-(1-\lambda)t&\text{se }t\in [0,\lambda)\\
+		       	\lambda t&\text{se }t\in[\lambda,1]
+		       \end{cases}
+	\]
+	e quindi sia $\displaystyle v_k(x) = \frac{1}{k}ah(kx\cdot w)$. Dunque $Dv_k\in\{A,B\}$ q.o. e $v_k\to 0$ uniformemente. Per ottenere la condizione al bordo è sufficiente prendere una funzione $\phi\in C^{\infty}\left([0,+\infty)\right)$ tale che $0\leq \phi\leq 1$, $\phi=0$ in $[0,1/2]$ e $\phi=1$ in $[1,+\infty)$ e considerare le funzioni
+	\[
+		u_k(x) = \phi(k\dist(x,\partial \Omega))v_k(x).
+	\]
+	\begin{figure}[H]
+		\begin{minipage}[c]{0.68\textwidth}
+			\includegraphics[width=0.8\textwidth]{AB2.eps}
+		\end{minipage}\hfill
+		\begin{minipage}[c]{0.32\textwidth}
+			\caption{Un esempio di $u_k$, in particolare si nota che $u_k(x) = Fx$ sulle linee colorate in rosso, inoltre la costante $c$ dipende solo dalla scelta di $\phi$.}
+			\label{fig:3}
+		\end{minipage}
+	\end{figure}
+	
+	
+	Allora $u_k=0$ su $\partial\Omega$, $Du_k = Dv_k$ a parte che in una striscia di spessore $c/k$ attorno a $\partial\Omega$ (in questa costruzione $0< c\leq 1$), inoltre $Du_k$ è uniformemente limitato, infatti
+	\[
+		Du_k(x) = k\phi'(k\dist(x,\partial\Omega))\cdot D(\dist(x,\partial\Omega))\cdot v_k(x) + \phi(k\dist(x,\partial\Omega))Dv_k(x)
+	\]
+	ma $0\leq\phi\leq 1$ e $Dv_k\in\{A,B\}$ quasi ovunque, dunque il secondo addendo è limitato, ricordando ora che $|v_k(x)| \leq C/k$, che $|\phi'|$ è limitato poiché $\phi$ è a supporto compatto, e che $\dist(x,\partial \Omega)$ è lipschitziana\footnote{Perché $\displaystyle\dist(x,\partial\Omega) = \inf_{y\in\partial\Omega}\norm{x-y}$ e le funzioni $f_y(x) = \norm{x-y}$ sono lipschitziane di costante $1$.}, si ha che anche il primo addendo è limitato.\\
+	Dunque la successione $u_k$ soddisfa entrambe le richieste.
+\end{proof}
+\begin{oss}\label{oss:1}
+	Le $u_k$ costruite hanno anche la proprietà aggiuntiva di convergere uniformemente a $Fx$ in $\Omega$ in quanto le $v_k$ convergono uniformemente a $0$ e moltiplicare per una funzione limitata non altera tale convergenza uniforme. Inoltre vale quanto mostrato nella Figura \ref{fig:3}, ovvero $u_k(x) = Fx$ sulle linee colorate in rosso.\\
+	Sempre per la costruzione fatta si ha che la misura dell'insieme in cui troviamo $A$ tende ad essere $\lambda\LL(\Omega)$ per $k\to\infty$, questo conferma l'intuizione che si può avere: se al bordo si chiede che $F$ sia molto simile ad $A$ allora la successione che abbiamo costruito tenderà ad avere come differenziale quasi sempre $A$.
+\end{oss}
+
+
+Tralasciando la costruzione particolare fatta per dimostrare il Teorema \ref{teo:4} si può vedere che alcune proprietà devono valere in generale per le successioni di funzioni che ci interessano, in particolare non è un caso che $F$ sia combinazione \textit{convessa} di $A$ e $B$, inoltre quanto osservato prima riguardo all'area in cui si trova come differenziale la matrice $A$ in realtà vale più in generale:
+\begin{prop}\label{prop:1}
+	Siano $A,B,F\in \M^{m\times n}(\R)$ tali che $B-A=a\otimes w$, sia inoltre $\{u_k:\Omega\to\R^m\}_{k\in\N}$ una successione di funzioni lipschitziane con costante di Lipschitz uniformemente limitata e che soddisfi
+	\begin{gather*}
+		\dist(Du_k,\{A,B\})\xrightarrow{\LL} 0,\\
+		u_k(x) = Fx \quad\text{in }\partial \Omega.
+	\end{gather*}
+	Allora necessariamente $F=\lambda A+(1-\lambda)B$ con $\displaystyle\lambda = \inf_{\epsilon>0}\lim_{k\to\infty}\frac{\LL(\{|Du_k - A|\leq \epsilon\})}{\LL(\Omega)}$.
+\end{prop}
+
+\begin{proof}
+	Possiamo supporre, a meno di cambiare coordinate in partenza e in arrivo, che $A-B=e_1\otimes f_1$\footnote{Con $e_1$ e $f_1$ indichiamo il primo vettore della base canonica rispettivamente di $\R^m$ e di $\R^n$.}. Data $g:\Omega\to\R^m$, indicheremo con $g^{(i)}$ la $i$-esima componente di $g$ e, data una matrice $M\in\M^{m\times n}$, indicheremo con $M^{(i)}$ la sua $i$-esima riga. Per $1\leq i\leq m$ e $k\in\N$ consideriamo le funzioni $G_{i,k}:\R^n\to\R$ definite come
+	\begin{align*}
+        G_{i,k}(x) = \begin{cases}
+                    (Fx-u_k(x))^{(i)} & \text{se }x\in \Omega\\
+                    0 & \text{altrimenti.}
+                \end{cases}
+	\end{align*}
+    Tali funzioni risultano continue per l'ipotesi $u_k(x) = Fx$ su $\partial \Omega$. Dunque vale che
+    \begin{equation}\label{eq:15}
+    	\int_{\Omega}\left(F^{(i)}-\nabla u_k^{(i)}(x)\right)\dx = \int_{\Omega}\nabla G_{i,k}(x)\dx = \int_{\R^n}\nabla G_{i,k}(x)\dx = 0,
+    \end{equation}
+    dove abbiamo usato il teorema fondamentale del calcolo integrale e il fatto che $G_{i,k}$ è nulla per $|x|$ abbastanza grande per ottenere l'ultima uguaglianza.\\
+	Dato che $\dist(Du_k,\{A,B\})\xrightarrow{\LL} 0$ e che le costanti di Lipschitz delle funzioni  $u_k$ sono uniformemente limitate, ricordando che $F$ è costante, possiamo passare al limite sotto il segno di integrale per $k\to\infty$ in \eqref{eq:15}. Detti $m_A=\inf_{\epsilon>0}\lim_{k\to\infty} \LL(\{|Du_k-A|\leq\epsilon\})$ e $m_B=\LL(\Omega)-m_A$, vale dunque che
+	\begin{equation}\label{eq:7}
+		0 = m_A\left(F^{(i)}-A^{(i)}\right) + m_B\left(F^{(i)}-B^{(i)}\right).
+	\end{equation}
+	Se $2\leq i\leq m$ allora $A^{(i)} = B^{(i)}$ e dunque dall'equazione \eqref{eq:7} segue che $F^{(i)} = A^{(i)} = B^{(i)}$, se invece $i=1$ dalla stessa equazione \eqref{eq:7} si deduce che $\LL(\Omega)F^{(1)} = m_AA^{(1)}+m_BB^{(1)}$, e quindi che
+	\[
+        F = \frac{m_A}{\LL(\Omega)}A+\frac{m_B}{\LL(\Omega)}B
+	\]
+	che è la tesi.
+\end{proof}
+\begin{comment}
+\begin{prop}\label{prop:1}
+	Siano $A,B,F\in \M^{m\times n}(\R)$ tali che $B-A=a\otimes w$, sia inoltre $\{u_k:\Omega\to\R^m\}_{k\in\N}$ una successione di funzioni lipschitziane con costante di Lipschitz uniformemente limitata e che soddisfi
+	\begin{gather*}
+		\dist(Du_k,\{A,B\})\xrightarrow{\LL} 0,\\
+		u_k(x) = Fx \quad\text{in }\partial \Omega.
+	\end{gather*}
+	Allora valgono i seguenti fatti:
+	\begin{enumerate}[1)]
+		\item esiste il limite $\lim_{k\to\infty}\LL(\{Du_k = A\})$;
+		\item necessariamente $F=\lambda A+(1-\lambda)B$ con $\displaystyle\lambda = \lim_{k\to\infty}\frac{\LL(\{Du_k = A\})}{\LL(\Omega)}$.
+	\end{enumerate}
+\end{prop}
+
+\attenzione DA SISTEMARE: $\inf_{\epsilon>0} \lim_{k\to+\infty}\LL(\{|Du_k-A|\leq \epsilon\})$
+\begin{comment}
+\begin{oss}
+	Questo mostra anche che è necessario che le misure $\LL(\{Du_k=A\})$ convergano, ipotesi non richiesta nell'enunciato del Teorema \ref{teo:4}: se non convergessero, dato che comunque $0\leq \LL(\{Du_k=A\})\leq \LL(\Omega)$ allora potremmo prendere due sottosuccessioni di funzioni $u_{k_h}$ e $u_{k_j}$ per cui le misure degli insiemi $\{Du_k=A\}$ convergano a valori diversi, applicando dunque la Proposizione \ref{prop:1} avremmo che le due $F$ corrispondenti sarebbero diverse, il che è assurdo.
+\end{oss}
+\begin{proof}
+	Supponiamo all'inizio che il limite esista e dimostriamo il punto \textit{2)}: utilizziamo il teorema di Gauss-Green in versione lipschitziana\footnote{Non è la versione standard, ma ripercorrendo la dimostrazione del caso $C^1$ con una nozione di area adatta al dominio lipschitziano si ottiene lo stesso risultato.}, il quale dice che, se $\Omega$ è un dominio lipschitziano e se $f:\Omega\to\R$ e $\overline{E}:\Omega\to\R^n$ stanno rispettivamente in $W^{1,\infty}(\Omega)$ e in $W^{1,\infty}(\Omega;\R^n)$, allora, indicando con $\hat{n}$ la normale uscente da $\Omega$ e con $\diff \sigma$ la componente di area di $\partial \Omega$, vale che 
+	\[
+		\int_{\Omega}f\dive \overline{E}\dx = \int_{\partial\Omega}\scal{\overline{E}}{\hat{n}}f\diff\sigma-\int_{\Omega}\scal{\nabla f}{\overline{E}}\dx.
+	\]
+	Possiamo supporre, a meno di cambiare coordinate in partenza e in arrivo, che $A-B=e_1\otimes f_1$\footnote{Con $e_1$ e $f_1$ indichiamo il primo vettore della base canonica rispettivamente di $\R^m$ di $\R^n$.}. Indicheremo con $u_k^{(i)}$ la $i$-esima componente di $u_k$ e, data una matrice $M\in\M^{m\times n}$, indicheremo con $M^{(i)}$ la sua $i$-esima riga.
+	
+	Per ogni $v\in \R^n$ consideriamo la funzione $G:\R^n\to\R$ definita come
+	\[
+        G(x) = \begin{cases}
+                    \scal{F^{(i)}x-u_k^{(i)}(x)}{v} \quad \text{se }x\in \Omega\\
+                    0\quad \text{altrimenti.}
+                \end{cases}
+	\]
+    La funzione così definita risulta continua per l'ipotesi $u_k(x) = Fx$ su $\partial \Omega$. Dunque vale che
+    \[
+    	\int_{\Omega}\scal{F^{(i)}-\nabla u_k^{(i)}(x)}{v}\dx = \int_{\Omega}\nabla G(x)\dx = \int_{R^n}\nabla G(x)\dx = 0,
+    \]
+    dove abbiamo usato il teorema fondamentale del calcolo integrale e il fatto che $G$ fosse nulla per $x\to\infty$ per ottenere l'ultima uguaglianza.
+	
+	Applichiamo dunque il teorema di Gauss-Green alle funzioni
+	\[
+	f(x) = \scal{F^{(i)}}{x}-u_k^{(i)}(x),\qquad\overline{E}(x) = v\in\R^n\text{ una funzione costante},
+	\]
+	in questo modo il termine di sinistra e il primo addendo del termine di destra di Gauss-Green sono nulli e otteniamo
+	\[
+		0 = -\int_{\Omega}\scal{F^{(i)}-\nabla u_k^{(i)}(x)}{v}\dx.
+	\]
+	Dato che $\dist(Du_k,\{A,B\})\xrightarrow{\LL} 0$ e che le costanti di Lipschitz delle funzioni  $u_k$ sono uniformemente limitate, possiamo passare al limite sotto il segno di integrale (infatti $F$ ed $v$ sono costanti). Detti $m_A=\lim_{k\to\infty} \LL(\{Du_k=A\})$ e $m_B=\LL(\Omega)-m_A$, vale dunque che
+	\begin{equation}\label{eq:7}
+		0 = m_A\scal{F^{(i)}-A^{(i)}}{v} + m_B\scal{F^{(i)}-B^{(i)}}{v}.
+	\end{equation}
+	Se $2\leq i\leq m$ allora $A^{(i)} = B^{(i)}$ e dunque l'equazione \eqref{eq:7} diventa
+	\[
+		0 = \LL(\Omega)\scal{F^{(i)}-A^{(i)}}{v},
+	\]
+	prendendo $v = F^{(i)}-A^{(i)}$ si deduce che $F^{(i)} = A^{(i)} = B^{(i)}$.\\
+	Se invece $i=1$ l'equazione \eqref{eq:7} si può riscrivere come
+	\begin{align*}
+		0 &= m_A\scal{F^{(1)}-B^{(1)}}{v}+m_A\scal{B^{(1)}-A^{(1)}}{v}+m_B\scal{F^{(1)}-B^{(1)}}{v} = \\
+		&= \LL(\Omega)\scal{F^{(1)}-B^{(1)}}{v} + m_A\scal{B^{(1)}-A^{(1)}}{v},
+	\end{align*}
+	prendendo $v\in \left(\Span\left\{B^{(1)}-A^{(1)}\right\}\right)^{\perp}$ si ottiene che anche $\scal{F^{(1)}-B^{(1)}}{v} = 0$ e dunque
+	\[
+		F^{(1)}-B^{(1)}\in\left( \left(\Span\left\{B^{(1)}-A^{(1)}\right\}\right)^{\perp} \right)^{\perp} = \Span\left\{B^{(1)}-A^{(1)}\right\}.
+	\]
+	Prendendo invece $\displaystyle v = \frac{B^{(1)}-A^{(1)}}{\norm{B^{(1)}-A^{(1)}}}$ si deduce che
+	\[
+		\scal{F^{(1)}-B^{(1)}}{v} = -\frac{m_A}{\LL(\Omega)}\norm{B^{(1)}-A^{(1)}},
+	\]
+	da cui si ottiene la tesi, infatti se $F=\lambda A+(1-\lambda)B$ allora $F-B = -\lambda(B-A)$.\\
+	Dimostriamo ora il punto \textit{1)}: supponiamo che non esista $\lim_{k\to\infty}\LL(\{Du_k = A\})$, allora, dato che $0\leq \LL(\{Du_k=A\})\leq \LL(\Omega)$, potremmo prendere due sottosuccessioni $u_{k_h}$ e $u_{k_j}$ per cui
+	\[
+		\lambda_1=\lim_{h\to\infty}\LL(\{Du_{k_h}=A\})\neq \lim_{j\to\infty} \LL(\{Du_{k_j}=A\}) = \lambda_2,
+	\]
+	applicando dunque il punto \textit{2)} otterremmo che $F$ è uguale sia a $B+\lambda_1(A-B)$ che a $B+\lambda_2(A-B)$, assurdo dato che $\lambda_1\neq\lambda_2$.
+\end{proof}
+\end{comment}
+\begin{comment}
+Tuttavia anche limitandoci alle successioni di funzioni incontriamo dei risultati di rigidità:
+\begin{teo}\label{teo:7}
+	Date $A,B\in \M^{m\times n}$ supponiamo che $\rk(B-A)\geq 2$ e che $u_j:\Omega\to\R^m$ sia una successione di funzioni uniformemente lipschitziane tali che
+	\[
+		\dist(Du_j,\{A,B\})\xrightarrow{\LL}0 \text{ in }\Omega
+	\]
+	Allora
+	\[
+		Du_j\xrightarrow{\LL} A \qquad\text{ o }\qquad Du_j\xrightarrow{\LL}B
+	\]
+\end{teo}
+
+Enunciamo e dimostriamo un lemma che servirà per dimostrare il teorema \ref{teo:7}:
+\begin{lemma}\label{lemmma:4}
+	Indichiamo con $M(A)$ il determinante di una sottomatrice $r\times r$ di $A$. Allora valgono i seguenti fatti:
+	\begin{enumerate}[i)]
+		\item se $p\geq r$ e $u,v\in \W^{1,p}(\Omega)$, tali che $u-v\in\W_0^{1,p}(\Omega)$, allora
+		\[
+			\int_{\Omega}M(Du)\dx = \int_{\Omega}M(Dv)\dx
+		\]
+		\item se $p> r$ e se la successione $u_j$ soddisfa $u_j\weakconv u$ in $\W^{1,p}(\Omega;\R^m)$, allora
+		\[
+			M(Du_j)\weakconv M(Du)\quad \text{in }L^{p/r}(\Omega)
+		\]
+	\end{enumerate}
+\end{lemma}
+
+
+
+
+\begin{proof}
+NON SO SE FUNZIONA!!!!!!!!!!!!!!!!!!!!!!!\\
+	Possiamo assumere che $A = 0$, dalle ipotesi segue che esistono degli insiemi $E_j$ tali che
+	\[
+		Du_j-B\chi_E\to 0\quad\text{in misura}
+	\]
+	Dato che le funzioni hanno costante di Lipschitz uniformemente limitata la convergenza avviene anche in $L^p$ per ogni $1\leq p<\infty$. Inoltre dalla compattezza debole delle palle chiuse di $L^{\infty}(\Omega)$ esiste una sottosuccessione (che non rinominiamo) tale che
+	\[
+		\chi_{E_j}\weakconvs \theta\quad \text{in }L^{\infty}(\Omega)
+	\]
+	dove ricordiamo che $\chi_{E_j}\weakconvs\theta$ in $L^{\infty}(\Omega)$ significa che per ogni $g\in L^1(\Omega)$ si ha che
+	\[
+		\int_{\Omega}\chi_{E_j}(x)g(x)\dx \to\int_{\Omega} \theta(x)g(x)\dx
+	\]
+	Mostriamo ora che $\theta=\chi_E$ per qualche $E$: è immediato verificare che $\theta(x)\geq 0$ q.o., infatti se l'insieme $A=\{\theta<-\epsilon<0\}$ avesse misura positiva, allora prendiamo come funzione di test $g=\chi_A$, ma 
+	\[
+		\int_{\Omega} \theta(x)\chi_A\dx < -\epsilon\LL(A) < 0\qquad \text{mentre}\qquad \forall j\ \int_{\Omega}\chi_{E_j}(x)\chi_A(x)\dx\geq 0
+	\]
+	quindi non possiamo avere convergenza. Un ragionamento analogo mostra che $\theta(x)\leq 1$ q.o. Supponiamo ora che esistano due costanti $0<a < b < 1$ tali che l'insieme $A=\{a<\theta<b\}$ abbia misura positiva, possiamo inoltre supporre che $\LL(A)<\infty$ eventualmente troncandolo. Utilizzando come prima $g=\chi_A$ avremmo che, detto $\displaystyle c= \int_{\Omega} \theta(x)\chi_A(x)\dx$, allora
+	\begin{equation}\label{eq:5}
+		0<c<\LL(A)\qquad \text{e}\qquad \LL(E_j\cap A) = \int_{\Omega}\chi_{E_j}\chi_A\dx\to c
+	\end{equation}
+	Consideriamo $F = \limsup_{j\to\infty}(E_j\cap A)$, se $\LL(F) = 0$ allora grazie al lemma di Fatou (che possiamo applicare grazie all'ipotesi che $\LL(A)<\infty$) avremmo
+	\[
+		\limsup_{j\to \infty} \LL(E_j\cap A) \leq \LL\left(\limsup_{j\to\infty}(E_j\cap A) \right) = 0
+	\]
+	ma allora $c=0$ contro la \eqref{eq:5}. Se invece $\LL(F) > 0$ allora prendiamo come $g=\chi_F$, ma avrei che
+	\[
+		\int_{\Omega}\chi_{E_j}(x)\chi_F(x)\dx = \LL(E_j\cap F) = \LL(F)\qquad \text{mentre}\qquad\int_{\Omega} \theta(x)\chi_F(x)\dx < \LL(F)
+	\]
+	
+
+\end{proof}
+\end{comment}
+
+Si può dimostrare (vedere il lavoro di M{\"u}ller \cite{muller}) che anche nel risolvere il problema approssimato si incontra un fenomeno simile a quanto abbiamo visto mentre trattavamo l'inclusione differenziale esatta:
+\begin{prop}
+	Sia $K\subset\M^{m\times n}$ con $|K|=2$ o $|K|=3$ che non contenga connessioni di rango $1$ e sia $\Omega$ come nel Teorema \ref{teo:1}. Sia inoltre $u_{j}:\Omega\subset \R^{n}\to\R^{m}$ una successione di funzioni equi-lipschitziane tale che $\dist(Du_{j},K)\to 0$ in misura in $\Omega$. Allora $Du_{j}$ converge a una costante in misura.
+\end{prop}
+
+Questo mostra una certa rigidità quando $|K|\leq 3$ anche se cerchiamo di risolvere il problema approssimato: esiste una una soluzione non banale al problema approssimato (cioè una successione di funzioni $\{f_{k}\}$ per cui $Df_{k}$ non tenda a una costante in misura) se e solo se esiste una soluzione non affine al problema dell'inclusione differenziale esatta! Quindi non sembra che abbiamo guadagnato nulla cercando di risolvere il problema approssimato, vediamo invece con il prossimo teorema che questa situazione non si ritrova aumentando la cardinalità di $K$:
+%Si può mostrare che sia nel caso di due matrici che nel caso di tre, se $\rk(A_i-A_j)\neq 1\ \forall i,j$ e abbiamo una successione di funzioni equi-lipschitziane $u_j$ tale che $\dist(Du_j,K)\to 0$ in misura in $\Omega$, allora $Du_j\to \text{cost}$ in misura. Questo mostra una certa rigidità quando abbiamo poche matrici, anche per delle successioni, tuttavia prendendo quattro matrici le cose cambiano:
+\begin{teo}\label{teo:5}
+	Siano $A_1=-A_3=\begin{pmatrix}
+	                	-1 & 0\\
+	                	0 & -3
+	                \end{pmatrix}$, $A_2=-A_4=\begin{pmatrix}
+	                	-3 & 0\\
+	                	0 & 1
+	                \end{pmatrix}$, e poniamo $K=\{A_1, A_2, A_3, A_4\}$ (osserviamo che $\rk(A_i-A_j)\neq 1$). Allora, detto $Q=(0,1)\times(0,1)$, esiste una successione di funzioni $u_k:Q\to\R^2$ tale che
+	\[
+		\dist(Du_k,K)\xrightarrow{\LL} 0
+	\]
+	e $Du_k$ non converge in misura.
+\end{teo}
+
+\begin{proof}
+	Le matrici $A_{i}$ dell'enunciato sono quelle che servono per la costruzione di Tartar, l'idea è quella di utilizzare delle matrici $J_i$ al posto di qualche matrice $A_i$ nel dominio e successivamente sostituire le $J_i$ con delle combinazioni lineari delle $A_i$ in modo da ridurre l'area dove $Du\not\in K$. Prendiamo le $J_i$ in questo modo:
+	\[
+		J_1 = \begin{pmatrix}
+	                	-1 & 0\\
+	                	0 & 1
+	                \end{pmatrix}\quad
+	    J_2 = \begin{pmatrix}
+	                	1 & 0\\
+	                	0 & 1
+	                \end{pmatrix}\quad
+		J_3 = \begin{pmatrix}
+			1 & 0\\
+			0 & -1
+		\end{pmatrix}\quad
+		J_4 = \begin{pmatrix}
+			-1 & 0\\
+			0 & -1
+		\end{pmatrix}
+	\]
+	e si osserviamo che
+	\[
+		J_1=\frac{1}{2}(A_2+J_2),\qquad J_2=\frac{1}{2}(A_3+J_3),\qquad J_3=\frac{1}{2}(A_4+J_4),\qquad J_4=\frac{1}{2}(A_1+J_1).
+	\]
+	\begin{comment}
+	\begin{figure}[H]
+		\centering
+		\caption{Rappresentazione grafica delle matrici $A_i$ e $J_i$}
+		\includegraphics{matrix.png}
+	\end{figure}
+	\end{comment}
+	
+	
+	\begin{figure}[H]
+		\begin{minipage}[c]{0.66\textwidth}
+		
+		\definecolor{qqqqff}{rgb}{0,0,1}
+		\definecolor{uququq}{rgb}{0.25,0.25,0.25}
+		\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.75cm,y=0.75cm]
+			\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.75cm,ystep=0.75cm] (-3.49,-3.15) grid (3.43,3.18);
+			\draw[->,color=black] (-3.49,0) -- (3.43,0);
+			\foreach \x in {-3,-2,-1,1,2,3}
+			\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+			\draw[->,color=black] (0,-3.15) -- (0,3.18);
+			\foreach \y in {-3,-2,-1,1,2,3}
+			\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+			\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+			\clip(-3.49,-3.15) rectangle (3.43,3.18);
+			\draw[gray] (3,-1)-- (-1,-1);
+			\draw[gray] (-1,-3)-- (-1,1);
+			\draw[gray] (-3,1)-- (1,1);
+			\draw[gray] (1,3)-- (1,-1);
+			\begin{scriptsize}
+				\fill [color=black] (-1,-3) circle (1.5pt);
+				\draw[color=black] (-0.81,-2.82) node {$A_1$};
+				\fill [color=black] (1,3) circle (1.5pt);
+				\draw[color=black] (1.19,3.05) node[right] {$A_3$};
+				\fill [color=black] (-3,1) circle (1.5pt);
+				\draw[color=black] (-2.81,1.17) node {$A_2$};
+				\fill [color=black] (3,-1) circle (1.5pt);
+				\draw[color=black] (3.19,-0.82) node {$A_4$};
+				\fill [color=qqqqff] (-1,1) circle (1.5pt);
+				\draw[color=qqqqff] (-0.85,1.17) node {$J_1$};
+				\fill [color=qqqqff] (1,1) circle (1.5pt);
+				\draw[color=qqqqff] (1.15,1.17) node {$J_2$};
+				\fill [color=qqqqff] (1,-1) circle (1.5pt);
+				\draw[color=qqqqff] (1.15,-0.82) node {$J_3$};
+				\fill [color=qqqqff] (-1,-1) circle (1.5pt);
+				\draw[color=qqqqff] (-0.85,-0.82) node {$J_4$};
+			\end{scriptsize}
+		\end{tikzpicture}
+		
+		\end{minipage}
+		\begin{minipage}[c]{0.3\textwidth}
+			\caption{Rappresentazione grafica delle matrici $A_i$ e $J_i$ che servono nella costruzione di Tartar: sulla $x$ troviamo il coefficiente in alto a sinistra, sulla $y$ quello in basso a destra.}
+		\end{minipage}
+	\end{figure}
+	
+	Ora costruiremo una successione $u_k$ tale che $u_k(x) = J_4x$ su $\partial Q = \partial (0,1)^2$ e per cui $\LL(\{Du_k\not\in K\})\xrightarrow{k\to\infty}0$.\\
+	Fissiamo $k>0$ e costruiamo $u_k$: prendiamo $u^{(0)}(x) = J_4x$, come visto prima $J_4$ è una combinazione convessa di $A_1$ e $J_1$, costruiamo quindi una mappa $u^{(1)}$ che coincide con $u^{(0)}$ su $\partial Q$ e ha gradiente uguale a $A_1$ o $J_1$ (in strisce di altezza $1/2k$) a parte che per una regione di bordo di spessore $c/k$ (con $c$ indipendente da $k$), dove però il gradiente rimane uniformemente limitato\footnote{Questa mappa può essere costruita esattamente come nel Teorema \ref{teo:4} poiché in quella costruzione $Du_k$ è uniformemente limitato in modo che la sua norma dipenda solo da $A, B$ e $F$.}.\\
+	Al passo successivo costruiamo $u^{(2)}$ sostituendo le $k$ zone del dominio con gradiente $J_1$ con strisce più sottili dove il gradiente è $A_2$ o $J_2$ e con $k$ nuove strisce di bordo di spessore $c/k^2$ (vedere Figura \ref{fig:1}). L'area dove è presente $J_2$ è diventata $(1/2)^2$ a meno di piccole correzioni dovute al bordo.\\
+	Al terzo passo sostituiamo le $k^3$ regioni dove troviamo $J_2$ con strisce di altezza $1/2k^4$ con gradiente uguale a $A_3$ e $J_3$ e con $k^3$ fasce di bordo di larghezza $c/k^4$ (attenzione: qui stiamo producendo soltanto un totale di $k^6$ strisce con gradiente $J_3$).\\
+	Al quarto passo ripetiamo questa operazione con la filosofia di contare quante strisce del dominio contengono $J_3$ (a questo passo sono $k^6$) e sostituire ogni striscia con molte strisce più sottili dove i gradienti saranno $A_4$ e $J_4$, abbastanza sottili perché la regione di bordo abbia area piccola. Per i nostri scopi è sufficiente prendere una funzione per cui la porzione di bordo di ogni striscia (ovvero dove il gradiente non è $A_4$ o $J_4$) abbia area minore di $c/k^7$.\\
+	Dopo questi quattro passi arriviamo ad avere una funzione $u^{(4)}$, rispetto a $u^{(0)}$ l'area dove troviamo $J_4$ è passata da $1$ a (leggermente meno di) $(1/2)^4$. La frazione di area degli strati di bordo è maggiorata da
+	\[
+		4\left(\frac{c}{k} + k\frac{c}{k^2} + k^3\frac{c}{k^4} + k^6\frac{c}{k^7}\right) = 16\frac{c}{k}
+	\]
+	dunque abbiamo che
+	\[
+		\LL(\{Du^{(4)}\not \in K\}) \leq 16\frac{c}{k}+\frac{1}{16}.
+	\]
+	\begin{figure}[H]
+	
+		\centering
+		\begin{tikzpicture}[line cap=round,line join=round,x=1.3cm,y=1.3cm]
+		%parte sinistra
+		\draw (0,3)-- (3,3) -- (3,0) -- (0,0) -- cycle;
+		\draw (0.1,2.9)-- (2.9,2.9) -- (2.9,0.1) -- (0.1,0.1) -- cycle;
+		\foreach \y in {0.5,1.5,2.5}
+		\draw[shift={(0,\y)}] (0.1,0) -- (2.9,0)node[pos=0.5,above]{$J_1$} ;
+		\foreach \y in {1,2}
+		\draw[shift={(0,\y)}] (0.1,0) -- (2.9,0)node[pos=0.5,above]{$A_1$} ;
+		\draw (1.5,0.5) -- (1.5,0.5) node[pos=0.5,below]{$A_1$};
+		\draw[|<->|] (3.2,0)--(3.2,1) node[pos=0.5,right]{$1/k$};
+		\draw[|<-] (3,3.1)--(3.3,3.1);
+		\draw[->|] (2.6,3.1)--(2.9,3.1);
+		\draw(2.95,3.4) node{$c/k$};
+		
+		%parte destra
+		\draw[shift={(6,0)}] (0,3)-- (3,3) -- (3,0) -- (0,0) -- cycle;
+		\draw[shift={(6,0)}] (0.1,2.9)-- (2.9,2.9) -- (2.9,0.1) -- (0.1,0.1) -- cycle;
+		
+		\foreach \y in {1,2}
+		\draw[shift={(6,\y)}] (0.1,0) -- (2.9,0)node[pos=0.5,above]{$A_1$} ;
+		\draw (7.5,0.5) -- (7.5,0.5) node[pos=0.5,below]{$A_1$};
+
+		\foreach \y in {0.5,1.5,2.5}
+		\draw[shift={(6,\y)}] (0.1,0) -- (2.9,0);
+		
+		\draw[shift={(6,0.5)},blue] (0.13,0.03) -- (0.13,0.47) -- (2.87,0.47) -- (2.87,0.03) -- cycle;
+		\foreach \x in {1,...,9}
+		\draw[shift={(6+0.278*\x,0.5)},blue] (0.1,0.03) -- (0.1,0.47);
+		
+		\draw[shift={(6,1.5)},blue] (0.13,0.03) -- (0.13,0.47) -- (2.87,0.47) -- (2.87,0.03) -- cycle;
+		\foreach \x in {1,...,9}
+		\draw[shift={(6+0.278*\x,1.5)},blue] (0.1,0.03) -- (0.1,0.47);
+		
+		\draw[shift={(6,2.5)},blue] (0.13,0.03) -- (0.13,0.37) -- (2.87,0.37) -- (2.87,0.03) -- cycle;
+		\foreach \x in {1,...,9}
+		\draw[shift={(6+0.278*\x,2.5)},blue] (0.1,0.03) -- (0.1,0.37);
+		
+		\draw[blue,shift={(6+0.278*8,0.5)}] (0.239,0.25) to[out=90,in=190] (0.239+1.5,1) node[right]{$J_2$};
+		\draw[blue,shift={(6+0.278*9,0.5)}] (0.239,0.25) to[out=45,in=160] (0.239+1,0.5) node[right]{$A_2$};
+		\draw[|<->|] (6.1+0.278*3,3.1)--(6.1+0.278*5,3.1) node[pos=0.5,above]{$1/k^2$};
+		\draw[|<-] (5.9,2)--(5.9,2.2);
+		\draw[->|] (5.9,2-0.23)--(5.9,2-0.03);
+		\draw(5.5,2) node{$c/k^2$};
+
+
+		\end{tikzpicture}
+		\caption{A sinistra la costruzione di $u^{(1)}$, a destra quella di $u^{(2)}$.}
+		\label{fig:1}
+	\end{figure}
+	Iterando $l$ volte questa costruzione (ovvero rimpiazzando ogni volta ogni striscia dove si trova solo $J_4$) otteniamo
+	\[
+		\LL(\{Du^{(4l)}\not\in K\}) \leq \sum_{m=0}^{l-1}\left( \frac{1}{16}\right)^m\frac{16c}{k} + \left( \frac{1}{16}\right)^l \leq \frac{\alpha}{k} + \left( \frac{1}{16}\right)^l\qquad \text{con }\alpha\text{ costante}.
+	\]
+	Prendendo $l_k$ abbastanza grande possiamo supporre che $(1/16)^{l_k}\leq \alpha/k$, quindi abbiamo trovato una successione di funzioni $u_k = f^{(4l_k)}:Q\to\R^2$ tale che $|Du_k|\leq M$ e
+	\begin{align*}
+		\LL(\{Du_k\not\in K\})\ &\leq\ \frac{2\alpha}{k}\xrightarrow{k\to\infty} 0\\
+		u_k(x)\ &=\ J_4x\text{ in }\partial Q
+	\end{align*}
+	quindi abbiamo ottenuto la prima parte della tesi.\\
+	Per dimostrare la seconda parte della tesi usiamo l'Osservazione \ref{oss:1}, in particolare il fatto che le funzioni prodotte dal Teorema \ref{teo:4} coincidono con il dato al bordo nella regione colorata in rosso nella Figura \ref{fig:3}: dato che i gradienti delle $u_{k}(x)=f^{(4l_{k})}(x)$ sono uniformemente limitati e che per ogni punto $x\in \Omega$, all'aumentare di $k$, la distanza tra la regione colorata di rosso e il punto $x$ tende a $0$ in modo uniforme, allora $u_{k}\xrightarrow{\norm{\cdot}_{\infty}}J_{4}x$. Quindi se esiste una funzione $E:\Omega\to\M^{2\times 2}$ tale che $Du_{k}\to E$ in misura, allora tale convergenza avviene anche in $L^{1}$ per la Proposizione \ref{prop:4}, però usando la definizione di derivata debole si ottiene che $\forall \phi\in C^{\infty}_{c}(\Omega)$ vale
+	\begin{multline*}
+		\int_{\Omega}(J_{4}x)\cdot\partial_{j}\phi(x)\dx=\lim_{k\to\infty}\int_{\Omega}u_{k}(x)\partial_{j}\phi(x)\dx = \lim_{k\to\infty}-\int_{\Omega}\partial_{j}u_{k}(x)\phi(x)\dx = \\=-\int_{\Omega}E_{j}(x)\phi(x)\dx,
+	\end{multline*}
+	dove $E_{j}(x)$ indica la $j$-esima colonna di $E(x)$. Ma la derivata debole della funzione $J_{4}x$ è la costante $J_{4}$, dunque $E(x)=J_{4}$, tuttavia dato che $\LL(\{Du_k\not\in K\})\to 0$ e che $K$ è chiuso deve anche valere che $E(x)\in K$ quasi ovunque in $\Omega$, ma $J_{4}\not\in K$, e questo è assurdo.
+	
+	%Per dimostrare la seconda parte della tesi osserviamo che, dato che $\LL(\{Du_k\not\in K\})\to 0$ e che $K$ è un discreto, se $Du_k\to Dv$ in misura, allora $Dv\in K$ q.o. Sostanzialmente come nel Teorema \ref{teo:2} si dimostra che\footnote{Infatti per fare il secondo caso del Teorema \ref{teo:2} abbiamo usato solo che le matrici in questione erano triangolari superiori e con il coefficiente in basso a destra diverso per ciascuna matrice, e queste condizioni sono soddisfatte per come abbiamo scelto $K$.}  $Dv=\text{cost}$, ma questo è impossibile poiché la misura dell'insieme in cui $Du_k = A_i$ non tende a $0$ per $k\to\infty$ per nessun $i$.
+\end{proof}
+\section{Controesempio alla disuguaglianza di Korn}
+Come già detto, un risultato classico è il seguente teorema:
+\begin{teo}[Korn]\label{teo:korn}
+	Sia $\Omega\subset \R^n$ un dominio limitato con bordo lipschitziano e sia $1<p<\infty$, allora esiste una costante $c=c(p,\Omega)$ tale che
+	\begin{equation}\label{ineq:korn}
+		\min_{S=-S^T} \int_{\Omega}|Du-S|^p\dx\leq c\int_{\Omega}\left|Du+Du^T \right|^p\dx\qquad\forall u\in W^{1,p}(\Omega;\R^n).
+	\end{equation}
+
+\end{teo}
+Vedremo come utilizzare una costruzione simile a quella del Teorema \ref{teo:5} per mostrare che se $p=1$ allora una stima del genere non si può avere. Il metodo che useremo sarà quello esposto in \cite{conti} e consisterà nel costruire una successione di funzioni $f_k$ che abbiano differenziale sempre più concentrato sulle matrici antisimmetriche ma facendo in modo che il termine di sinistra della \eqref{ineq:korn} non vada a $0$, infatti dimostreremo il seguente risultato:
+
+\begin{comment}
+È noto che, vedendo $SO(n)$ come sottovarietà di $\M^{n\times n}$,  $T_{\Id}SO(n)$ sono le matrici antisimmetriche e che $N_{\Id}SO(n)$ sono le matrici simmetriche, quindi prima di studiare il problema originale vediamo il caso più semplice, in cui cerchiamo di trovare una disuguaglianza che coinvolde la distanza dal tangente nell'identità (che è un spazio affine immerso in $\M^{n\times n}$ e quindi più semplice da trattare rispetto a $SO(n)$ che è una sottovarietà):
+\end{comment}
+\begin{teo}\label{teo:6}
+	Esiste una costante $S>0$ tale che per ogni $k > 0$ e per ogni $n\geq 2$ esiste $f_k\in W_0^{1,\infty}((0,1)^n;\R^n)$ per cui
+	\begin{equation}\label{eq:10}
+		\forall F\in \M^{n\times n}\qquad\int_{(0,1)^n}|Df_k-F|\dx\geq Sk\int_{(0,1)^n}|Df_k+Df_k^T|\dx.
+	\end{equation}
+\end{teo}
+La prima costruzione di un controesempio risale ad Ornstein \cite{ornstein}, ma essa risulta abbastanza complicata, mentre quella che produrremo noi sarà abbastanza semplice e mostrerà anche il lato geometrico del problema.
+
+Useremo ora i laminati (vedere la Definizione \ref{defn:4}) per indicare in che quantità ogni matrice è presente come differenziale di una funzione $f$, disinteressandoci di dove saranno le regioni in cui $f$ ha come differenziale una di quelle matrici.\\
+In questa sezione utilizzeremo le matrici
+\[
+	G_{\alpha,\beta}=\begin{pmatrix}
+	                 	0 &\alpha\\
+	                 	\beta&0
+	                 \end{pmatrix}
+\]
+e osserviamo preliminarmente che $\rk(G_{\alpha,\beta}-G_{\alpha,\gamma})\leq 1$ e $\rk(G_{\alpha,\beta}-G_{\gamma,\beta}) \leq 1$.\\
+Nella definizione di laminato si richiede che le matrici abbiano differenza di rango $1$, questo è strettamente legato ai risultati di rigidità mostrati prima: noi vorremo costruire delle funzioni con differenziale nel supporto di alcuni laminati (in realtà vorremo che il differenziale stia in tali supporti in una regione sempre più grande del dominio) e, per quanto mostrato prima, se non c'è una connessione di rango $1$ tra due matrici $A$ e $B$ allora non c'è speranza di incollare due funzioni affini che hanno per differenziale rispettivamente $A$ e $B$ in modo che il risultato sia una funzione lipschitziana.
+
+Come già fatto in precedenza andiamo ora a costruire un primo mattoncino che ci servirà poi per costruire la successione di funzioni voluta:
+
+\begin{lemma}\label{lemma:2}
+	Per ogni $k>0$ esiste un laminato $\mu_k$ sulle matrici $2\times 2$, con supporto su matrici del tipo $G_{\alpha,\beta}$, tale che
+	\begin{gather*}
+		\int F\diff \mu_k = G_{k,k},\qquad\int\left|\frac{F+F^T}{2}\right|\diff \mu_k = |G_{k,k}|,\\
+		\int|F|\diff\mu_k = \frac{5}{3}|G_{k,k}|
+	\end{gather*}
+	e che contiene l'addendo $\frac{1}{2}\delta_{G_{2k,2k}}$.
+\end{lemma}
+\begin{proof}
+	Costruiamo esplicitamente un laminato che soddisfi le richieste, useremo la notazione $\delta_{\alpha,\beta}$ per indicare $\delta_{G_{\alpha,\beta}}$. Iniziamo decomponendo $G_{k,k}$ come somma pesata di $G_{k,-k}$ e $G_{k,2k}$ e consideriamo il laminato
+	\[\nu = \frac{1}{3}\delta_{k,-k}+\frac{2}{3}\delta_{k,2k}\]
+	che ha media $G_{k,k}$\footnote{Notare che questo è un laminato per l'osservazione fatta appena dopo la definizione di $G_{\alpha,\beta}$.}; successivamente decomponiamo $G_{k,2k}$ con le matrici $G_{2k,2k}$ e $G_{-2k,2k}$ (vedere Figura \ref{fig:2}) ottenendo il laminato
+	\[
+		\nu'=\frac{1}{4}\delta_{-2k,2k}+\frac{3}{4}\delta_{2k,2k}.
+	\]
+	\begin{figure}[H]
+		\begin{minipage}[c]{0.66\textwidth}
+			\includegraphics[width=0.65\textwidth]{korn.eps}
+		\end{minipage}\hfill
+		\begin{minipage}[c]{0.3\textwidth}
+			\caption{Rappresentazione grafica delle matrici utilizzate. Notare che sulle diagonali stanno quelle multiple dell'identità e di $G_{1,-1}$.}
+			\label{fig:2}
+		\end{minipage}
+	\end{figure}
+	Combinando $\nu$ e $\nu'$ otteniamo
+	\[
+		\mu_k = \frac{1}{3}\delta_{k,-k}+\frac{1}{6}\delta_{-2k,2k}+\frac{1}{2}\delta_{2k,2k}.
+	\]
+	Questo è un laminato con media $G_{k,k}$ per costruzione (abbiamo sostituito $\delta_{k,2k}$ con $\nu'$ che ha media $G_{k,2k}$), visto che $\mu_k$ è supportato solo su $G_{k,-k}$, $G_{-2k,2k}$ e $G_{2k,2k}$ si ha che
+	\[
+		\int \left|\frac{F+F^T}{2}\right|\diff \mu_k = \frac{1}{2}|G_{2k,2k}| = |G_{k,k}|
+	\]
+	e che
+	\[
+		\int |F|\diff\mu_k = \frac{1}{3}|G_{k,k}|+\frac{1}{6}|G_{2k,2k}|+\frac{1}{2}|G_{2k,2k}| = \frac{5}{3}|G_{k,k}|.
+	\]
+\end{proof}
+In modo simile a come abbiamo proceduto nel Teorema \ref{teo:5} iteriamo il procedimento appena visto per dimostrare il seguente lemma:
+\begin{lemma}\label{lemma:3}
+	Esiste una successione $\{\nu_{n}\}$ di laminati di ordine finito sulle matrici $2\times 2$ tale che
+	\begin{gather*}
+		\int F\diff\nu_n = G_{1,1},\qquad\int\left|\frac{F+F^T}{2} \right|\diff\nu_n = |G_{1,1}|,\\
+		\lim_{n\to\infty}\int|F|\diff\nu_{n} = \infty
+	\end{gather*}
+	e ogni laminato ha supporto nelle matrici del tipo $G_{\alpha,\beta}$.
+\end{lemma}
+\begin{proof}
+	Definiamo la successione in modo iterativo: sia $\nu_0=\delta_{1,1}$, il laminato $\nu_1$ è ottenuto tramite il Lemma \ref{lemma:2} per $k=1$, e contiene un termine $\frac{1}{2}\delta_{2,2}$. Al passo $n+1$ rimpiazziamo il termine $\delta_{2^n,2^n}$ con il laminato ottenuto dal Lemma \ref{lemma:2} per $k=2^n$, in questo modo il valore medio del laminato non cambia, e non cambia nemmeno il valore medio di $|F+F^T|$ poiché nella costruzione del Lemma \ref{lemma:2} si utilizzano matrici antisimmetriche e la matrice $G_{2k,2k}$, dunque ad ogni passo il laminato $\nu_{n}$ contiene l'addendo $2^{-n}\delta_{2^{n},2^{n}}$ che è simmetrico, e tutti gli altri che sono antisimmetrici. Tuttavia
+	\begin{equation}\label{eq:4}
+		\int|F|\diff\nu_n = \int|F|\diff\nu_{n-1}+\frac{2}{3}|G_{2^n,2^n}|2^{-n} = \int|F|\diff\nu_{n-1}+\frac{2}{3}|G_{1,1}|,
+	\end{equation}
+	e dunque $\displaystyle \lim_{n\to\infty}\int|F|\diff\nu_{n}=\infty$.
+\end{proof}
+
+Utilizzando questi lemmi siamo in grado di dimostrare il Teorema \ref{teo:6} quando $n=2$:
+\begin{proof}
+	Riprendendo la costruzione fatta per il Teorema \ref{teo:4} riguardante la soluzione approssimata con due matrici, per ogni laminato $\nu_k$ costruito nel Lemma \ref{lemma:3} possiamo trovare (iterando se necessario la costruzione del Teorema \ref{teo:4}) una funzione $f_k:(0,1)^2\to\R^2$ lipschitziana tale che il suo differenziale non appartiene al supporto di $\nu_k$ solo su $V_k\subset (0,1)^2$ e la cui distribuzione dei gradienti (almeno in $(0,1)^2\setminus V_k$) è quella data dal laminato $\nu_k$. Possiamo inoltre richiedere che $\LL(V_k)<\epsilon/2^n$ e quindi, detto $V=\bigcup_{k=1}^{\infty} V_k$, abbiamo che
+	\[\LL(V)<\epsilon.\]
+	Notiamo che dalla \eqref{eq:4} emerge che $\int|F|\diff\nu_k = |G_{1,1}|+\frac{2}{3}k|G_{1,1}|$. Fissata $F\in\M^{2\times 2}$ per ogni $k>0$ prendiamo $f_k$ come sopra, allora vale che
+	\[
+		\int_{(0,1)^2}|Df_k-F|\dx \geq \int_{(0,1)^2\setminus V}|Df_k-F|\dx \geq \int_{(0,1)^2\setminus V}||Df_k|-|F||\dx
+	\]
+	dunque se $|F|\leq \frac{k}{2}|G_{1,1}|$ allora
+	\[
+		\int_{(0,1)^2\setminus V}||Df_k|-|F||\dx \geq \int_{(0,1)^2\setminus V}\left(\frac{2}{3}-\frac{1}{2}\right)k|G_{1,1}|\dx = Sk|G_{1,1}|
+	\]
+	con $S>0$ costante.\\
+	Se invece $|F|\geq \frac{k}{2}|G_{1,1}|$ si arriva alla stessa conclusione (non necessariamente con la stessa costante) osservando che esiste una regione in cui $Df_k$ rimane uniformemente limitato al variare di $k$: quando si passa da $\nu_{k}$ a $\nu_{k+1}$ si modifica solo la regione con $G_{2^k,2^k}$ mentre non si cambia nulla (per esempio) dove avevamo $G_{1,-1}$, inoltre detta $m=\nu_1(G_{1,-1})$ possiamo prendere $\displaystyle\LL(V)<\frac{m}{2}$, così abbiamo una regione di misura positiva in cui $Df_k=G_{1,-1}$.\\
+	Ricordando che la costante di Lipschitz di $f_k$ non dipende da $\epsilon$ si può fare in modo che
+	\[
+		\int \left|\frac{Df_k+Df_k^T}{2}\right|\dx\xrightarrow{k\to\infty}|G_{1,1}|.
+	\]
+	Infine basta prendere le funzioni $f_{k}(x)-G_{1,1}x\in W^{1,\infty}_{0}((0,1)^{2};\R^{2})$ per arrivare alla conclusione.
+\end{proof}
+Per $n\geq 2$ generico invece si ottiene lo stesso risultato considerando la successione di funzioni $\widetilde{f}_k:(0,1)^n\to \R^n$ che estende le $f_k$ trovate prima in questo modo: $\widetilde{f}_k(x_1,\ldots,x_n) = f_k(x_1,x_2)$, dove intendiamo che le $f_k$ hanno immagine contenuta in $\Span\{e_1,e_2\}\subset \R^n$, così i differenziali risultano della forma
+
+\begin{align*}
+	D\widetilde{f}_k(x) = \begin{pmatrix}[cc|cc]
+	                      	\multicolumn{2}{c|}{\multirow{2}{*}{$Df_k(x)$}} & \multicolumn{2}{c}{\multirow{2}{*}{$0$}}\\
+	                      	& & & \\
+	                      	\hline
+	                      	\multicolumn{2}{c|}{\multirow{2}{*}{$0$}} & \multicolumn{2}{c}{\multirow{2}{*}{$0$}}\\
+	                      	& & & \\
+	                      \end{pmatrix}.
+\end{align*}
+Dunque il membro di destra della \eqref{eq:10} rimane uguale a come sarebbe nel caso $2\times 2$, mentre per il membro di sinistra la disuguaglianza si rafforza:
+\[
+	\forall F\in \M^{n\times n}\quad |D\widetilde{f}_k-F| \geq |Df_k-A|
+\]
+dove $A$ è la sottomatrice $2\times 2$ di $F$ in alto a sinistra. Così abbiamo mostrato che la disuguaglianza di Korn non vale in generale per $p=1$.
+
+\begin{oss}
+	%Per non appesantire la costruzione le funzioni $f_{k}$ sono state prese lipschitziane, ma potevano essere prese lisce grazie alla convoluzione\footnote{Ricordiamo che, date $f,g:\R^{n}\to \R$, il loro prodotto di convoluzione è $f*g(x) = \int_{\R^{n}}f(x-y)g(y)\dy$ quando questa funzione è ben definita.}. Infatti usiamo la tecnica standard dei mollificatori: siano $f:\Omega\to\R$ una funzione in $W^{1,\infty}(\Omega)$ e $\rho\in C^{\infty}_{c}(\R^{n})$ con $\int_{\R^{n}}\rho(x)\dx=1$, dato $\epsilon>0$ definiamo $\rho_{\epsilon}(x)\coloneqq \epsilon^{-n}\rho(x/\epsilon)$, allora, presa $\{\epsilon_{k}\}\subset (0,\infty)$ una successione convergente a $0$, vale che la successione $\{f_{\epsilon_{k}}\}$ (dove $f_{\epsilon}\coloneqq f*\rho_{\epsilon}$) converge a $f$
+	
+	Per non appesantire la costruzione appena fatta le funzioni $f_{k}$ sono state prese lipschitziane, ma si otteneva lo stesso risultato prendendo funzioni lisce, e questo può essere fatto mediante la convoluzione\footnote{Ricordiamo che, date $f,g:\R^{n}\to \R$, il loro prodotto di convoluzione è $f*g(x) = \int_{\R^{n}}f(x-y)g(y)\dy$ quando questa funzione è ben definita. Se invece $f:\R^{n}\to\R^{m}$ e $g:\R^{n}\to\R$, allora si può definire la convoluzione tra loro come la convoluzione di ciascuna componente di $f$ con $g$.}. Infatti, data $f:\Omega\to\R^{m}$ lipschitziana, possiamo applicare la tecnica standard dei mollificatori ad una estensione lipschitziana $\hat{f}:\R^{n}\to\R^{m}$ di $f$ (ci si può riferire a \cite{brezis} per i dettagli) per ottenere una successione di funzioni lisce $g_{l}:\R^{n}\to\R^{m}$ tale che $\{g_{l}|_{\Omega}\}$ converge a $f$ in $L^{1}(\Omega;\R^{m})$ e $\{Dg_{l}|_{\Omega}\}$ converge a $Df$ in $L^{1}(\Omega;\M^{m\times n})$. Quindi, se $f$ è una funzione lipschitziana trovata con la costruzione precedente, allora possiamo prendere una funzione $g_{l}$ liscia con differenziale abbastanza vicino a $Df$ in norma $L^{1}(\Omega;\M^{m\times n})$ e ottenere lo stesso risultato.
+\end{oss}
+
+Più di recente è stato ottenuto un risultato legato al teorema di Korn: ricordando che $T_{\Id}SO(n)$ si identifica con lo spazio delle matrici antisimmetriche, si vede un'analogia tra la disuguaglianza \eqref{ineq:korn} e
+\begin{equation}\label{ineq:korn1}
+	\min_{Q\in SO(n)}\int_{\Omega}|Du-Q|^p\dx\leq c(p,\Omega)\int_{\Omega}\dist^p(Du,SO(n))\dx \qquad\forall u\in W^{1,p}(\Omega;\R^n),
+\end{equation}
+infatti nella disequazione \eqref{ineq:korn} abbiamo una stima della distanza di $Du$ da $T_{\Id}SO(n)$ mentre in \eqref{ineq:korn1} abbiamo una stima che coinvolge direttamente $SO(n)$\footnote{Per passare dalla disuguaglianza \eqref{ineq:korn1} alla \eqref{ineq:korn} si deve considerare la funzione $v(x) = u(x) - x$ poiché si considerava il tangente nell'identità a $SO(n)$.}.\\
+Anche quest'ultima disuguaglianza però non vale nel caso $p=1$, modificando leggermente la successione trovata per il teorema di Korn ne abbiamo una che ci porta al risultato:
+\begin{teo}
+	Esiste una costante $S>0$ tale che per ogni $k>0$ e ogni $n\geq 2$ esiste una funzione $v_k\in W^{1,\infty}((0,1)^n;\R^n)$ per cui vale che
+	\[
+		\forall\  Q\in SO(n)\qquad\int_{(0,1)^n}|Dv_k-Q|\dx\geq Sk\int_{(0,1)^n}\dist(Dv_k,SO(n))\dx
+	\] e tale che $v_k(x) = x$ in $\partial(0,1)^n$.
+\end{teo}
+\begin{proof}
+	%Inizialmente ci limitiamo al caso $n=2$, successivamente estenderemo il risultato ad $n\geq 2$ generico; le funzioni $v_k$ che troveremo saranno le $f_k$ costruite nel Teorema \ref{teo:6} con delle leggere modifiche. Per il momento supponiamo di avere degli $\epsilon_k>0$ fissati, successivamente si capirà quanto devono valere affinché la dimostrazione funzioni. Siano
+	Facciamo la dimostrazione solo nel caso $n=2$; le funzioni $v_k$ che troveremo saranno le $f_k$ costruite nel Teorema \ref{teo:6} con delle leggere modifiche. Per il momento supponiamo di avere degli $\epsilon_k>0$ fissati, successivamente si capirà quanto devono valere affinché la dimostrazione funzioni. Siano
+	\[
+		v_k(x) = x+\epsilon_kf_k(x)
+	\]
+	dunque $Dv_k=\Id+\epsilon_kDf_k$. Data ora una matrice $F$ si ha che
+	\[
+		\dist(\Id+F,SO(2))\leq \frac{1}{2}|F+F^T|+c|F|^2\qquad \text{per qualche }c>0.
+	\]
+	Questa disuguaglianza si ottiene ricordando che $T_{\Id}SO(n)$ si identifica con le matrici antisimmetriche e $N_{\Id}SO(n)$ con quelle simmetriche: il primo addendo è la distanza di $\Id+F$ dal tangente ad $SO(2)$ nell'identità, mentre il secondo addendo si ottiene trovando esplicitamente il minimo nel caso in cui $F\in T_{\Id}SO(2)$\footnote{Possiamo ricondurci a questo proiettando sul tangente, così otteniamo la disuguaglianza voluta perché $\M^{2\times 2}$ è la somma diretta ortogonale delle matrici simmetriche $S(2)$ e antisimmetriche $A(2)$, dunque proiettare su $A(2)$ riduce la norma.}: data $A=\begin{pmatrix}
+			1 & a\\
+			-a&1
+		\end{pmatrix}$ vogliamo minimizzare la funzione
+	\[
+		\theta\to\left|A-\begin{pmatrix}
+		                 	\cos\theta&-\sin\theta\\
+		                 	\sin\theta&\cos\theta
+		                 \end{pmatrix}\right|.
+	\]
+	Derivando rispetto a $\theta$ si mostra che il minimo si ottiene per $\theta=\arctan(-a)$ e vale 
+	\[
+		\sqrt{(2+2a^2)(1-\cos\theta)^2} \leq 2\left|\frac{\theta^2}{2}+o(\theta^2)\right| = c\cdot a^2+o(a^2)\qquad \text{per }a\to0.
+	\]
+	Dunque abbiamo dimostrato che la stima vale per $|F|$ abbastanza piccolo, mentre per $|F|>\epsilon$ la disuguaglianza vale banalmente usando una costante, quindi vale per tutte le matrici $F$.
+	\\	
+	Sostituendo $F=\epsilon_kDf_k$ e integrando otteniamo
+	\begin{equation}\label{eq:1}
+		\int_{(0,1)^2}\dist(Dv_k,SO(2))\dx\leq \frac{\epsilon_k}{2}\int_{(0,1)^2}|Df_k+Df_k^T|\dx+c\epsilon_k^2\int_{(0,1)^2}|Df_k|^2\dx.
+	\end{equation}
+	Visto che $f_k\in W^{1,\infty}((0,1)^2;\R^2)$ e che $Df_k+Df_k^T$ non è la matrice nulla in un insieme di misura positiva, possiamo scegliere $\epsilon_k$ abbastanza piccolo in modo che il primo addendo sia maggiore del secondo. Ora osserviamo che
+	\[
+		\min_{F\in\M^{2\times 2}}\int_{(0,1)^2}|Dv_k-F|\dx = \epsilon_k\min_{F\in\M^{2\times 2}}\int_{(0,1)^2}|Df_k-F|\dx
+	\]
+	dato che sottrarre una matrice e successivamente raccogliere un fattore riordina semplicemente le $F\in\M^{2\times 2}$.\\
+	Tuttavia le $f_k$ sono quelle costruite nel Teorema \ref{teo:6}, quindi vale che
+	\begin{equation}\label{eq:2}
+		\epsilon_k\min_{F\in\M^{2\times 2}}\int_{(0,1)^2}|Df_k-F|\dx \geq \epsilon_kkS\int_{(0,1)^2}|Df_k+Df_k^T|\dx.
+	\end{equation}
+	Sostituendo la \eqref{eq:1} nella \eqref{eq:2} si ottiene la disuguaglianza cercata poiché ovviamente si possono prendere gli $e_k$ minori di $1$.\begin{comment}\\
+	Se ora $n\geq 2$ è generico allora possiamo adattare le funzioni appena trovate per ottenere un risultato simile: definiamo $\widetilde{v}_k(x_1,\ldots,x_n) = v_k(x_1,x_2)+(0,0,x_3,\ldots,x_n)$, in tal modo si ha che
+	\begin{align*}
+		D\widetilde{v}_k(x) = \begin{pmatrix}[c|c]
+	                      	Dv_k(x)&0\\
+	                      	\hline
+	                      	0&\Id\\
+	                      \end{pmatrix},
+	\end{align*}
+	così, data $\widetilde{Q}=\begin{pmatrix}[c|c]
+	                         	Q&0\\
+	                         	\hline
+	                         	0&\Id\\
+	                         \end{pmatrix}$ con $Q\in SO(2)$ ($\widetilde{Q}\in SO(n)$), si ha che $|D\widetilde{v}_k-\widetilde{Q}|=|Dv_k-Q|$, ma per quest'ultima
+	quantità abbiamo la stima data prima, inoltre, dato che $SO(n)$ è limitato in $\M^{n\times n}$, presa una qualsiasi $R\in SO(n)$ e una qualsiasi $\widetilde{Q}$ come sopra, vale che $|\widetilde{Q}-R|\leq C$ per qualche costante $C > 0$, così si ottiene che
+	\[
+		\forall\  R\in SO(n)\qquad\int_{(0,1)^n}|D\widetilde{v}_k-R|\dx\geq k\int_{(0,1)^n}\dist(D\widetilde{v}_k,SO(n))\dx- C.
+	\]\end{comment}
+\end{proof}	
+Evidentemente questo è sufficiente per provare che la disuguaglianza \eqref{ineq:korn1} non può valere per $p=1$ e $n=2$.
+	%DA FINIRE, METTERE LA COSTANTE $C$ O NO???\boh
+	
+	
+\chapter{Argomento di Baire}
+In questo capitolo vedremo come usare metodi \textit{topologici} (il teorema di Baire) per risolvere delle inclusioni differenziali e ottenere dei risultati più forti della sola esistenza di alcune soluzioni. Potrà capitare in alcuni casi che anche solo con quanto abbiamo appreso risolvendo le inclusioni differenziali con $K$ finito saremo in grado di dire che esiste una soluzione non affine al problema in esame. Noi però ci spingeremo più in là, mostrando che in alcuni casi ci sono moltissime soluzioni e che queste possono essere dense nell'insieme di funzioni che consideriamo per risolvere il problema.\\
+L'idea sarà quella di non cercare più di costruire esplicitamente una soluzione, per cui magari avremmo bisogno di un argomento iterativo complicato che usa costruzioni che funzionano solo per dei casi particolari, ma di lasciare che sia il teorema di Baire (che nella dimostrazione contiene un argomento iterativo) a fare questo per noi. La tecnica che useremo è analoga ad altre usate in contesti diversi (come per esempio quando si risolvono equazioni differenziali utilizzando gli spazi di Sobolev, poi si discute la regolarità delle soluzioni e si scopre che la soluzione che abbiamo trovato era in effetti una soluzione classica): invece di risolvere direttamente il problema ci metteremo in un ambiente con buone proprietà in modo da ottenere facilmente soluzioni in queste condizioni agevolate, successivamente tramite l'argomento di Baire dimostreremo che moltissime soluzioni che abbiamo trovato in questo ambiente in realtà risolvono l'inclusione differenziale originale.
+%Quella che useremo sarà una tecnica analoga ad altre usate in altri contesti (come per esempio quando si risolvono equazioni differenziali utilizzando gli spazi di Sobolev, poi si discute la regolarità delle soluzioni e si scopre che la soluzione che abbiamo trovato era in effetti una soluzione classica): invece di risolvere direttamente il problema ci metteremo in un ambiente con buone proprietà in modo da ottenere facilmente soluzioni in queste condizioni agevolate; successivamente tramite l'argomento di Baire dimostreremo che moltissime soluzioni che abbiamo trovato nel caso facile in realtà risolvono l'inclusione differenziale originale.
+%Ci basterà descrivere l'insieme delle soluzioni in modo congeniale all'argomento di Baire, e ottenere così automaticamente l'esistenza di soluzioni.\\
+
+Dato che in questo capitolo si farà largo uso del teorema di Baire, enunciamo ora la versione che ci serve e diamo alcune definizioni utili:
+\begin{teo}[Baire]
+	Sia $X$ uno spazio metrico completo, sia $\{F_n\}_{n\in\N}$ una famiglia di chiusi a parte interna vuota. Allora l'insieme $F=\bigcup_{n\in \N}F_n$ ha parte interna vuota.
+\end{teo}
+
+\begin{oss}
+	Passando ai complementari si ottiene l'enunciato equivalente: l'intersezione numerabile di aperti densi in uno spazio metrico completo è un insieme denso.
+\end{oss}
+
+\begin{defn}
+	Dato $X$ uno spazio metrico completo, si indica con $G_{\delta}\subset X$ un insieme che si può scrivere come \textit{intersezione numerabile di aperti}.
+\end{defn}
+
+\begin{defn}
+	Un insieme $A\subset X$ è di \textit{prima categoria} se esistono degli insiemi chiusi $F_n\subset X$ tali che $\forall\ n\in \N\ \mathring{F_n} = \emptyset$ e $A\subset\bigcup_{n\in \N}F_n$.\\
+	Un insieme $A\subset X$ si dice di \textit{seconda categoria} se non è di prima categoria.
+\end{defn}
+
+\begin{oss}
+	Ogni sottoinsieme $G_{\delta}\subset X$ di uno spazio metrico completo, se \textit{denso}, è di seconda categoria poiché ogni aperto che viene intersecato doveva essere denso.
+\end{oss}
+
+\begin{defn}
+	Un insieme $A\subset X$ è detto \textit{residuale} se $X\setminus A$ è di prima categoria.
+\end{defn}
+\begin{oss}
+	Si osserva subito che un sottoinsieme $A\subset X$ di uno spazio metrico completo che sia residuale è \textit{denso}, infatti se $X\setminus A$ ha parte interna, allora $X\setminus A$ non è di prima categoria per il teorema di Baire.
+\end{oss}
+
+
+
+
+
+\section{Risultati preliminari}
+%Ricordiamo innanzitutto dei teoremi classici:
+
+
+Enunciamo ora alcuni lemmi tecnici che ci serviranno poi per proseguire lo studio, la seguente costruzione sarà utile quando saremo interessati alla distribuzione dei gradienti delle funzioni piuttosto che alla distribuzione dei valori.
+\begin{lemma}\label{costr:1}
+	Sia $U\subset \R^{n}$ un aperto limitato con $\LL(\partial U)=0$, sia $f:\overline{U}\to\R^{m}$ lipschitziana che coincida con una funzione affine $A$ su $\partial U$ e che abbia una data distribuzione dei gradienti. Allora per ogni $\widetilde{U}\subset \R^{n}$ aperto limitato possiamo trovare una $\widetilde{f}:\widetilde{U}\to\R^{m}$ con la stessa distribuzione dei gradienti di $f$ (nel senso della Definizione \ref{defn:2} adattata ai gradienti e non ai valori di $f$), che soddisfi una condizione al bordo con la stessa funzione affine e per cui $\norm{\widetilde{f}-A}_{\infty}$ sia piccolo a piacere.
+\end{lemma}
+
+\begin{proof}
+	Senza perdita di generalità possiamo supporre che $0\in U$. Consideriamo questo ricoprimento di $\widetilde{U}$:
+	\[
+		\{x+rU\ |\ x\in\widetilde{U}, r>0, x+rU\subset\widetilde{U}\},
+	\]	
+	allora per il Teorema \ref{teo:11} (di ricoprimento di Vitali) esiste una successione $(x_i,r_i)_{i\geq 1}\in \R^n\times (0,\infty)$ tale che
+	\begin{enumerate}
+		\item $U_i=x_i+r_iU\subset \widetilde{U}$ per ogni $i\geq 1$;
+		\item $U_i\cap U_j=\emptyset$ se $i\neq j$;
+		\item $\LL(\widetilde{U}\setminus\bigcup_i U_i) = 0$.
+	\end{enumerate}
+	Una volta che le coppie $(x_i,r_i)$ sono date, possiamo semplicemente definire la mappa $\widetilde{f}$ nella chiusura di $\widetilde{U}$ come
+	\begin{align*}
+		\widetilde{f}(x) = \begin{cases}
+		                   	r_if(\frac{x-x_i}{r_i})+Ax_i&\text{se }x\in U_i\text{ per qualche }i,\\
+		                   	Ax&\text{altrimenti}.
+		                   \end{cases}
+	\end{align*}	
+	È chiaro che $\widetilde{f}(x) = A(x)$ se $x\in\partial U_i$ per qualche $i$ o se $x\in\partial\widetilde{U}$. È chiaro dalla definizione di $\widetilde{f}$ che tale funzione è lipschitziana in $\overline{U}_i$, inoltre si nota che $\widetilde{f}|_{U_i}$ ha costante di Lipschitz uguale a $\Lip(f) \geq \Lip(A)$. Dato che possiamo immaginare che $f$ coincida con $A$ all'infuori di $U$, deduciamo che $\Lip(\widetilde{f})=\Lip(f)$. Inoltre dato che $D\widetilde{f}(x) = Df((x-x_i)/r_i)$ per q.o. $x\in U_i$ è chiaro che, se $\LL(\widetilde{U})<\infty$, allora $\forall M\subset \M^{m\times n}$ (boreliano) vale che
+	\[
+		\frac{1}{\LL(\widetilde{U})}\LL(\{x\in\widetilde{U}\ |\ D\widetilde{f}(x)\in M\}) = \frac{1}{\LL(U)}\LL(\{x\in U\ |\ Df(x)\in M\}),
+	\]
+	cioè i gradienti hanno la stessa distribuzione. %Per insiemi $\widetilde{U}$ con $\LL(\widetilde{U})=\infty$ queste distribuzioni devono essere intese in modo appropriato, però in particolare si ha che $Df$ e $D\widetilde{f}$ hanno la stessa immagine essenziale\footnote{Ricordiamo che l'immagine essenziale di una funzione misurabile $f:\Omega\to \R^{m}$ è l'insieme $I=\{y\in \R^{m}\ |\ \forall \epsilon>0, \LL(\{x\in\Omega\ |\ \norm{f(x)-y}<\epsilon\})>0\}$.}.\\
+	Infine, dato che $\widetilde{f}-A$ è certamente $(2\Lip(f))$-Lipschitz e si annulla su $\bigcup_i \partial U_i$, vale la stima
+	\[
+		\norm{\widetilde{f}-A}_{\infty}\leq \Lip(f)(\sup_ir_i)\diam(U).{}
+	\]
+	Dato che possiamo scegliere tutti gli $r_i$ piccoli a piacere, possiamo rendere $\norm{\widetilde{f}-A}_{\infty}$ quanto piccola vogliamo.
+\end{proof}
+
+\begin{oss}
+	Se $f:\overline{U}\to\R^m$ è $\sigma$-affine a tratti (vedere la Definizione \ref{defn:3}) allora anche $\widetilde{f}$ è affine a tratti.\\
+	Può risultare utile anche usare la costruzione appena vista con $U=\widetilde{U}$ in modo da ottenere una funzione $\widetilde{f}$ con la stessa distribuzione dei gradienti ma con $\norm{\widetilde{f}-A}_{\infty}$ piccola a piacere.
+\end{oss}
+Vediamo ora un lemma che migliora il risultato del Teorema \ref{teo:4}, la dimostrazione utilizza idee molto simili a quelle del Teorema \ref{teo:4} e l'esaustione del Lemma \ref{costr:1}.
+\begin{lemma}\label{lemma:5}
+	Siano $A,B\in \M^{m\times n}$ matrici tali che $\rk(A-B)=1$ e sia $C=\lambda A+(1-\lambda)B$ con $\lambda\in(0,1)$. Dunque esistono due vettori $a,b$ tali che $A-B=a\otimes b$, supponiamo anche che esistano altri vettori $b_{3},\ldots,b_{k}$ tali che $0\in\Int_{\R^{n}}(\conv(\{b,-b,b_{3},\ldots,b_{k}\}))$, dove $\conv(I)$ è l'inviluppo convesso dell'insieme $I$. Allora, per ogni dominio $U\subset \R^{n}$ e per ogni $\epsilon>0$ esiste una funzione affine a tratti $f:U\to\R^{m}$ che ha le seguenti proprietà:
+	\begin{enumerate}[1)]
+		\item $f(x)=Cx$ se $x\in\partial U$ e $\norm{f-C}_{\infty}<\epsilon$,{}
+		\item $Df(x)\in\{A,B,C+a\otimes b_{3},\ldots,C+a\otimes b_{k}\}$ quasi ovunque in $U$,
+		\item valgono le disuguaglianze $\LL(\{x\in U : Df(x)=A\})>(1-\epsilon)\lambda\LL(U)$ e anche $\LL(\{x\in U : Df(x)=B\})>(1-\epsilon)(1-\lambda)\LL(U)$ similmente alla Proposizione \ref{prop:1}.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Come abbiamo già fatto possiamo supporre $C=0$ e quindi $A=(1-\lambda)a\otimes b$ e $B=-\lambda a\otimes b$, inoltre è sufficiente mostrare il risultato quando $m=1$ e $a=1$: per ottenere il risultato in generale è sufficiente moltiplicare la funzione che troviamo ora per il vettore $a\in\R^{m}$.
+	
+	Indicando con $b_{1}=b$ e $b_{2}=-b$ definiamo l'insieme
+	\[
+		P=\{x\in\R^{n}\ |\ \scal{x}{b_{i}}>-1\text{ per }1\leq i\leq k\},
+	\]
+	ovviamente $P$ è un convesso contenente l'origine. Inoltre $P$ è anche limitato infatti, se fosse illimitato, allora (dato che è convesso e contiene l'origine) conterrebbe una semiretta $r$, ma allora, preso $v\in\R^{n}$ tale che $r=\{tv\ |\ t\geq 0\}$, deve esistere $i\in\{1,\ldots,k\}$ tale che $\scal{v}{b_{i}}<0$ poiché altrimenti $0$ non starebbe in $\Int_{\R^{n}}(\conv(\{b,-b,b_{3},\ldots,b_{k}\}))$, dunque per $t$ abbastanza grande avremmo che $\scal{tv}{b_{i}}<-1$, e questo è assurdo perché avevamo supposto che $r\subset P$.
+	
+	Usiamo, come già fatto in precedenza, la funzione ausiliaria $h:\R\to\R$ che è $1$-periodica, con $h(0)=0$, $h'(t)=(1-\lambda)$ se $t\in(0,\lambda)$ e $h'(t)=-\lambda$ se $t\in(\lambda,1)$. Per $l\in\N$ con $l\geq 1$ definiamo la funzione
+	\[
+		f_{l}(x)=\min\left(\min_{3\leq i\leq k}(1+\scal{x}{b_{i}}),\frac{1}{l}h(l\scal{x}{b})\right).
+	\]
+	Dato che $h\geq 0$ allora $f_{l}(x)\geq 0$ per ogni $x\in P$. È anche chiaro che $f_{l}(x)=0$ se $x\in\partial P$, infatti in tutti i punti di bordo accade che $\min_{3\leq i\leq k}1+\scal{x}{b_{i}}=0$ o che $|\scal{x}{b}|=1$, e dunque $h(l\scal{x}{b})=0$. Dato che $f_{l}$ è affine a tratti, e questi sottoinsiemi in cui $f_{l}$ è affine sono in numero finito, allora è chiaro che $Df_{l}\in\{(1-\lambda)b,-\lambda b, b_{3},\ldots,b_{k}\}$ quasi ovunque in $P$. Inoltre osservando che $\min_{3\leq i\leq k}(1+\scal{x}{b_{i}})\geq s$ se $x\in (1-s)P$ con $s>0$ si deduce che la proprietà \textit{3)} vale prendendo $l=l_{0}$ abbastanza grande e $f=f_{l}$.
+	
+	Chiaramente possiamo usare l'esaustione del Lemma \ref{costr:1} per rimpiazzare $\mathring{P}$ con un qualsiasi altro aperto di $\R^{n}$, e questo conclude la dimostrazione.
+\end{proof}
+
+
+\section{Problema modello}
+Mostriamo ora un problema semplificato (in dimensione $1$ nel dominio) esposto in \cite{cellina} che poi chiarirà quanto faremo in situazioni più generali. La dimostrazione del teorema richiede un lemma preliminare di cui vengono date due dimostrazioni, una più elementare e una che utilizza degli strumenti di analisi funzionale che alleggeriscono notevolmente la dimostrazione. Vedremo poi che dando una definizione opportuna di stabilità dei gradienti riusciremo ad ottenere molta più generalità con delle dimostrazioni meno tecniche (rispetto a quella che non fa uso dell'analisi funzionale) al prezzo di fare del lavoro preliminare in più.
+
+%Le dimostrazioni qui vengono fatte con strumenti classici indirizzati verso l'analisi, mentre vedremo successivamente che dando una definizione opportuna di stabilità dei gradienti riusciremo ad ottenere molta più generalità con delle dimostrazioni meno tecniche, al prezzo di fare del lavoro preliminare in più.
+
+
+Dato $I\subset \R$ un intervallo limitato denotiamo con $S\subset C(I)$ l'insieme delle funzioni $f:I\to \R$ lipschitziane per cui $f'(t)\in [-1,1]$ q.o. e $f(0)=0$ (dunque $S$ è completo con la norma uniforme), denotiamo inoltre con $S^0\subset S$ l'insieme delle funzioni $f:I\to\R$ lipschitziane per cui $f'(t)\in\{-1,1\}$ q.o. e $f(0)=0$. Quello che mostreremo è che $S^0$ è un insieme della seconda categoria di Baire in $S$:
+\begin{teo}\label{teo:8}
+	L'insieme $S^0$ sopra definito è un sottoinsieme $G_{\delta}$-denso di $S$.
+\end{teo}
+
+Questo teorema è una facile conseguenza del seguente lemma che riguarda la funzione $\rho_{f}:I\to\R$ (per $f\in S$) così definita
+\[
+	\rho_f(t)\coloneqq d(f'(t),\{-1,1\}) = \inf\{1-f'(t),f'(t)+1\}.
+\]
+Si osserva subito che $\rho_f$ è misurabile e, dato che $f'(t)\in [-1,1]$ q.o., essa è a valori in $[0,1]$.
+
+\begin{lemma}
+	Se $f:I\to\R$ sta in $S$ e $f_n:I\to\R$ è una successione di funzioni lipschitziane tale che $f_n\in S\ \forall n$ e $f_n$ converge uniformemente a $f$, allora
+	\[
+		\limsup_{n\to\infty}\int_I\rho_{f_n}(t)\diff t\leq \int_I \rho_{f}(t)\diff t.
+	\]
+\end{lemma}
+\begin{comment}
+Prima di procedere nella dimostrazione ricordiamo alcuni risultati di teoria della misura:
+\begin{defn}
+	Un punto $x\in E$ di un insieme misurabile si dice \textit{punto di densità} se
+	\[
+		\lim_{r\to0} \frac{\LL(I_r\cap E)}{\LL(I_r)} = 1\qquad \text{con }I_r = (x-r,x+r).
+	\]
+\end{defn}
+Useremo il fatto noto che quasi ogni $x\in E$ è un punto di densità.\\
+Sia $\mathscr{F}$ una famiglia di intervalli chiusi con la proprietà che per ogni $\epsilon > 0$ e $x\in E$ esiste $I\in\mathscr{F}$ tale che $x\in I$ e $\LL(I)<\epsilon$. Una famiglia $\mathscr{F}$ con tali proprietà verrà chiamata ricoprimento di $E$ \textit{nel senso di Vitali}. Per tali ricoprimenti esiste un sottoricoprimento numerabile $\{I_m\}\subset\mathscr{F}$ tale che $\LL\left(E\setminus\left(\bigcup_m I_m\right)\right) = 0$ e gli $I_m$ sono disgiunti a due a due.
+\end{comment}
+\begin{proof}[Prima dimostrazione]
+	La dimostrazione consiste di due passaggi: prima stimiamo la quantità
+	\[
+		\int_E\rho_g(t)\diff t-\int_E\rho_f(t)\diff t
+	\]
+	per un insieme misurabile $E$ con $f'$ di segno costante, successivamente riduciamo il caso generale a questa stima usando il Teorema di ricoprimento di Vitali \ref{teo:12} (seconda versione).
+	\begin{description}
+		\item [Passo 1] Siano $J\subset I$ un intervallo, $E\subset J$ un sottoinsieme misurabile tale che $f'(x)\geq 0$ per quasi ogni $x\in E$ e tale che $\LL(E)\geq \LL(J)(1-\sigma)$. Diciamo che $\forall g\in S$ vale
+		\begin{equation}\label{eq:13}
+			\int_E\rho_g(t)\diff t\leq \int_E\rho_f(t)\diff t+\mu+2\sigma\LL(J)
+		\end{equation}
+		per ogni $\displaystyle\mu>\int_{J}(g'-f')$.\\
+		Osserviamo che $\rho_g(t) = 1-|g'(t)|$, dunque
+		\begin{equation}\label{eq:11}
+			\int_E\rho_g = \int_E (1-|g'|)\leq \int_E (1-g') = \int_E(1-f')+\int_E(f'-g').
+		\end{equation}
+		Inoltre abbiamo che
+		\[
+			\int_E(f'-g')+\int_{J\setminus E}(f'-g')=\int_J(f'-g')\leq \left|\int_J(f'-g')\right| <\mu,
+		\]
+		quindi, dato che $|f'-g'|\leq 2$, vale la seguente disuguaglianza
+		\begin{equation}\label{eq:12}
+			\int_E(f'-g')\leq \mu-\int_{J\setminus E}(f'-g')\leq \mu+2\sigma\LL(J).
+		\end{equation}
+		Dato che $f'\geq 0$, allora $\rho_f=1-f'$, dunque da \eqref{eq:11} e \eqref{eq:12} segue la disuguaglianza cercata.
+		\item [Passo 2] Denotiamo con $I(x,\delta)$ l'intervallo $[x-\delta,x+\delta]$. Consideriamo l'intervallo $I$ e gli insiemi $E^+\coloneqq \{x\in I\ |\ f'(x)\geq 0\}$ e $E^-\coloneqq \{x\in I\ |\ f'(x)<0\}$, osserviamo subito che gli insiemi $E^+$ e $E^-$ sono misurabili e consideriamo l'insieme $E^+$. Quasi ogni punto di $E^+$ è di densità, denotiamo quindi con $E^+_D\subset E^+$ l'insieme dei suoi punti di densità. Fissiamo $\epsilon>0$, per ogni $x\in E^+_D$ esiste $\delta(x)>0$ tale che
+		\[
+			\frac{\LL(E^+\cap I(x,\delta))}{2\delta} > 1-\frac{\epsilon}{8\LL(I)+\delta}\qquad \forall\ 0<\delta\leq \delta(x).
+		\]
+		La famiglia
+		\[
+			\left\{I(x,\delta)\ |\ x\in E_D^+,\ 0<\delta\leq \delta(x)\right\}
+		\]
+		è un ricoprimento fine (vedere il Teorema \ref{teo:12}) per $E^+_D$, dunque esistono $M^+\subset E^+_D$ di misura nulla e un sottoricoprimento numerabile di $E^+_D\setminus M^+$
+		\[
+			\{I_n\}_{n\in \N}=\{I(x_n,\delta_n)\}_{n\in \N}
+		\]
+		costituito da intervalli disgiunti.\\
+		Prendiamo $m$ tale che $\displaystyle\sum_{n=m+1}^{\infty}2\delta_n\leq \frac{\epsilon\LL(E^+)}{2\LL(I)}$, consideriamo $\{I_k\}_{k=1,\ldots,m}$ e poniamo
+		\[
+			\delta^+=\min\{\delta_1,\ldots,\delta_m\}\qquad \text{e}\qquad \mu^+=\frac{2\epsilon\delta^+}{8\LL(I)+\epsilon}.
+		\]
+		
+		Sia $g\in S$ tale che $\norm{f-g}_{\infty}\leq \mu^+/2$, allora diciamo che
+		\[
+			\int_I\rho_g(t)\diff t\leq \int_I\rho_f(t)\diff t+\epsilon.
+		\]
+		Consideriamo $I_k$ con $1\leq k\leq m$, per come abbiamo scelto $g$ vale che
+		\[
+			\left|\int_{I_k}(f'-g')\right|=|g(x_k+\delta_k)-f(x_k+\delta_k)-(g(x_k-\delta_k)-f(x_k-\delta_k))|\leq 2\frac{\mu^+}{2}=\mu^+
+		\]
+		e
+		\[
+			\frac{\LL(E^+\cap I_k)}{2\delta_k}>1-\frac{\epsilon}{8\LL(I)+\epsilon}.
+		\]
+		Poniamo $\sigma(\epsilon) = \epsilon/(8\LL(I)+\epsilon)$, allora $1-\sigma(\epsilon) < \LL(E^+\cap I_k)/\LL(I_k)$ (ricordiamo che $\LL(I_k) = 2\delta_k$), e quindi, non indicando la dipendenza di $\sigma$ da $\epsilon$, vale che
+		\begin{equation}\label{eq:14}
+			\sigma\LL(I_k)\leq \frac{\sigma}{1-\sigma}\LL(E^+\cap I_k)=\frac{\epsilon}{8\LL(I)}\LL(E^+\cap I_k).
+		\end{equation}
+		Inoltre, ricordando la definizione di $\mu^+$, abbiamo la disuguaglianza
+		\[
+			\mu^+=2\delta^+\sigma(\epsilon)\leq 2\sigma(\epsilon)\LL(I_k)\leq \frac{\epsilon\LL(E^+\cap I_k)}{4\LL(I)}.
+		\]
+		Applicando la stima \eqref{eq:13} ottenuta al \textbf{Passo 1} all'insieme $E^+\cap I_k$ combinandola con la \eqref{eq:14} si ottiene
+		\[
+			\int_{E^+\cap I_k}\rho_g\leq\int_{E^+\cap I_k}\rho_f+\mu^++2\sigma(\epsilon)\LL(I_k)\leq \int_{E^+\cap I_k}\rho_f+\left(\frac{\epsilon}{4}+\frac{\epsilon}{4}\right)\frac{\LL(E^+\cap I_k)}{\LL(I)}.
+		\]
+		Prendendo l'unione al variare di $k$, con $1\leq k\leq m$ e ricordando che gli $I_k$ sono a due a due disgiunti, si ha che $\bigcup_k(E^+\cap I_k) = E^+\cap\left(\bigcup_k I_k\right)$ e
+		\[
+			\int_{\bigcup_k (E^+\cap I_k)}\rho_g\leq\int_{\bigcup_k (E^+\cap I_k)}\rho_f+\frac{\epsilon}{2}\cdot\frac{\LL\left(E^+\cap\left(\bigcup_k I_k\right)\right)}{\LL(I)}.
+		\]
+		Infine, dato che $E^+=M^+\cup\left(E^+\cap\left(\bigcup_k I_k\right)\right)\cup E^+\setminus\left(E\cap\left(\bigcup_k I_k\right)\right)$ e grazie alla nostra scelta di $m$ si ha la seguente catena di disuguaglianze:
+		\begin{gather*}
+			\int_{E^+}\rho_g \leq \int_{E^+\cap\left(\bigcup_k I_k\right)}\rho_g+\frac{\epsilon\LL(E^+)}{2\LL(I)}\leq\\
+			\leq \int_{E^+\cap\left(\bigcup_k I_k\right)}\rho_f+\epsilon/2\frac{\LL\left(E^+\cap\left(\bigcup_k I_k\right)\right)}{\LL(I)}+\frac{\epsilon\LL(E^+)}{2\LL(I)}\leq\\
+			\leq\int_{E^+}\rho_f+\epsilon/2\frac{\LL(E^+)}{\LL(I)}+\epsilon/2\frac{\LL(E^+)}{\LL(I)}.
+		\end{gather*}
+		Quindi
+		\[
+			\int_{E^+}\rho_g(t)\diff t\leq \int_{E^+}\rho_f(t)\diff t+\epsilon\frac{\LL(E^+)}{\LL(I)},
+		\]
+		lo stesso ragionamento su $E^-$ produce una costante $\mu^-$ tale che, se $g\in S$ con $\norm{f-g}_{\infty}\leq \mu^-/2$, allora
+		\[
+			\int_{E^-}\rho_g(t)\diff t\leq \int_{E^-}\rho_f(t)\diff t+\epsilon\frac{\LL(E^-)}{\LL(I)}.
+		\]
+		Sommando le due disuguaglianze (ricordando che $E^+\cup E^-=E$) otteniamo, per $\mu=\min\{\mu^+,\mu^-\}$, che
+		\[
+			\int_E\rho_g(t)\diff t\leq \int_E\rho_f(t)\diff t+\epsilon\qquad \forall g\in S, \norm{f-g}_{\infty}\leq \mu/2,
+		\]
+		e questo dimostra l'asserzione e il Lemma.
+	\end{description}
+\end{proof}
+\begin{proof}[Seconda dimostrazione]
+	Notiamo subito che $f_{n}'\in L^{2}(I)$ e $f'\in L^{2}(I)$ poiché $f_{n}',f'\in L^{\infty}(I)$ e $I$ è limitato, inoltre poiché $\norm{f_{n}'}_{\infty}\leq 1$ per ogni $n\in\N$ la successione $\{f_{n}'\}$ è anche limitata in $L^{2}(I)$. Quindi, per la Proposizione \ref{prop:5}, esiste una sottosuccessione $\{f_{n_{k}}'\}$ di $\{f_{n}'\}$ che converge debolmente in $L^{2}(I)$ e necessariamente converge a $f'$ (si vede con lo stesso ragionamento fatto alla fine della dimostrazione del Teorema \ref{teo:5}). Osserviamo anche che $\rho_{f}(t) = \phi(f'(t))$ dove $\phi(x) = 1-|x|$ e che tale $\phi$ è concava, dunque $-\phi$ è convessa. Ma allora, grazie alla Proposizione \ref{prop:6}, vale che
+	\[
+		-\int_{I}\rho_{f}(t)\dt=\int_{I}-\phi(f'(t))\dt\leq \liminf_{n\to\infty}\int_{I}-\phi(f_{n}'(t))\dt = -\limsup_{n\to\infty}\int_{I}\phi(f_{n}'(t))\dt.
+	\]
+	Quindi abbiamo la disuguaglianza cercata.
+\end{proof}
+
+Siamo ora pronti a dimostrare il Teorema \ref{teo:8}:
+\begin{proof}
+	Osserviamo preliminarmente che $S_{0}$ è denso in $S$, infatti dati $f\in S$ e $\epsilon>0$ possiamo trovare una funzione $g\in S_{0}$ con $\norm{f-g}_{\infty}<\epsilon$ procedendo in questo modo: dividiamo l'intervallo $I$ in sottointervalli di lunghezza $\delta>0$ abbastanza piccola, preso $x\in I$ un estremo di un sottointervallo e, detto $T=f(x+\delta)-f(x)$ ($-\delta\leq T\leq \delta$ poiché $\Lip(f)\leq 1$), definiamo $g$ nell'intervallo $[x,x+\delta]$ come
+	\begin{align*}
+		g(t) = f(x)+\begin{cases}
+					(t-x) &\text{se }0\leq t-x\leq \frac{T+\delta}{2}\\
+					\frac{T+\delta}{2}-\left(t-x-\frac{T+\delta}{2}\right) &\text{se }\frac{T+\delta}{2}\leq t-x\leq \delta.
+				\end{cases}
+	\end{align*}
+	Così facendo in ogni sottointervallo si ottiene che $\Lip(f-g)\leq 2$ e $f(x)=g(x)$ per ogni $x\in I$ che sia un estremo di un sottointervallo di lunghezza $\delta$, dunque basta prendere $\delta<\epsilon/2$ perché valga che $\norm{f-g}_{\infty}< \epsilon$.\\
+	Per ogni $\epsilon > 0$ consideriamo l'insieme
+	\[
+		H_{\epsilon}=\left\{f\in S\ \bigg|\int_I\rho_f \geq \epsilon\right\}.
+	\]
+	Dato che per $f\in S^0$ vale che $\rho_f=0$, allora $H_{\epsilon}\cap S^0=\emptyset\ \forall \epsilon>0$, il lemma appena dimostrato implica che $H_{\epsilon}$ è chiuso in $S$: se $f_n\to f$ uniformemente e $f_n\in H_{\epsilon}$ allora $f\in S$ e
+	\[
+		\int_I \rho_f(t)\diff t\geq \limsup_{n\to\infty}\int_I\rho_{f_n}(t)\diff t\geq \epsilon.
+	\]
+	Inoltre $H_{\epsilon}$ ha parte interna vuota: dato che $S^0$ è denso in $S$ allora se $H_{\epsilon}$ avesse parte interna questa intersecherebbe $S^0$, ma abbiamo osservato che $H_{\epsilon}\cap S^0=\emptyset\ \forall \epsilon>0$. Dunque $S\setminus H_{\epsilon}$ è un aperto denso che contiene $S^0$. Prendiamo $\epsilon_n>0$ una successione convergente a $0$, dal teorema di Baire segue che l'insieme
+	\[
+		H=\bigcap_{n\in \N}(S\setminus H_{\epsilon_n})
+	\]
+	è un sottoinsieme $G_{\delta}$-denso di $S$ che contiene $S^0$. In realtà vale che $S^0=H$, infatti una qualsiasi $f\in H\setminus S^0$ avrebbe $\rho_f(t)$ positivo su un insieme di misura non nulla, quindi per qualche $\epsilon_n>0$ apparterrebbe ad $H_{\epsilon_n}$. Da ciò segue che $S^0$ è un sottoinsieme $G_{\delta}$-denso di $S$.
+\end{proof}
+
+
+
+
+\section{Mappa gradiente di Kirchheim, stabilità e punti estremali}
+Dopo aver sviluppato dei lemmi che ci serviranno andiamo al cuore della questione presentando i risultati principali. In questo contesto diciamo che una \textit{funzione tipica} (in uno spazio topologico $X$) ha una certa proprietà $\mathcal{P}$ se l'insieme delle $f\in X$ che soddisfano $\mathcal{P}$ è residuale, cioè ha complementare di prima categoria. Dimostriamo ora il risultato fondamentale che poi useremo sempre: la mappa che associa a una funzione $f\in\Lip(\Omega;\R^m)$ il suo differenziale $Df$ è continua per la tipica funzione $f$.
+
+
+\begin{lemma}\label{lemma:4}
+	Sia $\Omega\subset \R^n$ aperto e limitato e sia $X\subset \Lip(\Omega;\R^m)$ dotato della norma uniforme $\norm{\cdot}_{\infty}$ uno spazio completo. Allora per ogni $1\leq p<\infty$ la mappa $D:f\to Df$ è una mappa Baire-$1$ da $(X,\norm{\cdot}_{\infty})$ a $L^p(\Omega;\M^{m\times n})$, cioè è il limite puntuale di una successione $\Delta_k:(X,\norm{\cdot}_{\infty})\to L^p(\Omega;\M^{m\times n})$ di mappe continue.
+	
+	Da questo segue che la tipica funzione $f\in X$ è un punto di continuità di $D$.
+\end{lemma}
+\begin{proof}
+	Per $k\geq 1$ e $f\in X$ definiamo\footnote{Denotando con $e_j$ il $j$-esimo vettore della base canonica.} le mappe
+	\begin{align*}
+        (\Delta_k(f))(x)_{i,j} = \begin{cases}
+                                 	k(f^{(i)}(x+e_j/k)-f^{(i)}(x)) &\text{se }\dist(x,\R^n\setminus\Omega)>1/k\\
+                                 	0&\text{altrimenti}.
+                                 \end{cases}
+	\end{align*}
+    Ovviamente $\norm{\Delta_k(f)}_{\infty}\leq \Lip(f)$ per ogni $f$ e $k$, inoltre, se $f$ è differenziabile nel punto $x$, allora $\Delta_k(f)(x)\to Df(x)$ per $k\to\infty$. Per il Teorema \ref{teo:9} (Rademacher) e per il teorema di convergenza dominata abbiamo che $\lim_{k\to\infty}\Delta_k(f) = Df$ in $L^p(\Omega,\M^{m\times n})$. Ma ogni $\Delta_k$ è un operatore lineare che ha norma minore o uguale a $2k\LL(\Omega)^{1/p}$ tra gli spazi $(X,\norm{\cdot}_{\infty})$ e $L^p(\Omega;\M^{m\times n})$, e quindi $D$ è una mappa Baire-$1$.\\
+    Mostriamo ora che l'insieme dei punti di continuità di $D$ è residuale. Fissiamo un $\epsilon > 0$, per $k\geq 1$ definiamo
+    \[
+        M_k=\{f\in X\ |\ \norm{\Delta_l(f)-Df}_p\leq \epsilon\ \forall l\geq k, l\in\N\}.
+    \]
+    Dimostriamo che per ogni $k\geq 1$ l'insieme $M_{k}$ è chiuso: sia $\{f_{h}\}\subset M_{k}$ una successione di funzioni contenuta in $M_{k}$ e convergente a $f$ in norma $\norm{\cdot}_{\infty}$ (quindi $f\in X$), allora per definizione di derivata debole vale che per ogni $\phi\in C^{\infty}_{c}(\Omega)$ e per ogni $j\in\{1,\ldots,n\}$
+    \begin{multline*}%\label{eq:20}
+		-\int_{\Omega}\partial_{j}f(x)\phi(x)\dx = \int_{\Omega} f(x)\partial_{j}\phi(x)\dx = \lim_{h\to\infty}\int_{\Omega} f_{h}(x)\partial_{j}\phi(x)\dx=\\=-\lim_{h\to\infty}\int_{\Omega}\partial_{j}f_{h}(x)\phi(x)\dx.
+    \end{multline*}
+    Quindi abbiamo che $\Delta_{l}f_{h}$ e $Df_{h}$ convergono nella topologia debole $\sigma(L^{p}(\Omega;\R^{m}),C^{\infty}_{c}(\Omega))$\footnote{Ovvero per ogni $\phi\in C^{\infty}_{c}(\Omega)$ vale che $\displaystyle\lim_{h}\int(\partial_{j}f_{h})\phi = \int(\partial_{j}f)\phi$ e $\displaystyle\lim_{h}\int(\partial_{j}\Delta_{l}f_{h})\phi = \int(\partial_{j}\Delta_{l}f)\phi$.} rispettivamente a $\Delta_{l}f$ e $Df$ ($\Delta_{l}f_{h}\to\Delta_{l}f$ addirittura in $\norm{\cdot}_{\infty}$). Mostriamo ora che la norma $\norm{\cdot}_{p}$ è semicontinua rispetto a questa convergenza debole: sia $q=p/(p-1)$, 
+    \begin{comment}
+    siano $p{\in}[1,+\infty)$ e $v\in L^{p}(\Omega)$, detto $q=p/(p-1)$ (intendendo che $q=\infty$ se $p=1$), vale che
+    \[
+		\left(\int_{\Omega}|v|^{p}\right)^{1/p} = \sup_{g}\int_{\Omega}vg\qquad\text{con }g\in L^{q}, \norm{g}_{q}\leq 1.
+    \]
+    \end{comment}
+    se $1<p<\infty$ allora $C^{\infty}_{c}(\Omega)$ è denso in $L^{q}(\Omega)$ quindi, data $\{v_{h}\}\subset L^{p}(\Omega)$ una successione che converge in senso debole a $v\in L^{p}(\Omega)$ rispetto a $\sigma(L^{p}(\Omega;\R^{m}),C^{\infty}_{c}(\Omega))$ e detti $B_{1} = \{g\in L^{q}(\Omega),\ \norm{g}_{q}\leq 1\}$ e $B_{2} = \{g\in C^{\infty}_{c}(\Omega),\ \norm{g}_{q}\leq 1\}$, vale che\footnote{La prima uguaglianza e la disuguaglianza seguono dalla Proposizione \ref{prop:8}.}
+    \[
+		\norm{v}_{p} = \sup_{g\in B_{1}}\int_{\Omega}vg = \sup_{g\in B_{2}}\int_{\Omega} vg = \sup_{g\in B_{2}}\left(\liminf_{h\to\infty}\int_{\Omega}v_{h}g\right) \leq \sup_{g\in B_{2}}\left(\liminf_{h\to\infty}\norm{v_{h}}_{p}\right),
+    \]
+    quindi vale la semicontinuità inferiore della norma $\norm{\cdot}_{p}$. Se $p=1$ invece è necessario un passaggio di approssimazione in più: per ogni $g\in L^{\infty}(\Omega)$ esiste una successione di funzioni $\{g_{l}\}\subset C^{\infty}_{c}(\Omega)$ che converge puntualmente quasi ovunque a $g$ (si tronca $g$ vicino al bordo in modo che faccia $0$, si applica il Teorema \ref{teo:10} (Lusin) alla $g$ troncata ottenendo una funzione $\hat{g}\in C_{c}(\Omega)$ e si prende una funzione $g_{l}\in C^{\infty}_{c}(\Omega)$ con $\norm{g_{l}-\hat{g}}_{\infty}$ abbastanza piccolo) quindi, con le stesse notazioni di prima, vale che
+    \[
+		\norm{v}_{1} = \sup_{g\in B_{1}}\int vg = \sup_{g\in B_{1}}\left( \liminf_{l\to\infty}\int vg_{l} \right).
+    \]
+    Ma, poiché la successione $\{v_{h}\}$ converge a $v$ nel senso debole che abbiamo detto, allora
+    \[
+		\int_{\Omega}vg_{l} = \liminf_{h\to\infty}\int_{\Omega}v_{h}g_{l}\leq \liminf_{h\to\infty}\norm{v_{h}}_{1},
+    \]
+    così anche per $p=1$ la norma è semicontinua inferiormente, e quindi $M_{k}$ è chiuso.
+    \begin{comment}
+    Se $1<p<\infty$ allora potevamo prendere $g\in C^{\infty}_{c}(\Omega)$ con $\norm{g}_{q}\leq 1$ grazie alla densità di $C^{\infty}_{c}(\Omega)$ in $L^{p}(\Omega)$, se invece $p=1$ è necessario troncare le $g\in L^{\infty}(\Omega)$: per una fissata $g\in L^{\infty}(\Omega)$ basta usare il Teorema \ref{teo:10} (Lusin) per ottenere una successione di funzioni $v_{k}\in C(\Omega)$ tali che
+    \[
+		\int_{\Omega}fg = \lim_{k\to\infty}\int_{\Omega}fv_{k}.
+    \]
+    Ora usando la densità di $C^{\infty}(\Omega)$ in $C(\Omega)$ abbiamo che 
+    sia $S_{g}=\{v\in\C^{\infty}_{c}(\Omega)\ |\ v(x)\leq g(x) \text{ q.o. in }\Omega\}$, allora $g=\sup_{v\in S_{g}}v$, allora
+    \[
+		\int_{\Omega}|f| = \sup_{g}\sup_{v\in S_{g}}\int_{\Omega}fv\qquad\text{con }g\in L^{\infty}, \norm{g}_{\infty}\leq 1.
+    \] 
+    \attenzione bisogna dimostrare che $M_{k}$ è chiuso, ma forse forse bisogna prendere $p\in(1,\infty)$, poi però c'è bisogno di cambiare le dimostrazioni dopo perché usano sempre $p=1$
+\end{comment}
+    %Per ogni $k\geq 1$ l'insieme $M_k$ è chiuso: sia $\{f_{h}\}\subset M_{k}$ una successione tale che $f_{h}\xrightarrow{\norm{\cdot}_{\infty}} f$, se $p=1$ allora segue dalla definizione di derivata debole che la successione $\{Df_{h}\}$ converge debolmente a $Df$ in $L^{1}(\Omega;\M^{m\times n})$ (mentre $\lim_{h\to\infty}\norm{\Delta_{l}f_{h}-\Delta_{l}f}_{p}=0$ poiché $\Omega$ ha misura finita), quindi per la Proposizione \ref{prop:7} abbiamo che $f\in M_{k}$. Se invece $1<p<\infty$ si arriva allo stesso risultato procedendo per approssimazione
+    %Se invece $1<p<\infty$ definiamo per ogni $h\in\N$ e per un fissato $l\geq k$ la funzione $g_{h}=\Delta_{l}f_{h}-Df_{h}$. Dalla definizione di $M_{k}$ segue che la successione $\{g_{h}\}$ è limitata in $L^{p}(\Omega;\M^{m\times n})$, dunque per la Proposizione \ref{prop:5} esiste una sottosuccessione che converge debolmente ad una funzione $g\in L^{p}(\Omega;\M^{m\times n})$. Ma la successione $\{\Delta_{l}f_{h}\}$ converge\footnote{Si intende per $h$ che tende all'infinito.} in $L^{p}(\Omega;\M^{m\times n})$ a $\Delta_{l}f$ (e dunque anche debolmente)\\
+    \begin{comment}
+    Per ogni $k\geq 1$ l'insieme $M_k$ è chiuso: se $\{f_{h}\}\subset M_{k}$ è una successione tale che $f_{h}\xrightarrow{\norm{\cdot}_{\infty}} f$ allora $\{\Delta_{l}f_{h}\}$ converge a $\Delta_{l}f$ in $L^{p}(\Omega;\M^{m\times n})$ poiché abbiamo mostrato prima che $\Delta_{l}$ è continuo, inoltre \\
+    Per ogni $k\geq 1$ l'insieme $M_k$ è chiuso, infatti se $\{f_{h}\}\subset M_{k}$ è una successione tale che $f_{h}\xrightarrow{\norm{\cdot}_{\infty}} f$ allora possiamo stimare $\norm{\Delta_{l}(f)-Df}_{p}$:
+    \begin{gather*}
+		\norm{\Delta_{l}(f)-Df}_{p} \leq \norm{\Delta_{l}(f)-\Delta_{r}(f)}_{p}+\norm{\Delta_{r}(f)-Df}_{p} \leq \\
+		\leq \norm{\Delta_{l}(f)-\Delta_{l}(f_{h})}_{p}+\norm{\Delta_{l}(f_{h})-\Delta_{r}(f_{h})}_{p}+\norm{\Delta_{r}(f_{h})-\Delta_{r}(f)}_{p}+\norm{\Delta_{r}(f)-Df}_{p}.
+    \end{gather*}
+    Ora si osserva che il primo e il terzo addendo della stima data sopra possono essere presi piccoli a piacere prendendo $h$ sufficientemente grande, e anche il quarto può essere preso piccolo a piacere prendendo $r$ abbastanza grande (in virtù di quanto detto prima riguardo alla relazione tra $D$ e le mappe $\Delta_{r}$. Resta solo da studiare il secondo addendo, che può essere stimato con
+    \[
+		\norm{\Delta_{l}(f_{h})-\Delta_{r}(f_{h})}_{p}\leq \norm{\Delta_{l}(f_{h})-Df_{h}}_{p}+\norm{Df_{h}-\Delta_{r}(f_{h})}_{p}\leq \epsilon+\norm{Df_{h}-\Delta_{r}(f_{h})}_{p},
+    \]
+    dove abbiamo stimato il primo addendo con $\epsilon$ poiché $f_{h}\in M_{k}$ mentre il secondo può essere preso piccolo quanto vogliamo allo stesso modo di prima (prendendo $r$ abbastanza grande), dunque $M_{k}$ è chiuso.\\
+    \end{comment}
+    
+    Inoltre vale che $\bigcup_k M_k=X$ (sempre per i teoremi di Rademacher e di Lebesgue). Dal Teorema di Baire segue che l'insieme $U_{\epsilon}=\bigcup_k\Int(M_k)$ è denso in $X$, infatti se esistesse una palla $B(x,r)$ tale che $B(x,r)\subset X\setminus U_{\epsilon}$ allora $B(x,r)\subset \bigcup_{k}(M_{k}\setminus \Int(M_{k}))$, però gli insiemi $M_{k}\setminus \Int(M_{k})$ sono chiusi a parte interna vuota, quindi la loro unione numerabile ha parte interna vuota. Inoltre è chiaro che se $f\in U_{\epsilon}$ allora esiste $\delta>0$ tale che $B(f,\delta)\subset M_k$ per qualche $k$ e $\norm{Df-Dg}_p<3\epsilon$ se $g\in X$ e $\norm{f-g}_{\infty}<\delta$ (basta applicare la disuguaglianza triangolare ricordando che $f$ e $g$ stanno in $M_k$). Dunque consideriamo l'insieme residuale $\bigcap_k U_{1/k}$ e osserviamo che ogni $f\in \bigcap_kU_{1/k}$ è un punto di continuità di $D$.
+\end{proof}
+L'idea ora è quella di cercare funzioni con differenziale non più nell'insieme $K$ assegnato all'inizio ma in uno più grande che chiameremo \textit{universo} e indicheremo con $\mathcal{U}$, poi sotto certe ipotesi accade che la tipica funzione nell'insieme delle soluzioni trovate in realtà ha differenziale nell'insieme originale. In questo modo ci riconduciamo a risolvere un problema evidentemente più semplice avendo più libertà sulla scelta dei gradienti.
+\begin{defn}
+	Siano $K,\mathcal{U}\subset \M^{m\times n}$ due sottoinsiemi dati. Diciamo che i gradienti in $\mathcal{U}$ sono \textit{stabili solo vicino a} $K$ se $\mathcal{U}$ è limitato, $K$ è chiuso e per ogni $\epsilon > 0$ esiste $\delta=\delta_{\epsilon}>0$ tale che per ogni $A\in\mathcal{U}$ con $\dist(A,K)>\epsilon$ esiste una funzione affine a tratti $\phi\in\Lip(\R^n;\R^m)$ con supporto limitato che soddisfa le condizioni
+	\begin{itemize}
+		\item $A+D\phi(x)\in M_A\subset \mathcal{U}$ per quasi ogni $x\in\Omega$;
+		\item $\int|D\phi(x)|\dx > \delta \LL(\supp(\phi))$.
+	\end{itemize}
+\end{defn}
+
+Prima di vedere il risultato generale facciamo un esempio molto semplice che chiarirà quali dovrebbero essere i gradienti stabili:
+\begin{exmp}
+	Siano $\mathcal{U}=[0,1]$ e $K=\{0,1\}$. Mostriamo che i gradienti in $\mathcal{U}$ sono stabili solo vicino a $K$: sia $\epsilon\in(0,1)$ fissato e sia $a\in (\epsilon,1-\epsilon)$, allora esiste una funzione affine a tratti $\phi\in\Lip(\R;\R)$ con supporto limitato tale che
+	\begin{itemize}
+		\item $a+\phi'(x)\in \mathcal{U}$ per q.o. $x\in \Omega$;{}
+		\item $\int|\phi'(x)|\dx > \epsilon/2\LL(\supp(\phi))$.
+	\end{itemize}
+	Infatti, detto $\delta=3\epsilon/4$, possiamo prendere $\phi:\R\to\R$ come segue
+	\begin{align*}
+		\phi(x) = \begin{cases}
+						\delta x & \text{se }x\in[0,1]\\
+						2\delta-\delta x & \text{se }x\in(1,2]\\
+						0 & \text{altrimenti}.
+				  \end{cases}
+	\end{align*}
+	Così abbiamo ottenuto la stabilità dei gradienti solo vicino a $K$. In realtà otterremo anche un risultato di densità che rispecchia quello che avevamo osservato nel risolvere il problema modello (in quel caso $S^{0}$ era denso in $S$), e può essere visualizzato come in Figura \ref{fig:6}.
+	\begin{figure}[h!]
+	\begin{minipage}[c]{0.6\textwidth}
+		\includegraphics[width=0.9\textwidth]{density.eps}
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.35\textwidth}
+		\caption{È rappresenta la funzione $f(x)=x/3$ in nero, in rosso invece una possibile variazione di $f$ tramite una funzione affine a tratti che, oscillando abbastanza velocemente, può essere presa arbitrariamente vicina a $f$ in norma $\norm{\cdot}_{\infty}$.}
+		\label{fig:6}
+	\end{minipage}
+\end{figure}
+\end{exmp}
+
+\begin{prop}\label{prop:3}
+	Supponiamo che i gradienti in $\mathcal{U}$ siano stabili solo vicino a $K$. Data una qualsiasi $A\in\mathcal{U}$ e dato $\Omega\subset \R^n$ aperto e limitato consideriamo lo spazio $\mathscr{P}=\mathscr{P}(\Omega,\mathcal{U},A)$ (vedere la Definizione \ref{defn:5}). Allora la tipica funzione $f\in\overline{\mathscr{P}}^{\infty}$ soddisfa $Df\in K$ q.o. in $\Omega$ e inoltre, per ogni $\epsilon > 0$, possiamo scegliere $\delta_{\epsilon} = \epsilon/2$ nella definizione precedente.
+\end{prop}
+\begin{proof}
+	Sia $X=\mathscr{P}$, per il Lemma \ref{lemma:4} è sufficiente mostrare che $Df(x)\in K$ q.o. se $f$ è un punto di continuità di $D|_{\overline{X}^{\infty}}:\overline{X}^{\infty}\to L^{1}(\Omega;\M^{m\times n})$. Supponiamo per assurdo che $f$ sia un punto di continuità ma che $Df\not\in K$ in un insieme di misura positiva. Usando il Teorema \ref{teo:10} (Lusin) possiamo trovare un compatto $C\subset \Omega$ e un $\epsilon>0$ tali che valgano contemporaneamente
+	\begin{itemize}
+		\item $\LL(C)>\epsilon$, $f$ è differenziabile in tutti i punti di $C$ e $Df|_{C}$ è continuo;
+		\item $\dist(Df(x),K)>\epsilon$ per ogni $x\in C$.
+	\end{itemize}
+    Poiché $f$ è un punto di continuità di $D$ esiste $\mu>0$ tale che $\norm{Df-Dg}_{L^1}<\epsilon\cdot \delta_{\epsilon}/4$ per ogni $g\in B_{\infty}(f,\mu)\cap \overline{X}^{\infty}$. Per definizione di $\overline{X}^{\infty}$ esiste una successione $\{f_{k}\}\subset X$ tale che $f_k\xrightarrow{L^{\infty}}f$. Quindi per la scelta di $f$, a meno di passare a una sottosuccessione se necessario, accade che $Df_k(x)\to Df(x)$ quasi ovunque\footnote{Perché se $\Omega\subset \R^n$ ha misura finita e $f_k:\Omega\to\R^m$ convergono in $L^1$ allora esiste una sottosuccessione che converge puntualmente quasi ovunque.}. Dunque possiamo trovare $k_0\in\N$ e un altro compatto $C_1\subset \Omega$ tali che
+    \begin{equation}\label{eq:16}
+        \LL(C_1)>\epsilon\qquad \text{e}\qquad\dist(Df_{k_0}(x),K)>\epsilon\quad\forall x\in C_1.
+    \end{equation}
+    Prendendo $k_0$ abbastanza grande possiamo supporre che $\norm{f-f_{k_0}}_{\infty}<\mu/2$. Dato che $f_{k_0}$ è $\sigma$-affine a tratti, esistono dei sottoinsiemi aperti disgiunti $\{G_i\}_{i=1}^{\infty}$ di $\Omega$ tali che $\LL\left(\Omega\setminus\bigcup_iG_i\right)=0$ e $f_{k_0}|_{G_i}$ è affine con differenziale $A_i\in\mathcal{U}$. Scegliamo un sottoinsieme finito $I\subset \N$ tale che 
+    \[
+        C_1\cap G_i\neq\emptyset\quad\forall i\in I \qquad\text{e}\qquad\sum_{i\in I}\LL(G_i)>\epsilon
+    \]
+    e osserviamo che dalla \eqref{eq:16} segue che $\dist(A_i,K)>\epsilon$ $\forall i\in I$.
+    Per la definizione di $\delta_{\epsilon}$ troviamo per ogni $i\in I$ una funzione affine a tratti e lipschitziana $\phi_i:G_i\to \R^m$ con
+    \begin{gather*}
+        \int_{G_i}|D\phi_i(x)|\dx>\delta_{\epsilon}\LL(G_i),\qquad\phi_i|_{\partial G_i}=0\qquad\text{e}\\
+        A_i+D\phi_i(x)\in M_i\subset \mathcal{U}\text{ q.o. in }G_i.
+    \end{gather*}
+    Usando poi il Lemma \ref{costr:1} (e in particolare l'osservazione successiva) possiamo richiedere che $\phi_i:G_i\to B_{\R^m}(0,\mu/2)$ rimanendo lipschitziana e affine a tratti con la stessa distribuzione dei gradienti. Dunque è chiaro che $f_{k_0}\in B_{\infty}(f,\mu)\cap X$ e che questo vale anche per la funzione $g=f_{k_0}+\sum_{i\in I}\phi_i$ poiché le $\phi_i$ hanno supporti disgiunti. Tuttavia vale la disuguaglianza $\norm{Df_{k_0}-Dg}_{L^1}>\epsilon\delta_{\epsilon}$, e questo è in contraddizione con la scelta di $\mu$. Quindi $Df(x)\in K$ quasi ovunque.\\
+    Dato che $f$ è un punto di continuità è chiaro che per $\delta=\epsilon/2$ una funzione $\phi$ che serve ai nostri scopi si ottiene scegliendo un qualsiasi elemento $\psi\in X$ sufficientemente vicino a $f$ e ponendo $\phi=\psi-A$.
+\end{proof}
+
+Vediamo ora un risultato che generalizza quanto mostrato nel problema modello che abbiamo risolto prima. In tale problema in qualche modo si aveva troppa poca libertà: tutti i segmenti avevano rango $1$, dunque non ci si accorgeva che in effetti la definizione generale che serve è la seguente:
+
+\begin{defn}\label{defn:1}
+	Per ogni $K\subset \M^{m\times n}$ denotiamo con $\extr_{gr}(K)$ l'insieme delle matrici $A\in K$ per cui non esiste un segmento di rango $1$ contenuto in $K$ con centro $A$. Inoltre denoteremo con $\extr_{prelam}(K)$ l'insieme delle $A\in K$ tali che non esistono nemmeno $B,C\in K$ con $A\in (B,C)$ e $\rk(B-C)=1$.
+\end{defn}
+Osserviamo subito che le due definizioni di punti estremali, pur essendo simili, presentano delle differenze: le matrici $M\in\extr_{gr}(K)$ sono quelle per cui non esiste un segmento $[A,B]$ \textit{completamente contenuto} in $K$ tale che $M=(A+B)/2$ (il fatto di essere al centro del segmento in realtà è irrilevante, è sufficiente che $M\in(A,B)$), mentre le $N\in\extr_{prelam}(K)$ sono quelle per cui non esiste alcun segmento $(C,D)$ con \textit{gli estremi} in $K$ per cui $N\in(C,D)$. Quindi chiaramente $\extr_{prelam}(K)\subset \extr_{gr}(K)$ ma non è vero il viceversa, infatti basta considerare un insieme $K\subset\M^{m\times n}$ come in Figura \ref{fig:5}: in tal caso $M\in\extr_{gr}(K)$ ma $M\not\in\extr_{prelam}(K)$ (supponendo che $\rk(A-B)=1$).
+\begin{figure}[H]
+	\begin{minipage}[c]{0.5\textwidth}
+		\includegraphics[width=0.8\textwidth]{extr.eps}
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.35\textwidth}
+		\caption{La regione colorata a strisce descrive un insieme $K$ per cui $\extr_{gr}(K)\neq \extr_{prelam}(K)$.}
+		\label{fig:5}
+	\end{minipage}
+\end{figure}
+
+\begin{teo}
+	Sia $K\subset \M^{m\times n}$ un sottoinsieme compatto e regolarmente stellato (ovvero esiste $C_0\in K$ tale che $[C_0,A)\subset \mathring{K}$ per ogni $A\in K$). Dato un aperto limitato $\Omega\subset \R^n$ consideriamo gli spazi di funzioni $\mathscr{P}=\mathscr{P}(\Omega,\mathring{K})$ e $\mathscr{P}=\mathscr{P}(\Omega,\mathring{K},g)$ con $g$ affine e le classi di punti estremali della Definizione \ref{defn:1}. Allora la tipica funzione $f\in\clos_{\infty}(\mathscr{P}(\Omega,\mathring{K}))$ è una funzione lipschitziana con $Df(x)\in\extr_{gr}(K)$ per quasi ogni $x\in\Omega$.\\
+	Inoltre valgono i seguenti fatti:
+	\begin{enumerate}[1)]
+		\item la tipica $f\in\clos_{\infty}(\mathscr{P}(\Omega,\mathring{K}))$ soddisfa $Df(x)\in\extr_{prelam}(K)$ quasi ovunque in $\Omega$;
+		\item fissato un dato affine al bordo $g$ con $Dg\in\mathring{K}$, allora la tipica $f\in\clos_{\infty}(\mathscr{P}(\Omega,\mathring{K},g))$ soddisfa $Df(x)\in\extr_{gr}(K)$ q.o. in $\Omega$; inoltre vale ancora un risultato analogo al punto \textit{1)}.
+	\end{enumerate}
+\end{teo}
+\begin{oss}
+	Ha senso considerare gli insiemi di punti estremali come sopra, infatti se $K$ è compatto allora $\extr_{prelam}(K)\neq \emptyset$ e dunque anche $\extr_{gr}(K)\neq\emptyset$. Per vedere questo fatto è sufficiente fissare una matrice $M\in\M^{m\times n}$ e considerare la funzione $f:K\to\R$ definita come $f(A) = |A-M|$, essa è continua, dunque ha un massimo, e si osserva subito che una matrice che realizza il massimo di $f$ non può appartenere ad alcun segmento $(B,C)$ con $B,C\in K$. 
+\end{oss}
+\begin{proof}
+	Possiamo aggiungere una funzione affine senza cambiare gli enunciati, quindi possiamo supporre che il centro $C_{0}$ di $K$ sia la matrice nulla. Grazie al Lemma \ref{lemma:4} è sufficiente mostrare che $Df\in \extr_{gr}(K)$ quasi ovunque quando $f$ è un punto di continuità della mappa gradiente con codominio $L^{1}(\Omega;\M^{m\times n})$.\\
+	Supponiamo per assurdo che questo non accada per una tale funzione $f$ fissata. Poiché la mappa $D$ è continua e $K$ è chiuso vale sicuramente che $Df\in K$ quasi ovunque. Quindi rimane da dimostrare che $Df$ sta nei suoi punti estremali.
+	
+	Per $\epsilon>0$ sia $K_{\epsilon}$ l'insieme delle matrici $A$ che sono il centro di un $\epsilon$-segmento di rango $1$ contenuto in $K$, si osserva che $K_{\epsilon}$ è un compatto: dato che $K$ è compatto è sufficiente mostrare che $K_{\epsilon}$ è chiuso, se $\{p_{t}\}_{t\in\N}$ è una successione contenuta in $K_{\epsilon}$ allora esistono due successioni $\{a_{t}\}$ e $\{b_{t}\}$ che sono gli estremi di un segmento contenuto in $K$ tali che
+	\[ 
+		|a_{t}-b_{t}|\geq \epsilon, \qquad [a_{t},b_{t}]\subset K\qquad \text{e}\qquad p_{t}=\frac{a_{t}+b_{t}}{2}.
+	\]
+	Supponiamo che $p_{t}\to p\in K$, poiché $K$ è compatto, a meno di sottosuccessioni (che non rinominiamo), possiamo supporre che $a_{t}\to a$ e $b_{t}\to b$. Allora vale che
+	\[
+		p=(a+b)/2,\qquad|a-b|\geq \epsilon\qquad \text{e}\qquad [a,b]\subset K,
+	\]
+	dove le prime due proprietà sono ovvie, mentre la terza segue dal fatto che se $x=\lambda a+(1-\lambda)b$ con $\lambda\in[0,1]$ allora $x=\lim_{t\to\infty}\lambda a_{t}+(1-\lambda)b_{t}\in K$ poiché $K$ è chiuso.\\
+	
+	Se $Df(x)\not\in \extr_{gr}(K)$ in un insieme di misura positiva, allora il Teorema di Lusin assicura l'esistenza di un $\epsilon >0$ e di un compatto $C\subset \Omega$ con $\LL(C)>0$ tali che
+	\begin{itemize}
+		\item $Df:C\to\M^{m\times n}$ è ben definita e continua,
+		\item $Df(C)\subset K_{2\epsilon}$.
+	\end{itemize}
+	Visto che $f$ è un punto di continuità per $D$ possiamo scegliere $\mu\in(0,\epsilon\LL(C)/4)$ e $\delta>0$ tale che se $g\in \overline{\mathscr{P}}^{\infty}\cap B_{\infty}(f,3\delta)$ allora $\norm{Df-Dg}_{L^{1}}<\mu$. Poi fissiamo $\gamma>0$ abbastanza piccolo per cui $\hat{f}=(1-\gamma)f$ soddisfi $\hat{f}\in B_{\infty}(f,\delta)$. Ricordando che il centro di $K$ è l'origine abbiamo che $\hat{f}\in\overline{\mathscr{P}}^{\infty}$ e che per ogni $x\in C$ esiste un $\epsilon$-segmento di rango $1$ contenuto in $\mathring{K}$ con centro $D\hat{f}(x)$, infatti se $[H_{1},H_{2}]\subset K$ è un $2\epsilon$-segmento con centro $Df(x)$ allora $D\hat{f}(x)=(1-\gamma)(H_{1}+H_{2})/2$, dunque bastava prendere $\gamma<1/2$ (abbiamo usato che $K$ è stellato con centro l'origine per dire che $(1-\gamma)(\lambda H_{1}+(1-\lambda)H_{2})\in K\ \forall \lambda\in[0,1]$), inoltre il segmento che contiene $D\hat{f}(x)$ sta in $\mathring{K}$ perché $K$ è regolarmente stellato. Dato che $(1-\gamma)K\subset \mathring{K}$ è ancora un compatto, allora è ben definito e strettamente positivo il numero $\beta=d_{H}(\partial K, (1-\gamma)K)$ che denota la distanza di Hausdorff degli insiemi $\partial K$ e $(1-\gamma)K$. Con una tale scelta di $\beta$ si ha che $\forall x\in C$ troviamo $H_{x}\in \{H\in \M^{m\times n}\ |\ \rk(H)=1, |H|=1\}$ tale che
+	\begin{equation}\label{eq:5}
+		B(tH_{x}+D\hat{f},\beta)\subset \mathring{K}\qquad \forall t\in[-\epsilon,\epsilon].
+	\end{equation}
+	\begin{comment}
+	Dato che $[H_{1},H_{2}]\subset \mathring{K}$ è compatto esiste anche un $\beta>0$ tale che
+	\begin{equation}\label{eq:5}
+		B(tH_{1}+(1-t)H_{2},\beta)\subset \mathring{K}\qquad\forall t\in [0,1].
+	\end{equation}
+	\attenzione da sistemare\\
+	\end{comment}
+	\begin{comment}
+	\boh A cosa serve?
+	Dato che $D\hat{f}:C\to K$ è continua, un semplice argomento di compattezza mostra anche che c'è un $\beta>0$ tale che per ogni $x\in C$ troviamo $H_{x}\in\M^{m\times n}$ tale che
+	\[
+		\rk(H_{x})=1,\quad|H_{x}|=1,\quad B(tH_{x}+D\hat{f}(x),\beta)\subset \mathring{K}\qquad\text{se }t\in[-\epsilon,\epsilon].
+	\]
+	\boh{}
+	\end{comment}
+	
+	Per definizione esiste una successione $\{f_{k}\}\subset \mathscr{P}$ tale che $\norm{f_{k}-f}_{\infty}\to 0$ quindi, come nella dimostrazione della Proposizione \ref{prop:3}, a meno di passare a sottosuccessioni possiamo supporre che $Df_{k}(x)\to Df(x)$ quasi ovunque in $\Omega$. Prendendo $k$ abbastanza grande vale che $\norm{(1-\gamma)f_{k}-f}_{\infty}<2\delta$ e che l'insieme
+	\[
+		C_{k}=\{x\in C : |(1-\gamma)Df_{k}(x)-D\hat{f}(x)|<\min(\mu,\beta)\}
+	\]
+	soddisfa la disuguaglianza $\LL(C_{k})>3/4\LL(C)$. In altre parole, la funzione $\sigma$-affine a tratti $g=(1-\gamma)f_{k}$ ha le seguenti proprietà:
+	\begin{itemize}
+		\item $g\in \overline{\mathscr{P}}^{\infty}\cap B_{\infty}(f,2\delta)$,
+		\item esistono degli insiemi $G_{j}\subset \Omega$ a due a due disgiunti tali che $Dg|_{G_{j}}=A_{j}$ è il centro di un $\epsilon$-segmento di rango $1$ contenuto in $\mathring{K}$ (questo segue dalla \eqref{eq:5} e dalla definizione di $C_{k}$)%(questo segue dal fatto che $D\hat{f}(x)$ è il centro di un segmento di rango $1$ contenuto in $\mathring{K}$ che può essere preso di lunghezza di poco maggiore di $\epsilon$) e $\LL(\bigcup_{j}G_{j})>3/4\LL(C)$.
+	\end{itemize}
+	Ora applichiamo il Lemma \ref{lemma:5} su ogni insieme $G_{j}$ (ricordando le proprietà di $A_{j}$) e otteniamo una funzione affine a tratti $h\in B_{\infty}(g,\delta)$ tale che $Dh(x)=Dg(x)$ per quasi ogni $x\not\in\bigcup_{j}G_{j}$ e che $Dh(x)\in\mathring{K}$ q.o. in $G_{j}$ ma $|Dh(x)-A_{j}|=\epsilon$ per $x$ in tre quarti del volume di $G_{j}$ (supponiamo che $\delta<1/4$ visto che lo potevamo scegliere piccolo). Questo mostra che
+	\[
+		\norm{Dh-Dg}_{L^{1}}\geq \frac{3}{4}\epsilon\LL(\cup_{j}G_{j})>\frac{\epsilon\LL(C)}{2}>2\mu,
+	\]
+	contraddicendo il fatto che $Dh,Dg\in B_{L^{1}}(Df,\mu)$. Quindi $Df\in\extr_{gr}(K)$ quasi ovunque.
+
+	Per quanto riguarda il punto \textit{1)}, ovvero che $Df(x)\in\extr_{prelam}(K)$ q.o. in $\Omega$, la dimostrazione funziona sostanzialmente allo stesso modo, richiedendo però che l'inclusione \eqref{eq:5} sia vera solo per $t\in \{T_{x}^{-},0,T_{x}^{+}\}$
+	per dei $-T_{x}^{-},T_{x}^{+}\geq \epsilon$ e ricordando di modificare la seconda proprietà che $g$ rispetta: $Dg|_{G_{j}}=A_{j}$ è \textit{un punto} interno ad un segmento di rango $1$ con gli estremi che stanno in $K$.
+	
+	Vediamo ora il punto \textit{2)} che ha bisogno di maggiore attenzione quando si riscalano le funzioni in modo da lasciare inalterato il dato al bordo: come prima supponiamo che $0$ sia il centro dell'insieme $K$ e fissiamo $r_{0}>0$ tale che, detta $A=Dg$, valga $B(A,r_{0})\subset \mathring{K}$. Come prima consideriamo un generico punto di continuità $f$ della mappa gradiente che stavolta è definita su $\overline{\mathscr{P}}^{\infty}=\clos_{\infty}(\mathscr{P}(\Omega,\mathring{K},g))$ e estendiamo $f$ fuori da $\Omega$ in modo che coincida con la mappa affine al bordo (e che rimanga affine fuori da $\Omega$). Per $\alpha,\beta\in(0,1)$ sia $f_{\alpha,\beta}(x)=(1-\beta)(1-\alpha)f(x/(1-\alpha))$. Se $f$ non soddisfa la condizione richiesta (che era $Df(x)\in\extr_{gr}(K)$ q.o.) allora possiamo trovare un compatto di misura positiva $C\subset \Omega$ e $\epsilon >0$ tali che $Df|_{C}$ è continua e $Df(C)\subset K_{2\epsilon}$. Come prima possiamo scegliere $\mu\in(0,\epsilon\LL(C)/5)$ e $\delta>0$ tali che se $g\in\overline{\mathscr{P}}^{\infty}\cap B_{\infty}(f,3\delta)$ allora $\norm{Df-Dg}_{L^{1}}<\mu$. Ora prendiamo $\alpha>0$ tale che $\norm{f_{\alpha,0}-f}_{\infty}<\delta$, ovviamente $f_{\alpha,0}(x)=Ax$ per ogni $x\in\Omega\setminus(1-\alpha)\Omega$.\\
+	Affermiamo che per $\beta>0$ abbastanza piccolo esiste  $\overline{g}_{\beta}:\clos(\Omega\setminus(1-\alpha)\Omega)\to\R^{m}$ $\sigma$-affine a tratti tale che
+	\[
+		\overline{g}_{\beta}|_{\partial(1-\alpha)\Omega}=-\beta A,\qquad \overline{g}_{\beta}|_{\partial\Omega}=0\quad \text{e}\quad D\overline{g}_{\beta}\in B(0,r_{0}/2)\text{ quasi ovunque}\footnote{Si intende quasi ovunque nel dominio di $\overline{g}_{\beta}$.}.
+	\]
+	Per ottenere una tale funzione fissiamo una funzione $\phi\in C^{\infty}(\Omega;\R^{m})$ che valga identicamente $1$ vicino a $(1-\alpha)\Omega$ e che si annulli vicino a $\R^{n}\setminus \Omega$ (vedere Figura \ref{fig:4}), quindi consideriamo la funzione $\hat{g}_{\beta}(x)=-\beta\phi(x)Ax$.
+	\begin{figure}[H]
+		\begin{minipage}[c]{0.6\textwidth}
+			\includegraphics[width=0.8\textwidth]{last.eps}
+		\end{minipage}\hfill
+		\begin{minipage}[c]{0.32\textwidth}
+			\caption{Esempio di insieme stellato $\Omega$ in cui sono evidenziati l'insieme $(1-\alpha)\Omega$ e i sottoinsiemi aperti (in $\Omega$) dove una ipotetica $\phi$ con le proprietà scritte sopra vale $0$ e $1$.}
+			\label{fig:4}
+		\end{minipage}
+	\end{figure}
+	Così abbiamo ottenuto una funzione $C^{\infty}$ che assume i giusti valori al bordo e con differenziale nell'aperto richiesto (supponendo di prendere $\beta$ abbastanza piccolo), per ottenere la $\overline{g}_{\beta}$ richiesta è sufficiente usare una procedura di triangolazione: si tassella il dominio $\Omega$ in simplessi, si valuta la funzione $\hat{g}_{\beta}$ nei vertici di ogni simplesso, e all'interno di ognuno di essi si procede in modo affine. Prendendo la tassellazione abbastanza fine (e sufficientemente vicino al bordo di $\Omega$) è chiaro che si ottengono le proprietà richieste per $\overline{g}_{\beta}$. Quindi, per $\beta>0$ abbastanza piccolo, la funzione
+	\begin{align*}
+		\overline{g}(x)=\begin{cases}
+							f_{\alpha,\beta}(x) & \text{se }x\in(1-\alpha)\Omega\\
+							Ax+\overline{g}_{\beta}(x) & \text{se } x\in\Omega\setminus(1-\alpha)\Omega
+						\end{cases}
+	\end{align*}
+	sta in $\overline{\mathscr{P}}^{\infty}\cap B_{\infty}(f,\delta)$. Ora che siamo in grado di riscalare le funzioni lasciando inalterato il dato al bordo possiamo ripetere lo stesso argomento usato per dimostrare l'inclusione principale (ovvero che $Df\in \extr_{gr}(K)$ per la tipica funzione $f\in\clos_{\infty}(\mathscr{P}(\Omega,\mathring{K}))$) restringendoci al sottodominio $(1-\alpha)\Omega$ osservando che otteniamo la stessa contraddizione di prima poiché l'insieme ``cattivo'' $C$ definito precedentemente ha misura ridotta di un piccolo fattore dipendente da $\alpha$.
+\end{proof}
+
+In un certo senso vediamo che essere punto \textit{non} estremale è simile ad essere instabile: se esistono $M,A,B\in K$ tali che $M=\lambda A+(1-\lambda)B$ (con $\lambda\in(0,1)$) e $\rk(A-B)=1$ allora possiamo cambiare di poco la funzione $g(x)=Mx$ in modo che il suo differenziale stia ancora in $K$ quasi ovunque, esattamente come accadeva con i differenziali di modulo minore di $1$ nel problema modello.\\
+Tuttavia le nozioni di stabilità e estremalità sono di natura diversa: mentre l'estremalità di classe $\extr_{gr}(K)$ è una proprietà locale, l'insieme $\extr_{prelam}(K)$ è definito da delle proprietà globali di $K$, inoltre la definizione di stabilità è addirittura data in termini di entrambi $K$ e $\mathcal{U}$. A seguito di queste osservazioni, e anche del fatto che in letteratura vengono utilizzati anche altri tipi di punti estremali (sostanzialmente legati ad altre nozioni di convessità\footnote{Nei casi che abbiamo studiato in sostanza si usava la convessità di rango $1$, ovvero un insieme $K\subset \M^{m\times n}$ è rango-$1$-convesso se per ogni $A,B\in K$ con $\rk(A-B)=1$ vale che $[A,B]\subset K$.}), si capisce che non c'è una scelta privilegiata dell'una o dell'altra nozione quando si cerca di risolvere un problema, semplicemente si sceglie la più adatta o la più naturale rispetto al problema in esame.
+
+\section{Applicazione degli strumenti di Kirchheim}
+Vediamo ora come applicare le idee generali dell'ultima sezione per risolvere un problema proposto nel libro di Marcellini e Dacorogna \cite{marcellini}. Questo risulta sostanzialmente un corollario della Proposizione \ref{prop:3} una volta che esso è posto in termini di inclusioni differenziali, inoltre riusciamo ad arrivare alla loro stessa conclusione (in realtà siamo anche leggermente più precisi riguardo all'insieme di soluzioni che otteniamo) utilizzando una ipotesi in meno, tale ipotesi non risulta necessaria grazie alla definizione di stabilità.
+
+%Questo è un esempio che mostra la potenza del metodo di Kirchheim: riusciremo a risolverlo con pochissimo sforzo semplicemente vedendolo come un'inclusione differenziale. Oltretutto quello che risolveremo noi sarà una versione più generale di quella che propongono loro e arriveremo anche a dare un risultato più forte poiché loro ottengono solamente un risultato di densità, mentre noi mostreremo che in alcuni casi si potrà dire che l'insieme che considereremo è anche residuale (nello spazio ambiente in cui lavoreremo) oltre che denso.
+
+\begin{defn}
+	Diciamo che $F:\R^{n}\to\R$ è \textit{coerciva nella direzione} $\lambda\in\SP^{n-1}$ se esistono delle costanti $m,q>0$ tali che
+	\[
+		F(x+t\lambda)\geq m|t|-q\qquad \forall\ t\in\R, \forall x\in\R^{n}.
+	\]
+\end{defn}
+Dati $\Omega\subset \R^{n}$ un aperto limitato e $F:\R^{n}\to \R$ una funzione continua e coerciva nella direzione $\lambda\in\SP^{n-1}$, definiamo gli insiemi $\mathcal{U}=F^{-1}((-\infty,0])$ e $K=F^{-1}(0)$. Con queste notazioni vale la seguente proposizione:
+\begin{comment}
+\begin{prop}
+	Sia $\phi:\Omega\to\R$ una funzione affine tale che $F(D\phi)\leq 0$. Allora per ogni funzione $f$ nell'insieme
+	\[
+		S=\Lip(\Omega)\cap \clos_{\infty}(\mathscr{P}(\Omega,\mathcal{U},\phi))
+	\]
+	e per ogni $\epsilon >0$ esiste $g\in\Lip(\Omega)$ tale che $Dg\in K$ quasi ovunque in $\Omega$ e $\norm{f-g}_{\infty}<\epsilon$.
+\end{prop}
+\begin{proof}
+	Senza perdita di generalità possiamo supporre che $\lambda=(1,0,\ldots,0)\in\R^{n}$. L'idea è applicare la Proposizione \ref{prop:3}, ma non la possiamo usare direttamente con gli insiemi $\mathcal{U}$ e $K$ definiti nell'enunciato perché quando abbiamo definito la stabilità vicino ad un certo insieme richiedevamo che $\mathcal{U}$ fosse limitato.\\
+	Osserviamo subito un fatto: se $f\in S$ allora esiste $M>0$ tale che, detto $\hat{\mathcal{U}}=[-M,M]^{n}\cap\mathcal{U}$, accade che $f\in\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$. Infatti sia $\{f_{k}\}\subset\mathscr{P}(\Omega,\mathcal{U},\phi)$ una successione tale che $\norm{f_{k}-f}_{\infty}\to0$, allora $\forall x,y\in\Omega$
+	\[
+		\norm{f_{k}(x)-f_{k}(y)}\leq \norm{f_{k}(x)-f(x)}+\norm{f(x)-f(y)}+\norm{f(y)-f_{k}(y)},
+	\]
+	detta $M=\Lip(f)$, prendiamo $k$ sufficientemente grande affinché $\norm{f_{k}-f}_{\infty}<1/2$, così otteniamo che $\norm{f_{k}(x)-f_{k}(y)}<M+1$, dunque definitivamente $\Lip(f_{k})<M+1$.\\
+	Possiamo quindi troncare $\mathcal{U}$ e $K$ in modo opportuno: prendiamo $M>0$ abbastanza grande affinché accada che $D\phi\in [-M,M]^{n}\cap \mathcal{U}$, $mM-q>0$ ($m$ e $q$ sono quelli della definizione di coercività) e che, con la notazione di prima, $f\in\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$, vedremo poi che questo basterà per il nostro scopo.\\
+	Definiamo quindi $\hat{\mathcal{U}}=[-M,M]^{n}\cap\mathcal{U}$ e $\hat{K}=[-M,M]^{n}\cap K$, per poter applicare la Proposizione \ref{prop:3} ci basta mostrare che i gradienti in $\hat{\mathcal{U}}$ sono stabili solo vicino a $\hat{K}$, ma questo è molto semplice grazie alle costruzioni che abbiamo già: se $A\in\hat{\mathcal{U}}$ è tale che $\dist(A,\hat{K})>\epsilon$ allora necessariamente $A\in\mathring{\mathcal{U}}\cap[-M,M]^{n}$, ma poiché $mM-q>0$ allora esiste un segmento $J=[B,C]\subset \hat{\mathcal{U}}$ di lunghezza $|B-C|=\epsilon$ con centro $A$. Dato che $\hat{\mathcal{U}}\subset\M^{1\times n}$ allora necessariamente $\rk(B-C)=1$, quindi grazie al Lemma \ref{lemma:5} troviamo una funzione $\phi$ adatta (prendendo come dominio un piccolo aperto), come richiesto dalla definizione di stabilità.
+		
+	Possiamo finalmente applicare la Proposizione \ref{prop:3} agli insiemi $\hat{\mathcal{U}}$ e $\hat{K}$, in questo modo otteniamo che la tipica funzione $h$ in $\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$ soddisfa $Dh\in\hat{K}$ q.o. in $\Omega$. Quindi come funzione $g$ basta prendere una funzione tipica in $\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$ che sia abbastanza vicina ad $f$ in norma $\norm{\cdot}_{\infty}$.
+\end{proof}
+\end{comment}
+\begin{prop}
+	Sia $\phi:\Omega\to\R$ una funzione affine tale che $F(D\phi)\leq 0$. Allora esistono $M>0$ abbastanza grande e una opportuna matrice $R\in O(n)$ tali che, detto $Q_{M} = R([-M,M]^{n})$, per ogni $\epsilon>0$ e per ogni $f\in\clos_{\infty}(\mathscr{P}(\Omega,\mathcal{U}\cap Q_{M},\phi))$ esiste $g:\Omega\to\R$ lipschitziana tale che $Dg\in K\cap Q_{M}$ q.o. e $\norm{f-g}_{\infty}<\epsilon$.\\
+	Inoltre la tipica funzione $g\in\clos_{\infty}(\mathscr{P}(\Omega,\mathcal{U}\cap Q_{M},\phi))$ soddisfa $Dg\in K\cap Q_{M}$ q.o. in $\Omega$.
+\end{prop}
+\begin{proof}
+	Prendiamo $R\in O(n)$ e $M>0$ tali che
+	\[
+		R(1,0,\ldots,0)=\lambda,\qquad mM-q>0\qquad\text{e}\qquad D\phi\in R([-M,M]^n),
+	\]
+	dove $m$ e $q$ sono le costanti della definizione di coercività nella direzione $\lambda$.
+	%Come matrice $R\in O(n)$ ne prendiamo una qualsiasi tale che $R(1,0,\ldots,0)=\lambda$, prendiamo poi $M>0$ abbastanza grande affinché $mM-q>0$ ($m$ e $q$ sono le costanti della definizione di coercività in una direzione) e $D\phi\in R([-M,M]^{n})$.
+	Così, detti $Q_{M}=R([-M,M]^{n})$, $\hat{\mathcal{U}}=Q_{M}\cap\mathcal{U}$ e $\hat{K}=Q_{M}\cap K$, riscriviamo l'inclusione come $f\in\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$.\\
+	Vorremmo ora applicare la Proposizione \ref{prop:3}, per poterlo fare ci basta mostrare che i gradienti in $\hat{\mathcal{U}}$ sono stabili solo vicino a $\hat{K}$, ma questo è molto semplice grazie alle costruzioni che abbiamo già: se $A\in\hat{\mathcal{U}}$ è tale che $\dist(A,\hat{K})>\epsilon$ allora necessariamente $A\in Q_{M}\cap\mathring{\mathcal{U}}$, ma poiché $mM-q>0$ allora esistono due matrici $B$ e $C$ tali che $B-C=\alpha\lambda$ per qualche $\alpha\in\R$ e il segmento $[B,C]\subset \hat{\mathcal{U}}$ è di lunghezza $|B-C|=\epsilon$ con centro $A$. Dato che $\hat{\mathcal{U}}\subset\M^{1\times n}$ allora necessariamente $\rk(B-C)=1$, quindi grazie al Lemma \ref{lemma:5} troviamo una funzione $\phi$ adatta (prendendo come dominio un piccolo aperto), come richiesto dalla definizione di stabilità.
+		
+	Possiamo finalmente applicare la Proposizione \ref{prop:3} agli insiemi $\hat{\mathcal{U}}$ e $\hat{K}$, in questo modo otteniamo che la tipica funzione $h$ in $\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$ soddisfa $Dh\in\hat{K}$ q.o. in $\Omega$. Quindi come funzione $g$ basta prendere una funzione tipica in $\clos_{\infty}(\mathscr{P}(\Omega,\hat{\mathcal{U}},\phi))$ che sia abbastanza vicina ad $f$ in norma $\norm{\cdot}_{\infty}$.
+\end{proof}
+
+\begin{oss}
+	Se $\mathcal{U}$ è limitato l'enunciato si semplifica notevolmente: non è necessario troncarlo e quindi non è nemmeno necessaria la matrice $R$. Dunque si ha che la tipica funzione $f\in\clos_{\infty}(\mathscr{P}(\Omega,\mathcal{U},\phi))$ soddisfa $Df\in K$ q.o. in $\Omega$.
+\end{oss}
+\begin{oss}
+	Non era necessario né che l'insieme $\mathcal{U}$ fosse un sottolivello né che $K$ fosse un livello di $F$, era sufficiente prendere $\mathcal{U}$ un chiuso in $\R^{n}$ limitato in una direzione e prendere $K=\partial \mathcal{U}$. Tuttavia per non allontanarci troppo dal problema di Marcellini e Dacorogna lo abbiamo enunciato togliendo solo l'ipotesi aggiuntiva che facevano loro, ovvero che $F$ fosse convessa.
+\end{oss}
+%\cite{conti} \cite{marcellini}\cite{kirchheim}\cite{muller}\cite{cellina}\cite{brezis}
+
+
+\bibliographystyle{abbrv}
+\bibliography{bibliografia}
+\end{document}

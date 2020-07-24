@@ -1,0 +1,41 @@
+\BOOKMARK [0][-]{chapter.1}{Prime definizioni}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Entropia per variabili aleatorie discrete}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Processi Stocastici e Tasso di Entropia}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Propriet\340 di Equipartizione Asintotica \(AEP\)}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Corse dei Cavalli e Kelly Gambling}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Corse dipendenti e Tasso di Entropia}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{Variabili aleatorie continue}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Il Mercato Azionario}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Definizioni}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Condizioni di Kuhn-Tucker}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Mercati stazionari, AEP e AOP}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.3.1}{Risultati su portafogli ottimali e generalit\340}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.2}{Principio di Ottimalit\340 Asintotica}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.3}{Propriet\340 di Equipartizione Asintotica}{section.2.3}% 14
+\BOOKMARK [0][-]{chapter.3}{Portafogli Universali di Cover}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Portafogli universali a orizzonte finito}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{Portafoglio Universale a orizzonte infinito}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{Algoritmi di Predizione Universali}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Raggiungimento del tasso di raddoppio ottimale}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{Metodo delle Frequenze Empiriche}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{Algoritmo di Lempel-Ziv}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.4}{Codici e Scommesse}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.4.1}{I codici}{section.4.4}% 23
+\BOOKMARK [2][-]{subsection.4.4.2}{Dualit\340 Codici-Scommesse}{section.4.4}% 24
+\BOOKMARK [0][-]{chapter.5}{Sperimentazioni}{}% 25
+\BOOKMARK [1][-]{section.5.1}{Metodi di scelta dei portafogli}{chapter.5}% 26
+\BOOKMARK [2][-]{subsection.5.1.1}{Primo ordine}{section.5.1}% 27
+\BOOKMARK [2][-]{subsection.5.1.2}{Secondo Ordine}{section.5.1}% 28
+\BOOKMARK [1][-]{section.5.2}{Metodi e risultati sperimentali}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.2.1}{Quantit\340 di analisi}{section.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.2.2}{Metodo empirico sui rendimenti}{section.5.2}% 31
+\BOOKMARK [2][-]{subsection.5.2.3}{Metodo empirico sui rapporti rendimento-incertezza}{section.5.2}% 32
+\BOOKMARK [2][-]{subsection.5.2.4}{Metodo ad albero \(Lempel-Ziv\)}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.5}{Metodo del portafoglio universale di Cover}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.6}{Metodo Nearest-Neighbour}{section.5.2}% 35
+\BOOKMARK [0][-]{appendix.Alph1}{Definizioni}{}% 36
+\BOOKMARK [1][-]{section.Alph1.1}{Speranza condizionale e distribuzioni condizionate}{appendix.Alph1}% 37
+\BOOKMARK [1][-]{section.Alph1.2}{Martingale}{appendix.Alph1}% 38
+\BOOKMARK [1][-]{section.Alph1.3}{Sistemi dinamici misurabili}{appendix.Alph1}% 39
+\BOOKMARK [0][-]{appendix.Alph2}{Codici}{}% 40
+\BOOKMARK [1][-]{section.Alph2.1}{Metodo delle frequenze empiriche}{appendix.Alph2}% 41

@@ -1,0 +1,1221 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+\usetheme{Warsaw}
+%\beamertemplatenavigationsymbolsempty
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{cite}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathrsfs,mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{hyperref} % References become hyperlinks.
+\hypersetup{
+	%colorlinks = true,
+	linkcolor = {blue},
+	urlcolor = {red},
+	citecolor = {blue},
+	%pdfenconing=auto,
+}
+\usepackage{wrapfig}
+\usepackage{arydshln}
+\usepackage{array}
+\usepackage[T1]{fontenc} 
+\usepackage{bm}
+\usepackage{multicol, multirow}
+\usepackage{grffile,pgf,tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric,calc,arrows}
+
+%\usepackage{unicode-math}
+%\setmathfont{XITS Math}
+%\setmathfont[version=setB,StylisticSet=1]{XITS Math}
+
+
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+%\newtheorem{lemma}[teo]{Lemma}
+\newtheorem{prop}[teo]{Proposizione}
+\newtheorem{post}{Postulato}
+\newtheorem{cor}[teo]{Corollario}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}
+\newtheorem{exmp}[defn]{Esempio}
+\newtheorem{oss}[defn]{Osservazione}
+\newtheorem{prob}{Problema}
+\newtheorem*{prob*}{Problema}
+\newtheorem{hint}{Indizio}
+\newtheorem*{notaz}{Notazione}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\scal}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\eval}[3]{\Big[ #1 \Big]_{#2}^{#3}}
+%\newcommand{\sob}[3]{W^{#1, #2}(#3)}
+%\newcommand{\sobzero}[3]{W_{0}^{#1, #2}(#3)}
+%\newcommand{\sobloc}[3]{W_{\text{loc}}^{#1, #2}(#3)}
+\newcommand{\weakconv}{\rightharpoonup}
+\newcommand{\weakconvs}{\overset{\ast}{\rightharpoonup}}
+
+
+
+\newcommand{\dx}{\text{d}x}
+\newcommand{\dt}{\text{d}t}
+\newcommand{\dy}{\text{d}y}
+\newcommand{\diff}{\text{d}}
+\newcommand{\dX}{\text{d}\bm{x}}
+\newcommand{\dFX}{\text{d}F(\bm{x})}
+\newcommand{\dfX}{\text{d}f(\bm{x})}
+\newcommand{\dFx}{\text{d}F(x)}
+\newcommand{\dfx}{\text{d}f(x)}
+\newcommand{\X}{\bm{X}}
+\newcommand{\x}{\bm{x}}
+\newcommand{\B}{\bm{b}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Pro}{\mathbf{P}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\bh}{\hat{\bm{b}}}
+\newcommand{\Sh}{\hat{S}}
+\newcommand{\dmu}{\text{d}\mu(\B)}
+\newcommand{\Ph}{\hat{\mathbf{P}}}
+
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\dive}{div}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\extr}{extr}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\baric}{bar}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\grad}{\nabla}
+\newcommand{\perim}{\mathcal{P}}%%%%%%%%%%%%%%%
+%%ATTENZIONE: HO TOLTO LE PARENTESI, ORA \perim METTE SOLO LA P
+\newcommand{\symmdiff}{\Delta}
+\newcommand{\bdry}{\partial}
+\newcommand{\clos}[1]{\overline{#1}}
+\newcommand{\lebesgue}{\ensuremath{\mathscr{L}}}
+
+
+%definizioni che servono solo per la tesi magistrale
+\newcommand{\FF}{\mathcal{F}}	%funzionale completo dell'energia
+\newcommand{\FFF}{\widetilde{\mathcal{F}}} %funzionale dell'energia sui sottoinsiemi disgiunti
+\newcommand{\GG}{\mathcal{G}}	%funzionale con potenza positiva al posto del perimetro
+\newcommand{\RR}{\mathcal{R}}	%funzionale di Riesz
+\newcommand{\riesz}[1]{\iint_{#1 \times #1}\frac{1}{|x-y|^{N-\alpha}}\dx\dy}
+\newcommand{\genriesz}[2]{\iint_{#1 \times #1}#2(|x-y|)\dx\dy}
+
+
+
+%debug
+\newcommand{\avviso}[1]{{\textcolor{red}{\textbf{#1}}}}
+
+
+\newcommand\restr[2]{\ensuremath{\left.#1\right|_{#2}}}
+
+
+\newcommand{\boh}{\textcolor{red}{\Huge\textbf{???}}}
+\newcommand{\attenzione}{\textcolor{red}{\Huge\textbf{!!!}}}
+\newcommand{\vitali}{\textcolor{red}{\Huge\textbf{Vitali}}}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Teoria dell'Informazione e Portafogli Universali]{Teoria dell'Informazione e Portafogli Universali} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author[Alessandro Trenta]{\emph{Alessandro Trenta}\\Relatore: \emph{Stefano Marmi}} % Your name
+\institute[SNS] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{Scuola Normale Superiore \\ % Your institution for the title page
+% Your email address
+}
+\date{} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cenni storici}
+	\begin{itemize}
+		\item Shannon, "A Mathematical Theory of Communication", 1948. Articolo rivoluzionario sulla teoria dell'informazione.
+		\item Anni 50-60, applicazione di questi nuovi concetti al mercato (ad esempio Kelly) 
+		\item Algoet, Cover, "AOP e AEP for log-optimum investments", 1988. 
+		\item Anni 90, Portafoglio universale di Cover.
+		\item Algoet, "Universal Schemes for prediction, gambling and portfolio selection", 1992.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Sistemi ergodici}
+	\begin{block}{Definizione}
+		Un sistema dinamico misurabile è una quadrupla $(\Omega,\F,\Pro,T)$ dove:\begin{itemize}
+			\item $\Omega$ è un insieme.
+			\item $\F$ è una $\sigma$-algebra su $\Omega$.
+			\item $\Pro:\F\rightarrow[0,1]$ è una misura di probabilità.
+			\item $T:\Omega\rightarrow \Omega$ è una trasformazione misurabile che preserva la misura, cioè $\forall A\in \F$ $ \Pro(T^{-1}(A))=\Pro(A)$
+		\end{itemize}
+	\end{block}
+	\begin{block}{Definizione}
+		Un sistema dinamico misurabile è detto ergodico se per ogni $A\in \F$
+		\begin{equation*}
+		\lim\limits_{n\to\infty}\frac{1}{n}\sum_{0\leq t <n}\chi_A\circ T^t= \Pro(A)\;\;\;\; \text{q.c.}
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Teorema ergodico generalizzato di Breiman}
+	\begin{block}{Teorema}
+		Sia $\{g_t\}$ una successione di variabili aleatorie reali definite su uno spazio di probabilità $(\Omega, \F,\Pro)$ e sia $T$ una trasformazione ergodica sullo stesso spazio. Se $g_t\rightarrow g$ q.c. e $\{g_t\}$ è dominata in $L^1$, cioè $\E[\sup_t|g_t|]<\infty$, allora
+		\begin{equation}\label{teo:erg1}
+		\frac{1}{n}\sum_{0\leq t <n}{g_t(T^t(\omega))}\rightarrow \E[g]\;\;\;\;\; \text{q.c.}
+		\end{equation}
+		Inoltre, se $\E[\inf_tg_t]>-\infty$, allora
+		\begin{equation}\label{teo:erg2}
+		\liminf_{n\to\infty}\frac{1}{n}\sum_{0\leq t <n}{g_t(T^t(\omega))}\geq \E[\liminf_{t\to\infty}g_t]
+		\end{equation}
+	\end{block}
+\end{frame}
+
+\section{Il mercato azionario}
+
+\begin{frame}{Il mercato azionario}
+	Il mercato azionario viene modellizzato come:
+	\begin{itemize}
+		\item $m$ titoli azionari.
+		\item $\bm{X}=(X_1,X_2, \ldots, X_m)$, $X_i\geq 0, \forall i$ vettore dei rendimenti: $X_i$ è il rapporto tra i prezzi di chiusura dell'$i$-esimo titolo tra due periodi di investimento.
+		\item $F(\x), f(\x)$: funzione di ripartizione e densità della distribuzione di $\X$
+	\end{itemize}
+	Consideriamo quindi un processo stocastico $\{\X_t\}_{t\in \N,\Z}$ in cui $\X_t$ è il vettore dei rendimenti al periodo $t$.
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Problema}
+		Vogliamo trovare il miglior portafoglio $\bm{b}_t\in \mathcal{B}=\{\bm{b}:b_i\geq 0, \sum_i{b_i}=1\},\forall t\in \N$, ossia il miglior modo di suddividere il capitale ad ogni periodo di investimento per massimizzare il valore atteso del capitale futuro.
+	\end{block}
+	Il fattore con cui il capitale aumenta al periodo $t$ è dato da $\B^T_t\X_t$, il capitale dopo $n$ periodi con $S_0=1$ è $S_n=\prod_{t=1}^{n}{\B_t^T\X_t}$.
+\end{frame}
+
+\begin{frame}{Tasso di raddoppio ottimale}
+	\begin{block}{Definizione}
+		Il tasso di raddoppio associato a un portafoglio $\bm{b}$ e a una distribuzione $F(\bm{x})$ è definito come
+		\begin{equation*}
+		W(\bm{b},F) = \int_{\R^m}{\log(\bm{b}^T\bm{X})\dFX}
+		\end{equation*}
+		Il tasso di raddoppio log-ottimale per una distribuzione di probabilità $F(\bm{x})$ è definito come $
+		W^*(F) = \sup\limits_{\bm{b}}W(\bm{b},F)$.\newline
+		Un portafoglio che raggiunge l'estremo superiore è detto portafoglio log-ottimale e si indica con $\bm{b}^*$.
+	\end{block}
+\end{frame}
+
+\begin{frame}[label=KT]
+	\frametitle{Proprietà}
+	\begin{itemize}
+		\item $W(\B,F)$ è concavo in $\B$ e lineare in $F$, $W^*(F)$ è convesso in $F$.
+		\item L'insieme dei portafogli log-ottimali rispetto a una data distribuzione $F$ è convesso.
+	\end{itemize}
+	\begin{block}{Condizioni di Kuhn-Tucker}
+		Il portafoglio log-ottimale $\B^*$ per il mercato azionario $\X$ con distribuzione $F$ soddisfa le seguenti condizioni necessarie e sufficienti:
+		\begin{equation*}
+		\begin{split}
+		\mathbf{E}\left[\frac{X_i}{\B^{*T}\X}\right] & = 1 \;\;\;\;\; \text{se } b_i^*>0\\
+		& \leq 1 \;\;\;\;\; \text{se } b_i^*=0
+		\end{split}
+		\end{equation*}
+	\end{block}
+	\hyperlink{KTdim}{\beamergotobutton{Dimostrazione}}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Mercati Stazionari}
+	 $\{\X_t\}_{-\infty<t<\infty}$, $t\in \Z$ processo stocastico stazionario che rappresenta i rendimenti azionari degli $m$ asset.\newline
+	 Ci occupiamo a questo punto di portafogli ottimali che si basino solo sulle informazioni passate disponibili ad un certo periodo. Queste sono rappresentate da una filtrazione $\F_t$ data da $\sigma(\X_0,\ldots,\X_{t-1})= \F_t$. Ad ogni passo cerchiamo un portafoglio $\B_t^*=\B^*(\X_0,\ldots,\X_{t-1})$ che sia $\F_t$-misurabile e che massimizzi la speranza condizionale del miglior tasso di raddoppio rispetto alle informazioni in $\mathcal{F}_t$, che indichiamo come
+	 	\begin{equation*}
+	 	w_t^*=\E[\log(\B_t^{*T}\X_t)|\F_t] = \sup\limits_{\bm{b}=\B(\X_0,\ldots, \X_{t-1})}\E[\log(\B^T\X_t)|\F_t]	 	
+	 	\end{equation*}
+\end{frame}
+
+
+\begin{frame}
+	Per le proprietà della speranza condizionale il suo valore atteso è esattamente il tasso di raddoppio log-ottimale per il periodo di investimento $n$ tra tutti i portafogli basati unicamente sul passato		\begin{equation*}\label{def:tasso-cond}
+		W^*_n=\E[w_n^*] = \E[\log(\B_n^{*T}\X_n)] = \sup\limits_{\bm{b}=\B(\X_0,\ldots, \X_{n-1})}\E[\log(\B^T\X_n)]
+	\end{equation*}
+	Lo indichiamo anche come $W^*(\X_n|\X_0,\ldots,\X_{n-1})$.\newline
+	Cumulativamente, possiamo introdurre il tasso di raddoppio log-ottimale cumulato
+	\begin{equation}\label{def:tasso-cum}
+		W^*(\X_0,\X_1,\ldots,\X_{n-1}) = \sup\limits_{\B_0,\ldots, \B_{n-1}}\E[\log(S_n)]
+		\end{equation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Chain-Rule e Tasso di raddoppio asintotico}
+	Vale la chain-rule $W^*(\X_0,\X_1,\ldots,\X_{n-1})=\sum_{t = 0}^{n-1}{W^*_t}$.\newline
+	Per processi stocastici, dove esiste il limite, possiamo definire il tasso di raddoppio asintotico come		\begin{equation*}
+		W^*_\infty=\lim\limits_{n\to \infty}\frac{W^*(\X_0,\X_1,\ldots,\X_{n-1})}{n}
+		\end{equation*}
+	\begin{block}{Lemma}
+		Per un mercato stazionario, il tasso di raddoppio asintotico esiste ed è uguale a 
+		\begin{equation*}
+		W^*_\infty=\lim\limits_{n\to\infty}W^*(\X_n|\X_{n-1},\ldots,\X_0)
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Principio di Ottimalità Asintotica}
+	Il prossimo enunciato mostra come una strategia su un processo stazionario che sia log-ottimale ad ogni passo rispetto alle informazioni disponibili in quel periodo di investimento è migliore di tutte le altre strategie che si basano sulle stesse informazioni.\newline
+	Sia  $\Pro_t$ una distribuzione di probabilità regolare di $\X_t$ condizionata a $\F_t$ e sia quindi $\B^*_t = \B^*(\Pro_t)$ un portafoglio $\F_t$ misurabile che massimizza il ritorno log-ottimale condizionato $w_t^*$, il cui valore atteso è il tasso di raddoppio ottimale $W_t^*$.
+\end{frame}
+
+\begin{frame}
+		\begin{block}{Teorema (AOP)}
+		Siano i capitali accumulati dopo $n$ giorni ottenuti applicando il portafoglio $\B_t^*$ e un qualsiasi altro $\B_t$ rispettivamente
+		\begin{equation*}
+		S_n^*=\prod_{0\leq t <n}{\B_t^{*T}\X} \;\;\;\;\; \text{e} \;\;\;\;\; S_n=\prod_{0\leq t <n}{\B_t^T\X}
+		\end{equation*}
+		Allora $\left\{\frac{S_n}{S^*_n}, \F_n\right\}_{0\leq n <\infty}$ è una supermartingala non negativa convergente quasi certamente a una variabile aleatoria $Y$ con $\E[Y]\leq 1$. Inoltre $\E\left[\frac{S_n}{S_n^*}\right]\leq 1$ per ogni $n$ e
+		\begin{equation*}
+		\limsup\limits_{n\to\infty}\frac{1}{n}\log\left(\frac{S_n}{S_n^*}\right)\leq 0 \;\;\;\;\;\; \text{quasi certamente}
+		\end{equation*}
+	\end{block}
+\hyperlink{postAOP}{\beamerskipbutton{Salta}}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Dimostrazione: parte 1}
+	\begin{itemize}
+		\item Inizialmente $\frac{S_0}{S_0^*}=1$. Il rapporto $\frac{S_n}{S_n^*}=\prod_{0\leq i <n}{\frac{\B_t^T\X}{\B_t^{*T}\X}}$ è $\F_n$-misurabile e siccome $\B_n^*$ è log-ottimale condizionato a $\F_n$ possiamo scrivere la condizione di Kuhn-Tucker
+		\begin{equation}
+		\E\left[\left.\frac{\B_n^T\X}{\B_n^{*T}\X}\right| \F_n\right]\leq 1
+		\end{equation}
+		\item Si ottiene subito che
+		\begin{equation*}
+		\E\left[\left.\frac{S_{n+1}}{S^*_{n+1}}\right| \F_n\right]=\E\left[\left.\frac{S_n}{S_n^*}\frac{\B_n^T\X}{\B_n^{*T}\X}\right| \F_n\right] = \frac{S_n}{S_n^*}\E\left[\left.\frac{\B_n^T\X}{\B_n^{*T}\X}\right| \F_n\right]\leq \frac{S_n}{S_n^*}
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: parte 2}
+	\begin{itemize}
+		\item Il primo punto segue dal teorema di convergenza di Lévy per martingale e dal lemma di Fatou.
+		\item Dalla disuguaglianza di Markov
+		\begin{equation*}
+		\Pro\left\{\frac{S_n}{S_n^*}\geq r_n\right\} \leq \frac{1}{r_n}\E\left[\frac{S_n}{S_n^*}\right]\leq \frac{1}{r_n}
+		\end{equation*}
+		\item Scegliendo $r_n$ in modo che $\sum_n \frac{1}{r_n}<\infty$ e usando il lemma di Borel-Cantelli otteniamo che
+		\begin{equation*}
+		\limsup\limits_{n\to\infty}\frac{1}{n}\log\left(\frac{S_n}{S_n^*}\right)\leq 0 \;\;\;\;\;\; \text{quasi certamente}
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[label=postAOP]
+	\frametitle{Processi Ergodici e Stazionari}
+	Sia $\X(\omega)\in \R_+^m$ un vettore di rendimenti e sia $T$ una trasformazione invertibile e metricamente transitiva che preserva la misura. Sia quindi $\X_t(\omega) = \X(T^t(\omega))$ e consideriamo il processo su $\Z$.\newline
+	Il fatto che il processo è stazionario ci permette di traslare temporalmente la successione e i portafogli: se $\B_t^*$ è un portafoglio log-ottimale per il $t$-esimo periodo basato sul $t$-passato $\F_t=\sigma(\X_0,\ldots,\X_{t-1})$ e $\bar{\B}_t^*$ l'analogo per il giorno $0$ con $t$-passato $\bar{\F}_t=T^t\F= \sigma(\X_{-1},\ldots,\X_{-t})$, otteniamo che
+	\begin{equation*}
+	\bar{W}_t^{*}=W^*(\X_0|\X_{-1},\ldots, \X_{-t}) = W^*_t = W^*(\X_t|\X_{t-1},\ldots, \X_1)
+	\end{equation*} 
+\end{frame}
+\begin{frame}
+	Se $\bar{\B}_{\infty}^*$ è il portafoglio log-ottimale per il periodo zero, basandoci sulle informazioni della $\sigma$ algebra terminale $\bar{\F}_\infty=\sigma(\X_{-1},\X_{-2},\ldots,)$, allora $W^*_t=\bar{W}_t^*$ è debolmente crescente con limite $\bar{W}_\infty^*=\E[\log(\bar{\B}_\infty^{*T}\X_0)]$, che è il tasso di raddoppio ottimale dato il passato infinito $\bar{W}_\infty^{*}=W^*(\X_0|\X_{-1},\X_{-2},\ldots)$.
+	\newline
+	Quello che vogliamo fare è quindi di utilizzare il fatto che per un processo ergodico le osservazioni sul passato ci indicano l'andamento futuro del processo. Mostriamo quindi che una strategia costituita da portafogli log-ottimali date le informazioni disponibili in quel periodo asintoticamente è equivalente a una strategia che sfrutti una conoscenza totale del processo.
+\end{frame}
+\begin{frame}
+	\begin{block}{Teorema (AEP)}
+		Se la successione dei vettori dei rendimenti degli asset $\{\X_t\}$ è un processo ergodico e stazionario, il capitale cresce in modo esponenziale q.c. con tasso di raddoppio asintotico costante e pari al massimo ritorno log-ottimale atteso dato il passato infinito. In formule 
+		\begin{equation*}
+		\frac{1}{n}\log(S_n^*)\rightarrow \bar{W}_\infty^*=W^*(\X_0|\X_{-1},\X_{-2},\ldots) \;\;\;\;\; \text{q.c.}
+		\end{equation*}
+		dove
+		\begin{equation*}
+		\begin{split}
+		W^*(\X_0|\X_{-1},\X_{-2},\ldots) & = \lim\limits_{t\to\infty}\uparrow W^*(\X_0|\X_{-1},\ldots,\X_{-t})\\
+		& = \lim\limits_{t\to\infty}\uparrow W^*(\X_t|\X_{t-1},\ldots,\X_{0})\\
+		& = \lim\limits_{n\to\infty}\uparrow \frac{1}{n}W^*(\X_0,\ldots,\X_{n-1})
+		\end{split}
+		\end{equation*}
+	\end{block}
+\hyperlink{postAEP}{\beamerskipbutton{Salta}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: parte 1}
+	\begin{itemize}
+	\item La $\sigma$-algebra di informazione $\F_t=\sigma(\X_0,\ldots, \X_{t-1})$ è approssimata dall'alto da $\F_t^{(\infty)}$ e dal basso da $\F_t^{(k)}$, definiti come
+	\begin{equation*}
+	\F_t^{(k)} = T^{-t}\bar{\F}_{t\wedge k} = \begin{cases}
+	\sigma(\X_0, \ldots, \X_{t-1}), \;\;\;\;\; \text{se } 0\leq t <k\\
+	\sigma(\X_{t-k},\ldots, \X_{t-1}), \;\; \text{se } k\leq t<\infty
+	\end{cases}
+	\end{equation*}
+	\begin{equation*}
+	\F_t^{(\infty)}=T^{-t}\bar{\F}_{\infty}=\sigma(\ldots, \X_{-1},\X_0,\ldots, \X_{t-1})
+	\end{equation*}
+	\item Siano $\B_t^{(k)}$ e $\B_t^{(\infty)}$ i corrispondenti portafogli log-ottimali e i rispettivi capitali dopo $n$ periodi
+	\begin{equation*}
+	S_n^{(k)} = \prod_{0\leq t <n}{\B_t^{(k)T}\X_t} \;\;\;\;\; \text{ e } \;\;\;\;\; S_n^{(\infty)}=\prod_{0\leq t <n}{\B_t^{(\infty)T}\X_t}
+	\end{equation*}
+\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Dimostrazione: parte 2}
+	\begin{itemize}
+	\item $\frac{1}{n}\log\left(S_n^{(k)}\right)=\frac{1}{n}\log (S_k^*)+\frac{1}{n}\sum_{k\leq t <n}{\log(\B_t^{(k)T}\X_t)}$ e dal teorema ergodico (con $g_t=\log \B^{(k)T}_t \X_t$) segue che
+	\begin{equation*}
+	\frac{1}{n}\log S_n^{(k)} \rightarrow W^*_k=\E[\log(\B_k^{*T}\X_k)] \;\;\;\; \text{q.c.}
+	\end{equation*}
+	\item Analogamente segue che
+	\begin{equation*}
+	\frac{1}{n}\log\left(S_n^{(\infty)}\right)=\frac{1}{n}\sum_{0\leq t <n}{\log(\B_t^{(\infty)T}\X_t)}\rightarrow \bar{W}^*_\infty\;\;\;\;\text{q.c.}
+	\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: parte 3}
+	\begin{itemize}
+		\item 	$\F_t^{(k)}\subseteq \F_t$ e quindi $\B_t^{(k)}$ è $\F_t$-misurabile, così come $\F_t\subseteq \F_t^{(\infty)}$ e $\B_t^*$ è $\F_t^{(\infty)}$-misurabile.
+		\item Dall'AOP segue che $\limsup\frac{1}{n}\log\left(\frac{S_n^{(k)}}{S_n^*}\right)\leq 0$ e $ \limsup\frac{1}{n}\log\left(\frac{S_n^*}{S_n^{(\infty)}}\right)\leq 0 \;\;\; \text{q.c.}$
+		\item otteniamo la catena di disuguaglianze
+		\begin{align*}
+		W_k^*=\lim\limits_{n\to\infty}\frac{1}{n}\log(S_n^{(k)})  \leq \liminf\limits_{n\to\infty}\frac{1}{n}\log(S_n^*)\\
+	 	\leq \limsup\limits_{n\to\infty}\frac{1}{n}\log(S_n^*)\leq \lim\limits_{n\to \infty}\frac{1}{n}\log(S_n^{(\infty)})=\bar{W}^*_\infty\;\;\;\; \text{q.c.}
+		\end{align*}
+		e la tesi segue dal fatto che $W^*_k = \bar{W}_k^*\uparrow \bar{W}_\infty^*$ per $k \to \infty$. 
+	\end{itemize}
+\end{frame}
+
+\section{Portafogli Universali e Stime di probabilità}
+\begin{frame}[label=postAEP]
+\frametitle{Portafogli universali e stime di probabilità}
+A questo punto mostriamo alcuni approcci pratici per trovare strategie che asintoticamente hanno un tasso di raddoppio log-ottimale pari a $W^*_\infty$. Per farlo sono necessari due passaggi.
+\begin{block}{Problema}
+	\begin{itemize}
+		\item Trovare metodi di stima della distribuzione di probabilità per un processo stocastico e ergodico $\X_t$ che modellizza il mercato che convergano a quella effettiva.
+		\item Trovare il portafoglio log-ottimale per queste distribuzioni.
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Portafogli: approssimazioni}
+Per trovare il portafoglio log-ottimale data una distribuzione si possono usare le seguenti strategie:
+\begin{itemize}
+\item Approssimazione al primo ordine: consiste nell'investire tutto sul titolo con valore atteso maggiore poiché al primo ordine è la strategia migliore. Non tiene conto delle incertezze ed è quindi rischioso.
+\item Approssimazione al secondo ordine (criterio di Kelly): è ampiamente descritto in \cite{ThorpKelly} e tiene conto delle incertezze e covarianze.
+\item Metodi ad hoc: ad esempio il Nearest Neighbour in \cite{NN}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stime di Probabilità}
+Il teorema generalizzato di Breiman ci permette di dimostrare il seguente enunciato che si trova in \cite{algoet1992}
+\begin{block}{Teorema}
+Sia $\X_t$ un processo ergodico e stazionario, siano quindi $\B^*_t$ e $\bh_t^*$ i portafogli log-ottimali rispetto alla vera distribuzione condizionata fino al tempo $t$ $\Pro(\dX_t|\X^t)$ e da una stima $\Ph(\dX_t|\X^t)$ tale che (grazie all'invarianza per traslazione temporale)
+\begin{equation*}
+\Ph(\dX_0|\X^{-t})\rightarrow \Pro(\dX_0|\X^{-}) \;\;\;\;\; \text{debolmente q.c.}
+\end{equation*}
+Se il mercato è sicuro, ossia se $\E[\log(X_{t,j})]>-\infty$ $\forall t,1\leq j\leq m$, allora
+\begin{equation*}
+\frac{1}{n}\log\Sh^*_n\rightarrow W(\X|\X^{-})=\lim\limits_{n\to\infty}\frac{1}{n}\log S^*_n
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+Con qualche accorgimento l'ipotesi di mercato sicuro può essere tolta. Si considerano portafogli log-ottimali leggermente spostati nel simplesso in modo che investano frazioni non nulle su ogni titolo. Se questo spostamento tende a $0$, si ottiene il medesimo risultato al limite.\newline
+Vediamo ora alcuni metodi possibili per trovare queste stime di probabilità consistenti. Utilizzando il teorema ergodico di Breiman si può dimostrare che queste convergono alle distribuzioni effettive.
+\end{frame}
+
+\begin{frame}
+\frametitle{L'importanza dei codici}
+\begin{itemize}
+\item Lo stretto legame tra teoria dell'informazione e il mondo della finanza e delle scommesse risulta evidente confrontando i concetti di entropia (o tasso di entropia) e tasso di raddoppio.
+\item L'entropia di Shannon ($H(X)=-\sum_{x\in\mathcal{X}}p(x)\log p(x)$) è intuitivamente la quantità di informazione media fornita da un'osservazione della variabile aleatoria $X$.
+\item La proprietà di equipartizione asintotica per le codifiche \cite{CTElInfTeo} garantisce che per abbastanza osservazioni di un processo stocastico, quasi tutte le stringhe di valori appartengono a un insieme detto insieme tipico.
+\item Una conseguenza di questo fatto è la possibilità di avere compressione di dati. A lungo andare le stringhe sono prevedibili e appartengono a questo insieme limitato. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=Codici]
+\frametitle{L'importanza dei codici}
+\begin{itemize}
+\item Le codifiche e gli algoritmi di compressione sono ottimi metodi per ottenere stime di probabilità e sono concetti estremamente collegati agli investimenti e al gambling.
+\item Consideriamo ad esempio il caso particolare del gambling sulle corse di cavalli: abbiamo $m$ cavalli e ad ogni turno dividiamo il capitale scommettendolo su di essi. In questo caso le variabili aleatorie sono discrete, possiamo utilizzare molti dei concetti visti per il mercato adattandoli a questo.
+\item Grazie all'AEP, i processi $X_t$ che indicano il cavallo vincente al tempo $t$ saranno codificabili e comprimibili con rapporto di compressione ottimale $H(\mathcal{X})$. Più il tasso di entropia è basso, più ho prevedibilità e maggiore è la mia possibilità di guadagno.
+\item Vale la legge di conservazione:
+$W^*_\infty +H(\mathcal{X})=\log m$.
+\hyperlink{InfTeo}{\beamergotobutton{Dettagli}}
+
+\end{itemize}
+
+
+\end{frame}
+\begin{frame}
+\frametitle{Metodo delle frequenze Empiriche}
+\begin{itemize}
+\item Approssimazione del processo a una $k$-catena di Markov.
+\item Si costruiscono degli stati basati sui rendimenti, la probabilità di finire uno stato dato i $k$ precedenti viene costruito sulla base delle frequenze empiriche osservate, aggiungendo un peso a priori dato a tutte le transizioni.
+\item Se indichiamo questi stati con dei simboli, i $k$ stati passati con $J^{-k}$ e il successivo con $j$ scriviamo
+\begin{equation*}
+\Ph_t(j|J^{-k})=\frac{1+c_t(j|J^{-k})}{m+c_t(J^{-k})}
+\end{equation*}
+dove $c_t(j|J^{-k})$ è il numero di occorrenze fino al tempo $t$ della transizione allo stato $j$ a partire dal contesto $J^{-k}$ e $c_t(J^{-k})$ sono le occorrenze del contesto $J^{-k}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algoritmo di Lempel-Ziv}
+\begin{itemize}
+\item Algoritmo di compressione descritto in \cite{LZ78}. Comprime in modo ottimale una sorgente di dati, ossia con rapporto di compressione pari all'entropia della distribuzione dei caratteri.
+\item La successione viene suddivisa in frasi inserendo virgole tra i simboli, in modo che ogni frase consiste di una stringa di lunghezza massima possibile che è già comparsa in una frase precedente seguita da un simbolo "nuovo" e un'altra virgola.
+\item Questo algoritmo si presta a essere realizzato con una struttura ad albero incrementale.
+\item Esempio: $0101000100$ che ha lunghezza $n=10$ genera $,0,1,01,00,010,0$ e contiene $\nu_n=5$ frasi complete.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Ogni nodo ha come figli possibili gli $m$ stati o simboli di un alfabeto. Inizialmente consiste di un solo nodo, la radice.
+\item La ricerca di una nuova frase inizia dalla radice: ci muoviamo all'interno dell'albero leggendo i simboli dati dalla sorgente.
+\item Quando ci muoviamo in una direzione mai visitata prima, aggiungiamo il nodo e ricominciamo dalla radice.
+\item Sia $T_n$ l'albero al passo $n$ e sia $\bar{T}_n$ l'albero completato aggiungendo i nodi mai visitati adiacenti a quelli di $T_n$.
+\item Sia $z_t = f(j^t)$ il nodo di $T_t$ dove l'algoritmo di ricerca è arrivato dopo aver letto $(j_0,\ldots,j_{t-1})$ e prima di leggere $j_t$. Definiamo quindi 
+\begin{align*}
+c_n(j|z)=\#\{t:0\leq t<n, (j_t,z_t)=(j,z)\}\\
+c_n(z)=\sum_{1\leq j\leq m}{c_n(j|z)}=\#\{t:0\leq t<n,z_t=z\}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item $c_n(j|z)$ è  il numero di passaggi durante tutte le ricerche dal nodo $z$ al figlio $j$ e $c_n(z)$ è il numero di volte in cui siamo passati per il nodo $z$.
+\item $1+c_n(z)$ è il numero di nodi nel sotto-albero radicato in $z$, a meno che $z$ sia un predecessore di $z_n$, l'ultimo nodo visitato, nel qual caso $c_n(z)$ è il numero di nodi nel sotto-albero.
+\item Contando anche le foglie dell'albero completato $\bar{T}_n$, definiamo 
+\begin{align*}
+\gamma_n(z_n) = 1+(m-1)(c_n(z_n)+1)\\
+\gamma_n(j|z_n) = 1+(m-1)(c_n(j|z_n)+1)\\
+\Ph(j|j^n) = \frac{\gamma_n(j|z_n)}{\gamma_n(z_n)}=\frac{m+(m-1)c_n(j|z_n)}{m+(m-1)c_n(z_n)}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Metodi ad Hoc: Rapporti rendimento-incertezza}
+\begin{itemize}
+\item Per ogni periodo di investimento $t$, guardiamo gli ultimi $\tau$ vettori di log-rendimento $\log(\X_{t-\tau}),\ldots, \log(\X_{t-1})$ e calcoliamo media e deviazione standard empirica, rispettivamente $\hat{\bm{\mu}}$ e $\hat{\bm{\sigma}}$.
+\item Calcoliamo $\frac{\log (X_{t-1,j})-\hat{\mu}_j}{\hat{\sigma}_j}$ e, dopo aver definito degli stati, cerchiamo a quale appartiene.
+\item Per ognuno di questi stati consideriamo le loro occorrenze passate e i rendimenti di quando ci trovavamo in essi.
+\item Utilizziamo i rendimenti storici collegati allo stato attuale e usiamo questi per trovare una stima del rendimento futuro, con le approssimazioni citate prima. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Metodi ad Hoc: Nearest Neigbour}
+Il metodo è ampiamente descritto in \cite{NN}. Qui viene mostrata una versione leggermente modificata.
+\begin{itemize}
+\item Due parametri: $k$, la dimensione della finestra che teniamo in considerazione e $s_l$ ossia la lunghezza di ogni segmento nel passato in cui cerchiamo il vicino a distanza minore dalla finestra attuale.
+\item Al periodo di investimento $n>s_l+1$, per ogni $1\leq i\leq \lfloor \frac{n-1}{s_l}\rfloor$, definiamo quindi $N_i = \argmin\limits_{(i-1)s_l+k\leq j < is_l}{\| \X_{j-k}^{j-1}-\X_{n-k}^{n-1}\|}$. Questa ricerca viene fatta solo nei $10$ anni appena precedenti al periodo attuale.
+\item Scegliamo il portafoglio con i dati storici di questi $N_i$ approssimandoli come sopra o come $\hat{\B} = \argmax\limits_{\B\in \mathcal{B}}\prod_{1\leq i\leq \lfloor \frac{n-1}{s_l}\rfloor}{\B^T\X_{N_i}}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Prove e risultati sperimentali}
+\begin{itemize}
+\item Sono stati testati i metodi descritti in precedenza sui dati reali di mercato.
+\item Per il metodo empirico sui rendimenti, l'algoritmo di Lempel-Ziv e il metodo sui rapporti rendimento-incertezza sono stati usati i dati storici dei titoli IBM e Coca-Cola (KO).
+\item Per il metodo Nearest Neighbour sono stati usati i dati storici di IBM, Coca-Cola (KO) e General Electric (GE).
+\item In tutti i casi il periodo considerato è di circa $14600$ giorni (oppure circa $3000$ settimane o $700$ mesi) e il portafoglio iniziale $S_0=1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Metodo empirico sui rendimenti}
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{../Sperimentazione/Empirical_best/Empirical_best_semilogy}
+\caption{}
+\label{fig:empiricalbestsemilogy}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Metodo empirico sui rendimenti}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Quantità 			  & Giornaliero	 & Settimanale	& Mensile		\\\hline
+$S_n$                 & $43025.29$   & $7584.782$	& $18071.66$ 	\\
+$\mu_{\text{ann}}$    & $21.70\%$    & $18.56\%$	& $19.89\%$		\\
+$\sigma_{\text{ann}}$ & $0.2460$     & $0.2394$		& $0.2243$		\\
+$\mu_{\text{geom}}$   & $0.0007291$  & $0.003057$	& $0.0141831$	\\
+$\max dd$             & $59.20\%$    & $64.83\%$	& $55.25\%$		\\
+$CR$                  & $0.0229$     & $0.0179$		& $0.0225$		\\
+$SR$                  & $0.8820$     & $0.7754$		& $0.8867$		\\\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algoritmo di Lempel-Ziv}
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{../Sperimentazione/Tree_best/Tree_best_semilogy}
+\caption{}
+\label{fig:treebestsemilogy}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algoritmo di Lempel-Ziv}
+\begin{table}
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Quantità 			  & Giornaliero	 & Settimanale	& Mensile		\\\hline
+$S_n$                 & $17806.67$   & $13149.88$	& $8605.029$ 	\\
+$\mu_{\text{ann}}$    & $20.12\%$    & $19.32\%$	& $18.71\%$		\\
+$\sigma_{\text{ann}}$ & $0.2446$     & $0.2303$		& $0.2292$		\\
+$\mu_{\text{geom}}$   & $0.0006688$  & $0.0032455$	& $0.0131025$	\\
+$\max dd$             & $62.20\%$    & $60.89\%$	& $55.40\%$		\\
+$CR$                  & $0.0202$     & $0.0198$		& $0.0211$		\\
+$SR$                  & $0.8226$     & $0.8387$		& $0.8164$		\\\hline
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Metodo dei rapporti rendimento-incertezza}
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{../Sperimentazione/Empirical3_best/Empirical3_best_semilogy}
+\caption{}
+\label{fig:empirical3bestsemilogy}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Metodo dei rapporti rendimento-incertezza}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Quantità 			  & Giornaliero	 & Settimanale	& Mensile		\\\hline
+$S_n$                 & $64102.81$   & $4166.649$	& $2384.919$ 	\\
+$\mu_{\text{ann}}$    & $22.37\%$    & $17.44\%$	& $16.59\%$		\\
+$\sigma_{\text{ann}}$ & $0.2453$     & $0.2371$		& $0.2357$		\\
+$\mu_{\text{geom}}$   & $0.0007563$  & $0.0028516$	& $0.0011236$	\\
+$\max dd$             & $63.64\%$    & $60.84\%$	& $50.82\%$		\\
+$CR$                  & $0.0220$     & $0.0179$		& $0.0204$		\\
+$SR$                  & $0.9119$     & $0.7356$		& $0.7039$		\\\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Metodo Nearest Neighbour}
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{../Sperimentazione/NN_best/NN_best_semilogy}
+\caption{}
+\label{fig:nnbestsemilogy}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Metodo Nearest Neighbour}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Quantità 			  & Giornaliero	 & Settimanale 	& Mensile		\\\hline
+		$S_n$                 & $1485001 $   & $77065.69$	& $25047.91$ 	\\
+		$\mu_{\text{ann}}$    & $28.13\%$    & $22.97\%$	& $20.65\%$		\\
+		$\sigma_{\text{ann}}$ & $0.2564$     & $0.2541$		& $0.2327$		\\
+		$\mu_{\text{geom}}$   & $0.0009712$  & $0.0098517$	& $0.0146589$	\\
+		$\max dd$             & $64.46\%$    & $66.20\%$	& $59.75\%$		\\
+		$CR$                  & $0.0272$     & $0.0217$		& $0.0216$		\\
+		$SR$                  & $1.0975$     & $0.9404$		& $0.8876$		\\\hline
+	\end{tabular}
+\end{table}
+\end{frame}
+
+\section{Portafogli Universali di Cover}
+
+\begin{frame}
+	\frametitle{Portafogli universali di Cover}
+	I portafogli universali di Cover sono metodologie che sul lungo periodo hanno lo stesso rendimento asintotico del miglior portafoglio costantemente ribilanciato, ossia che ad ogni periodo mantiene costante la parte di capitale investita in ogni titolo.\newline
+	Il primo che presentiamo fornisce una strategia dipendente dal numero $n$ di periodi di investimento considerati, la seconda invece non presenta tale limite. In entrambi i casi però, non viene fatta nessuna assunzione sulla distribuzione di probabilità che è completamente ignota.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Portafoglio universale a orizzonte finito}
+	\begin{block}{Teorema}
+		Per una successione di vettori di stock $\x^n = \x_1,\x_2,\ldots,\x_n$, con $\x_i\in \R^m_+$ di lunghezza $n$ e $m$ asset, sia $S_n^*(\x^n)$ il capitale ottenuto miglior portafoglio costantemente ribilanciato su $\x^n$ e sia $\Sh_n(\x^n)$ quello derivante da una qualsiasi strategia $\bh_i(\cdot)$ su $\x^n$. Allora
+		\begin{equation*}
+		\max\limits_{\bh_i(\cdot)}\min\limits_{\x_1,\ldots, \x_{n}}\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}=V_n
+		\end{equation*}
+		dove
+		\begin{equation*}
+		V_n=\left[\sum_{n_1+n_2+\cdots+n_m=n}{\binom{n}{n_1,n_2,\ldots,n_m}2^{-nH\left(\frac{n_1}{n},\ldots,\frac{n_m}{n}\right)}}\right]^{-1}\approx n^{-\frac{m-1}{2}}
+		\end{equation*}
+	\end{block}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: Parte 1}
+	Dimostriamo il teorema nel caso $m=2$ asset.\newline
+	\begin{itemize}
+		\item Scriviamo $S_n(\x^n)=\prod_{i = 1}^n{\B_i^T\x_i}$ che è un prodotto di somme come una somma di prodotti. Espandendo infatti otteniamo
+		\begin{equation*}
+		S_n(\x^n) = \sum_{j^n\in\{1,2\}^n}\prod_{i = 1}^{n}{b_{ij_i}x_{ij_i}} = \sum_{j^n\in\{1,2\}^n}\prod_{i = 1}^{n}{b_{ij_i}}\prod_{i = 1}^n{x_{ij_i}}
+		\end{equation*}
+		dove $b_{ij_i}$ è la frazione di capitale investita il giorno $i$ sul titolo $j_i\in \{1,2\}$.
+		\item Definiamo $x(j^n)=\prod_{i = 1}^n{x_{ij_i}}$ e $w(j^n)\prod_{i = 1}^{n}{b_{ij_i}}$, da cui $S_n(\x^n)=\sum_{j^n\in\{1,2\}^n}{w(j^n)x(j^n)}$.
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Dimostrazione: parte 2}
+	\begin{itemize}
+		\item Applichiamo le stesse notazioni a $S^*_n$ e otteniamo che $\frac{\Sh_n(\x^n)}{S_n^*(\x^n)} = \frac{\sum_{j^n\in\{1,2\}^n}{\hat{w}(j^n)x(j^n)}}{\sum_{j^n\in\{1,2\}^n}{w^*(j^n)x(j^n)}}$.
+		\item Applichiamo il seguente lemma:
+		\begin{block}{}
+			Dati numeri reali $p_1,p_2,\ldots,p_m\geq 0$ e $q_1,q_2,\ldots,q_m\geq 0$ vale
+			\begin{equation*}
+			\frac{\sum_{i = 1}^{m}{p_i}}{\sum_{i = 1}^m{q_i}}\geq \min\limits_i\frac{p_i}{q_i}
+			\end{equation*}
+			dove poniamo che $\frac{x}{0} = \infty$.
+		\end{block}
+		da cui otteniamo che
+		\begin{equation}\label{eq:univfinitedisug}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq \min\limits_{j^n}\frac{\hat{w}(j^n)x(j^n)}{w^*(j^n)x(j^n)}=\min\limits_{j^n}\frac{\hat{w}(j^n)}{w^*(j^n)}
+		\end{equation}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Dimostrazione: Parte 3}
+	\begin{itemize}
+		\item La miglior strategia sulle successioni $j^n$ corrisponde a quella che pone pesi proporzionali a quelli posti dal miglior portafoglio costantemente ribilanciato $w^*(j^n)$.
+		\item $w^*(j^n) =\max\limits_{0\leq b\leq 1}b^{k(j^n)}(1-b)^{n-k(j^n)}=\left(\frac{k(j^n)}{n}\right)^{k(j^n)}\left(\frac{n-k(j^n)}{n}\right)^{n-k(j^n)}$
+		con portafoglio $\B^*=\left(\frac{k}{n},\frac{n-k}{n}\right)$ dove $k(j^n)$ è il numero di $1$ in $j^n$.
+		\item Dobbiamo rinormalizzare poiché questi non costituiscono una distribuzione di probabilità. Definiamo quindi
+		\begin{equation*}
+		\begin{split}
+		\frac{1}{V_n}&=\sum_{j^n\in\{1,2\}^n}{\left(\frac{k(j^n)}{n}\right)^{k(j^n)}\left(\frac{n-k(j^n)}{n}\right)^{n-k(j^n)}}\\
+		& = \sum_{k = 0}^n{\binom{n}{k}\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k}}
+		\end{split}
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: Parte 4}
+	\begin{itemize}
+		\item Definiamo inoltre
+		\begin{equation}\label{eq:strategy-weight}
+		\hat{w}(j^n)=V_n\left(\frac{k(j^n)}{n}\right)^{k(j^n)}\left(\frac{n-k(j^n)}{n}\right)^{n-k(j^n)}
+		\end{equation}
+		dove $k(j^n)$ è il numero di volte in cui $1$ compare in $j^n$.
+		\item Dalla disequazione \ref{eq:univfinitedisug} segue che
+		\begin{equation*}
+			\frac{\Sh_n(\x^n)}{S_n^*(\x^n)} \geq  \min\limits_k\frac{V_n\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k}}{(b^*)^k(1-b^*)^{n-k}} \geq V_n
+	\end{equation*}
+	\item Abbiamo quindi dimostrato che esiste una strategia con limite inferiore sul rapporto $V_n$. Dimostriamo ora che non possiamo fare di meglio.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: Parte 5}
+	\begin{itemize}
+		\item Chiamiamo vettori di rendimenti estremali quelli della forma 
+		\begin{equation*}
+		\x_i(j_i) = \begin{cases}
+		(1,0)^t\;\;\;\; \text{se } j_i=1, \\
+		(0,1)^t\;\;\;\; \text{se } j_i=2,
+		\end{cases}
+		\end{equation*}
+		e sia $\mathcal{K}$ l'insieme di questi.
+		\item Per loro definizione, ad ogni periodo, un solo asset ha ritorno non nullo, ne segue che
+		$S_n(\x^n(j^n))=\prod_{i}{b_{j_i}}=w(j^n)$, da cui inoltre $\sum_{j^n\in\{1,2\}^n}{S_n(\x^n(j^n))}=1$.
+		\item Si ha che $
+		\B^*(\x^n(j^n))=\left(\frac{n_1(j^n)}{n},\frac{n_2(j^n)}{n}\right)^t$ che ottiene un capitale
+		\begin{equation*} S_n^*(\x^n(j^n))=\left(\frac{n_1(j^n)}{n}\right)^{n_1(j^n)}\left(\frac{n_2(j^n)}{n}\right)^{n_2(j^n)}=\frac{\hat{w}(j^n)}{V_n}
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dimostrazione: Parte 6}
+	\begin{itemize}
+		\item Si ha quindi che
+		\begin{equation*}
+		\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}=\frac{1}{V_n}\sum_{j^n\in\{1,2\}^n}{\hat{w}(j^n)}=\frac{1}{V_n}
+		\end{equation*}
+		\item Concludiamo con
+		\begin{equation*}
+		\begin{split}
+		\min\limits_{\x^n\in\mathcal{K}}\frac{S_n(\x^n)}{S_n^*(\x^n)}& \leq \sum_{\tilde{\x}^n\in\mathcal{K}}\frac{S_n^*(\tilde{\x}^n)}{\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}}\frac{S_n(\tilde{\x}^n)}{S_n^*(\tilde{\x}^n)}\\
+		& = \sum_{\tilde{\x}^n\in\mathcal{K}}{\frac{S_n(\tilde{\x}^n)}{\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}}}\\
+		& = \frac{1}{\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}}\\
+		& = V_n
+		\end{split}
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Osservazioni}
+	\begin{itemize}
+		\item I risultati in \cite{Cost1998} indicano che
+		\begin{equation*}
+		V_n \sim \left(\sqrt{\frac{2}{n}}\right)^{m-1}\frac{\Gamma\left(\frac{m}{2}\right)}{\sqrt{\pi}}
+		\end{equation*}
+		da cui $\frac{1}{2\sqrt{n+1}}\leq V_n\leq \frac{2}{\sqrt{n+1}}$ per $m=2$.
+	\item Possiamo riscrivere il portafoglio in modo incrementale come
+	\begin{equation*}
+	\hat{b}_{i,1}(\x^{i-1}) = \frac{\sum_{j^{i-1}\in M^{i-1}}{\hat{w}(j^{i-1}1)}x(j^{i-1})}{\sum_{j^{i}\in M^{i}}{\hat{w}(j^i)x(j^{i-1})}}
+	\end{equation*}
+	dove $\hat{w}(j^i) = \sum_{j^n:j^i\subseteq j^n}{w(j^n)}$ e $x(j^{i-1})=\prod_{k = 1}^{i-1}{x_{kj_k}}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Portafoglio Universale a orizzonte infinito}
+	Questa seconda strategia è indipendente da $n$. Idealmente corrisponde a mescolare insieme le strategie di infiniti manager ognuno con un proprio portafoglio costantemente ribilanciato.\newline
+	Sia $\mathcal{B}=\{\B\in\R^m:b_i\geq 0,\sum_i{b_i}=1\}$ l'$m$ simplesso, ossia lo spazio dei portafogli ammissibili.
+	Daremo quindi un certo peso a ogni investitore, rappresentato da una misura su $\mathcal{B}$ $\mu(\B)$, dove $\dmu$ sarà la quantità di capitale investita nei portafogli nell'intorno $\text{d}\B$ del portafoglio $\B$.\newline
+	Definiamo $S_n(\B,\x^n)=\prod_{i = 1}^n {\B^T\x_i}$ e consideriamo il portafoglio
+	\begin{equation}\label{portafuniv}
+	\bh_{i+1}(\x^i)=\frac{\int_\mathcal{B}{\B S_i(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Osservazione}
+		\begin{equation*}
+		\bh_{i+1}^T(\x^i)\x_{i+1} = \frac{\int_\mathcal{B}{\B^T\x_{i+1} S_i(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}= \frac{\int_\mathcal{B}{S_{i+1}(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}
+		\end{equation*}
+		Essendo questo prodotto telescopico otteniamo
+		\begin{equation*}\label{capituniv}
+		\Sh_n(\x^n) = \prod_{i = 1}^n{\bh^T_i(\x^{i-1})\x_i} = \int_{\B \in \mathcal{B}}{S_n(\B,\x^n)\dmu}
+		\end{equation*}
+		Il capitale finale è quindi una media dei vari capitali.
+	\end{block}
+	Ricordiamo la distribuzione di Dirichlet$\left(\frac{1}{2},\frac{1}{2}\right)$
+	\begin{equation*}
+	\dmu = \frac{\Gamma\left(\frac{m}{2}\right)}{\left[\Gamma\left(\frac{1}{2}\right)\right]^m}\prod_{j =1}^m{b_j^{-\frac{1}{2}}}\text{d}\B
+	\end{equation*}
+\end{frame}
+
+\begin{frame}[label=UnivInf]
+	\begin{block}{Teorema}
+		Sia $S_n^*(\x^n)$ il capitale ottenuto usando il miglior portafoglio costantemente ribilanciato e sia $\Sh_n(\x^n)$ quello dato dal portafoglio misto $\bh(\cdot)$, allora
+		\begin{equation*}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq \min\limits_{j^n}\frac{\int_\mathcal{B}{\prod_{i = 1}^n{b_{j_i}\dmu}}}{\prod_{i = 1}^n{b^*_{j_i}}}
+		\end{equation*}
+		Per il portafoglio universale $\bh_i(\cdot)$, $i = 1,2,\ldots$, con $m = 2$ stock e $\dmu$ la distribuzione Dirichlet$\left(\frac{1}{2},\frac{1}{2}\right)$, si ha
+		\begin{equation*}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq \frac{1}{2\sqrt{n+1}}
+		\end{equation*}
+		per ogni $n$ e ogni successione $\x^n$.
+	\end{block}
+	\hyperlink{UnivInfdim}{\beamergotobutton{Dimostrazione}}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Osservazioni}
+	\begin{itemize}
+		\item $\frac{\Sh_n}{S_n^*}\geq \frac{1}{\sqrt{2\pi}}V_n$. Rendere l'orizzonte infinito è costato solo un fattore $\frac{1}{\sqrt{2\pi}}$.
+		\item Asintoticamente $\displaystyle\frac{1}{n}\ln(\Sh_n(\x^n))-\frac{1}{n}\ln(S_n^*(\x^n))\geq\frac{1}{n}\ln\left(\frac{V_n}{\sqrt{2\pi}}\right)\rightarrow 0$.
+		\item La scelta della distribuzione di Dirichlet è dovuta al fatto che pone molto peso sui portafogli estremali. Al primo ordine, infatti, scrivendo $\x = \bm{e}+\bm{r}$ con $\bm{e} = (1,\ldots,1)^t$, si ha che
+		\begin{equation*}
+		\log(\B^t\x)=\log(1+\B^t\bm{r})=\B^t\bm{r}+o(\B^t\bm{r})
+		\end{equation*}
+		e conviene quindi puntare tutto sull'asset che assicura rendimento maggiore.
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Portafoglio Universale di Cover}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{../Sperimentazione/Universal_infinite2_best/Univ_inf2_best_semilogy}
+		\caption{}
+		\label{fig:univinf2bestsemilogy}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Portafoglio Universale di Cover}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			Quantità 			  & Giornaliero	 & Settimanale 	& Mensile		\\\hline
+			$S_n$                 & $4764.502$   & $5324.182$	& $4777.275$ 	\\
+			$\mu_{\text{ann}}$    & $16.93\%$    & $17.04\%$	& $16.84\%$		\\
+			$\sigma_{\text{ann}}$ & $0.2058$     & $0.2003$		& $0.1942$		\\
+			$\mu_{\text{geom}}$   & $0.0005786$  & $0.0029356$	& $0.0122462$	\\
+			$\max dd$             & $63.01\%$    & $60.62\%$	& $59.91\%$		\\
+			$CR$                  & $0.0168$     & $0.0176$		& $0.0176$		\\
+			$SR$                  & $0.8225$     & $0.8505$		& $0.8669$		\\\hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+\nocite{Klenke}
+\nocite{CTElInfTeo}
+\nocite{Cost1998}
+\nocite{CoverOrden1996}
+\nocite{LZ78}
+\nocite{Mennucci}
+\nocite{NN}
+\nocite{ThorpKelly}
+\nocite{algoet1988}
+\nocite{algoet1992}
+\bibliographystyle{alpha}
+\bibliography{Bibliografia}
+\begin{frame}
+\Huge{\centerline{Grazie per l'attenzione}}
+\end{frame}
+
+
+
+
+
+\begin{frame}[label=KTdim]
+\frametitle{Dimostrazione: parte 1}
+\begin{block}{}
+	Dalla concavità in $\B$ del tasso di raddoppio $\B^*$ è log-ottimale $\iff$ la derivata direzionale in qualsiasi direzione è $\leq 0$
+\end{block}
+\begin{block}{}
+	\begin{equation*}
+	\begin{split}
+	\left.\frac{d}{d\lambda}\mathbf{E}[\ln(\B_\lambda^T\X)]\right\vert_{\lambda=0^+}
+	& = \lim\limits_{\lambda\downarrow 0}\frac{1}{\lambda}\mathbf{E}\left[\ln\left(\frac{(1-\lambda)\B^{*T}\X + \lambda\B^T\X}{\B^{*T}\X}\right)\right]\\
+	& = \mathbf{E}\left[\lim\limits_{\lambda\downarrow 0}\frac{1}{\lambda}\ln\left(1+\lambda\left(\frac{\B^T\X}{\B^{*T}\X}-1\right)\right)\right]\\
+	& = \mathbf{E}\left[\frac{\B^T\X}{\B^{*T}\X}\right]-1
+	\end{split}
+	\end{equation*}
+	Il secondo passaggio segue dalla convergenza dominata con $g(\X)=2$.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dimostrazione: parte 2}
+\begin{block}{}
+La condizione si riscrive come
+\begin{equation*}
+\mathbf{E}\left[\frac{\B^T\X}{\B^{*T}\X}\right]\leq 1
+\end{equation*}
+per ogni $\B\in \mathcal{B}$.
+Se il segmento tra $\B^*$ e $\B$ può essere esteso oltre $\B^*$ allora abbiamo uguaglianza nella formula, altrimenti no.
+\end{block}
+\begin{block}{}
+Consideriamo i $\B_j = (\B:b_j = 1, b_i=0, i\neq j)$. In questo caso il segmento tra $\B^*$ e $\B_j$ può essere esteso se e solo se $b^*_j>0$. Da questo si ottiene la tesi
+\end{block}
+\hyperlink{KT}{\beamerreturnbutton{Indietro}}
+\end{frame}
+
+\begin{frame}[label=UnivInfdim]
+\frametitle{Dimostrazione: Parte 1}
+\begin{itemize}
+	\item In modo completamente analogo a prima possiamo scrivere
+	\begin{equation*}
+	S_n^*(\x^n)=\sum_{j^n\in\{1,\ldots,m\}^n}{w^*(j^n)x(j^n)}
+	\end{equation*}	
+	\item Similmente scriviamo
+	\begin{equation*}
+	\begin{split}
+	\Sh_n(\x^n) & = \int_\mathcal{B}{\prod_{i =1}^n{\B^T\x_i}\dmu}\\
+	& = \sum_{j^n\in\{1,\ldots,m\}^n}{\int_\mathcal{B}{\prod_{i =1}^n{b_{j_i}x_{ij_i}}\dmu}}\\
+	& = \sum_{j^n\in\{1,\ldots,m\}^n}{\hat{w}(j^n)x(j^n)}
+	\end{split}                      
+	\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dimostrazione: Parte 2}
+\begin{itemize}
+\item Applicando ora il lemma precedente abbiamo
+\begin{equation*}
+\begin{split}
+\frac{\Sh(\x^n)}{S_n^*(\x^n)}&=\frac{\sum_{j^n}{\hat{w}(j^n)x(j^n)}}{\sum_{j^n}{w^*(j^n)x(j^n)}}\\
+& \geq \min\limits_{j^n}\frac{\hat{w}(j^n)x(j^n)}{w^*(j^n)x(j^n)}\\
+& = \min\limits_{j^n}\frac{\int_\mathcal{B}{\prod_{i = 1}^n{b_{j_i}}\dmu}}{\prod_{i =1}^n b^*_{j_i}}
+\end{split}
+\end{equation*}
+\item Come prima $\prod_{i = 1}^n{b^*_{j_i}}=\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k} = 2^{-nH\left(\frac{k}{n}\right)}$
+\item La distribuzione di Dirichlet $\left(\frac{1}{2}\right)$ è definita come
+\begin{equation*}
+\dmu = \frac{\Gamma\left(\frac{m}{2}\right)}{\left[\Gamma\left(\frac{1}{2}\right)\right]^m}\prod_{j =1}^m{b_j^{-\frac{1}{2}}}\text{d}\B
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dimostrazione: Parte 3}
+\begin{itemize}
+\item Nel caso $m=2$, $\text{d}\mu(b) = \frac{1}{\pi}\frac{1}{\sqrt{b(1-b)}}\text{d}b$, $0\leq b\leq 1$ e $b(j^n) =\prod_{i = 1}^n{b_{j_i}}= b^l(1-b)^{n-l}$ con $l$ numero di volte in cui $j_i=1$.
+\item Possiamo calcolare esplicitamente
+\begin{equation*}
+\begin{split}
+\int_\mathcal{B}{b(j^n)}\dmu& = \int_{0}^1{b^l(1-b)^{n-l}\frac{1}{\pi}\frac{1}{\sqrt{b(1-b)}}\text{d}b}\\
+&= \frac{1}{\pi}\int_{0}^{1}{b^{l-\frac{1}{2}}(1-b)^{n-l-\frac{1}{2}}\text{d}b}\\
+& = \frac{1}{\pi}B\left(l+\frac{1}{2},n-l+\frac{1}{2}\right)
+\end{split}
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dimostrazione: Parte 4}
+\begin{itemize}
+\item Si può calcolare questo per integrazione per parti o ricorsione, ottenendo in ogni caso che $B\left(l+\frac{1}{2},n-l+\frac{1}{2}\right)=\frac{\pi}{2^{2n}}\frac{\binom{2n}{n}\binom{n}{l}}{\binom{2n}{2l}}$
+\item Concludiamo quindi che
+\begin{equation*}
+\begin{split}
+\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}&\geq \min\limits_{j^n}\frac{\int_\mathcal{B}{\prod_{i = 1}^n{b_{j_i}\dmu}}}{\prod_{i = 1}^n{b^*_{j_i}}}\\
+& \geq \min\limits_l \frac{\frac{1}{\pi}B\left(l+\frac{1}{2},n-l+\frac{1}{2}\right)}{2^{-nH\left(\frac{l}{n}\right)}}\\
+& \geq \frac{1}{2\sqrt{n+1}}
+\end{split}
+\end{equation*}
+usando i risultati in \cite{CoverOrden1996}.
+\end{itemize}
+\hyperlink{UnivInf}{\beamerreturnbutton{Indietro}}
+\end{frame}
+
+
+\begin{frame}[label=InfTeo]
+$X$ e $Y$ variabili aleatorie discrete, $p(x),p(x,y),p(y|x)$ distribuzioni.
+\begin{block}{Entropia di Shannon}
+	\begin{equation*}
+	H(X) = -\sum_{x\in \mathcal{X}}{p(x)\log p(x)}
+	\end{equation*}
+\end{block}
+\begin{block}<2,3>{Entropia Congiunta}
+	\begin{equation*}	
+	H(X,Y) = -\sum_{x\in \mathcal{X}}\sum_{y\in \mathcal{Y}}{p(x,y)\log p(x,y)}
+	\end{equation*}
+\end{block}
+\begin{block}<3>{Entropia Condizionale}
+	\begin{equation*}
+	H(Y|X) =\sum_{x\in \mathcal{X}}{p(x)H(Y|X = x)}=-\sum_{x\in \mathcal{X}}\sum_{y\in \mathcal{Y}}{p(x,y)\log p(y|x)}
+	\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proprietà}
+\begin{block}{}
+Valgono le seguenti proprietà:
+\begin{itemize}
+	\item L'entropia è sempre non negativa.
+	\item $H(X,Y)=H(X)+H(Y|X)$.
+	\item $H(X|Y)\leq H(X)$ con uguaglianza $\iff$ indipendenza
+\end{itemize}
+\end{block}
+Questi concetti possono essere generalizzati in modo analogo a $n$ variabili aleatorie discrete $X_1,\ldots,X_n$, così come le proprietà.
+\begin{block}{Chain Rule}
+\begin{equation*}
+H(X_1,X_2,\ldots,X_n) = \sum_{i = 1}^{n}{H(X_i|X_{i-1},\ldots,X_1)}
+\end{equation*}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Processi Stocastici}
+Nel caso di processi stocastici a tempi discreti $\{X_t\}_{t\in I}$ con $I=\N, \Z$ indicato con $\X$ possiamo definire, quando il limite esiste
+\begin{block}{Tasso di Entropia}
+\begin{equation*}
+H(\X) = \lim\limits_{n\to \infty}\frac{1}{n}H(X_1,X_2,\ldots, X_n)
+\end{equation*}
+\end{block}
+\begin{block}{Lemma}
+Per processi stazionari il limite esiste ed è anche uguale a
+\begin{equation*}
+\lim\limits_{n\to \infty}H(X_n|X_{n-1},\ldots, X_1)
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proprietà di Equipartizione asintotica}
+\begin{block}{Teorema (AEP)}
+Se $H$ è il tasso di entropia di un processo ergodico stazionario $\{X_n\}$, allora
+\begin{equation*}
+-\frac{1}{n}\log p(X_0,X_1,\ldots,X_{n-1})\rightarrow H \;\;\;\; \text{con probabilità } 1
+\end{equation*}
+\end{block}
+La dimostrazione nel caso di variabili i.i.d. è una diretta conseguenza delle proprietà del logaritmo e della legge debole dei grandi numeri
+\end{frame}
+
+\begin{frame}
+\frametitle{Conseguenze}
+\begin{itemize}
+\item Fissati $\epsilon, n$ esiste un insieme, detto insieme tipico $A^{(n)}_\epsilon$, definito come l'insieme dei $x_1,x_2,\ldots, x_n$ tali che $2^{-n(H(X)+\epsilon)}\leq p(x_1,\ldots, x_n)\leq 2^{-n(H(X)-\epsilon)}$.
+\item Per l'AEP, $\Pro\{A_\epsilon^{(n)}\}> 1-\epsilon$ per $n$ abbastanza grande. In pratica, a lungo andare, quasi tutte le successioni che si osservano appartengono all'insieme tipico.
+\item $(1-\epsilon)2^{n(H(X)-\epsilon)}\leq |A^{(n)}_\epsilon| \leq 2^{n(H(X)+\epsilon)}$.
+\item Questo è il motivo principale per cui è possibile avere compressione di codici. Su periodi lunghi, quasi tutte le frasi da codificare apparterranno a questi insiemi tipici che possono essere compressi in modo ottimale. Il resto delle stringhe viene codificato in modo banale, ma hanno probabilità trascurabile.
+\end{itemize}
+\hyperlink{Codici}{\beamerreturnbutton{Indietro}}
+\end{frame}
+
+
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,5 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\beamer@sectionintoc {1}{Il mercato azionario}{6}{0}{1}
+\beamer@sectionintoc {2}{Portafogli Universali e Stime di probabilit\IeC {\`a}}{23}{0}{2}
+\beamer@sectionintoc {3}{Portafogli Universali di Cover}{44}{0}{3}

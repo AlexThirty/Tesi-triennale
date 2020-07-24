@@ -1,0 +1,2019 @@
+\documentclass[a4paper,11pt]{book}
+\usepackage{listings}
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+%\usepackage[bottom=3cm,top=3.5cm,left=2.8cm,right=3.3cm]{geometry}
+\usepackage[bottom=5cm]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\graphicspath{{Immagini/}}
+\usepackage{titling,titlesec}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{paralist}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xy}
+\usepackage{multicol,multirow}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{xcolor, colortbl, tabularx, soul}
+\usepackage{mathrsfs,mathtools}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE]{\slshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\slshape\nouppercase{\rightmark}}
+\setlength{\headheight}{14pt}
+
+\makeatletter 
+\let\titlecopy\@title 
+\let\authorcopy\@author
+\makeatother
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+\usepackage{hyperref} % References become hyperlinks.
+\hypersetup{
+	colorlinks = true,
+	linkcolor = {black},
+	urlcolor = {red},
+	citecolor = {black},
+	%pdfenconing=auto,
+}
+\usepackage{wrapfig}
+\usepackage{arydshln}
+\usepackage[T1]{fontenc} 
+\usepackage{bm}
+
+\usepackage{grffile,pgf,tikz}
+\usepackage{verbatim}
+\usepackage{bbm}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric,calc,arrows}
+
+
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{lemma}[teo]{Lemma}
+\newtheorem{prop}[teo]{Proposizione}
+\newtheorem{post}{Postulato}
+\newtheorem{cor}[teo]{Corollario}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[chapter]
+\newtheorem{exmp}[defn]{Esempio}
+\newtheorem{costr}[defn]{Costruzione}
+\newtheorem{oss}[defn]{Osservazione}
+\newtheorem{prob}{Problema}
+\newtheorem*{prob*}{Problema}
+\newtheorem{hint}{Suggerimento}
+\newtheorem{sol}{Soluzione}
+\newtheorem*{notaz}{Notazione}
+
+\theoremstyle{remark}
+\newtheorem*{nota}{Nota}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\scal}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\eval}[3]{\Big[ #1 \Big]_{#2}^{#3}}
+%\newcommand{\sob}[3]{W^{#1, #2}(#3)}
+%\newcommand{\sobzero}[3]{W_{0}^{#1, #2}(#3)}
+%\newcommand{\sobloc}[3]{W_{\text{loc}}^{#1, #2}(#3)}
+\newcommand{\weakconv}{\rightharpoonup}
+\newcommand{\weakconvs}{\overset{\ast}{\rightharpoonup}}
+
+
+\newcommand{\dx}{\text{d}x}
+\newcommand{\dt}{\text{d}t}
+\newcommand{\dy}{\text{d}y}
+\newcommand{\diff}{\text{d}}
+\newcommand{\dX}{\text{d}\bm{x}}
+\newcommand{\dFX}{\text{d}F(\bm{x})}
+\newcommand{\dfX}{\text{d}f(\bm{x})}
+\newcommand{\dFx}{\text{d}F(x)}
+\newcommand{\dfx}{\text{d}f(x)}
+\newcommand{\X}{\bm{X}}
+\newcommand{\x}{\bm{x}}
+\newcommand{\B}{\bm{b}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Pro}{\mathbf{P}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\bh}{\hat{\bm{b}}}
+\newcommand{\Sh}{\hat{S}}
+\newcommand{\dmu}{\text{d}\mu(\B)}
+\newcommand{\Ph}{\hat{\mathbf{P}}}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\dive}{div}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\clos}{clos}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\extr}{extr}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\restr[2]{\ensuremath{\left.#1\right|_{#2}}}
+
+
+\newcommand{\boh}{\textcolor{red}{\Huge\textbf{???}}}
+\newcommand{\attenzione}{\textcolor{red}{\Huge\textbf{!!!}}}
+\newcommand{\vitali}{\textcolor{red}{\Huge\textbf{Vitali}}}
+
+
+
+
+\title{Teoria dell'Informazione e Portafogli Universali}
+\author{Alessandro Trenta}
+\date{\today}
+
+
+
+
+
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Prime definizioni}
+\section{Entropia per variabili aleatorie discrete}
+Sia dato uno spazio di probabilità $\Omega$ e una variabile aleatoria discreta $X$ su $\Omega$ a valori in $\mathcal{X}$ con densità di probabilità $p(x) = \text{Pr}\{X = x\}$ per $x\in \mathcal{X}$.
+\begin{notaz}
+	D'ora in poi quando si utilizza il logaritmo questo sarà sempre il logaritmo in base $2$ e lo indicheremo con $\log(x) = \log_{2}(x)$
+\end{notaz}
+\begin{defn}
+	L'entropia di Shannon della variabile aleatoria $X$ è definita da
+	\begin{equation*}
+	H(X) = -\sum_{x\in \mathcal{X}}{p(x)\log p(x)}
+	\end{equation*}
+\end{defn}
+
+L'entropia è una misura dell'incertezza di una variabile aleatoria.
+\begin{nota}
+	L'entropia di $X$ può anche essere interpretata come il valore atteso della variabile aleatoria $\log\left(\frac{1}{p(X)}\right)$ rispetto alla densità di $X$.
+	\[
+		H(X) = \mathbf{E}_{p}\left[\log\left(\frac{1}{p(X)}\right)\right]
+	\]
+	Poiché $0\leq p(x)\leq 1$ segue banalmente che $H(X)\geq 0$.
+\end{nota}
+\begin{nota}
+	In generale, quando scriveremo $H(p_1,p_2,\ldots,p_m)$ indicheremo $-\sum_{i = 1}^{m}{p_i\log(p_i)}$ come se avessimo una variabile aleatoria $X$ distribuita secondo il vettore $(p_1,\ldots,p_m)$.
+\end{nota}
+
+Associato al concetto di entropia vi sono quelli di entropia congiunta e entropia condizionale di due variabili aleatorie discrete $X,Y$ a valori rispettivamente in $\mathcal{X}$ e $\mathcal{Y}$.
+\begin{defn}
+	L'entropia congiunta $H(X,Y)$ di due variabili aleatorie discrete è definita come
+	\begin{equation*}
+	\begin{split}	
+		H(X,Y) & = -\sum_{x\in \mathcal{X}}\sum_{y\in \mathcal{Y}}{p(x,y)\log p(x,y) }\\
+		 & = -\mathbf{E}[\log p(X,Y)]
+	\end{split}
+	\end{equation*}
+	dove $p(x,y)$ è la densità di probabilità congiunta.
+\end{defn}
+\begin{defn}
+	L'entropia condizionale di $Y$ rispetto a $X$ è definita come
+	\begin{equation*}
+	\begin{split}
+		H(Y|X) & =\sum_{x\in \mathcal{X}}{p(x)H(Y|X = x)} \\
+		& = -\sum_{x\in \mathcal{X}}p(x)\sum_{y\in \mathcal{Y}}{p(y|x)\log(p(y|x))}\\
+		& = -\sum_{x\in \mathcal{X}}\sum_{y\in \mathcal{Y}}{p(x,y)\log(p(y|x))}\\
+		& = -\mathbf{E}_{p(x,y)}[\log(p(Y|X))]
+		\end{split}
+	\end{equation*}
+	dove $p(y|x)$ è la densità di probabilità di $Y$ condizionata a $X$.
+\end{defn}
+\begin{nota}
+	L'entropia condizionale di $X$ rispetto a se stessa $H(X|X)$ è nulla, questo segue facilmente dal fatto che $p(x|x) = 1$.
+\end{nota}
+
+Queste quantità sono strettamente legate tra loro come mostra il seguente lemma:
+\begin{lemma}[Chain rule]\label{entr:chain-rule}
+	\begin{equation*}
+		H(X,Y) = H(X)+H(Y|X)
+	\end{equation*}
+\end{lemma}
+\begin{proof}
+	Da $p(x,y) = p(x)p(y|x)$ segue che 
+	\begin{equation*}
+	\log(p(X,Y)) = \log(p(X)) + \log(p(Y|X))
+	\end{equation*} Prendendo il valore atteso in entrambi i membri otteniamo la tesi.
+\end{proof}
+\begin{nota}
+	Più in generale, si può condizionare rispetto a più variabili. Si ottiene con lo stesso procedimento che, ad esempio
+	\begin{equation*}
+		H(X,Y|Z) = H(X|Z)+H(Y|X,Z)
+	\end{equation*}
+\end{nota}
+
+Introduciamo altre due quantità utili:
+\begin{defn}
+	L'entropia relativa o distanza di Kullback-Leibler (a valori in $[0,\infty]$) tra due densità di probabilità discreta $p(x)$ e $q(x)$ è definita come
+	\begin{equation*}
+		\begin{split}
+		D(p||q) & = \sum_{x\in \mathcal{X}}{p(x)\log\left(\frac{p(x)}{q(x)}\right)}\\
+			& = \mathbf{E}_p\left[\log\left(\frac{p(x)}{q(x)}\right)\right]
+		\end{split}
+	\end{equation*}
+	dove usiamo la convenzione che $0\log\frac{0}{0}=0$, $0\log\frac{0}{q} = 0$ e $p\log\frac{p}{0}= \infty$.
+\end{defn}
+\begin{nota}
+	Nonostante il nome, la distanza di Kullback-Leibler non è simmetrica e quindi non è una vera distanza tra distribuzioni.
+\end{nota}
+\begin{defn}
+	Siano date due variabili aleatorie $X,Y$ con densità di probabilità congiunta $p(x,y)$ e densità marginali $p(x)$ e $p(y)$. L'informazione mutua $I(X;Y)$ è l'entropia relativa tra la densità congiunta e il prodotto delle marginali. In formule:
+	\begin{equation*}
+		\begin{split}
+		I(X;Y) & = \sum_{x\in \mathcal{X}}\sum_{y\in \mathcal{Y}}{p(x,y)\log\frac{p(x,y)}{p(x)p(y)}}\\
+		& = D(p(x,y)||p(x)p(y)) \\
+		& = \mathbf{E}_{p(x,y)}\log\frac{p(X,Y)}{p(X)p(Y)}
+		\end{split}
+	\end{equation*}
+	Dalla definizione è immediato notare che, per simmetria, $I(X;Y)=I(Y;X)$.
+\end{defn}
+L'informazione mutua rappresenta la quantità di informazione che ciascuna variabile aleatoria fornisce dell'altra, ossia quanto sono distanti dall'essere indipendenti.
+Possiamo inoltre riscriverla come
+\begin{equation*}
+	\begin{split}
+	I(X;Y) & = \sum_{x,y}{p(x,y)\log\frac{p(x,y)}{p(x)p(y)}}\\
+	& = \sum_{x,y}{p(x,y)\log\frac{p(x|y)}{p(x)}}\\
+	& = -\sum_{x\in \mathcal{X}}{p(x)\log(p(x))}-\left(-\sum_{x,y}{p(x,y)\log(p(x|y))}\right)\\
+	& = H(X) - H(X|Y)
+	\end{split}
+\end{equation*}
+Una diretta conseguenza di questo e della simmetria è che 
+\[
+	I(X;Y)=H(X)-H(X|Y)=H(Y)-H(Y|X) = H(X)+X(Y)-H(X,Y)
+\]
+\begin{nota}
+	Da queste formule si ottiene che $I(X;X) = H(X)-H(X|X) = H(X)$. L'entropia è quindi, in un certo senso, la quantità di informazione che una variabile aleatoria dà rispetto a se stessa.
+\end{nota}
+\begin{lemma}\label{dist:nonneg}
+	L'entropia relativa è sempre non negativa. In formule: $D(p||q)\geq 0$
+\end{lemma}
+\begin{proof}
+	Sia $A=\{x:p(x)>0\}$, allora:
+	\begin{equation*}
+		\begin{split}
+		-D(p||q) & = -\sum_{x\in \mathcal{A}}{p(x)\log\frac{p(x)}{q(x)}}\\
+		& = \sum_{x\in \mathcal{A}}{p(x)\log\frac{q(x)}{p(x)}} \leq \log\left(\sum_{x\in \mathcal{A}}{p(x)\frac{q(x)}{p(x)}}\right)\\
+		& = \log\left(\sum_{x\in \mathcal{A}}{q(x)}\right)\leq \log \left(\sum_{x\in \mathcal{X}}{q(x)}\right)\\
+		& = \log(1) = 0
+		\end{split}
+	\end{equation*}
+	Dove nel secondo passaggio abbiamo utilizzato la disuguaglianza di Jensen sulla funzione concava $\log(x)$. Sappiamo inoltre che l'uguaglianza si ha solo nel caso in cui $\frac{p(x)}{q(x)}$ è costante ovunque, cioè $p(x) = c\cdot q(x)$ $\forall x \in \mathcal{X}$. Dal fatto che entrambe sono normalizzate a somma $1$ si ottiene $p(x)=q(x)$.
+\end{proof}
+
+\begin{cor}
+	Per ogni coppia di variabili aleatorie discrete $X,Y$ vale $I(X;Y)\geq 0$ con uguaglianza se e solo se le variabili sono indipendenti
+\end{cor}
+\begin{proof}
+	Segue direttamente dalla definizione di entropia mutua e dal lemma precedente
+\end{proof}
+La chain rule per l'entropia può essere estesa a un numero generico di variabili aleatorie discrete, come mostra il seguente risultato.
+\begin{teo}
+	Siano $X_1, X_2, \ldots , X_n$ variabili aleatorie discrete sullo stesso spazio di probabilità con densità della legge $p(x_1,x_2,\ldots,x_n)$. Allora
+	\begin{equation*}
+		H(X_1,X_2,\ldots,X_n) = \sum_{i = 1}^{n}{H(X_i|X_{i-1},\ldots,X_1)}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Si ottiene per ricorsione dal lemma \ref{entr:chain-rule}.
+\end{proof}
+\begin{lemma}
+	Date $X$ e $Y$ variabili aleatorie discrete
+	\begin{equation*}
+		H(X|Y) \leq H(X)
+	\end{equation*}
+	con uguaglianza se e solo se sono indipendenti.
+\end{lemma}
+\begin{proof}
+	Segue direttamente dal fatto che $0\leq I(X;Y) = H(X)-H(X|Y)$
+\end{proof}
+Intuitivamente, le informazioni date da una variabile aleatoria, possono solo ridurre l'incertezza legata ad un'altra. In generale, condizionare a più variabili aleatorie può solo ridurre l'entropia.
+
+\section{Processi Stocastici e Tasso di Entropia}
+Definiamo alcuni dei concetti appena visti al caso di processi stocastici a tempi discreti, ossia a successioni di variabili aleatorie $\{X_i\}_{i\in I}$ dove $I = \N, \Z$. In questa sezione, ogni processo stazionario sarà da intendersi a tempi discreti e verrà indicato con l'alfabeto ad esso associato $\mathcal{X}$.
+\begin{defn}
+	Un processo stocastico è detto stazionario se la distribuzione congiunta di qualunque sottoinsieme della sequenza di variabili aleatorie è invariante rispetto alla traslazione temporale. In formule
+	\begin{align*}
+		\Pr\{X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n\} \\
+		= \Pr\{X_{1+l} =x_{1}, X_{2+l} = x_{2}, \ldots, X_{n+l} = x_{n}\}
+	\end{align*}
+	per ogni $n$, per ogni $l$ e per ogni $x_1,x_2,\ldots, x_n\in \mathcal{X}$.
+\end{defn}
+\begin{defn}
+	Un processo stocastico discreto è detto \textit{catena di Markov} se per $n = 1, 2, \ldots$
+	\begin{align*}
+		\Pr\{X_{n+1}=x_{n+1}|X_n = x_n, \ldots,X_1= x_1\}=\\
+		\Pr\{X_{n+1} = x_{n+1}|X_n = x_n\}
+	\end{align*}
+	per ogni $x_1,\ldots, x_{n+1}\in \mathcal{X}$.
+\end{defn}
+Definiamo ora la generalizzazione del concetto di entropia per i processi stocastici a tempi discreti:
+\begin{defn}[Tasso di Entropia]
+Il tasso di entropia di un processo stocastico o \textit{entropy rate} è definita da
+	\begin{equation*}
+		H(\mathcal{X}) = \lim\limits_{n\to \infty}\frac{1}{n}H(X_1,X_2,\ldots, X_n)
+	\end{equation*}
+	laddove il limite esiste.
+\end{defn}
+Possiamo dare anche una definizione alternativa di entropy rate che, nel caso di processi stazionari, si vedrà essere equivalente alla precedente.
+\begin{defn}
+	Definiamo, dove il limite esiste
+	\begin{equation}
+		H'(\mathcal{X}) = \lim\limits_{n\to \infty}H(X_n|X_{n-1},\ldots, X_1)
+	\end{equation}
+\end{defn}
+Dimostriamo ora che nel caso di processi stazionari entrambi i limiti esistono e coincidono.
+\begin{teo}
+	Per un processo stocastico stazionario, $H(X_n|X_{n-1},\ldots, X_1)$ è debolmente decrescente in $n$ e ammette limite $H'(\mathcal{X})$.
+\end{teo}
+\begin{proof}
+	\begin{equation*}
+	\begin{split}
+		H(X_{n+1}|X_n,\ldots, X_2, X_1) & \leq H(X_{n+1}|X_n,\ldots, X_2)\\
+		& = H(X_n|X_{n-1},\ldots, X_1)
+	\end{split}
+	\end{equation*}
+	dove la disuguaglianza segue dal fatto che il condizionamento a una variabile aleatoria diminuisce l'entropia.\newline
+	Siccome $H(X_n|X_{n-1},\ldots, X_1)$ è una successione debolmente decrescente a valori non negativi, ammette limite $H'(\mathcal{X})$.
+\end{proof}
+Enunciamo ora il lemma della media di Cesàro in vista della prossima dimostrazione.
+\begin{lemma}
+	Sia $\{a_n\}_{n\in\N}$ una successione di numeri reali e supponiamo che $a_n$ converga a $l$ in $\R$.
+	\begin{equation*}
+		\lim\limits_{n\to\infty}a_n = l
+	\end{equation*}
+	Allora
+	\begin{equation*}
+		\lim\limits_{n\to\infty}\frac{a_1+a_2+\cdots+a_n}{n}=l
+	\end{equation*}
+\end{lemma}
+\begin{teo}
+	Per un processo stocastico stazionario entrambi i limiti $H(\mathcal{X}),H'(\mathcal{X})$ esistono e sono uguali:
+	\begin{equation*}
+		H(\mathcal{X}) = H'(\mathcal{X})
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Il lemma precedente ci assicura l'esistenza del limite in $H'(\mathcal{X})$. Consideriamo ora (utilizzando la chain rule)
+	\begin{equation*}
+		\frac{H(X_1,X_2,\ldots, X_n)}{n} = \frac{1}{n}\sum_{i = 1}^{n}{H(X_i|X_{i-1},\ldots, X_1)}
+	\end{equation*}
+	Sappiamo però che il termine a destra è la media dei primi $n$ termini della successione del lemma sopra. Utilizzando quindi quest'ultimo risultato e il lemma della media di Cesàro sappiamo che il limite esiste e che coincide con $H'(\mathcal{X})$.
+	\begin{equation*}
+		H(\mathcal{X}) = \lim\limits_{n\to\infty}\frac{H(X_1, X_2, \ldots, X_n)}{n} = \lim \limits_{n\to\infty}H(X_n|X_{n-1},\ldots, X_1)=H'(\mathcal{X})
+	\end{equation*}
+\end{proof}
+Nel caso di catene di Markov, si vede immediatamente che l'entropy rate si scrive come
+\begin{align}
+	H(\mathcal{X}) = H'(\mathcal{X}) = \lim\limits_{n\to \infty}H(X_n|X_{n-1},\ldots, X_1) \\
+	= \lim \limits_{n\to \infty}H(X_n|X_{n-1} ) =H(X_2|X_1)
+\end{align}
+\section{Proprietà di Equipartizione Asintotica (AEP)}
+Introduciamo ora una proprietà per variabili i.i.d. che verrà successivamente estesa e generalizzata.
+\begin{teo}[AEP]
+	Se $X_1, X_2 , \ldots$ sono variabili aleatorie discrete i.i.d. secondo $p(x)$ allora
+	\begin{equation*}
+		-\frac{1}{n}\log(p(X_1,X_2, \ldots , X_n))\rightarrow H(X) \;\;\;\; \text{in probabilità}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Funzioni di variabili aleatorie indipendenti sono variabili aleatorie indipendenti. Quindi, dato che le $X_i$ sono i.i.d., lo sono anche $\log(p(X_i))$. Dalla legge debole dei grandi numeri segue che:
+	\begin{equation*}
+		\begin{split}
+		-\frac{1}{n}\log(p(X_1,X_2,\ldots,X_n)) & = -\frac{1}{n}\sum_{i = 1}^{n}\log p(X_i) \\
+		& \rightarrow -\mathbf{E}[\log(p(X))] \;\;\;\; \text{in probabilità} \\
+		& = H(X)
+		\end{split}
+	\end{equation*}
+\end{proof}
+
+In generale, come mostra il seguente teorema, l'\textit{Asymptotic Equipartition Property}, vale per processi stazionari e ergodici.
+\begin{teo}[AEP: teorema di Shannon-McMillan-Breiman]
+	Se $H$ è l'entropy rate di un processo ergodico stazionario $\{X_n\}$, allora
+	\begin{equation*}
+		-\frac{1}{n}\log(p(X_0,X_1,\ldots,X_{n-1}))\rightarrow H \;\;\;\; \text{con probabilità } 1
+	\end{equation*}
+\end{teo}
+La dimostrazione .... (FORSE SOLO PER MERCATI DA ARTICOLO).
+
+
+\section{Corse dei Cavalli e Kelly Gambling}
+Consideriamo una corsa alla quale partecipano $m$ cavalli, in cui l'$i$-esimo vince con probabilità $p_i$ e la sua vittoria dà un pagamento $o_i$ per ogni unità di capitale scommessa. Vogliamo trovare un metodo per dividere il capitale a nostra disposizione in $m$ frazioni $b_i$, dove $b_i\geq 0$ e $\sum_{i=1}^{m}{b_i} = 1$, ciascuna delle quali è scommessa sul corrispondente cavallo. Cerchiamo il modo di massimizzare il nostro capitale risultante dopo ogni gara o asintoticamente.\newline
+Possiamo quindi definire il vettore dei pagamenti di una scommessa $\bm{o}\in \R^{m}$ e quelli delle frazioni scommesse $\bm{b}\in R^m$ (detto anche portafoglio). Consideriamo per ogni $i \in \N$ la variabile aleatoria $X_i$ a valori in $\{1, \ldots, m\}$ che corrisponde al cavallo vincente alla $i$-esima gara. Assumiamo che ciascuna di queste abbia legge di probabilità data dalle $p_j$, $j\in \{1,\ldots, m\}$ sopra citate.
+\begin{defn}
+	Il capitale relativo $S(X_i) = b_{X_i}o_{X_i}$ è il fattore con cui il capitale dello scommettitore aumenta se il cavallo $X_i$ vince alla corsa $i$. Il capitale totale dopo $n$ corse sarà quindi
+	\begin{equation}
+		S_n = \prod_{i = 1}^{n}{S(X_i)}
+	\end{equation}
+\end{defn}
+
+\begin{defn}
+	Il tasso di raddoppio (\textit{doubling rate}) di una corsa è definito da
+	\begin{equation*}
+		W(\bm{b},\bm{p}) = \mathbf{E}[\log(S(X))] = \sum_{k = 1}^{m}{p_k\log(b_ko_k)}
+	\end{equation*}
+\end{defn}
+\begin{teo}
+	Date variabili aleatorie $X_i$ come sopra, indipendenti e identicamente distribuite secondo $p(x)$, il valore atteso del capitale dello scommettitore che utilizza ad ogni passo una strategia $\B$ cresce esponenzialmente con tasso di raddoppio $W(\bm{b},\bm{p})$, cioè
+	\begin{equation*}
+		\E[S_n] \doteq 2^{nW(\bm{b},\bm{p})}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Funzioni di variabili aleatorie indipendenti sono variabili aleatorie indipendenti, quindi anche $\log(S_i)$ sono i.i.d.. Dalla legge dei grandi numeri segue che
+	\begin{equation*}
+		\frac{1}{n}\log(S_n) = \frac{1}{n}\sum_{i = 1}^{n}{\log S(X_i)}\rightarrow \mathbf{E}[\log(S(X))] \;\;\;\; \text{in probabilità}
+	\end{equation*}
+	Da questo segue la tesi.
+\end{proof}
+Massimizzare il capitale corrisponde quindi a massimizzare il tasso di raddoppio.
+\begin{defn}
+	Il tasso di raddoppio ottimale $W^*(p)$ è il massimo tasso di raddoppio al variare di tutti i portafogli $\bm{b}$ 
+	\begin{equation*}
+	W^*(p) = \max\limits_{\bm{b}}W(\bm{b},\bm{p}) = \max\limits_{\bm{b}:\:b_i\geq 0, \sum_ib_i=1}\sum_{i = 1}^{m}p_i\log(b_io_i)
+	\end{equation*}
+\end{defn}
+Il prossimo teorema mostra come il portafoglio ottimale corrisponda a quello che pone pesi proporzionali alle probabilità di vittoria (questo metodo è detto anche \textit{Kelly gambling}). 
+\begin{teo}
+	Il tasso di raddoppio ottimale è dato da
+	\begin{equation*}
+		W^*(\bm{p}) = \sum_{i = 1}^{m}{p_i\log(o_i)}-H(p)
+	\end{equation*}
+	e viene raggiunto dal portafoglio $b_i = p_i$ $\forall i$.
+\end{teo}
+\begin{proof}
+	Riscriviamo $W(\bm{b},\bm{p})$ come
+	\begin{equation*}
+		\begin{split}
+		W(\bm{b},\bm{p}) & = \sum_{i = 1}^{m}{p_i\log(b_io_i)}\\
+		& = \sum_{i = 1}^{m}{p_i\log \left(\frac{b_i}{p_i}p_io_i\right)}\\
+		& = \sum_{i=1}^{m}{p_i\log(o_i)}-H(\bm{p})-D(\bm{p}||\bm{b})\\
+		& \leq \sum_{i = 1}^{m}{p_i\log(o_i)}-H(\bm{p})
+		\end{split}
+	\end{equation*}
+	Dal lemma \ref{dist:nonneg} segue che l'uguaglianza si ha quando $p_i = b_i$ $\forall i$.
+\end{proof}
+Consideriamo in particolare il caso in cui il pagamento è equo, ossia quando $\sum_{i}\frac{1}{o_i} = 1$. Possiamo quindi scrivere $\frac{1}{o_i}=r_i$ e interpretare quest'ultimi come la densità di legge stimata dal bookmaker per ogni cavallo. In tal caso possiamo riscrivere il tasso di raddoppio come
+\begin{equation*}
+\begin{split}
+	W(\bm{b},\bm{p}) & = \sum_{i = 1}^{m}{p_i \log(b_io_i)}\\
+	& = \sum_{i=1}^{m}{p_i\log\left(\frac{b_i}{p_i}\frac{p_i}{r_i}\right)}\\
+	& = D(\bm{p}||\bm{r}) - D(\bm{p}||\bm{b})
+\end{split}
+\end{equation*}
+Questo risultato si interpreta facilmente col fatto che lo scommettitore guadagna se e solo se riesce a stimare meglio $\bm{p}$ rispetto al bookmaker.\newline
+Nel caso di pagamento uniforme e equo $o_i = m$, si ottiene allora che 
+\begin{equation*}
+	W^*(\bm{p})= D\left(\bm{p}\left\vert\right\vert\frac{1}{m}\right) = \log (m) -H(\bm{p})
+\end{equation*}
+Vale in questo caso il cosiddetto teorema di conservazione ossia che $W^*(\bm{p})+H(\bm{p})=\log(m)$.
+
+\section{Corse dipendenti e Tasso di Entropia}
+Analizziamo ora il caso di una successione di corse dipendenti ognuna dalle precedenti. Consideriamo quindi un processo stocastico $\{X_i\}$ che rappresenta i risultati delle varie corse. Ad ogni turno possiamo scegliere un portafoglio $\bm{b}(\cdot|X_{k-1},\ldots, X_1)$ dipendente dal passato.\newline
+In questo caso il tasso di raddoppio ottimale si ottiene come
+\begin{equation*}
+	W^*(X_k|X_{k-1}, \ldots,X_1)
+	= \max\limits_{\bm{b}(\cdot|X_{k-1},\ldots,X_1)}\mathbf{E}[\log(S(X_k))|X_{k-1},\ldots, X_1]
+\end{equation*}
+Nel caso di pagamento uniforme ed equo questa può essere riscritta (in modo analogo ai casi precedenti) come
+\begin{equation*}
+	W^*(X_k|X_{k-1}, \ldots,X_1) = \log(m) -H(X_k|X_{k-1},\ldots, X_1)
+\end{equation*}
+e tale massimo è raggiunto con il portafoglio $b^*(x_k|x_{k-1},\ldots,x_1)=p(x_k|x_{k-1},\ldots, x_1)$.\newline
+Dopo $n$ corse il capitale è dato da
+\begin{equation*}
+	S_n = \prod_{i = 1}^{n}S(X_i)
+\end{equation*}
+e l'esponente nel valore atteso di $S_n$ si ottiene prendendo il logaritmo:
+\begin{equation*}
+\begin{split}
+\frac{1}{n}\mathbf{E}[\log(S_n)] & = \frac{1}{n}\sum_{i = 1}^n{\mathbf{E}[\log(S(X_i))]}\\
+& = \frac{1}{n}\sum_{i = 1}^{n}{(\log(m) - H(X_i|X_{i-1},\ldots, X_1))}\\
+& = \log(m) -\frac{H(X_1, X_2, \ldots, X_n)}{n}
+\end{split}
+\end{equation*}
+Se il processo stocastico ha un tasso di entropia pari a $H(\mathcal{X})$ si ottiene prendendo il limite che
+\begin{equation*}
+	\lim\limits_{n\to \infty}\frac{1}{n}\mathbf{E}[\log(S_n)]+H(\mathcal{X}) = \log(m)
+\end{equation*}
+\section{Variabili aleatorie continue}
+Estendiamo molti dei concetti già presentati al caso di variabili aleatorie continue dotate di densità su uno spazio di probabilità $(\Omega, \mathcal{F}, \mathbf{P})$. Nell'appendice sono elencate alcune proprietà e definizioni di concetti usati in questo paragrafo.
+\begin{defn}
+	L'entropia di una variabile aleatoria continua a valori in $\R$ con densità $f(x)$, tale che $f(x)\log f(x)\in L^1$ è definita da:
+	\begin{equation*}
+		H(X) = -\int_{\R}{f(x)\log(f(x))\dx}
+	\end{equation*}
+\end{defn}
+\begin{defn}
+	L'entropia congiunta di un insieme di variabili aleatorie continue $X_1,X_2, \ldots, X_n$ con densità $f(\bm{x})$, con $f(\x)\log f(\x)\in L^1$ è definita da:
+	\begin{equation*}
+		H(X_1,X_2,\ldots,X_n)=-\int_{\R^n}{f(\bm{x})\log(f(\bm{x}))
+		\dX}
+	\end{equation*}
+\end{defn}
+\begin{defn}
+	L'entropia condizionale di due variabili aleatorie $X,Y$ con densità congiunta $f(x,y)$ e condizionale $f_{X|Y}(x,Y = y)$, tale che $f(x,y)\log(f_{X|Y}(x,y))\in L^1$ è definita come:
+	\begin{equation*}
+		H(X|Y) = -\int_{\R^2}{f(x,y)\log(f_{X|Y}(x,Y = y))\dx\dy}
+	\end{equation*}
+\end{defn}
+In particolare si ha che la densità condizionale può essere espressa come $f_{X|Y}(x,y) = \frac{f(x,y)}{f_Y(y)}$ (rif. Appendice).
+\begin{defn}
+	L'entropia relativa o distanza di Kullback-Leibler tra due densità $f(\x)$ e $g(\x)$, tali che $f(\x)\log\left(\frac{f(\x)}{g(\x)}\right)\in L^1$  è definita da:
+	\begin{equation*}
+		D(f||g) = \int_{\R^{n}}{f(\x)\log\left(\frac{f(\x)}{g(\x)}\right)\dX}
+	\end{equation*}
+\end{defn}
+\begin{defn}
+	L'informazione mutua tra due variabili aleatorie continue $X$ e $Y$ di densità congiunta $f(x,y)$ e marginali $f_X(x),f_Y(y)$, tali che $f(x,y)\log\left(\frac{f(x,y)}{f_X(x)f_Y(y)}\right)\in L^1$ è definita come
+	\begin{align*}
+		I(X;Y) = \int_{\R^2}{f(x,y)\log\left(\frac{f(x,y)}{f_X(x)f_Y(y)}\right)\dx\dy} \\
+		= D(f(x,y)||f_X(x)f_Y(y))
+	\end{align*}
+\end{defn}
+Grazie alle proprietà del logaritmo valgono tutti i lemmi e i teoremi già verificati per le variabili discrete. \textcolor{blue}{da un controllo veloce sì, fare controllo approfondito}
+
+
+\chapter{Il Mercato Azionario}
+\section{Definizioni}
+In questo capitolo presenteremo un'applicazione del criterio di Kelly (\textit{Kelly gambling}) al mercato azionario. Seguiremo da vicino la presentazione contenuta nel libro di Cover e Thomas, "\textit{Elements of Information Theory}"\cite{CTElInfTeo}. Esso viene modellizzato come un vettore di rendimenti azionari $\bm{X}=(X_1,X_2, \ldots, X_m)$, $X_i\geq 0, \forall i$ dove $m$ è il numero di asset (o titoli) considerati. Ogni $X_i$ è il rapporto tra il prezzo di chiusura in due giorni consecutivi e tipicamente questo valore è vicino a $1$.\newline
+Assumiamo che $\bm{X}$ sia distribuito con funzione di ripartizione $F(\bm{x})$ e densità $f(\bm{x})$.\newline
+Un portafoglio è una suddivisione del proprio capitale in frazioni sulle varie azioni ed è rappresentato come un vettore $\bm{b}=(b_1,b_2,\ldots, b_m)$ dove $b_i\geq 0 \;\;\forall i$ e $\sum_{i = 1}^{m}{b_i} = 1$.\newline
+Usando un portafoglio $\bm{b}$ con un vettore di rendimenti $\bm{X}$ il fattore di aumento del capitale da un giorno all'altro sarà $S=\bm{b}^t\bm{X}$.
+\begin{defn}
+	Il tasso di raddoppio associato a un portafoglio $\bm{b}$ e a una distribuzione $F(\bm{x})$ è definito come
+	\begin{equation*}
+		W(\bm{b},F) = \int_{\R^m}{\log(\bm{b}^t\bm{X})\dFX}
+	\end{equation*}
+\end{defn}
+\begin{defn}
+	Il tasso di raddoppio ottimale per una distribuzione di probabilità $F(\bm{x})$ è definito come
+	\begin{equation*}
+		W^*(F) = \sup\limits_{\bm{b}}W(\bm{b},F)
+	\end{equation*}
+	Un portafoglio che raggiunge l'estremo superiore è detto portafoglio log-ottimale e si indica con $\bm{b}^*$.
+\end{defn}
+\begin{teo}
+	Siano $\X_1,\X_2,\ldots,\X_n$ i.i.d. vettori di rendimenti azionari per $n$ giorni con distribuzione data da $F(\x)$. Sia quindi
+	\begin{equation*}
+		S_n^*= \prod_{i = 1}^{n}{\B^{*t}\X_i}
+	\end{equation*}
+	il capitale dopo $n$ giorni di utilizzo del portafoglio log-ottimale. Allora
+	\begin{equation*}
+	\frac{1}{n}\log(S_n^*)\rightarrow W^* \;\;\;\; \text{con probabilità } 1
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Dalla legge forte dei grandi numeri
+	\begin{equation*}
+		\begin{split}
+		\frac{1}{n}\log(S_n^*) & = \frac{1}{n}\sum_{i = 1}^{n}{\log(\B^{*t}\X_i)}\\
+		& \rightarrow W^* \;\;\;\; \text{con probabilità }1
+		\end{split}
+	\end{equation*}
+	da cui otteniamo anche che $\E[S^*_n] \doteq 2^{nW^*}$.
+\end{proof}
+
+Vogliamo caratterizzare il portafoglio log-ottimale in qualche modo. Per fare questo iniziamo con un lemma preliminare
+\begin{lemma}
+	$W(\B,F)$ è concavo in $\B$ e lineare in $F$, $W^*(F)$ è convesso in $F$.
+\end{lemma}
+\begin{proof}
+	Dalla concavità del logaritmo sappiamo che
+	\begin{equation*}
+		\log((\lambda\B_1+(1-\lambda)\B_2)^t\X)\geq\lambda\log(\B_1^t\X)+(1-\lambda)\log(\B_2^t\X)
+	\end{equation*}
+	Prendendo il valore atteso da entrambi i membri della disuguaglianza otteniamo che
+	\begin{equation*}
+		W(\lambda\B_1+(1-\lambda)\B_2, F)\geq \lambda W(\B_1,F) + (1-\lambda)W(\B_2,F)
+	\end{equation*}
+	Sia ora $\B^*(\lambda F_1+(1-\lambda)F_2)$ il portafoglio log-ottimale. Ora
+	\begin{equation*}
+		\begin{split}
+		W^*(\lambda F_1+(1-\lambda)F_2)
+		& = W(\B^*(\lambda F_1+(1-\lambda)F_2),\lambda F_1+(1-\lambda)F_2)\\
+		& = \lambda W(\B^*(\lambda F_1+(1-\lambda)F_2),F_1)\\
+		& +(1-\lambda)W(\B^*(\lambda F_1+(1-\lambda)F_2),F_2)\\
+		& \leq \lambda W^*(\B^*(F_1),F_1) + (1-\lambda)W^*(\B^*(F_2),F_2)
+		\end{split}
+	\end{equation*}
+	dove l'ultima disuguaglianza segue dal fatto che $\B^*(F_1)$ massimizza $W(\B,F_1)$ e $\B^*(F_2)$ massimizza $W(\B,F_2)$. 
+\end{proof}
+\begin{lemma}
+	L'insieme dei portafogli log-ottimali rispetto a una data distribuzione $F$ è convesso.
+\end{lemma}
+\begin{proof}
+	Supponiamo che sia $\B_1$ che $\B_2$ siano log-ottimali per $F$. Dalla concavità di $W(\B,F)$ rispetto a $\B$ abbiamo
+	\begin{equation*}
+	W(\lambda\B_1 + (1-\lambda)\B_2,F)\geq \lambda W(\B_1,F)  + (\-\lambda)W(\B_2,F) = W^*(F)
+	\end{equation*}
+	Quindi anche $\lambda\B_1 + (1-\lambda)\B_2$ è log-ottimale.
+\end{proof}
+
+\section{Condizioni di Kuhn-Tucker}
+Vogliamo a questo punto caratterizzare il portafoglio log-ottimale di un investimento su singolo periodo. Per fare ciò utilizziamo le condizioni di Kuhn-Tucker. Sia quindi $\mathcal{B}=\{\B\in \R^m: b_i \geq 0, \sum_{i=1}^{m}{b_i} = 1\}$ l'insieme dei portafogli. Vale il seguente teorema
+\begin{teo}
+	Il portafoglio log-ottimale $\B^*$ per il mercato azionario $\X$ con distribuzione $F$ soddisfa le seguenti condizioni necessarie e sufficienti:
+	\begin{equation*}
+		\begin{split}
+		\mathbf{E}\left[\frac{X_i}{\B^{*t}\X}\right] & = 1 \;\;\;\;\; \text{se } b_i^*>0\\
+		& \leq 1 \;\;\;\;\; \text{se } b_i^*=0
+		\end{split}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Per comodità verrà usato il logaritmo naturale invece di quello binario. A meno di costanti il risultato è analogo.\newline
+	Il tasso di raddoppio $W(\B) = \mathbf{E}[\ln(\B^t\X)]$ è concavo in $\B$. Da questo segue che $\B^*$ è log-ottimale se e solo se la derivata direzionale do $W(\cdot)$ nella direzione da $\B^*$ a qualsiasi altro portafoglio $\B$ è non positiva. Ponendo quindi $\B_\lambda=(1-\lambda)\B^*+\lambda\B$ per $0\leq \lambda\leq 1$ abbiamo:
+	\begin{equation*}
+	\begin{split}
+		\left.\frac{d}{d\lambda}\mathbf{E}[\ln(\B_\lambda^t\X)]\right\vert_{\lambda=0^+}
+		& = \lim\limits_{\lambda\downarrow 0}\frac{1}{\lambda}\mathbf{E}\left[\ln\left(\frac{(1-\lambda)\B^{*t}\X + \lambda\B^t\X}{\B^{*t}\X}\right)\right]\\
+		& = \mathbf{E}\left[\lim\limits_{\lambda\downarrow 0}\frac{1}{\lambda}\ln\left(1+\lambda\left(\frac{\B^t\X}{\B^{*t}\X}-1\right)\right)\right]\\
+		& = \mathbf{E}\left[\frac{\B^t\X}{\B^{*t}\X}\right]-1
+	\end{split}
+	\end{equation*}
+	Dove nel secondo passaggio abbiamo applicato il teorema di convergenza dominata. Si ha infatti che per $\lambda$ piccoli
+	\begin{equation*}
+		\begin{split}
+		\left|\frac{1}{\lambda}\log\left(1+\lambda\left(\frac{\B^t\X}{\B^{*t}\X}-1\right)\right)\right|&\leq \left|\frac{1}{\lambda}\lambda\left(\frac{\B^t\X}{\B^{*t}\X}-1\right)\right|\\
+		& \leq 2
+		\end{split}
+		\end{equation*}
+	poiché $\frac{\B^t\X}{\B^{*t}\X}\leq 1$ (portafoglio log-ottimale) e per $x\geq -\frac{1}{2}$ si ha $|\log(1+x)|\leq|x|$. Come funzione dominante si può quindi prendere $2$ (integrabile).\newline
+	La condizione si riconduce quindi a
+	\begin{equation*}
+		\mathbf{E}\left[\frac{\B^t\X}{\B^{*t}\X}\right]\leq 1
+	\end{equation*}
+	per ogni $\B$. Se il segmento tra $\B^*$ e $\B$ può essere esteso oltre $\B^*$ allora abbiamo uguaglianza nella formula, altrimenti no.\newline
+	Le condizioni di Kuhn-Tucker valgono per ogni portafoglio in $\mathcal{B}$. Consideriamo quindi quelli agli estremi, ossia i $\B_j = (\B:b_j = 1, b_i=0, i\neq j)$. In questo caso il segmento tra $\B^*$ e $\B_j$ può essere esteso se e solo se $b^*_j>0$. Possiamo quindi riscrivere le condizioni in funzione di questo ottenendo la tesi:
+	\begin{equation*}
+	\begin{split}
+	\mathbf{E}\left[\frac{X_i}{\B^{*t}\X}\right] & = 1 \;\;\;\;\; \text{se } b_i^*>0\\
+	& \leq 1 \;\;\;\;\; \text{se } b_i^*=0
+	\end{split}
+	\end{equation*}
+\end{proof}
+
+Il seguente risultato mostra una utile conseguenza
+\begin{teo}
+	Sia $S^*=\B^{*t}\X$ il capitale aleatorio risultante da un investimento su singolo periodo con un'allocazione data dal portafoglio log-ottimale. Sia quindi $S = \B^t\X$ il capitale aleatorio ottenuto investendo secondo un qualsiasi altro portafoglio. Allora:
+	\begin{equation*}
+		\mathbf{E}\left[\ln\left(\frac{S}{S^*}\right)\right]\leq 0 \;\; \forall S \iff \mathbf{E}\left[\frac{S}{S^*}\right]\leq 1 \;\; \forall S
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Dal teorema precedente sappiamo che se $\B^*$ è log-ottimale (e quindi $\mathbf{E}\left[\log\left(\frac{S}{S^*}\right)\right]\leq 0$)
+	\begin{equation*}
+		\mathbf{E}\left[\frac{\B^t\X}{\B^{*t}\X}\right]\leq 1
+	\end{equation*}
+	per ogni $i$. Moltiplicando questa disuguaglianza per $b_i$ e sommando su $i$ otteniamo
+	\begin{equation*}
+		\sum_{i = 1}^{m}{b_i\mathbf{E}\left[\frac{\B^t\X}{\B^{*t}\X}\right]}\leq \sum_{i=1}^{m}{b_i} = 1
+	\end{equation*}
+	che è equivalente a
+	\begin{equation*}
+		\mathbf{E}\left[\frac{\B^t\X}{\B^{*t}\X}\right]	= \mathbf{E}\left[\frac{S}{S^*}\right]\leq 1
+	\end{equation*}
+	Infine, l'equivalenza è una conseguenza diretta della disuguaglianza di Jensen
+	\begin{equation*}
+		\mathbf{E}\left[\log\left(\frac{S}{S^*}\right)\right]\leq
+		\log \mathbf{E}\left[\frac{S}{S^*}\right]\leq \log(1)=0
+	\end{equation*}
+\end{proof}
+Questo teorema ci dice che massimizzare il tasso di raddoppio corrisponde in realtà a massimizzare il rapporto tra capitali.\newline
+Come ulteriore conseguenza della caratterizzazione di Kuhn-Tucker abbiamo che la parte di capitale ottenuta dopo ogni giornata da un asset è la stessa porzione che era investita nello stesso.
+\begin{equation*}
+	\mathbf{E}\left[\frac{b^*_iX_i}{\B^{*t}\X}\right]= b^*_i\mathbf{E}\left[\frac{X_i}{\B^{*t}\X}\right]=b^*_i
+\end{equation*}
+Questa è una evidente analogia con il Kelly gambling,in quanto la parte reinvestita è sempre pari a quella ottenuta, mantenendo le proporzioni con il guadagno atteso.
+
+\section{Mercati stazionari, AEP e AOP}
+\subsection{Risultati su portafogli ottimali e generalità}
+\textcolor{blue}{Il teorema in appendice assicura l'esistenza della probabilità condizionale in partenza se l'arrivo è R coi boreliani, si potrebbe quindi togliere l'ipotesi dello spazio di probabilità perfetto}.\newline
+Iniziamo con qualche definizione preliminare. In questa sezione seguiremo quanto fatto da Algoet e Cover in \cite{algoet1988}. Sia dato un processo stocastico stazionario $\{\X_t\}_{-\infty<t<\infty}$, $t\in \Z$ che rappresenta i rendimenti azionari degli asset. Ad ogni passo scegliamo un portafoglio che sia log-ottimale basandoci sul passato. Al periodo di investimento $n$ avremo quini a disposizione informazioni rappresentate da una $\sigma$-algebra $\F_t$ tale che $\sigma(\X_0,\ldots,\X_{t-1})\subseteq \F_t$ e scegliamo un portafoglio che si $\F_t$ misurabile e indichiamo quello log-ottimale come $\B_t^*=\B^*(\X_0,\ldots,\X_{t-1})$, ossia quello che massimizza
+\begin{equation*}
+	w_t^*=\E[\log(\B_t^{*t}\X_t)|\F_t] = \sup\limits_{\bm{b}=\B(\X_0,\ldots, \X_{t-1})}\E[\log(\B^t\X_t)|\X_{t-1},\ldots,\X_0]
+\end{equation*}
+Il capitale dopo $n$ passi sarà dato da $S_n=\prod_{t = 1}^{n}{\B_t^{t}(\X_{t-1},\ldots,\X_0)\X_t}$.
+\begin{defn}
+	Il tasso di raddoppio log-ottimale al passo $n$ è dato da
+	\begin{equation}\label{def:tasso-cond}
+		W^*_n=\E[w_n^*] = \E[\log(\B_n^{*t}\X_n)] = \sup\limits_{\bm{b}=\B(\X_0,\ldots, \X_{n-1})}\E[\log(\B^t\X_n)]=W^*(\X_n|\X_0,\ldots,\X_{n-1})
+	\end{equation}
+	dove la seconda uguaglianza segue dalle proprietà della speranza condizionale.
+\end{defn}
+\begin{defn}
+	Il tasso di raddoppio ottimale per i primi $n$ passi è dato da
+	\begin{equation}\label{def:tasso-cum}
+		W^*(\X_0,\X_1,\ldots,\X_{n-1}) = \sup\limits_{\B_0,\ldots, \B_{n-1}}\E[\log(S_n)]
+	\end{equation}
+\end{defn}
+Il logaritmo di $S_n$ si scompone in una somma. Considerando anche che ad ogni passo scelgo un portafoglio indipendente dai precedenti (ma dipendente dai vettori degli stock), posso scrivere che l'estremo superiore nell'equazione \ref{def:tasso-cum} al variare della successione dei portafogli è la somma dei singoli estremi superiori in \ref{def:tasso-cond}, otteniamo la chain rule:
+\begin{equation*}
+	W^*(\X_0,\X_1,\ldots,\X_{n-1})=\sum_{t = 0}^{n-1}{W^*_t} 
+\end{equation*}
+\begin{defn}
+	Il tasso di raddoppio asintotico $W^*_\infty$ è definito da
+	\begin{equation*}
+		W^*_\infty=\lim\limits_{n\to \infty}\frac{W^*(\X_0,\X_1,\ldots,\X_{n-1})}{n}
+	\end{equation*}
+	se il limite esiste.
+\end{defn}
+\begin{teo}
+	Per un mercato stazionario, il tasso di raddoppio asintotico esiste ed è uguale a 
+	\begin{equation*}
+		W^*_\infty=\lim\limits_{n\to\infty}W^*_n
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Dalla stazionarietà $W^*_n$ è non decrescente in $n$, quindi ammette un limite, anche infinito. Siccome
+	\begin{equation*}
+		\frac{W^*(\X_0,\ldots, W_{n-1})}{n} = \frac{1}{n}\sum_{t = 0}^{N-1}{W^*_t}
+	\end{equation*}
+	segue dal teorema delle media di Cesàro che
+	\begin{equation*}
+		W^*_\infty=\lim\limits_{n\to\infty}\frac{W^*(\X_0,\ldots, W_{n-1})}{n} =\lim\limits_{n\to\infty}W^*_n
+	\end{equation*}
+\end{proof}
+
+Assumiamo che il vettore dei rendimenti $\X(\omega)\in\R^m_+$ sia definito su uno spazio di probabilità $(\Omega,\F,\Pro)$, il teorema citato in appendice ci assicura che $\X$ ammette una distribuzione di probabilità condizionale e regolare data ogni sotto-$\sigma$-algebra di $\F$.
+\begin{teo}\label{teo:conv}
+	Sia $\{\bar{\F}_t\}_{0\leq t<\infty}$ una successione crescente di sotto-$\sigma$-algebre di $\F$ con  $\sigma$-algebra terminale $\bar{\F}_\infty\subseteq \F$.
+	\begin{itemize}
+		\item Se $\bar{\Pro}_t$ è una distribuzione di probabilità regolare di $\X$ condizionata a $\bar{\F}_t$, allora
+		\begin{equation*}
+			\bar{\Pro}_t \rightarrow \bar{\Pro}_\infty \;\;\;\; \text{debolmente quasi certamente}
+		\end{equation*}
+		\item Se $\B^*(\cdot)$ è un selettore misurabile di portafogli log-ottimali data una distribuzione, allora $\bar{\B}^*_t=\B^*(\bar{\Pro}_t)$ è un portafoglio $\bar{\F}_t$ misurabile che raggiunge il massimo log-return atteso dato $\bar{\F}_t$. Inoltre $\bar{\B}^{*t}_t\X \rightarrow \bar{\B}^{*t}_{\infty}\X$ quasi certamente e quindi
+		\begin{equation*}
+			\log(\bar{\B}^{*t}_t\X) \rightarrow \log(\bar{\B}^{*t}_{\infty}\X) \;\;\;\;\; \text{q.c.}
+		\end{equation*}
+		Se il portafoglio log-ottimale dato $\bar{\F}_\infty$ è unico allora anche $\bar{\B}^*_t\rightarrow \bar{\B}^*_\infty$ q.c..
+		\item Se $w^*(\cdot)$ denota la funzione di massimo log-ritorno atteso, allora il massimo log-ritorno atteso condizionato a $\bar{\F}_t$ è dato da
+		\begin{equation*}
+			\bar{w}_t^* = w^*(\bar{\Pro}_t) = \sup\limits_{\B\in \bar{\F}_t} \E[\log(\B^t\X)|\bar{\F}_t] = \E[\log(\B^{*t}_t\X)|\bar{\F}_t]			
+		\end{equation*}
+		In particolare, $\{\bar{w}_t^*,\bar{\F}_t\}_{0\leq t<\infty}$ è una submartingala e
+		\begin{equation*}
+			\bar{w}_t^*\rightarrow \bar{w}_\infty^* \;\;\;\; \text{q.c. }  (\text{e in } L^1 \text{se } \bar{W}_\infty^*<\infty )
+		\end{equation*}
+		\item Il massimo log-ritorno atteso dato $\bar{\F}_t$ è dato da
+		\begin{equation*}
+			\bar{W}_t^* = \E[\bar{w}^*_t] = \sup\limits_{\B\in \bar{\F}_t} \E[\log(\B^t\X)] = \E[\log(\bar{\B}_t^{*t}\X)]
+		\end{equation*}
+		Inoltre,
+		\begin{equation*}
+			\bar{W}_t^*\uparrow \bar{W}^*_\infty \;\;\;\; \text{per } t\rightarrow \infty
+		\end{equation*}
+	\end{itemize}
+\end{teo}
+\iffalse
+\begin{proof}
+	Il teorema di convergenza di Lèvy per martingale per speranze condizionali per una funzione continua e limitata $f(x)$ afferma che
+	\begin{equation*}
+		\int{f}\text{d}\bar{\Pro}_t=\E[f(X)|\bar{\F}_t]\rightarrow \int{f\text{d}\bar{\Pro}_\infty} = \E[f(X)|\bar{\F}_\infty] \;\;\;\; \text{q.c.}
+	\end{equation*}
+	Questo dimostra il primo punto e il secondo grazie al teorema precedente (!!!). Basta notare che sia $\bar{\B}_t^*=\B^*(\bar{\Pro}_t)$ e $\bar{w}_t^*=w^*(\bar{\Pro}_t)$ sono $\bar{\F}_t$-misurabili, in quanto lo è $\bar{\Pro}_t$ e questa è composta a funzioni misurabili.\newline
+	Se $0\leq s\leq t\leq\infty$ allora $\bar{\F}_s\subseteq \bar{\F}_t$, quindi portafogli $\bar{\F}_s$-misurabili sono anche $\bar{\F}_t$-misurabili. Segue quindi che
+	\begin{equation*}
+		\E [\log(\bar{\B}_s^*\X)|\bar{\F}_t]\leq \bar{w}_t^*=\sup\limits_{\B\in \bar{\F}_t} \E[\log(\B^t\X)|\bar{\F}_t]
+	\end{equation*}
+	Condizionando rispetto a $\bar{\F}_s$ si ha così che $\bar{w}_s^* =\E[\log(\bar{\B}_s^{*t}\X)|\bar{\F}_s]\leq \E[\bar{w}_t^*|\bar{\F}_s]$ e quindi $\{\bar{w}_t^*,\bar{\F}_t\}_{0\leq t<\infty}$ è una submartingala. Inoltre $\bar{W}_t^*$ è crescente in $t$, in quanto è un estremo superiore preso su un insieme sempre più grande per $t$ che cresce.\newline
+	Rimane quindi da mostrare solo che $\bar{W}_t^*\uparrow \bar{W}_\infty^*$ e $\bar{w}_t^*\rightarrow \bar{w}_\infty^*$ quasi certamente (e in $L^1$ se $\bar{W}_\infty^*<\infty$). (FINIRE). 
+\end{proof}
+\fi
+Ci chiediamo ora se l'estremo superiore nella definizione di tasso di raddoppio ottimale viene effettivamente raggiunto nel simplesso dei portafogli ammissibili. Enunciamo quindi due teoremi, dimostrati in \cite{algoet1988} che mostrano risultati di compattezza e continuità per portafogli log-ottimali.\newline
+Dato un portafoglio fissato $\bm{\beta}$ tale che $\beta_j>0$ per ogni $j$, definiamo il vettore dei rendimenti riscalato come
+\begin{equation*}
+	\bm{U}=\bm{u}(\X), \;\;\; \text{dove } \bm{u}(\x) = \frac{\x}{\bm{\beta}^t\x}
+\end{equation*}
+Quindi $\bm{U}$ è la proiezione di $\X$ sul simplesso
+\begin{equation*}
+	\mathcal{U}=\{\bm{u}=(u_j)_{1\leq j\leq m}\in\R^m_+:\bm{\beta}^t\bm{u}=1\}
+\end{equation*}
+Se $\X = 0$ poniamo $\bm{u}(0)=u_0$ per $u_0$ fissato. Su $\mathcal{U}$ abbiamo una misura immagine di $\Pro$ tramite $\bm{u(\x)}$ in modo che
+\begin{equation*}
+	\mathbf{Q}(\bm{U}\in A)=\Pro(\bm{u}(\X)\in A) = \Pro(\bm{u}^{-1}(A))
+\end{equation*}
+Dato che $\X=(\bm{\beta}^t\X)\bm{u}(\X)$ possiamo scomporre il tasso di raddoppio grazie alle proprietà del logaritmo, ottenendo
+$\E_\Pro[\log\B^t\X]=\E_\Pro[\log\bm{\beta}^t\X]+\E_\Pro[\log\B^t\bm{u}(\X)]$ da cui $w(\B,\Pro)=r(\Pro)+w(\B,\mathbf{Q})$. Ponendo quindi $w^*(\mathbf{Q})=\sup\limits_{\bm{b}}\E_\mathbf{Q}[\log\B^t\bm{U}]$ otteniamo che $w^*(\Pro)=r(\Pro)+w^*(\mathbf{Q})$. Abbiamo quindi diviso il nostro tasso di raddoppio in due addendi, uno fissato e l'altro che dipende dalla distribuzione immagine $\mathbf{Q}$.
+\begin{teo}
+	Il tasso di raddoppio ottimale atteso $w^*(\mathbf{Q})$ è convesso, limitato tra $0$ e $\max\limits_j(-\log \beta_j)$ e uniformemente continuo quando lo spazio $\mathcal{Q}$ delle misure di probabilità su $\mathcal{U}$ è dotato della topologia di convergenza debole. L'insieme dei portafogli log-ottimali $\bm{B}^*(\mathbf{Q})$ è un sottoinsieme non vuoto, compatto e convesso di $\mathcal{B}$ per ogni distribuzione $\mathbf{Q}$ su $\mathcal{U}$, e un portafoglio log-ottimale $\B^*(\mathbf{Q})\in \bm{B}^*(\mathbf{Q})$ può essere scelto per ogni $\mathbf{Q}\in\mathcal{Q}$ in modo che $\B^*(\mathbf{Q})$ sia misurabile in $\mathbf{Q}$.
+\end{teo}
+\begin{teo}
+	L'insieme $Gr(\bm{B}^*)=\{(\mathbf{Q},\B^*):\B^*\in\bm{B}^*(\mathbf{Q})\}$ è chiuso in $\mathcal{Q}\times\mathcal{B}$. Di conseguenza, una qualsiasi selezione di portafogli log-ottimali $\mathbf{Q}\mapsto \B^*(\mathbf{Q})\in\bm{B}^*(\mathbf{Q})$ è continua in ogni $\mathbf{Q}\in\mathcal{Q}$ tale che $\bm{B}^*(\mathbf{Q})=\{\B^*(\mathbf{Q})\}$ è un singoletto.
+\end{teo}
+In generale $w^*(\Pro)$ non è nè limitato nè continuo rispetto alla topologia della convergenza debole. Si ha però che se il supporto di $\Pro$ è un sottoinsieme chiuso $\mathcal{K}$ di $\R_+^m$ valgono le seguenti implicazioni
+\begin{itemize}
+	\item $w^*(\Pro)$ è semicontinuo inferiormente e limitato inferiormente se e solo se $\mathcal{K}$ è limitato e lontano da $0$.
+	\item $w^*(\Pro)$ è semicontinuo superiormente e limitato superiormente se e solo se $\mathcal{K}$ è limitato.
+	\item $w^*(\Pro)$ è unfiformemente continuo e limitato se e solo se $\mathcal{K}$ è limitato ed è lontano da $0$.
+\end{itemize}
+Dove per lontano da $0$ intendiamo che la distanza (nello spazio metrico $\R^m_+$) tra $0$ e il sottoinsieme $\mathcal{K}$ (che è chiuso) è maggiore di $0$.
+\subsection{Principio di Ottimalità Asintotica}
+Normalizziamo ponendo il capitale iniziale $S_0 = 1$. Consideriamo quindi il mercato come una successione di vettori dei rendimenti $\{X_i\}_{0\leq i<\infty}$ definiti su uno spazio di probabilità perfetto $(\Omega, \mathcal{F}, \mathbf{P})$. Ogni giorno investiamo il capitale con un portafoglio (variabile col tempo) $\bm{b}_t$.\newline
+L'obiettivo è massimizzare il valore atteso del tasso di raddoppio del capitale 
+\begin{equation*}
+\liminf\limits_{n\to \infty} \frac{1}{n}\E[\log(S_n)]
+\end{equation*}
+Il portafoglio viene scelto ogni giorno sulla base dell'informazione fino a quel momento, cioè condizionando rispetto alle sigma algebre $\mathcal{F}_t$ che rappresentano ciò che conosciamo fino al momento $t$. $\B_t$ deve essere quindi $\F_t$-misurabile.\newline
+Sia ora $\Pro_t$ una distribuzione di probabilità regolare di $\X_t$ condizionata a $\F_t$ e sia quindi $\B^*_t = \B^*(\Pro_t)$ un portafoglio $\F_t$ misurabile che massimizza il ritorno log-ottimale condizionato
+\begin{equation*}
+	w_t^*=w^*(\Pro_t)= \E[\log(\B^{*t}_{t}\X)|\F_t] = \sup\limits_{\B\in \F_t}\E[\log(\B^t\X)|\F_t]
+\end{equation*}
+Per il teorema \ref{teo:conv} il valore atteso di $w_t^*$ coincide col tasso di raddoppio ottimale
+\begin{equation*}
+	W_t^*=\E[w^*_t]= \E[\log(\B^{*t}_{t}\X)] = \sup\limits_{\B\in \F_t}\E[\log(\B^t\X)]
+\end{equation*}
+Dimostriamo che $\{\B_t^*\}_{0\leq t < \infty}$ è asintoticamente ottimale.
+\begin{teo}[Principio di Ottimalità Asintotica]
+	Supponiamo che i $\{X_t\}_{0\leq t<\infty}$ siano definiti su uno spazio di probabilità perfetto $(\Omega, \mathcal{F}, \mathbf{P})$, $\F_t$ è una successione di sotto-$\sigma$-algebre di $\F$ tali che $\sigma(X_0,\ldots, X_{t-1})\subseteq \F_t$ per ogni $t$. Siano quindi i capitali accumulati dopo $n$ giorni ottenuti applicando il portafoglio $\B_t^*$ e un qualsiasi altro $\B_t$ rispettivamente
+	\begin{equation*}
+		S_n^*=\prod_{0\leq t <n}{\B_t^{*t}\X} \;\;\;\;\; \text{e} \;\;\;\;\; S_n=\prod_{0\leq t <n}{\B_t^t\X}
+	\end{equation*}
+	Allora $\left\{\frac{S_n}{S^*_n}, \F_n\right\}_{0\leq n <\infty}$ è una supermartingala non negativa convergente quasi certamente a una variabile aleatoria $Y$ con $\E[Y]\leq 1$. Inoltre $\E\left[\frac{S_n}{S_n^*}\right]\leq 1$ per ogni $n$ e
+	\begin{equation*}
+		\limsup\limits_{n\to\infty}\frac{1}{n}\log\left(\frac{S_n}{S_n^*}\right)\leq 0 \;\;\;\;\;\; \text{quasi certamente}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+		Inizialmente $\frac{S_0}{S_0^*}=1$. Il rapporto $\frac{S_n}{S_n^*}=\prod_{0\leq i <n}{\frac{\B_t^t\X}{\B_t^{*t}\X}}$ è $\F_t$-misurabile e siccome $\B_t^*$ è log-ottimale condizionato a $\F_t$ possiamo scrivere la condizione di Kuhn-Tucker
+	\begin{equation}
+		\E\left[\left.\frac{\B_n^t\X}{\B_n^{*t}\X}\right| \F_n\right]\leq 1
+	\end{equation}
+	Si ottiene quindi che
+	\begin{equation*}
+		\E\left[\left.\frac{S_{n+1}}{S^*_{n+1}}\right| \F_n\right]=\E\left[\left.\frac{S_n}{S_n^*}\frac{\B_n^t\X}{\B_n^{*t}\X}\right| \F_n\right] = \frac{S_n}{S_n^*}\E\left[\left.\frac{\B_n^t\X}{\B_n^{*t}\X}\right| \F_n\right]\leq \frac{S_n}{S_n^*}
+	\end{equation*}
+	Quindi $\{\frac{S_n}{S^*_n}, \F_n\}_{0\leq n <\infty}$ è una supermartingala non negativa e converge quindi quasi certamente a una variabile aleatoria $Y$ (Teorema di convergenza di Lévy per martingale). Dal lemma di Fatou, inoltre
+	\begin{equation*}
+		1 = \E\left[\frac{S_0}{S_0^*}\right]\geq \E\left[\frac{S_n}{S_n^*}\right] \geq \lim\limits_{n\to\infty}\downarrow \E\left[\frac{S_n}{S_n^*}\right] \geq \E[Y]
+	\end{equation*}
+	Da $\E\left[\frac{S_n}{S_n^*}\right]\leq 1$ segue, usando la disuguaglianza di Markov, che per $r_n>0$
+	\begin{equation*}
+		\Pro\left\{\frac{S_n}{S_n^*}\geq r_n\right\} \leq \frac{1}{r_n}\E\left[\frac{S_n}{S_n^*}\right]\leq \frac{1}{r_n}
+	\end{equation*}
+	Prendiamo $r_n$ in modo che $\sum_n\frac{1}{r_n}<\infty$. Si ha così che
+	\begin{equation*}
+		\Pro\left\{\frac{S_n}{S_n^*}\geq r_n\right\} \leq \sum_{n=0}^\infty{\frac{1}{r_n}}<\infty
+	\end{equation*}
+	Dal lemma di Borel-Cantelli $\frac{S_n}{S_n^*}<r_n$ per $n$ grande. In particolare, ponendo $r_n = e^{n\epsilon}$, $\epsilon>0$ otteniamo che
+	\begin{equation*}
+		\Pro\left\{\frac{1}{n}\log\frac{S_n}{S_n^*}\geq \epsilon \;\;\;\;\text{frequentemente}\right\}= 0
+	\end{equation*}
+	Siccome $\epsilon$ è arbitrariamente piccolo concludiamo infine che
+	\begin{equation*}
+		\limsup\limits_{n\to\infty}\frac{1}{n}\log\left(\frac{S_n}{S_n^*}\right)\leq 0 \;\;\;\;\;\; \text{quasi certamente}
+	\end{equation*}
+\end{proof}
+
+\subsection{Proprietà di Equipartizione Asintotica}
+In questa sezione estendiamo i primi risultati del capitolo riguardo a tassi di raddoppio ottimali, mostrati solo per mercati con outcomes i.i.d., a mercati ergodici e stazionari.\newline
+Sia quindi $\X(\omega)\in \R_+^m$ un vettore di rendimenti e sia $T$ una trasformazione invertibile e metricamente transitiva che preserva la misura, definita su uno spazio di probabilità perfetto $(\Omega, \F, \Pro)$. Sia quindi $\X_t(\omega) = \X(T^t(\omega))$. Data l'invertibilità, possiamo anche considerare la successione indicizzata in $\Z$: $\{\X_t\}_{-\infty<t<\infty}$.\newline
+Per la stazionarietà del processo, possiamo liberamente traslare temporalmente la nostra successione ad ogni passo: sia $\B_t^*$ un portafoglio log-ottimale per il $t$-esimo periodo basato sul $t$-passato $\F_t=\sigma(\X_0,\ldots,\X_{t-1})$ e $\bar{\B}_t^*$ l'analogo per il giorno $0$ con $t$-passato $\bar{\F}_t=T^t\F= \sigma(\X_{-1},\ldots,\X_{-t})$. Questi portafogli raggiungono i rendimenti logaritmici condizionali ottimali, rispettivamente
+\begin{equation*}
+ w_t^*=\sup\limits_{\B\in \F_t}\E[\log(\B^t\X_t)|\F_t]\;\;\;\; \text{e} \;\;\;\; \bar{w}_t^* =\sup\limits_{\B\in \bar{\F}_t}\E[\log(\B^t\X_0)|\bar{\F}_t]
+\end{equation*}
+Denotiamo con $W_t^*=\E[\log(\B_t^{*t}\X_t)]$ e $\bar{W}_t^{*}=\E[\log(\bar{\B}_t^{*t}\X_0)]$ i rendimenti logaritmici ottimali. Allora, per stazionarietà (invarianza della distribuzione cumulata), vale
+\begin{equation*}
+ \bar{W}_t^{*}=W^*(\X_0|\X_{-1},\ldots, \X_{-t}) = W^*_t = W^*(\X_t|\X_{t-1},\ldots, \X_1)
+\end{equation*} 
+Se $\bar{\B}_{\infty}^*$ è il portafoglio log-ottimale per il periodo zero, basandoci sulle informazioni della $\sigma$ algebra terminale $\bar{\F}_\infty=\sigma(\X_{-1},\X_{-2},\ldots,)$, allora $W^*_t=\bar{W}_t^*$ è debolmente crescente con limite $\bar{W}_\infty^*=\E[\log(\bar{\B}_\infty^{*t}\X_0)]$, che è il tasso di raddoppio ottimale dato il passato infinito $\bar{W}_\infty^{*}=W^*(\X_0|\X_{-1},\X_{-2},\ldots)$.\newline
+Sia infine $S_n^*=\prod_{0\leq t <n}{\B_t^{*t}\X_t}$ il capitale dopo $n$ periodi di investimento.
+\begin{teo}[Proprietà di Equipartizione Asintotica]
+	Se la successione dei vettori dei rendimenti degli asset $\{\X_t\}$ è un processo ergodico e stazionario, il capitale cresce in modo esponenziale (limitato dall'alto dalla strategia di investimento log-ottimale), q.c. con tasso di raddoppio asintotico costante e pari al massimo ritorno log-ottimale atteso dato il passato infinito. In formule 
+	\begin{equation*}
+		\frac{1}{n}\log(S_n^*)\rightarrow \bar{W}_\infty^*=W^*(\X_0|\X_{-1},\X_{-2},\ldots) \;\;\;\;\; \text{q.c.}
+	\end{equation*}
+	dove
+	\begin{equation*}
+		\begin{split}
+		W^*(\X_0|\X_{-1},\X_{-2},\ldots) & = \lim\limits_{t\to\infty}\uparrow W^*(\X_0|\X_{-1},\ldots,\X_{-t})\\
+		& = \lim\limits_{t\to\infty}\uparrow W^*(\X_t|\X_{t-1},\ldots,\X_{0})\\
+		& = \lim\limits_{n\to\infty}\uparrow \frac{1}{n}W^*(\X_0,\ldots,\X_{n-1})
+		\end{split}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	La $\sigma$-algebra di informazione $\F_t=\sigma(\X_0,\ldots, \X_{t-1})$ è approssimato dall'alto da $\F_t^{(\infty)}$ e dal basso da $\F_t^{(k)}$, definiti come
+	\begin{equation*}
+		\F_t^{(k)} = T^{-t}\bar{\F}_{t\wedge k} = \begin{cases}
+		\sigma(\X_0, \ldots, \X_{t-1}), \;\;\;\;\; \text{se } 0\leq t <k\\
+		\sigma(\X_{t-k},\ldots, \X_{t-1}), \;\; \text{se } k\leq t<\infty
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\F_t^{(\infty)}=T^{-t}\bar{\F}_{\infty}=\sigma(\ldots, \X_{-1},\X_0,\ldots, \X_{t-1})
+	\end{equation*}
+	Siano quindi $\B_t^{(k)}$ e $\B_t^{(\infty)}$ i corrispondenti portafogli log-ottimali e i rispettivi capitali dopo $n$ periodi
+	\begin{equation*}
+		S_n^{(k)} = \prod_{0\leq t <n}{\B_t^{(k)t}\X_t} \;\;\;\;\; \text{ e } \;\;\;\;\; S_n^{(\infty)}=\prod_{0\leq t <n}{\B_t^{(\infty)t}\X_t}
+	\end{equation*}
+	Ricapitolando, $S_n^{(k)},S_n^*,S_n^{(\infty)}$ rappresentano la crescita del capitale su $n$ giorni di utilizzo dei portafogli log-ottimali quando l'investitore ha possibilità di guardare, ad ogni passo, rispettivamente al $k$-passato (ma non prima del periodo $0$), fino al periodo $0$ e in tutto l'infinito passato.\newline
+	Osserviamo che $\B_t^{(k)}(\omega) = \B_k^*(T^{t-k}\omega)$ se $t\geq k$ per stazionarietà. Espandiamo
+	\begin{equation*}
+		\frac{1}{n}\log\left(S_n^{(k)}\right)=\frac{1}{n}\log (S_k^*)+\frac{1}{n}\sum_{k\leq t <n}{\log(\B_t^{(k)t}\X_t)}
+	\end{equation*}
+	dal teorema ergodico (con $g_t=\log(\B^{(k)t}_t)$) segue che
+	\begin{equation*}
+		\frac{1}{n}\log(S_n^{(k)})\rightarrow W^*_k=\E[\log(\B_k^{*t}\X_k)] \;\;\;\; \text{q.c.}
+	\end{equation*}
+	La successione $\left\{\log(\B_t^{(\infty)t}\X_t)\right\}$ è stazionaria ergodica e $\B_0^{(\infty)}=\bar{\B}_{\infty}^*$. Dal teorema ergodico segue ancora che
+	\begin{equation*}
+		\frac{1}{n}\log\left(S_n^{(\infty)}\right)=\frac{1}{n}\sum_{0\leq t <n}{\log(\B_t^{(\infty)t}\X_t)}\rightarrow \bar{W}^*_\infty = \E[\log(\bar{\B}_\infty^{*t}\X_0)]\;\;\;\;\text{q.c.}
+	\end{equation*}
+	$\F_t^{(k)}\subseteq \F_t$ e quindi $\B_t^{(k)}$ è $\F_t$-misurabile, così come $\F_t\subseteq \F_t^{(\infty)}$ e $\B_t^*$ è $\F_t^{(\infty)}$-misurabile.\newline
+	Dal principio di ottimalità asintotica segue che
+	\begin{equation*}
+		\limsup \limits_{n}\frac{1}{n}\log\left(\frac{S_n^{(k)}}{S_n^*}\right)\leq 0 \;\;\; \text{ e } \;\;\; \limsup\limits_{n}\frac{1}{n}\log\left(\frac{S_n^*}{S_n^{(\infty)}}\right)\leq 0 \;\;\; \text{q.c.}
+	\end{equation*}
+	Quindi otteniamo la catena di disuguaglianze
+	\begin{equation*}
+	\begin{split}
+		W_k^*=\lim\limits_{n\to\infty}\frac{1}{n}\log(S_n^{(k)}) & \leq \liminf\limits_{n\to\infty}\frac{1}{n}\log(S_n^*)\\
+		& \leq \limsup\limits_{n\to\infty}\frac{1}{n}\log(S_n^*)\leq \lim\limits_{n\to \infty}\frac{1}{n}\log(S_n^{(\infty)})=\bar{W}^*_\infty\;\;\;\; \text{q.c.}
+	\end{split}
+	\end{equation*}
+	La tesi segue da $W^*_k = \bar{W}_k^*\uparrow \bar{W}_\infty^*$ per $k \to \infty$.
+\end{proof}
+Per ultimo enunciamo un risultato di ottimalità competitiva, un argomento più avanzato che non tratteremo. Il portafoglio log-ottimale non garantisce di avere quasi certamente un rendimento migliore di ogni altro portafoglio. Tuttavia si può dimostrare che la probabilità di fare meglio di ogni altro investitore è maggiore di $\frac{1}{2}$
+\begin{teo}
+	Sia $S^*$ il capitale dopo un periodo di investimento usando il portafoglio log-ottimale e sia $S$ quello dato da un qualsiasi altro portafoglio. Sia quindi $U^*$ una variabile aleatoria indipendente da $\X$ e uniforme su $[0,2]$, e sia $V$ una variabile aleatoria indipendente da $U^*$ e $\X$ con $V\geq 0$, $\E[V] = 1$. Allora
+	\begin{equation*}
+		\Pro(VS\geq U^*S^*)\leq \frac{1}{2}
+	\end{equation*}
+\end{teo}
+\begin{nota}
+	In questo vaso $V$ e $U^*$ servono a introdurre una casualità nel capitale iniziale, in modo tale da ridurre gli effetti di piccole differenze iniziali, cosicché l'unico dato che influenza la probabilità di vincere contro l'altro investitore sia il rapporto $\frac{S}{S^*}$.
+\end{nota}
+
+\chapter{Portafogli Universali di Cover}
+Consideriamo come nei precedenti capitoli una successione di vettori di rendimento di $m$ titolo $\{\x_i\}, \x_i\in \R^{m}_+$. In particolare $x_{ij}$ è il rapporto tra i prezzi nel giorno $i$ dell'asset $j$.\newline
+Nella realtà è difficile trovare il portafoglio log-ottimale senza conoscere la distribuzione di probabilità legata al processo stocastico che modellizza il mercato. Questa distribuzione è per sua natura ignota e al più decidibile in maniera approssimativa con varie metodologie econometriche. Ci dobbiamo quindi affidare a strategie che asintoticamente raggiungono o si avvicinano il più possibile alla situazione ottimale.\newline
+Un approccio è quello di immaginare di avere a disposizione una quantità infinita di investitori, ognuno dei quali utilizzerà un portafoglio costante nel tempo (detto portafoglio costantemente ribilanciato), per poi mescolare le loro strategie. Siccome uno di loro farà esponenzialmente meglio degli altri mostreremo che possiamo raggiungere la performance del migliore a meno di un fattore $n^{\frac{m-1}{2}}$, dove $n$ è il numero di giorni considerati.\newline
+Un secondo approccio è invece quello di un gioco contro un avversario che ad ogni turno sceglie il successivo vettore di stock. Definiremo quindi ad ogni periodo un portafoglio $\hat{b}_i(\x_{i-1},\ldots,\x_1)$ dipendente solo dal passato. L'avversario, che conosce la nostra strategia, sceglie $\x_i$ in modo tale da farci performare il peggio possibile. Indichiamo con
+$\bh_i(\x^{i-1})$ il portafoglio al giorno $i$ e la successione di vettori fino al giorno $n$ come $\x^n$.\newline
+Il miglior portafoglio costante $\B^*(\x^n)$ raggiunge un capitale di
+\begin{equation*}
+	S_n(\x^n) = \max\limits_{\bm{b}}\prod_{i = 1}^n{\B^t\x_i}
+\end{equation*}
+mentre il portafoglio variabile $\bh_n(\x^n)$ ci da
+\begin{equation*}
+\Sh_n(\x^n)=\prod_{i = 1}^n{\bh_i^t(\x^{i-1})\x_i}
+\end{equation*}
+Mostreremo che è possibile trovare una strategia di questo tipo che nel caso peggiore si avvicina a $S^*_n$ a meno di un fattore $V_n\approx n^{-\frac{m-1}{2}}$. Questa strategia dipende da $n$, l'orizzonte del gioco.
+\section{Portafogli universali a orizzonte finito}
+In questa sezione, dimostreremo i risultati relativi all'ultimo approccio mostrato. Diamo prima un lemma preliminare
+\begin{lemma}\label{lem:sum-min}
+	Dati numeri reali $p_1,p_2,\ldots,p_m\geq 0$ e $q_1,q_2,\ldots,q_m\geq 0$ vale
+	\begin{equation*}
+		\frac{\sum_{i = 1}^{m}{p_i}}{\sum_{i = 1}^m{q_i}}\geq \min\limits_i\frac{p_i}{q_i}
+	\end{equation*}
+	dove poniamo che $\frac{x}{0} = \infty$ per $x>0$ e  escludiamo per ipotesi che per qualche $i$ $\frac{p_i}{q_i}=\frac{0}{0}$. In tal caso, infatti, possiamo eliminare tale indice dal termine a sinistra e quindi anche a destra, dove non sarebbe definito.
+\end{lemma}
+\begin{proof}
+	Sia $I$ l'indice che minimizza il termine a destra. Assumiamo che $p_I>0$ (altrimenti la tesi è ovvia). Inoltre, se $q_i= 0$ si ha che ogni altro $q_i$ è nullo, altrimenti $I$ non realizzerebbe il minimo, e quindi entrambi i lati sarebbero infiniti. Possiamo assumere che anche $q_I>0$. Allora
+	\begin{equation*}
+		\frac{\sum_{i = 1}^{m}{p_i}}{\sum_{i = 1}^m{q_i}}=\frac{p_I (1+\sum_{i \neq I}{\frac{p_i}{p_I}})}{q_I(1+\sum_{i \neq I}{\frac{q_i}{q_I}})}\geq \frac{p_I}{q_I}
+	\end{equation*}
+	dove l'ultimo passaggio segue da
+	\begin{equation*}
+		\frac{p_i}{q_i}\geq \frac{p_I}{q_I}\longrightarrow \frac{p_i}{p_I}\geq \frac{q_i}{q_I}
+	\end{equation*}
+	per ogni $i$.
+\end{proof}
+Per dimostrare il prossimo teorema useremo una notazione particolare. Indicheremo infatti con $\bh,\B,\x'\in\R_+^{m^n}$ i portafogli e i vettori degli stock cumulativi di $n$ giorni, in modo tale che le componenti dei portafogli siano tutti i possibili prodotti ($m^n$) della forma $b_1^{n_1}b_2^{n_2}\cdots b_m^{n_m}$, cosicché
+\begin{equation*}
+				\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}= \frac{\prod_{i = 1}^n{\bh_i^t\x_i}}{\prod_{i = 1}^n{\B^t_i\x_i}}=\frac{\bh^t\x}{\B^t\x'}
+\end{equation*}
+\begin{teo}[Portafoglio universale a orizzonte finito]\label{teo:univ-finite}
+	Per una successione di vettori di stock $\x^n = \x_1,\x_2,\ldots,\x_n$, con $\x_i\in \R^m_+$ di lunghezza $n$ e $m$ asset, sia $S_n^*(\x^n)$ il capitale ottenuto miglior portafoglio costantemente ribilanciato su $\x^n$ e sia $\Sh_n(\x^n)$ quello derivante da una qualsiasi strategia $\bh_i(\cdot)$ su $\x^n$. Allora
+	\begin{equation*}
+		\max\limits_{\bh_i(\cdot)}\min\limits_{\x_1,\ldots, \x_{n}}\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}=V_n
+	\end{equation*}
+	dove
+	\begin{equation*}
+		V_n=\left[\sum_{n_1+n_2+\cdots+n_m=n}{\binom{n}{n_1,n_2,\ldots,n_m}2^{-nH\left(\frac{n_1}{n},\ldots,\frac{n_m}{n}\right)}}\right]^{-1}\approx n^{-\frac{m-1}{2}}
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Dimostriamo il teorema nel caso $m=2$, per $m$ generico la soluzione è una generalizzazione di questa in modo completamente analogo.\newline
+	Denotiamo gli stock con $1$ e $2$, il passaggio chiave è quello di esprimere 
+	\begin{equation*}
+		S_n(\x^n)=\prod_{i = 1}^n{\B_i^t\x_i}
+	\end{equation*}
+	che è un prodotto di somme, come una somma di prodotti. Espandendo il lato a destra, ogni termine nella somma corrisponde a una successione di prezzi di stock relativi al primo o al secondo asset, moltiplicato per la proporzione $b_{i1},b_{i2}$ che la strategia pone rispettivamente per lo stock $1$ e lo stock $2$ al tempo $i$. Possiamo quindi vedere $S_n$ come la somma su tutte le $2^n$ possibili $n$ sequenze di $1$ e $2$ di un prodotto, costituito da prodotti di elementi di portafogli per prezzi relativi, ossia
+	\begin{equation*}
+		S_n(\x^n) = \sum_{j^n\in\{1,2\}^n}\prod_{i = 1}^{n}{b_{ij_i}x_{ij_i}} = \sum_{j^n\in\{1,2\}^n}\prod_{i = 1}^{n}{b_{ij_i}}\prod_{i = 1}^n{x_{ij_i}}
+	\end{equation*}
+	Denotiamo con $w(j^n)$ il prodotto $\prod_{i = 1}^{n}{b_{ij_i}}$, la frazione totale di capitale investita sulla sequenza $j^n$ e sia
+	\begin{equation*}
+		x(j^n)=\prod_{i = 1}^n{x_{ij_i}}
+	\end{equation*}
+	il corrispondente ritorno per questa successione, allora possiamo scrivere
+	\begin{equation*}
+		S_n(\x^n)=\sum_{j^n\in\{1,2\}^n}{w(j^n)x(j^n)}
+	\end{equation*}
+	Similmente applichiamo le stesse notazioni e considerazioni sul portafoglio casuale e su quello costantemente ribilanciato, cosicché
+	\begin{equation*}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)} = \frac{\sum_{j^n\in\{1,2\}^n}{\hat{w}(j^n)x(j^n)}}{\sum_{j^n\in\{1,2\}^n}{w^*(j^n)x(j^n)}}
+	\end{equation*}
+	Applicando ora il lemma \ref{lem:sum-min} abbiamo che
+	\begin{equation*}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq \min\limits_{j^n}\frac{\hat{w}(j^n)x(j^n)}{w^*(j^n)x(j^n)}=\min\limits_{j^n}\frac{\hat{w}(j^n)}{w^*(j^n)}
+	\end{equation*}
+	Il problema di massimizzare il rapporto tra i capitali si traduce quindi con l'assicurarsi che la frazione scommessa su una successione di stock dal portafoglio universale sia uniformemente vicina alla proporzione scommessa sulla stessa usando $\B^*$. L'obiettivo di tutto questo procedimento era ridurre un mercato su più periodi a un mercato su singolo periodo e successioni di stock.\newline
+	Calcoliamo prima il peso $w^*(j^n)$ dato al miglior portafoglio costantemente ribilanciato $\B^*$. Osserviamo che per un portafoglio di questo tipo (che è costante nel tempo) abbiamo pesi della forma
+	\begin{equation*}
+		w(j^n)=\prod_{i = 1}^n{b_{ij_i}}=b^k(1-b)^{n-k}
+	\end{equation*}
+	dove $k$ è il numero di volte che $1$ compare in $j^n$.\newline
+	Differenziando rispetto a $b$ notiamo che
+	\begin{equation*}
+		w^*(j^n) =\max\limits_{0\leq b\leq 1}b^k(1-b)^{n-k}=\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k}
+	\end{equation*}
+	che è raggiunto da
+	\begin{equation*}
+		\B^*=\left(\frac{k}{n},\frac{n-k}{n}\right)
+	\end{equation*}
+	Notiamo che però in questo modo $\sum w^*(j^n)>1$, mentre la nostra strategia in partenza deve avere $\sum \hat{w}(j^n)=1$. Il modo più efficace per farlo, in modo da proteggersi da tutti i risultati peggiori, è quello di rinormalizzare e scegliere i $\hat{w}(j^n)$ proporzionali ai $w^*(j^n)$, cosicché il peggior rapporto $\frac{\hat{w}(j^n)}{w^*(j^n)}$ è massimizzato.\newline
+	Definiamo quindi
+	\begin{equation*}
+		\begin{split}
+		\frac{1}{V_n}&=\sum_{j^n\in\{1,2\}^n}{\left(\frac{k(j^n)}{n}\right)^{k(j^n)}\left(\frac{n-k(j^n)}{n}\right)^{n-k(j^n)}}\\
+		& = \sum_{k = 0}^n{\binom{n}{k}\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k}}
+		\end{split}
+	\end{equation*}
+	e
+	\begin{equation}\label{eq:strategy-weight}
+		\hat{w}(j^n)=V_n\left(\frac{k(j^n)}{n}\right)^{k(j^n)}\left(\frac{n-k(j^n)}{n}\right)^{n-k(j^n)}
+	\end{equation}
+	In questo modo si ha $\hat{w}(j^n)\geq 0$ e $\sum_{j^n\in\{1,2\}^n}\hat{w}(j^n) = 1$. $V_n$ è quindi la normalizzazione che rende $\hat{w}(j^n)$ una distribuzione di probabilità. Inoltre, da prima, per ogni successione $\x^n$
+	\begin{equation*}
+		\begin{split}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)} & \geq \min\limits_{j^n}\frac{\hat{w}(j^n)}{w^*(j^n)}\\
+		& = \min\limits_k\frac{V_n\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k}}{b^{*k}(1-b^*)^{n-k}}\\
+		& \geq V_n
+		\end{split}
+	\end{equation*}
+	Abbiamo cioè che
+	\begin{equation*}
+		\max\limits_{\bh}\min\limits_{\x^n}\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq V_n
+	\end{equation*}
+	Questo dimostra l'esistenza di un portafoglio che raggiunge asintoticamente il capitale del miglior portafoglio costantemente ribilanciato a meno di un fattore $V_n$. Per completare la dimostrazione vediamo che non si può fare di meglio, ossia che esiste una successione $\x^n$ per cui ogni rapporto tra il capitale di una qualsiasi strategia e $S_n^*$ è limitato esattamente da $V_n$.\newline
+	Per ogni $j^n\in\{1,2\}^n$ definiamo il corrispondente vettore di stock estremale $\x^n(j^n)$ come
+	\begin{equation*}
+		\x_i(j_i) = \begin{cases}
+		(1,0)^t\;\;\;\; \text{se } j_i=1, \\
+		(0,1)^t\;\;\;\; \text{se } j_i=2,
+		\end{cases}
+	\end{equation*}
+	Siano quindi $\bm{e}_1 = (1,0)^t$ e $\bm{e}_2 = (0,1)^t$ e sia 
+	\begin{equation*}
+		\mathcal{K} = \{\x(j^n):j^n\in\{1,2\}^n, \x_{ij_i}=\bm{e}_{j_i}\}
+	\end{equation*}
+	l'insieme delle successioni estremali. Queste sono $2^n$ e per ognuna di esse c'è solo un asset che ha un ritorno non nullo mentre il capitale investito nell'altro è perso. Quindi, dopo $n$ periodi, il capitale ottenuto da una successione estremale è pari al prodotto delle quantità investite negli stock $j_1,j_2,\ldots,j_n$, cioè $S_n(\x^n(j^n))=\prod_{i}{b_{j_i}}=w(j^n)$. Il fatto che i ritorni sono del tipo $0-1$ implica che per $\x^n\in\mathcal{K}$
+	\begin{equation*}
+		\sum_{j^n\in\{1,2\}^n}{S_n(\x^n(j^n))}=\sum_{j^n\in\{1,2\}^n}w(j^n)=1
+	\end{equation*}
+	Per ogni sequenza estremale $\x^n(j^n)\in\mathcal{K}$, il miglior portafoglio costantemente ribilanciato è 
+	\begin{equation*}
+		\B^*(\x^n(j^n))=\left(\frac{n_1(j^n)}{n},\frac{n_2(j^n)}{n}\right)^t
+	\end{equation*}
+	dove $n_1(j^n)$ è il numero di occorrenze di $1$ in $j^n$. Il corrispondente capitale al termine di $n$ periodi è
+	\begin{equation*}
+		S_n^*(\x^n(j^n))=\left(\frac{n_1(j^n)}{n}\right)^{n_1(j^n)}\left(\frac{n_2(j^n)}{n}\right)^{n_2(j^n)}=\frac{\hat{w}(j^n)}{V_n}
+	\end{equation*}
+	dove l'ultimo passaggio segue dall'equazione \ref{eq:strategy-weight}. Quindi
+	\begin{equation*}
+		\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}=\frac{1}{V_n}\sum_{j^n\in\{1,2\}^n}{\hat{w}(j^n)}=\frac{1}{V_n}
+	\end{equation*}
+	Abbiamo così la seguente disuguaglianza, valida per ogni $\{ \B_i\}_{i=1}^n$
+	\begin{equation*}
+		\begin{split}
+		\min\limits_{\x^n\in\mathcal{K}}\frac{S_n(\x^n)}{S_n^*(\x^n)}& \leq \sum_{\tilde{\x}^n\in\mathcal{K}}\frac{S_n^*(\tilde{\x}^n)}{\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}}\frac{S_n(\tilde{\x}^n)}{S_n^*(\tilde{\x}^n)}\\
+		& = \sum_{\tilde{\x}^n\in\mathcal{K}}{\frac{S_n(\tilde{\x}^n)}{\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}}}\\
+		& = \frac{1}{\sum_{\x^n\in\mathcal{K}}{S_n^*(\x^n)}}\\
+		& = V_n
+		\end{split}
+	\end{equation*}
+	dove la prima disuguaglianza segue dal fatto che il minimo di una successione è minore o uguale alla media pesata. 
+	Ne segue che
+	\begin{equation*}
+		\max\limits_{\bm{b}}\min\limits_{\x^n\in\mathcal{K}}\frac{S_n(\x^n)}{S_n^*(\x^n)}\leq V_n
+	\end{equation*}
+\end{proof}
+Questa strategia è chiaramente dipendente da $n$. possiamo a questo punto riscriverla in termini incrementali. Consideriamo il peso $\bh_{i,1}$ assegnato dall'algoritmo sullo stock $1$ al tempo $i$ data la successione di stock precedenti $\x^{i-1}$. Possiamo calcolare tale peso sommando su tutte le sequenze $j^n$ che hanno $1$ in posizione $i$, ottenendo
+\begin{equation*}
+	\hat{\B}_{i,1}(\x^{i-1}) = \frac{\sum_{j^{i-1}\in M^{i-1}}{\hat{w}(j^{i-1}1)}x(j^{i-1})}{\sum_{j^{i}\in M^{i}}{\hat{w}(j^i)x(j^{i-1})}}
+\end{equation*}
+dove
+\begin{equation*}
+	\hat{w}(j^i) = \sum_{j^n:j^i\subseteq j^n}{w(j^n)}
+\end{equation*}
+è il peso totale su tutte le sequenze che iniziano per $j^i$ e 
+\begin{equation*}
+	x(j^{i-1})=\prod_{k = 1}^{i-1}{x_{kj_k}}
+\end{equation*}
+è il ritorno di queste sequenze. Ciò che stiamo facendo è quindi ad ogni passo mediare su tutte le successioni che hanno $1$ in quella posizione, in base ai pesi definiti secondo il processo sopra.\newline
+Utilizzando i risultati in \cite{cost1998} si ottiene che
+\begin{equation*}
+	V_n \sim \left(\sqrt{\frac{2}{n}}\right)^{m-1}\frac{\Gamma\left(\frac{m}{2}\right)}{\sqrt{\pi}}
+\end{equation*}
+per $m$ asset. In particolare per $m=2$
+\begin{equation*}
+	V_n\sim\sqrt{\frac{2}{\pi n}}
+\end{equation*}
+e
+\begin{equation*}
+	\frac{1}{2\sqrt{n+1}}\leq V_n\leq \frac{2}{\sqrt{n+1}}
+\end{equation*}
+per ogni $n$. Per $m=2$ il portafoglio appena mostrato ottiene quindi un capitale $\Sh_n(\x^n)$ tale che
+\begin{equation*}
+	\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq V_n\geq \frac{1}{2\sqrt{n+1}}
+\end{equation*}
+per ogni successione $\x^n$.
+
+\section{Portafoglio Universale a orizzonte infinito}\label{univinfinite}
+Vogliamo ora trovare una strategia a orizzonte infinito, cioè che non dipenda dal numero di giorni in cui verrà utilizzata. Come detto in precedenza, immaginiamo di avere infiniti manager, ognuno dei quali utilizzerà un portafoglio costantemente ribilanciato $\B$ e successivamente di utilizzare un approccio che sia un misto di questi.\newline
+Sia $\mathcal{B}=\{\B\in\R^m:b_i\geq 0,\sum_i{b_i}=1\}$ l'$m$ simplesso, ossia lo spazio dei portafogli ammissibili.
+Daremo quindi un certo peso a ogni investitore, rappresentato da una misura su $\mathcal{B}$ $\mu(\B)$, dove $\dmu$ sarà la quantità di capitale investita nei portafogli nell'intorno $\text{d}\B$ del portafoglio $\B$.\newline
+Sia $S_n(\B,\x^n)=\prod_{i = 1}^n {\B^t\x_i}$ il capitale dopo $n$ periodi ottenuto dal portafoglio constantly rebalanced $\B$ sulla sequenza $\x^n$. Considereremo il seguente portafoglio al periodo $i+1$ dato da 
+\begin{equation}\label{portafuniv}
+	\bh_{i+1}(\x^i)=\frac{\int_\mathcal{B}{\B S_i(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}
+\end{equation}
+Notiamo che
+\begin{equation*}
+	\begin{split}
+	\bh_{i+1}^t(\x^i)\x_{i+1} & = \frac{\int_\mathcal{B}{\B^t\x_{i+1} S_i(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}\\
+	& = \frac{\int_\mathcal{B}{S_{i+1}(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}
+	\end{split}
+\end{equation*}
+Il prodotto $\prod_{i}{\bh^t_i\x_i}$ è telescopico, semplificando otteniamo che il capitale $\Sh_n(\x^n)$ dato da
+\begin{equation}\label{capituniv}
+	\begin{split}
+	\Sh_n(\x^n) & = \prod_{i = 1}^n{\bh^t_i(\x^{i-1})\x_i}\\
+	& = \int_{\B \in \mathcal{B}}{S_n(\B,\x^n)\dmu}
+	\end{split}
+\end{equation}
+Un altro modo di interpretare questo procedimento è che stiamo investendo una parte del capitale $\dmu$ nel portafoglio $\B$ che ci darà capitale $S_n(\B,\x^n)$, per un ritorno complessivo pari a $\int_{\B \in \mathcal{B}}{S_n(\B,\x^n)\dmu}$. Quindi, $\bh_{i+1}(\x^i)$ è il portafoglio che media sulle performance dei vari manager.\newline
+Dimostriamo ora un lemma preliminare che assicura un limite su $\frac{\Sh_n}{S_n^*}$ in funzione della distribuzione $\mu(\B)$.
+\begin{lemma}
+	Sia $S_n^*(\x^n)$ il capitale ottenuto usando il miglior portafoglio costantemente ribilanciato e sia $\Sh_n(\x^n)$ quello dato dal portafoglio misto $\bh(\cdot)$, dato da
+	\begin{equation*}
+		\bh_{i+1}(\x^i)=\frac{\int_\mathcal{B}{\B S_i(\B,\x^i)\dmu}}{\int_\mathcal{B}{S_i(\B,\x^i)\dmu}}
+	\end{equation*}
+	allora
+	\begin{equation*}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq \min\limits_{j^n}\frac{\int_\mathcal{B}{\prod_{i = 1}^n{b_{j_i}\dmu}}}{\prod_{i = 1}^n{b^*_{j_i}}}
+	\end{equation*}
+\end{lemma}
+\begin{proof}
+	In modo completamente analogo al teorema \ref{teo:univ-finite} (su successioni $j^n$ in generale appartenenti a $\{1,\ldots,m\}$) possiamo scrivere
+	\begin{equation*}
+		S_n^*(\x^n)=\sum_{j^n\in\{1,\ldots,m\}^n}{w^*(j^n)x(j^n)}
+	\end{equation*}	
+	dove $w^*(j^n)=\prod_{i = 1}^n{b^*_{j_i}}$ è la quantità investita nella sequenza $j^n$ e $x(j^n) = \prod_{i = 1}^n{x_{ij_i}}$ è il corrispondente ritorno. Similmente, scriviamo
+ 	\begin{equation*}
+		\begin{split}
+		\Sh_n(\x^n) & = \int_\mathcal{B}{\prod_{i =1}^n{\B^t\x_i}\dmu}\\
+		& = \sum_{j^n\in\{1,\ldots,m\}^n}{\int_\mathcal{B}{\prod_{i =1}^n{b_{j_i}x_{ij_i}}\dmu}}\\
+		& = \sum_{j^n\in\{1,\ldots,m\}^n}{\hat{w}(j^n)x(j^n)}
+		\end{split}                      
+	\end{equation*}
+	dove, in questo caso $\hat{w}(j^n) = \int_\mathcal{B}{\prod_{i = 1}^n{b_{ji}}\dmu}$. Applicando ora il lemma \ref{lem:sum-min} abbiamo
+	\begin{equation*}
+		\begin{split}
+		\frac{\Sh(\x^n)}{S_n^*(\x^n)}&=\frac{\sum_{j^n}{\hat{w}(j^n)x(j^n)}}{\sum_{j^n}{w^*(j^n)x(j^n)}}\\
+		& \geq \min\limits_{j^n}\frac{\hat{w}(j^n)x(j^n)}{w^*(j^n)x(j^n)}\\
+		& = \min\limits_{j^n}\frac{\int_\mathcal{B}{\prod_{i = 1}^n{b_{j_i}}\dmu}}{\prod_{i =1}^n b^*_{j_i}}
+		\end{split}
+	\end{equation*}
+\end{proof}
+Applichiamo ora questo lemma quando $\mu(\B)$ è la distribuzione Dirichlet$\left(\frac{1}{2}\right)$.
+\begin{teo}
+	Per il portafoglio universale $\bh_i(\cdot)$, $i = 1,2,\ldots$, con $m = 2$ stock e $\dmu$ la distribuzione Dirichlet$\left(\frac{1}{2},\frac{1}{2}\right)$, si ha
+	\begin{equation*}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}\geq \frac{1}{2\sqrt{n+1}}
+	\end{equation*}
+	per ogni $n$ e ogni successione $\x^n$.
+\end{teo}
+\begin{proof}
+	Come mostrato precedentemente nel teorema \ref{teo:univ-finite}, possiamo dimostrare che il portafoglio costantemente ribilanciato ottimale $\B^*$ sulla sequenza $j^n$ pone pesi
+	\begin{equation*}
+		\prod_{i = 1}^n{b^*_{j_i}}=\left(\frac{k}{n}\right)^k\left(\frac{n-k}{n}\right)^{n-k} = 2^{-nH\left(\frac{k}{n}\right)}
+	\end{equation*}
+	dove $k$ è il numero di indici per cui $j_i =1$. Nel caso della distribuzione Dirichlet$\left(\frac{1}{2}\right)$, definita per $m$ variabili come
+	\begin{equation*}
+		\dmu = \frac{\Gamma\left(\frac{m}{2}\right)}{\left[\Gamma\left(\frac{1}{2}\right)\right]^m}\prod_{j =1}^m{b_j^{-\frac{1}{2}}}\text{d}\B
+	\end{equation*}
+	dove $\Gamma(x) = \int_0^\infty{\exp^{-t}t^{x-1}\dt}$ indica la funzione Gamma, possiamo calcolare esattamente il numeratore. Per semplicità, nel caso $m = 2$
+	\begin{equation*}
+		\text{d}\mu(b) = \frac{1}{\pi}\frac{1}{\sqrt{b(1-b)}}\text{d}b, \;\;\;\;\; 0\leq b\leq 1
+	\end{equation*}
+	dove $b$ è la frazione investita sul primo asset. Ora prendiamo una qualsiasi sequenza $j^n\in \{1,2\}^n$ e consideriamo la quantità investita in quella successione,
+	\begin{equation*}
+		b(j^n) =\prod_{i = 1}^n{b_{j_i}}= b^l(1-b)^{n-l}
+	\end{equation*}
+	dove $l$ è il numero di indici con $j_i=1$. Quindi
+	\begin{equation*}
+		\begin{split}
+		\int_\mathcal{B}{b(j^n)}\dmu& = \int_{0}^1{b^l(1-b)^{n-l}\frac{1}{\pi}\frac{1}{\sqrt{b(1-b)}}\text{d}b}\\
+		&= \frac{1}{\pi}\int_{0}^{1}{b^{l-\frac{1}{2}}(1-b)^{n-l-\frac{1}{2}}\text{d}b}\\
+		& = \frac{1}{\pi}B\left(l+\frac{1}{2},n-l+\frac{1}{2}\right)
+		\end{split}
+	\end{equation*}
+	dove $B(\lambda_1,\lambda_2)$ è la funzione beta, definita come
+	\begin{equation*}
+		\begin{split}
+		B(\lambda_1,\lambda_2) & =\int_{0}^{1}{x^{\lambda_1-1}(1-x)^{\lambda_2-1}\dx}\\
+	& 	= \frac{\Gamma(\lambda_1)\Gamma(\lambda_2)}{\Gamma(\lambda_1+\lambda_2)} 
+		\end{split}
+	\end{equation*}
+	Sappiamo che per ogni $n$ intero, $\Gamma(n+1) = n!$ e $\Gamma\left(n+\frac{1}{2}\right) = \frac{1\cdot
+	3\cdot 5\cdots(2n-1)}{2^n}\sqrt{\pi}$.\newline
+	Possiamo calcolare $B(l+\frac{1}{2},n-l+\frac{1}{2})$ per semplice ricorsione usando l'integrazione per parti o usando la funzione $\Gamma$. Otteniamo in ogni caso
+	\begin{equation*}
+		B\left(l+\frac{1}{2},n-l+\frac{1}{2}\right)=\frac{\pi}{2^{2n}}\frac{\binom{2n}{n}\binom{n}{l}}{\binom{2n}{2l}}
+	\end{equation*}
+	Combinando questi risultati con il lemma precedente otteniamo che
+	\begin{equation*}
+		\begin{split}
+		\frac{\Sh_n(\x^n)}{S_n^*(\x^n)}&\geq \min\limits_{j^n}\frac{\int_\mathcal{B}{\prod_{i = 1}^n{b_{j_i}\dmu}}}{\prod_{i = 1}^n{b^*_{j_i}}}\\
+		& \geq \min\limits_l \frac{\frac{1}{\pi}B\left(l+\frac{1}{2},n-l+\frac{1}{2}\right)}{2^{-nH\left(\frac{l}{n}\right)}}\\
+		& \geq \frac{1}{2\sqrt{n+1}}
+		\end{split}
+	\end{equation*}
+	usando i risultati in \cite{CoverOrden1996}.
+\end{proof}
+Concludiamo che per $m=2$
+\begin{equation*}
+	\frac{\Sh_n}{S_n^*}\geq \frac{1}{\sqrt{2\pi}}V_n
+\end{equation*}
+per ogni $n$ e ogni sequenza di prezzi di mercato. Quindi rimuovere l'orizzonte finito costa solo un fattore $\frac{1}{\sqrt{2\pi}}$. Asintoticamente, però,
+\begin{equation*}
+	\frac{1}{n}\ln(\Sh_n(\x^n))-\frac{1}{n}\ln(S_n^*(\x^n))\geq\frac{1}{n}\ln\left(\frac{V_n}{\sqrt{2\pi}}\right)\rightarrow 0.
+\end{equation*}
+e quindi il portafoglio universale ottiene lo stesso incremento asintotico del miglior portafoglio costantemente ribilanciato con conoscenza della distribuzione.\newline
+La scelta della densità Dirichlet$\left(\frac{1}{2}\frac{1}{2}\right)$ è dovuta al fatto che pone molto peso sui portafogli estremali, ossia quelli che distribuiscono quasi tutto il capitale attuale su un unico asset. Al primo ordine, scrivendo $\x = \bm{e}+\bm{r}$ con $\bm{e} = (1,\ldots,1)^t$, si ha che
+\begin{equation*}
+	\log(\B^t\x)=\log(1+\B^t\bm{r})=\B^t\bm{r}+o(\B^t\bm{r})
+\end{equation*}
+Al primo ordine, quindi, conviene puntare tutto sull'asset che ci assicura $\E[x]=1+\E[r]$ massimo. L'approssimazione si giustifica col fatto che nel mondo reale $x$ è generalmente vicino a $1$ per un titolo.
+
+\chapter{Algoritmi di Predizione Universali}
+Nel seguente capitolo vogliamo ottenere risultati migliori rispetto alle strategie viste in precedenza, in cui ci avvicinavamo al miglior portafoglio costantemente ribilanciato. \newline
+Siamo interessati a trovare algoritmi che riescano col tempo a stimare sempre meglio la distribuzione di probabilità del processo stocastico che modellizza il mercato.\newline
+Dato quindi $\{\X_t\}$ per $t\in\Z$ processo stocastico ergodico e stazionario su uno spazio di probabilità perfetto $(\Omega,\F,\Pro)$, ad ogni passo vogliamo costruire una stima della misura di probabilità per $\X_t$, sulla base della conoscenza fino a quel punto. Tale informazione a nostra disposizione sarà rappresentata da una sotto-$\sigma$-algebra $\F_t\supseteq \sigma(\X_0,\ldots\X_{t-1})$. Cerchiamo una stima che asintoticamente converga debolmente alla distribuzione effettiva, in modo tale che il tasso di raddoppio ottimale basato sull'informazione acquisita fino al tempo $t$ converga a quello vero e proprio.\newline
+
+\section{Raggiungimento del tasso di raddoppio ottimale}
+Vogliamo ora cercare sotto quali ipotesi sulle nostre stime di distribuzione possiamo trovare una strategia di portafoglio che ottenga il risultato ottimale.
+\begin{defn}
+	Diciamo che un vettore di rendimenti di mercato è sicuro se
+	ogni asset ha valore atteso logaritmico maggiore di $-\infty$. In formule
+\begin{equation*}
+		\E[\log(X_{t,j})]>-\infty
+	\end{equation*}
+	Per ogni $t$ e per ogni $1\leq j\leq m$.
+\end{defn}
+\begin{teo}
+	Sia $\X_t$ un processo ergodico e stazionario che rappresenti i rendimenti azionari di mercato, siano quindi $\B^*_t$ e $\bh_t^*$ i portafogli log-ottimali derivanti rispettivamente dalla vera distribuzione di probabilità condizionata fino al tempo $t$ $\Pro(\dX_t|\X^t)$ e da una stima $\Ph(\dX_t|\X^t)$. Supponiamo inoltre che $\Ph(\dX_t|\X^t)$ sia una versione traslata nel tempo di una distribuzione $\Ph(\dX|\X^{-t})$ tale che
+	\begin{equation*}
+		\Ph(\dX_0|\X^{-t})\rightarrow \Pro(\dX_0|\X^{-}) \;\;\;\;\; \text{debolmente q.c.}
+	\end{equation*}
+	Se il mercato è sicuro, allora il portafoglio derivante dalla stima di probabilità ottiene lo stesso risultato asintotico di quello veritiero, cioè
+	\begin{equation*}
+		\frac{1}{n}\log\Sh^*_n\rightarrow W(\X|\X^{-})=\lim\limits_{n\to\infty}\frac{1}{n}\log S^*_n
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	L'AEP per il portafoglio log-ottimale $\B^*_t$ e l'AOP applicata a $\bh^*_t$ ci danno le relazioni
+	\begin{align*}
+		\lim\limits_{n\to\infty}\frac{1}{n}\log S^*_n=W(\X|\X^{-})\;\;\;\;\; \text{q.c.}\\
+		\limsup\limits_{n\to\infty}\frac{1}{n}\log\left(\frac{\Sh_n^*}{S^*_n}\right)\leq 0 \;\;\;\;\; \text{q.c.}
+	\end{align*}
+	Da queste due otteniamo subito un limite superiore asintotico
+	\begin{equation*}
+		\limsup\limits_{n\to \infty}\frac{1}{n}\log \Sh_n^*\leq W(\X|\X^{-}) =\lim\limits_{n\to\infty}\frac{1}{n}\log S^*_n \;\;\;\;\; \text{q.c.}
+	\end{equation*}
+	Per dimostrare l'altra parte, utilizzeremo il teorema ergodico generalizzato di Breiman.\newline
+	Siano $\bar{\B}^*_t$ e $\hat{\bar{\B}}^*_t$ i portafogli log-ottimali rispettivamente per le distribuzioni $\Pro(\dX|\X^-)$ e $\Ph(\dX|\X^{-t})$. Siccome quest'ultima converge debolmente quasi certamente alla prima, segue dal teorema \ref{teo:conv} che il punto di accumulazione per $\hat{\bar{\B}}^*_t$ è log-ottimale per $\Pro(\dX|\X^-)$. Quindi
+	\begin{equation*}
+		\hat{\bar{\B}}^{*t}_t\X \rightarrow \bar{\B}^{*t}\X \;\;\;\;\; \text{q.c.}
+	\end{equation*}
+	Per dimostrare che $\frac{1}{n}\log\Sh^*_n\rightarrow W(\X|\X^{-})$ dobbiamo mostrare che
+	\begin{equation*}
+		\frac{1}{n}\sum_{0\leq t<n}\hat{g}_t\circ T^t\rightarrow \E[g]
+	\end{equation*}
+	dove $\hat{g}_t = \log(\hat{\bar{\B}}^{*t}_t\X)$ e $g = \log(\bar{\B}^*_t\X)$. Chiaramente $\hat{g}_t\rightarrow g$ quasi certamente e possiamo assumere che $\X$ sia limitato, cosicché anche $\hat{g}_t$ è limitato dall'alto da una costante. Per dimostrare che la successione $\{\hat{g}_t\}$ è dominata in $L^1$ è quindi sufficiente verificare la condizione $\E[\inf_t \hat{g}_t]>-\infty$. Si ha che $\inf_t \hat{g}_t\geq \min_j \log(X_{t,j})>-\infty$ dato che $\B^t\X_t\geq \min_jX_{t,j}$ per ogni portafoglio $\B$ e che il mercato è sicuro. Abbiamo quindi la tesi.
+\end{proof}
+Possiamo, mediante un procedimento specifico, rimuovere l'ipotesi di mercato sicuro. Il fatto chiave è che per evitare di perdere tutto il capitale nel caso in cui esso venga suddiviso su asset che hanno rendimento $0$ da un periodo all'altro, ci spostiamo nel simplesso dei portafogli ammissibili verso un portafoglio che pone massa su tutti i titoli.\newline
+Sia $\bm{\beta}$ un portafoglio tale che $\bm{\beta}_j>0$ per ogni $j$ e definiamo per ogni $0\leq \lambda <1$ 
+\begin{equation*}
+	\Sh^\lambda_n = \prod_{0\leq t <n}{\bh^{*\lambda t}_t\X} \;\;\;\; \text{dove  } \bh^{*\lambda}_t = (1-\lambda)\bm{\beta}+\lambda \bh^{*}_n
+\end{equation*}
+La $j$-esima componente di $\bh^{*\lambda t}_t$ è limitata inferiormente dalla costante $(1-\lambda)\beta_j$. Definiamo quindi, per ogni $\sigma$-algebra di informazione $\mathcal{G}$
+\begin{equation*}
+	W(\X|\mathcal{G}) = \E[\log(\B^{*\lambda t}\X)]
+\end{equation*}
+dove $\B^{*\lambda} = (1-\lambda)\bm{\beta}+\lambda \B^*$ e $\B^*$ raggiunge l'estremo superiore in $\sup\limits_{\B\in \mathcal{G}}\E[\log(\B^t\X)|\mathcal{G}]$. Dal fatto che $\B^{*\lambda t}_t\X\geq \lambda \B^*\X$ vediamo che
+\begin{equation*}
+	W(\X|\mathcal{G})+\log\lambda\leq W^\lambda(\X|\mathcal{G})\leq W(\X|\mathcal{G})
+\end{equation*}
+\begin{teo}\label{teo:erg-notsafe}
+	Consideriamo un mercato ergodico e stazionario con distribuzione ignota. Se il capitale è frazionato ad ogni periodo di investimento $t$ secondo il portafoglio $\bh^{*\lambda}_t$, allora il capitale risultante $\Sh^\lambda_n$ cresce in modo esponenziale quasi certamente con un tasso di crescita limite ben definito.
+	\begin{equation*}
+		\frac{1}{n}\log\Sh^\lambda_n \rightarrow W^\lambda(\X|\X^{-}) \;\;\;\;\; \text{q.c.}
+	\end{equation*}
+	dove
+	\begin{equation*}
+		W^\lambda(\X|\X^-) =\E[\log(\bar{\B}^{*\lambda t}_t\X)]
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Usiamo anche questa volta il teorema ergodico generalizzato sulle variabili aleatorie
+	\begin{align*}
+		\hat{g}_t^\lambda =\log\left(\frac{((1-\lambda)\bm{\beta}+\lambda\hat{\bar{\B}}^{*}_t)^t\X_t}{\bm{\beta}^t\X}\right)\\
+		g^\lambda =\log\left(\frac{((1-\lambda)\bm{\beta}+\lambda\bar{\B}^{*}_t)^t\X_t}{\bm{\beta}^t\X}\right)
+	\end{align*}
+	Siccome $\hat{g}_t^\lambda\rightarrow g^\lambda$ quasi certamente e $\{\hat{g}_t^\lambda\}$ è limitato tra $\log(1-\lambda)$ e $\max_j\log\left(\frac{1}{\beta_j}\right)$, abbiamo
+	\begin{equation*}
+		\frac{1}{n}\sum_{0\leq t<n}{\hat{g}^\lambda_t\circ T^t}\rightarrow \E[g^\lambda] \;\;\;\;\; \text{q.c.}
+	\end{equation*}
+	La tesi segue da 
+	\begin{equation*}
+		\begin{split}
+		\frac{1}{n}\log\Sh_n^\lambda & = \frac{1}{n}\sum_{0\leq t<n}{\hat{g}^\lambda_t\circ T^t}+\frac{1}{n}\sum_{0\leq t<n}{\log(\bm{\beta}^t\X)}\\
+		& \rightarrow \E[g^\lambda]+\E[\log(\bm{\beta}^t\X)] = W^\lambda(\X|\X^-) \;\;\;\;\; \text{q.c.}
+		\end{split}
+	\end{equation*}
+\end{proof}
+Nella realtà, purtroppo, tali stime di probabilità non sono facili da trovare. Nei prossimi paragrafi, però, analizzeremo strategie simili che raggiungono gli stessi risultati.
+
+\section{Metodo delle Frequenze Empiriche}\label{Metfreq}
+Ragioniamo inizialmente per semplicità su variabili aleatorie discrete $J_t$ a valori in un alfabeto finito $\mathcal{J}=\{1,\ldots, m\}$. Il metodo più immediato per stimare la distribuzione effettiva è quello di approssimare il processo ergodico e stazionario con precisione $k$ calcolando le frequenze empiriche di ogni simbolo dati i precedenti $k$. Definiamo quindi la nostra stima di probabilità come 
+\begin{equation}\label{empirical}
+	\Ph_t(j|J^{-k})=\frac{1+c_t(j|J^{-k})}{m+c_t(J^{-k})}
+\end{equation}
+dove 
+\begin{equation*}
+	\begin{split}
+	c_t(j|J^{-k})&=\#\{\tau: 1\leq \tau \leq t, (J_{-\tau-k},\ldots, J_{-\tau-1}, J_{-\tau})=(J_{-k},\ldots,J_{-1},j)\}\\
+	c_t(J^{-k}) & =\#\{\tau:1 \leq \tau \leq t, (J_{-\tau-k},\ldots, J_{-\tau-1})=(J_{-k},\ldots,J_{-1})\}\\
+	& = \sum_{1\leq j\leq m}{c_t(j|J^{-k})}
+	\end{split}
+\end{equation*}
+Stiamo quindi facendo il rapporto tra il numero di volte in cui nel passato il simbolo $j$ è comparso dopo il blocco $J^{-k}$ e tutte le occorrenze di quest'ultimo. In ogni caso, per evitare di escludere la possibilità che compaia un simbolo mai visto, abbiamo dato un peso $1$ a priori per tutti.\newline
+Questa strategia può essere usata per le corse dei cavalli ma presto vedremo come estenderla al caso del mercato azionario.\newline
+Notiamo anzitutto che data la stazionarietà del processo possiamo traslare temporalmente queste stime di distribuzione ottenendo sempre lo stesso risultato. Inoltre, vale il seguente risultato:
+\begin{teo}
+	\begin{equation*}
+		\Ph_t(j|J^{-k})\rightarrow\Pro(j|J^{-k}) \;\;\;\;\; \text{q.c. per } t\to\infty
+	\end{equation*}
+\end{teo}
+\begin{proof}
+	Utilizziamo anche in questo caso il teorema ergodico generalizzato di Breiman.\newline
+	Fissata una successione di $k$ termini $j^k = (j_{-k},\ldots, j_{-1})$ e $j\in\mathcal{J}$ consideriamo la funzione
+	\begin{equation*}
+		g = \chi_{\{(J_{-k},\ldots, J_{-1},J_{0})=(j^k,j)\}}
+	\end{equation*}
+	Per stazionarietà è evidente che $\hat{g}_t\rightarrow g$ quasi certamente, dato anche che posso usare lo shift temporale liberamente.\newline
+	Dal teorema ergodico otteniamo che
+	\begin{equation*}
+		\frac{1}{n}\sum_{0\leq t <n}g\circ T^t = \frac{c_t(j|j^k)}{n} \rightarrow \Pro(J_{-k}=j_{-k},\ldots, J_{0}=j)\;\;\;\; \text{q.c.}
+	\end{equation*}
+	Analogamente, considerando la funzione
+	\begin{equation*}
+	g = \chi_{\{(J_{-k},\ldots, J_{-1})=j^k\}}
+	\end{equation*}
+	otteniamo che
+	\begin{equation*}
+	\frac{1}{n}\sum_{0\leq t <n}g\circ T^t = \frac{c_t(j^k)}{n} \rightarrow \Pro(J_{-k}=j_{-k},\ldots, J_{-1}=j_{-1})\;\;\;\; \text{q.c.}
+	\end{equation*}
+	Concludiamo quindi che
+	\begin{equation*}
+		\frac{c_t(j|j^k)}{c_t(j^k)}\rightarrow \frac{\Pro(J_{-k}=j_{-k},\ldots, J_{0}=j)}{\Pro(J_{-k}=j_{-k},\ldots, J_{-1}=j_{-1})}=P(J_0 = j|J^{-k}=j^k)\;\;\;\; \text{q.c.}
+	\end{equation*}
+	Togliendo il caso di successioni di misura nulla, inoltre, $c_t(j|j^k)$ e $c_t(j^k)$ divergono quasi certamente, quindi anche
+	\begin{equation*}
+	\frac{c_t(j|j^k)+1}{c_t(j^k)+m}= \frac{c_t(j|j^k)\left(1+\frac{1}{c_t(j|j^k)}\right)}{c_t(j^k)\left(1+\frac{m}{c_t(j^k)}\right)}\rightarrow P(J_0 = j|J^{-k}=j^k)\;\;\;\; \text{q.c.}
+	\end{equation*}
+\end{proof}
+Un procedimento completamente analogo può essere applicato, usando determinati accorgimenti, al caso dei vettori di rendimenti del mercato per $m$ asset. In particolare per ogni $k\geq 0$ consideriamo una sotto-$\sigma$-algebra finita $\F^{-k}$ si $\sigma(\X_{-1},\X_{-2},\ldots,\X_{-k})$. Definiamo in questo caso la frequenza empirica come
+\begin{equation*}
+	\Ph_t(\dX|\F^{-k})=\frac{1+\sum_{\tau \in I^{-k}_t}{\delta_{\X_{-\tau}}(\dX)}}{\|\F^{-k}\|+\|I^{-k}_t\|}
+\end{equation*}
+dove
+\begin{align*}
+	I^{-k}_t = \{\tau: 1\leq \tau \leq t, (\X_{-\tau-k},\ldots, \X_{\tau-1}) \text{ e } (\X_{-k},\ldots, \X_{-1})\\\text{ appartengono allo stesso atomo di }\F^{-k}\}
+\end{align*}
+In modo analogo a prima si dimostra che queste stime convergono debolmente quasi certamente alla distribuzione vera e propria. Siccome si tratta di una sotto-$\sigma$-algebra finita basta verificare che la misura degli atomi di $\F^{-k}$ secondo le stime converga a quella effettiva. Il procedimento è a questo punto identico al teorema precedente. (FORSE SCRIVERLO BENE?).\newline
+A questo punto ci possiamo accontentare di un determinato $k$ (nella sperimentazione useremo $k=1$, unico valore efficiente per i dati a disposizione) oppure possiamo applicare varie strategie, ognuna con il proprio $k$ e mescolarle tra loro. In particolare supponiamo che le $\sigma$-algebre $\F^{-k}$ siano tutte finite e che per $k\to\infty$ queste crescano con $\sigma$-algebra terminale $\F$. \newline
+Siano $\bh^{k}_t$ e $\bar{\B}^{k}$ i portafogli log-ottimali rispettivamente per $\Ph_t(\dX_t|\F^{-k}_t)$ e $\Pro(\dX|\F^{-k})$. Sia quindi $\bm{\beta}$ un portafoglio con $\beta_j >0$ per ogni $j$ e $0\leq \lambda <1$
+\begin{equation*}
+	\Sh_n^{k,\lambda}= \prod_{0\leq t <n}\bh_t^{(k,\lambda)t}\X_t \;\;\;\; \text{ dove } \bh^{k,\lambda}_t = (1-\lambda)\bm{\beta}+\lambda\bh_t^k
+\end{equation*}
+In modo completamente analogo a quanto fatto nella dimostrazione del teorema \ref{teo:erg-notsafe}, usando il teorema ergodico sappiamo che
+\begin{equation*}
+	\lim\limits_{n\to \infty}\frac{1}{n}\log\Sh_n^{k,\lambda}=W^\lambda(\X|\F^{-k})= \E[\log(\bar{\B}^{(k,\lambda)t}\X)] \;\;\; \text{q.c.}
+\end{equation*}
+dove $\bar{\B}^{(k,\lambda)t} = (1-\lambda)\bm{\beta}+\lambda\bar{b}^k$. Notiamo che $W^\lambda(\X|\F^{-k})$ cresce a $W(\X|\F^{-k})$ per $\lambda\uparrow 1$ visto che (come visto in  .....)
+\begin{equation*}
+	W(\X|\F^{-k}) +\log \lambda\leq W^\lambda(\X|\F^{-k})\leq W(\X|\F^{-k})
+\end{equation*}
+Per ottenere il massimo tasso di raddoppio $W(\X|\X^{-})$ dividiamo il capitale in numerabili manager, indicizzati da $k\geq 0$. Sia $\mu_k>0$ la quantità iniziale affidata al $k$-esimo manager ($\sum_k\mu_k = 1$) e supponiamo che il suo capitale a disposizione sia investito secondo la strategia $\{\bh^{k,\lambda_j}_t\}$, dove $\lambda_k\uparrow 1$ e $\F^{-k}$ è finito e cresce a $\sigma(\X^-)$ per $k\to \infty$. Il capitale totale, ottenuto sommando quelli dei vari manager, cresce esponenzialmente con tasso di rassoppio limite
+\begin{equation*}
+	W(\X|\X^{-}) = \sup\limits_k W^{\lambda_k}(\X|\F^{k})
+\end{equation*}
+
+\section{Algoritmo di Lempel-Ziv}\label{LZ}
+L'algoritmo di parsing incrementale di Lempel-Ziv \cite{LZ78} è un algoritmo di compressione. Questo suddivide una successione $j^n$ inserendo virgole tra i simboli. La prima è posta all'inizio della successione. Da qui in poi, ogni frase comincia con una virgola e consiste di una stringa di lunghezza massima possibile che è già comparsa in una frase precedente seguita da un simbolo "nuovo" e un'altra virgola.\newline
+Denotiamo con $\nu_n$ il numero di frasi complete in cui viene suddivisa la sequenza $j^n$. Per esempio $0101000100$ che ha lunghezza $n=10$ genera $,0,1,01,00,010,0$ e contiene $\nu_n=5$ frasi complete.\newline
+Questo procedimento può essere realizzato in modo efficace costruendo dinamicamente una struttura ad albero in cui ogni nodo ha come figli possibili gli $m$ simboli dell'alfabeto $\mathcal{J}$. Inizialmente, l'albero è costituito da un solo nodo, la radice. Iniziamo la ricerca per una nuova frase partendo dalla radice e scendendo nell'albero seguendo i simboli che vengono letti dalla successione. Questo procedimento finisce quando da un nodo ci si deve muovere verso un figlio mai visitato prima. Viene quindi aggiunto il nodo e il ramo corrispondente a questo, si inserisce la virgola nella sequenza e si ricomincia dalla radice.\newline
+Consideriamo quindi un processo $\{J_t\}$, $t\in \N$ e denotiamo con $T_n$ l'albero costruito dopo aver letto $j^n$. I rami uscenti da ogni nodo sono segnati con i simboli dell'alfabeto $\{1,\ldots,m\}$, ma alcuni nodi possono essere incompleti nel senso che non tutti i rami uscenti sono presenti a un dato tempo e sono quindi già stati visitati. Definiamo di conseguenza $\bar{T}_n$ come il completamento dell'albero $T_n$, a cui aggiungiamo tutti i rami possibili ai nodi di $T_n$. Ogni nodo di $T_n$ è quindi un nodo interno di $\bar{T}_n$. 
+\begin{lemma}
+	$T_n$ ha $\nu_n+1$ nodi, $\bar{T}_n$ ha $1+m(\nu_n+1)$ nodi di cui $\nu_n+1$ interni.
+\end{lemma}
+\begin{proof}
+	Lo dimostriamo per induzione:
+	\begin{itemize}
+		\item $n=1$. In questo caso abbiamo una sola frase completa costituita da un unico carattere $x$, $\nu_n =1$. L'albero $T_n$ contiene il nodo radice e il nodo corrispondente a $x$, mentre $\bar{T}_n$ contiene il nodo radice con $m$ figli, tra cui il nodo $x$ con i suoi $m$ figli.
+		\item Passo induttivo. Se l'ultimo carattere letto non comporta l'aggiunta di una virgola, il numero di nodi all'interno degli alberi rimane invariato, così come $\nu_n = \nu_{n+1}$ e la tesi è verificata. Supponiamo ora l'$n+1$-esimo carattere comporti la formazione di una nuova parola, da cui $\nu_{n+1} = \nu_n + 1$. In questo caso viene aggiunto un nodo all'albero $T_{n}$, corrispondente a $x$ e quindi $T_{n+1}$ ha $|T_n|+1 = 1+\nu_n+1 = \nu_{n+1}+1$ nodi. Per quanto riguarda $\bar{T}_{n+1}$, esso è costituito da $\bar{T}_n$, con $m$ nuovi figli aggiunti al nodo corrispondente all'ultimo carattere letto. In totale abbiamo $|\bar{T}_{n+1}| = \bar{T}_n+m = 1+m(\nu_n+1)+m = 1+m(\nu_{n+1}+1)$ nodi, di cui $\nu_{n+1}+1$ interni.
+	\end{itemize}
+\end{proof}
+Si nota che la ricerca di una nuova frase finisce quando ci troviamo in una foglia dell'albero completato $\bar{T}_n$. Questa foglia diventa quindi un nodo interno e i suoi $m$ figli aggiunti a $\bar{T}_n$.\newline
+Sia $z_t = f(j^t)$ il nodo di $T_t$ dove l'algoritmo di ricerca è arrivato dopo aver letto $(j_0,\ldots,j_{t-1})$ e prima di leggere $j_t$.\newline
+Definiamo
+\begin{align*}
+	c_n(j|z)=\#\{t:0\leq t<n, (j_t,z_t)=(j,z)\}\\
+	c_n(z)=\sum_{1\leq j\leq m}{c_n(j|z)}=\#\{t:0\leq t<n,z_t=z\}
+\end{align*}
+$c_n(j|z)$ è quindi il numero di passaggi durante tutte le ricerche dal nodo $z$ al figlio $j$ e $c_n(z)$ è il numero di volte in cui siamo passati per il nodo $z$.\newline
+Inoltre, $1+c_n(z)$ è il numero di nodi nel sotto-albero radicato in $z$, a meno che $z$ sia un predecessore di $z_n$, l'ultimo nodo visitato, nel qual caso $c_n(z)$ è il numero di nodi nel sotto-albero. \newline
+Intuitivamente e come suggerito in \cite{algoet1992} la scelta ottimale per una stima di probabilità $\Ph(j|z)$ dato il nodo dell'albero $z$ è
+\begin{equation*}
+	\Ph(j|z)=\frac{c_n(j|z)}{c_n(z)}
+\end{equation*}
+Questa strategia però non tiene conto di frasi che non sono mai comparse nel passato e può quindi erroneamente suggerire che tali frasi compaiano con probabilità $0$. Usiamo quindi una versione modificata della precedente stima, guardando le dimensioni dei sotto-alberi di $\bar{T}_n$, in cui ci sono anche i nodi non ancora visitati adiacenti a quelli di $T_n$. Definiamo quindi
+\begin{align*}
+	\gamma_n(z_n) = 1+(m-1)(c_n(z_n)+1)\\
+	\gamma_n(j|z_n) = 1+(m-1)(c_n(j|z_n)+1)
+\end{align*}
+e
+\begin{equation}\label{empLZ}
+	\Ph(j|j^n) = \frac{\gamma_n(j|z_n)}{\gamma_n(z_n)}=\frac{m+(m-1)c_n(j|z_n)}{m+(m-1)c_n(z_n)}
+\end{equation}
+Come si vede in \cite{algoet1992}\textcolor{blue}{(citare articolo di Algoet o dimostare, a questo punto diventa rilevante la dualità codici-gambling)} e in \cite{CTElInfTeo} questa stima di probabilità è universale nel senso che asintoticamente ha la stessa entropia della distribuzione effettiva e quindi anche il medesimo tasso di raddoppio ottimale per investimenti su corse di cavalli. Questa strategia verrà adottata anche per il mercato azionario con qualche modificazione in una successiva sperimentazione, in modo analogo all'adattamento del metodo delle frequenze empiriche.
+\section{Codici e Scommesse}
+\subsection{I codici}
+In questa sezione analizziamo la dualità tra le codifiche e le scommesse, argomenti che si mostrano essere tra di loro molto collegati. Seguiremo i libri \cite{Mennucci} e \cite{CTElInfTeo}, dove si trovano analisi più approfondite sui codici.\newline
+Dato un processo stocastico di variabili aleatorie discrete $(X_n)_{n\geq 0}$ vogliamo codificare i dati $X_n$ per comprimerli o trasmetterli. Supponiamo quindi di avere un alfabeto $\mathcal{L}=\{l_1,l_2,\ldots, l_m\}$ di $m$ lettere e indichiamo con $\mathcal{L}^*$ l'insieme delle parole $w$ ottenute concatenando in successione un numero finito di elementi dell'alfabeto, in formule $w=l_{i_1}l_{i_2}\ldots l_{i_k}$. Indichiamo invece con $\mathcal{L}^k$ l'insieme delle parole di esattamente $k$ simboli. Denotiamo quindi con $l(w)$ la lunghezza della parola $w$ in simboli.\newline
+Supponiamo quindi che $X_i:\Omega\rightarrow C$ dove $C$ è l'insieme dei dati che $X_i$ può assumere: una codifica è una funzione $c_i:C\rightarrow \mathcal{L}^*$ che associa ad ogni dato una parola. Chiamiamo quindi $L$ l'insieme immagine di un codice $c$, detto anche vocabolario. \newline
+La richiesta più naturale è che il codice possa essere decodificato, questo si traduce nel fatto che la funzione $c_i$ deve essere almeno iniettiva. In realtà dato che il codice finale, composto dalla codifica di più dati, avrà una forma del tipo
+\begin{equation*}
+	c_1(X_1)c_2(X_2)\ldots
+\end{equation*}
+vogliamo poter suddividere il codice in arrivo in parole che vengono poi decodificate singolarmente per ottenere la stringa iniziale.\newline
+Esistono vari tipi di codici, e si suddividono inizialmente in
+\begin{itemize}
+	\item \textit{Codici univocamente decodificabili}: per ogni stringa in arrivo esiste al più un modo di suddividerlo in parole e ottenere i dati iniziali.
+	\item \textit{Codici prefissi}: per ogni coppia di parole $w,w'\in L$ non avviene mai che una è parte iniziale dell'altra (il suo "prefisso").
+\end{itemize}
+Nei testi si dimostra che scegliere un codice univocamente decodificabile rispetto a uno prefisso, nonostante ogni l'insieme di questi ultimi è incluso negli altri e sembrino quindi più complessi, non porta ad alcun vantaggio computazionale o teorico, per entrambi vale infatti il seguente risultato:
+\begin{lemma}[Disuguaglianza di Kraft-Mc Millian]
+	Se $L$ è un vocabolario di un codice decodificabile basato su un alfabeto $\mathcal{L}$ di $m$ lettere,
+	\begin{equation*}
+		\sum_{w\in L}{\frac{1}{m^{l(w)}}}\leq 1
+	\end{equation*}
+\end{lemma}
+Vale anche l'inverso
+\begin{teo}[di McMillan]
+	Siano $\{a_1,a_2,\ldots\}$ numeri interi tale che 
+	\begin{equation*}
+		\sum_{i\geq 1}{\frac{1}{m^{a_i}}}\leq 1
+	\end{equation*}
+	allora esiste un vocabolario prefisso $L=\{w_1,w_2,\ldots\}$ di parole fatte con l'alfabeto $\mathcal{L}$ tale che $l(w_i) = a_i$.
+\end{teo}
+Il nostro obiettivo è a questo punto comprimere i dati, ossia prendere le stringhe e codificarle in modo che quella in uscita sia più corta, pur mantenendo l'invertibilità del processo. Consideriamo solo il caso in cui l'insieme dei dati $C$ è finito e di un alfabeto in arrivo con $m=2$ lettere.\newline
+Chiamiamo un codice ottimale se il valore atteso della lunghezza delle parole in uscita $\E[l(w)]=\sum_{w\in L}{l(w)p(w)}$ è minimo possibile (in questo caso $p(w)$ è la distribuzione immagine sul vocabolario). \newline
+Consideriamo a questo punto l'insieme dei dati sorgente finito e una codifica che ad ogni parola di $n$ dati $x_1x_2\ldots x_n$ associa una parola lunga $l(x_1,x_2,\ldots ,x_n)$. Il valore atteso della lunghezza del codice sarà dato da
+\begin{equation*}
+	\E[l(X_1,X_2,\ldots,X_n)]=\sum_{x^n}{p(x_1,x_2,\ldots, x_n)l(x_1,x_2,\ldots, x_n)}
+\end{equation*}
+Il primo risultato che enunciamo mostra come l'entropia del processo stocastico (o di $X$ se sono i.i.d) sia un limite inferiore sulla lunghezza media per simbolo del codice, ma anche il valore ottimale del fattore di compressione.\newline
+Massimizzare questa quantità vuol dire scegliere nel modo migliore possibile data una distribuzione $p$ la lunghezza del codice associato a una successione di $n$ dati $x^n$.
+\begin{teo}
+	Il minimo valore atteso della lunghezza per simbolo di una codifica a $n$ simboli $\text{Len}^*_n$, con un alfabeto di $m$ lettere è tale che
+	\begin{equation*}
+				\frac{H(X_1,X_2,\ldots, X_n)}{n}\leq \text{Len}^*_n<\frac{H(X_1,X_2,\ldots,X_n)}{n}+\frac{1}{n}
+	\end{equation*}
+	Inoltre, se $(X_n)_{n\geq 0}=\mathcal{X}$ è un processo stazionario
+	\begin{equation*}
+		\text{Len}^*_n\rightarrow H(\mathcal{X})
+	\end{equation*}
+	dove $H(\mathcal{X})$ è il tasso di entropia del processo.
+\end{teo}
+\begin{nota}
+	Nel caso il processo sia costituito da variabili i.i.d. e per $n=1$ si ha
+	\begin{equation*}
+		H(X) \leq \E[l]< H(X)+1
+	\end{equation*}
+\end{nota}
+Questo risultato suggerisce il fatto che la lunghezza ottimale di una stringa codificata $l^*(x_1,x_2,\ldots,x_n)$ sia uguale a $\log\frac{1}{p(x_1,x_2,\ldots,x_n)}$ (eventualmente arrotondato a un intero). Viceversa, trovare un codice ottimale ci suggerisce quale sia la distribuzione del processo: proprio per questo le due strategie mostrate in precedenza provengono da algoritmi di compressione ottimali.\newline
+Nel caso in cui la distribuzione è sconosciuta, un algoritmo adattivo di codifica che suddivide la stringa sorgente in parole di lunghezza variabile e le codifica, in modo che la lunghezza media delle parole del codice in uscita sia ottimale, è detto codifica universale. Ne è un esempio l'algoritmo di Lempel-Ziv \cite{LZ78} sopra citato.\newline
+Questi sono quindi gli algoritmi di fondamentale importanza per la stima di una distribuzione di probabilità e il raggiungimento del tasso di raddoppio ottimale
+\subsection{Dualità Codici-Scommesse}
+Nel capitolo $1$ abbiamo mostrato come il tasso di raddoppio ottimale e l'entropia di un processo stocastico e ergodico che modellizza una successione di corse a $m$ cavalli siano legati dalla relazione
+\begin{equation*}
+	H(\mathcal{X})+W^*_\infty=\log(m)
+\end{equation*}
+Intuitivamente, più l'entropia è bassa e il processo prevedibile, maggiore è il tasso di raddoppio ottimale e quindi il guadagno atteso e viceversa.\newline
+Il seguente algoritmo di compressione, descritto in \cite{CTElInfTeo}, mostra come da una strategia di investimento si possa ottenere direttamente un algoritmo di compressione e viceversa.\newline
+Supponiamo di avere due gemelli identici, uno dei quali codificherà la successione degli esiti delle corse e l'altro la decodificherà applicando poi la stessa strategia di scommesse.\newline
+Mappiamo una successione $\x=x_1x_2\ldots x_n\in\{0,1\}^n$ (gli esiti delle gare, supponendo $m=2$) in una sequenza codificata $c_1c_2\ldots c_k\in\{0,1\}^k$. Entrambi i gemelli conoscono $n$. Ordiniamo quindi in modo lessicografico le $2^n$ sequenze possibili. Il codificatore osserva la successione $\x$ e calcola quindi quale sarebbe stato il capitale risultante $S_n(\x')$ per ogni successione $\x'\leq \x$
+e $F(\x) = \sum_{\x'\leq \x}2^{-n}S_n(\x')$. Chiaramente $F(\x)\in[0,1]$ ed è una funzione di ripartizione per una distribuzione particolare. Sia quindi $k=\lceil n-\log S_n(\x) \rceil$ e esprimiamo $F(\x)$ fino alla $k$-esima cifra decimale $\lfloor F(\x)\rfloor =0.c_1c_2\cdots c_k$. Il gemello codificatore trasmette quindi questa sequenza $c_1c_2\cdots c_k$.\newline
+Il decodificatore calcola esattamente il valore $S_n(\x')$ per ognuna delle $2^n$ successioni possibili ed è a conoscenza quindi delle somme cumulate di $2^{-n}S_n(\x')$. Trova quindi il primo $\x$ per cui viene superata la quantità $0.c_1\cdots c_k$, esso è tale che la somma cumulata è nell'intervallo $[0.c_1\cdots c_k,0.c_1\cdots c_k+\frac{1}{2^k}]$ e che il codice sia univocamente decodificabile, dato che sommare $S_n(\x)2^{-n}$ porterebbe fuori dall'intervallo. Il secondo gemello decodifica quindi con successo $\x$. Il numero di bit richiesti è $k=\lceil n-\log S_n(\x) \rceil$ e quello di bit risparmiati $n-k = \lfloor \log S_n(\x)\rfloor$. Per scommesse proporzionali, si è dimostrato che $S_n(\x) = 2^n p(\x)$, dato che il pagamento è $2$. Il numero atteso di bit è quindi 
+\begin{equation*}
+	\E[k] = \sum p(\x)\lceil -\log (p\x)\rceil\leq H(X_1,\ldots,X_n)+1
+\end{equation*}
+Si ha quindi che se la strategia di scommessa è deterministica e nota a entrambi i gemelli, il numero di bits necessari a codificare $x_1x_2\ldots x_n$ è meno di $n-\log S_n+1$. Inoltre, se la distribuzione è nota e viene usata la strategia del Kelly gambling, la lunghezza attesa di descrizione è $\E[n-\log S_n]\leq H(X_1,X_2,\ldots, X_n)+1$. Quindi, il capitale risultante è strettamente collegato al fattore di compressione raggiunto. Migliore la stima della distribuzione di probabilità, maggiore è il capitale e migliore è la compressione dei dati.
+
+\chapter{Sperimentazioni}
+In quest'ultimo capitolo verranno mostrati risultati di alcune sperimentazioni da me eseguite di alcuni dei metodi citati, appositamente adattati, su dati reali di mercato.\newline
+In particolare il mercato sarà sempre modellizzato come un processo stocastico stazionario ed ergodico $(X_n)$, scegliendo in vari modi la frequenza di investimento (giornaliera, settimanale, mensile, ...). Tranne che per il metodo Nearest Neighbour \cite{NN}, dove consideriamo $3$ asset, le altre sperimentazioni saranno effettuate su $m=2$ titoli.
+\section{Metodi di scelta dei portafogli}
+Come prima cosa vediamo come scegliere il portafoglio log-ottimale data una distribuzione di probabilità $\Pro$, la quale può essere sia stimata che reali. Data la complessità del problema utilizzeremo due metodi, rispettivamente ottenuti da un'approssimazione al primo ordine e al secondo ordine.
+\subsection{Primo ordine}
+Il metodo più semplice corrisponde ad una approssimazione di $\E[\log \B^t\X]$ al primo ordine. Siccome nella maggior parte dei casi $X_i\approx 1$ per ogni $i$ (ossia il rendimento è vicino a $1$), possiamo scrivere $\X \approx \bm{e}+\bm{r}$ dove $r_i\approx 0$ e $\bm{e}=(1,\ldots, 1)^t$ per ogni $i$.\newline
+Si ha quindi che
+\begin{equation*}
+	\log(\B^t\X) = \log(1+\B^t\bm{r})=\B^t\bm{r}+o(\B^t\bm{r})
+\end{equation*}
+Evidentemente, questo metodo ci suggerisce di investire tutto il capitale nel titolo che assicura valore atteso maggiore, senza tenere conto di correlazioni o incertezze su $\X$, contribuendo a un rischio maggiore di perdita.
+\subsection{Secondo Ordine}
+Il metodo al secondo ordine, che tiene conto di correlazioni e incertezze sugli asset, è detto anche criterio di Kelly ed è ampiamente descritto in \cite{ThorpKelly}.\newline
+In generale il modello prevede la presenza di un asset detto risk-free, ossia con rendimento $r$ generalmente basso ma quasi certo. Questo titolo può essere però tolto dal modello, semplicemente ponendo $r=0$. Consideriamo quindi un vettore dei rendimenti per $m$ asset, con vettore dei drift attesi $\E[\X-\bm{e}]=\bm{M}$ e matrice delle covarianze $C =(c_{i,j})$ con $c_{i,j}$ covarianza tra i titoli $i$ e $j$. Sia infine $\bm{R}=(r,r,\ldots,r)^t$.\newline
+Il criterio di kelly ci suggerisce di scegliere il portafoglio dato da
+\begin{equation*}
+	\B=C^{-1}(\bm{M}-\bm{R})
+\end{equation*}
+dove si è supposta l'invertibilità della matrice $C$. Nel caso in cui non vi sia un titolo risk-free si pone quindi $\B=C^{-1}\bm{M}$.\newline
+Il criterio di Kelly può in molti casi, restituire un portafoglio non normalizzato a $1$, oppure con pesi negativi. Questi rappresentano situazioni in cui il modello ci suggerisce di prendere prestiti e acquistare o vendere più del possibile.\newline
+In generale eviteremo queste situazioni e ci comporteremo in questo modo:
+\begin{itemize}
+	\item Se il modello ci propone pesi negativi su uno o più asset non investiremo alcuna parte del capitale in questi.
+	\item Se la somma sei pesi del portafoglio suggerito è maggiore di $1$, normalizzeremo a questa quantità mantenendo le proporzioni.
+	\item Se la somma dei pesi è minore di $1$ investiremo solo una parte del capitale, corrispondente a tale somma e terremo il resto senza investirlo.
+\end{itemize}
+\section{Metodi e risultati sperimentali}
+In questa sezione vengono descritti i metodi utilizzati per le sperimentazioni e analizzati i risultati ottenuti. I codici utilizzano dati di asset con una storia ampia: nel caso di $2$ titoli sono stati scelti Coca Cola (KO) e IBM, mentre nel caso di $3$ titoli a questi viene affiancato General Electric (GE). Per ogni strategia riporteremo risultati più o meno approfonditi per i tre periodi di investimento tipici: giornaliero, settimanale ($\approx 5$ giorni) e mensile ($\approx 21$ giorni). Questi ultimi due sono dati più affidabili, in quanto in nessun caso terremo conto dei costi di transazione e ribilanciamento del capitale che nel caso giornaliero possono incidere drasticamente sul risultato finale.
+\subsection{Quantità di analisi}
+Per la parte di analisi dei risultati considereremo le seguenti quantità, basate su $n$ periodi di investimento, $w_t$ il capitale al $t$-esimo periodo (con $w_0=1$):
+\begin{itemize}
+	\item \textit{Crescita media annua} $\mu_{\text{ann}}$: è la crescita percentuale media per ogni anno calcolata come
+	\begin{equation*}
+		\mu_{\text{ann}}=k\frac{1}{n}\sum_{i=1}^{n}{\left(\frac{w_t}{w_{t-1}}-1\right)}
+	\end{equation*}
+	dove $k$ è il numero di periodi di investimento in un anno che dipendono dalla frequenza di investimento
+	\item \textit{Deviazione standard annua} $\sigma_{\text{ann}}$: è la deviazione standard dei drift di ogni periodo $r_t=\left(\frac{w_t}{w_{t-1}}-1\right)$, moltiplicata per un fattore $\sqrt{k}$.
+	\item \textit{Crescita media geometrica} $\mu_{\text{geom}}$: indica il rendimento medio geometrico ed è calcolato come
+	\begin{equation*}
+		\mu_{\text{geom}}=\left(\frac{w_n}{w_0}\right)^{\frac{1}{n}}-1
+	\end{equation*}
+	\item \textit{drowdown} $dd(t)$: è il rapporto percentuale tra la perdita totale fino al periodo $t$ rispetto al capitale massimo raggiunto precedentemente e si calcola come
+	\begin{equation*}
+		dd(t) = 1-\frac{w_t}{\max\limits_{0\leq s\leq t}w_s}
+	\end{equation*}
+	\item \textit{Massimo drowdown} $\max dd$: è il massimo drowdown tra tutti i periodi di investimento e indica quanto il metodo ha perso rispetto a un suo massimo locale.
+	\item \textit{Calmar ratio} $CR$: indica la performance di un metodo di investimento rispetto alla massima perdita registrata, o massimo drowdown. In generale, considerando anche un titolo risk-free con rendimento $r_f$ che poniamo a zero per il nostro caso, il calmar ratio si calcola come
+	\begin{equation*}
+		CR = \frac{\mu_{\text{ann}}-r_f}{\max dd}
+	\end{equation*}
+	
+	\item \textit{sharpe ratio} $SR$: indica la performance di un portafoglio tenendo conto dell'incertezza dei risultati e viene calcolato come
+	\begin{equation*}
+		SR = \frac{\mu_{\text{ann}}-r_f}{\sigma_{\text{ann}}}
+	\end{equation*}
+\end{itemize}
+\subsection{Metodo empirico sui rendimenti}\label{emprend}
+Il primo metodo che presentiamo si basa sull'analisi del capitolo \ref{Metfreq}, applicato a $2$ asset. In particolare, per questione dell'ampiezza temporale dei dati disponibili (al massimo poco meno di $15000$ giorni di investimento), si è scelto di fermarsi a $k=1$. Le stime di probabilità si fermano quindi alle transizioni tra singoli stati, come per una catena di markov.\newline
+Partizioniamo la retta reale estesa $[-\infty,+\infty]$ in un numero finito di intervalli $\{A_1,\ldots, A_k\}$, ognuno dei quali sarà il simbolo una parte dei possibili rendimenti percentuali di un asset. Gli atomi o stati che andiamo a considerare sono tutti i possibili prodotti $A_i\times A_j$, corrispondenti rispettivamente alla fascia di rendimento del primo e secondo asset. Per esempio uno di questi potrà essere l'insieme dei vettori di rendimento in cui il primo titolo da un periodo all'altro ha tra l'$1\%$ e il $2\%$ di rendimento, mentre il secondo titolo ha un rendimento maggiore del $10\%$. Le stime di probabilità di transizione saranno calcolate quindi come nell'equazione \ref{empirical} con una piccola modifica
+\begin{equation}\label{stimaempirical}
+	\Ph_t(j|J^{-k})=\frac{1+p\cdot c_t(j|J^{-k})}{m+p\cdot c_t(J^{-k})}
+\end{equation}
+dove $p$ è il peso che scegliamo di dare alle transizioni osservate rispetto a quelle assegnate a priori, $J^{-k}$ è lo stato attuale (rappresentato da una sequenza di $k$ simboli, nel nostro caso $k=1$, riferito al $k$-passato) e $j$ è lo stato di cui andiamo a studiare la probabilità di transizione dallo stato attuale. Scegliere $p>1$ nella maggior parte dei casi porta a risultati migliori, in quanto la quantità degli stati e il limitato numero di dati storici disponibili possono portare al fatto che i pesi dati a priori per non escludere transizioni non ancora osservate possano influire troppo.\newline
+Ad ogni periodo di investimento $t$, quindi, si possono presentare due casi:
+\begin{itemize}
+	\item il vettore dei rendimenti $\X_{t-1}$ appartiene a uno stato già osservato in precedenza, possiamo quindi basarci sulla stima  della probabilità di transizione data dalla formula \ref{stimaempirical} e calcolare il valore atteso del vettore $\X_t$.
+	\item il vettore dei rendimenti $\X_{t-1}$ appartiene a uno stato che non è mai stato osservato prima. In questo caso usiamo la stessa formula ma avremo che la stima di probabilità è data solo dai pesi a priori assegnati a tutte le transizioni possibili da quello stato.
+\end{itemize}
+A questo punto per ogni insieme $A_j$ sopra citato viene scelto un valore di riferimento, che può essere la media degli estremi se è un intervallo limitato o l'estremo inferiore/superiore nel caso sia illimitato superiormente/inferiormente. Si calcola così la media pesata e si ottiene un rendimento stimato per ogni asset.\newline
+In questo caso ci affidiamo solo alla approssimazione al primo ordine: sceglieremo quindi un portafoglio che pone tutto il capitale sull'asset che assicura valore atteso maggiore. Nel caso essi siano uguali, poniamo $\frac{1}{2}$ del capitale su entrambi i titoli. A causa dell'incertezza molto grande, il metodo di Kelly dà come risultato portafogli a pesi negativi, nel qual caso abbiamo scelto di non investire nulla.\newline
+\textcolor{blue}{Il codice occupa davvero tanto spazio}.\newline
+Qui di seguito riportiamo le quattro partizioni dell'intervallo reale che sono state considerate per costruire gli stati $A_{i_1}\times A_{i_2}$, descritte dagli estremi di tali intervalli in successione, da intendersi in punti per mille di rendimento.
+\begin{enumerate}
+	\item $\{-\infty, -100, -50, -20, -10, -5, -2, -1, 0, 1, 2, 5, 10, 20, 50, 100, +\infty\}$
+	\item $\{-\infty, -100, -50, -10, -5, 0, 5, 10, 50, 100, +\infty\}$.
+	\item $\{-\infty, -150, -100, -75, -50, -30, -10, -5, 0, 5, 10, 30, 50, 75, 100, 150, +\infty\}$
+	\item $\{-\infty, -1000, -700, -500, -300, -100, -50, -10,  0,\\ 10, 50, 100, 300, 500, 700, 1000, +\infty\}$
+\end{enumerate}
+In tutti i casi il numero totale di periodi di investimento nel caso giornaliero è $n=14640$, nel caso settimanale $ n=2927$ e nel caso mensile $n = 696$. Il capitale iniziale $S_0=1$. Per ogni periodo di investimento riportiamo i risultati generali, focalizzandoci su quelli ottenuti da partizione e peso $p$ ottimale.
+\subsubsection{Risultati}
+\begin{itemize}
+	\item Periodo di investimento giornaliero: I risultati migliori si ottengono per $p=5$. La partizione ottimale è la numero $4$, probabilmente perché gli stati da essa derivanti corrispondono a incrementi simili a quelli del mercato reale, ossia dell'ordine di qualche punto percentuale.
+	\item Periodo di investimento settimanale: in questo caso i risultati sono molto più simili tra loro. Il peso migliore si ha per $p=10$, essendoci meno periodi di investimento su cui costruire le stime di distribuzione. La partizione migliore è la numero $3$, tuttavia per confronto utilizziamo i risultati per la numero $4$, i cui valori si discostano comunque poco dalla precedente.
+	\item Periodo di investimento mensile: la partizione migliore si rivela ancora essere la $4$. I risultati ottimali si ottengono aumentando il peso, ossia ponendo $p\approx20$, confermando la tendenza.
+\end{itemize}
+Riportiamo qui di seguito i risultati e il grafico in scala semilogaritmica (per apprezzare meglio l'andamento esponenziale) per i tre periodi di investimento.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Quantità 			  & Giornaliero	 & Settimanale	& Mensile		\\\hline
+		$S_n$                 & $43025.29$   & $7584.782$	& $18071.66$ 	\\
+		$\mu_{\text{ann}}$    & $21.70\%$    & $18.56\%$	& $19.89\%$		\\
+		$\sigma_{\text{ann}}$ & $0.2460$     & $0.2394$		& $0.2243$		\\
+		$\mu_{\text{geom}}$   & $0.0007291$  & $0.003057$	& $0.0141831$	\\
+		$\max dd$             & $59.20\%$    & $64.83\%$	& $55.25\%$		\\
+		$CR$                  & $0.0229$     & $0.0179$		& $0.0225$		\\
+		$SR$                  & $0.8820$     & $0.7754$		& $0.8867$		\\\hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{../Sperimentazione/Empirical_best/Empirical_best_semilogy}
+\caption{}
+\label{fig:empiricalbestsemilogy}
+\end{figure}
+In generale, i risultati al variare di tutti i parametri sono comunque allineati a questi, per tutte le quantità considerate. Essendo il drowdown molto elevato, questi metodi sono in realtà poco efficaci: l'investitore in certi periodi ha perso più di metà del capitale massimo che aveva accumulato.
+
+\subsection{Metodo empirico sui rapporti rendimento-incertezza}
+Questo secondo metodo è simile al precedente, ma non si basa sulle stime di probabilità costruite a partire dalle osservazioni. Per ogni periodo di investimento $t$, guardiamo gli ultimi $\tau$ vettori di log-rendimento $\log(\X_{t-\tau}),\ldots, \log(\X_{t-1})$ e calcoliamo media e deviazione standard empirica, rispettivamente $\hat{\bm{\mu}}$ e $\hat{\bm{\sigma}}$. \newline
+Partizioniamo come prima la retta reale estesa $[-\infty,+\infty]$ in un numero finito di intervalli $\{A_1,\ldots, A_k\}$. Per ogni asset $j = 1,2$ andiamo a calcolare $\frac{\log X_{t-1,j}-\hat{\mu}_j}{\hat{\sigma}_j}$, e troviamo a quale intervallo $A_{i_j}$ appartiene. Lo stato attuale sarà simboleggiato dal prodotto cartesiano dei due intervalli $A_{i_1}\times A_{i_2}$.\newline
+In pratica calcoliamo per ogni asset quanto l'ultimo rendimento si discosta dalla media degli ultimi $\tau$ giorni, in rapporto alla deviazione standard, e vediamo in quale fascia di valori si trova questa quantità (ricordando che, generalmente, tale valore supera raramente $5$ in modulo).\newline
+Per ognuno di questi stati $A_{i_1}\times A_{i_2}$ consideriamo le occorrenze di essi $B_{i_1,i_2,t}=\{\tau \leq s\leq t: \text{al tempo s ero nello stato }A_{i_1}\times A_{i_2}\}$. Siano quindi $R_{i_1,i_2,t}=\{\X_s:s\in B_{i_1,i_2,t}\}$ i rendimenti del periodo corrispondente a ogni occorrenza dello stato nel passato. Da questi possiamo ottenere una stima del valore atteso e dell'incertezza di $\X_t$ e utilizzando entrambe le approssimazioni al primo e secondo ordine, semplicemente facendo medie e covarianze dei dei vettori in $R_{i_1,i_2,t}$.\newline
+Questo metodo viene utilizzato effettivamente solo dal $\tau$-esimo periodo di investimento in poi, prima utilizziamo un portafoglio che suddivide il capitale in parti uguali tra i titoli.\newline
+Le partizioni della retta reale utilizzate per questa sperimentazione, indicate dagli estremi come nel capitolo precedente, sono:
+\begin{enumerate}
+	\item $\{-\infty, -3, -1, -0.5, 0, 0.5, 1, 3, +\infty\}$
+	\item $\{-\infty, -2, -1, -0.5, -0.25, 0, 0.25, 0.5, 1, 2, +\infty\}$.
+\end{enumerate}
+Daremo una analisi generale dei risultati generali in funzione della variabile $\tau$ e della partizione, con le stesse condizioni iniziali del capitolo precedente. 
+\subsubsection{Risultati}
+I risultati mostrano chiaramente che in tutti i casi l'approssimazione al primo ordine ottiene risultati migliori del metodo di Kelly, mantenendo però un drowdown molto alto. Questo metodo è migliore del precedente, probabilmente perché utilizza dati storici per calcolare una stima del valore atteso del rendimento futuro. Le partizioni, essendo simili, forniscono valori finali molto ravvicinati, favorendo leggermente la seconda.
+\begin{itemize}
+	\item Periodo di investimento giornaliero: il valore di $\tau$ ottimale è in tutti i casi $63$, corrispondente a un periodo di circa $3$ mesi.
+	\item Periodo di investimento settimanale: il valore di $\tau$ ottimale è in tutti i casi $52$ settimane, corrispondente a un periodo di $1$ anno.
+	\item Periodo di investimento mensile: il valore di $\tau$ ottimale tra quelli testati ($\tau = 36,60$) è $\tau =36$, corrispondente a un periodo di $3$ anni.
+\end{itemize}
+Riportiamo qui di seguito la tabella e il grafico dei risultati migliori, riguardanti quindi l'approssimazione al primo ordine.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Quantità 			  & Giornaliero	 & Settimanale	& Mensile		\\\hline
+		$S_n$                 & $64102.81$   & $4166.649$	& $2384.919$ 	\\
+		$\mu_{\text{ann}}$    & $22.37\%$    & $17.44\%$	& $16.59\%$		\\
+		$\sigma_{\text{ann}}$ & $0.2453$     & $0.2371$		& $0.2357$		\\
+		$\mu_{\text{geom}}$   & $0.0007563$  & $0.0028516$	& $0.0011236$	\\
+		$\max dd$             & $63.64\%$    & $60.84\%$	& $50.82\%$		\\
+		$CR$                  & $0.0220$     & $0.0179$		& $0.0204$		\\
+		$SR$                  & $0.9119$     & $0.7356$		& $0.7039$		\\\hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{../Sperimentazione/Empirical3_best/Empirical3_best_semilogy}
+	\caption{}
+	\label{fig:empirical3bestsemilogy}
+\end{figure}
+
+\subsection{Metodo ad albero (Lempel-Ziv)}
+Questo metodo prende spunto direttamente da quello descritto nella sezione \ref{LZ} e segue passo per passo l'algoritmo di codifica lì descritto. \newline
+Definiamo, esattamente come nel metodo empirico sui rendimenti (paragrafo \ref{emprend}) gli stati simboleggiati dai prodotti cartesiani degli intervalli reali di rendimenti $A_{i_1}\times A_{i_2}$. A questo punto procede esattamente come nell'algoritmo di Lempel-Ziv descritto in precedenza, come se la stringa da codificare in tempo reale fosse la successione delle fasce di rendimento (gli $A_{i_1}\times A_{i_2}$).\newline
+La formula per ottenere la stima di probabilità è una piccola modificazione della formula \ref{empLZ} a cui abbiamo dato un peso differente $p$ alle osservazioni rispetto alle frequenze date a priori. 
+\begin{equation*}
+\Ph(j|j^n) = \frac{\gamma_n(j|z_n)}{\gamma_n(z_n)}=\frac{m+p\cdot (m-1)c_n(j|z_n)}{m+p\cdot (m-1)c_n(z_n)}
+\end{equation*}
+Il calcolo dei valori attesi procede come descritto nel paragrafo \ref{emprend}, ossia assegnando un valore particolare agli asset per ogni stato e facendo una media pesata con le probabilità di transizione appena ottenute.\newline
+Anche in questo caso si hanno incertezze molto elevate che rendono il metodo di Kelly inefficace: ci baseremo quindi solo su una approssimazione al primo ordine.\newline
+Le partizioni della retta reale utilizzate per costruire gli stati sono le stesse del metodo empirico sui rendimenti.
+\subsubsection{Risultati}
+La strategia descritta per funzionare in modo ottimale richiede molti dati storici e pochi stati, data la complessa struttura ad albero che viene costruita passo dopo passo. 
+\begin{itemize}
+	\item Periodo di investimento giornaliero: la partizione migliore è la $4$ e maggiore il peso $p$, migliori sono i risultati (almeno per valori contenuti). In questo caso è stato utilizzato $p=10$.
+	\item Periodo di investimento settimanale: alcune partizioni ($2$ e $3$), mostrano come pochi dati disponibili incidano drasticamente sui risultati finali. La partizione ottimale si conferma essere la $4$, combinata con $p=10$.
+	\item Periodo di investimento mensile: in questo caso, più la partizione è semplice più i risultati migliorano, tanto che la $3$ e la $4$ hanno una performance nettamente inferiore rispetto alla $1$ e soprattutto alla $2$. Quest'ultima, con $p=10$ si è rivelata essere la migliore.
+\end{itemize}
+Riportiamo quindi la tabella e il grafico dei risultati.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Quantità 			  & Giornaliero	 & Settimanale	& Mensile		\\\hline
+		$S_n$                 & $17806.67$   & $13149.88$	& $8605.029$ 	\\
+		$\mu_{\text{ann}}$    & $20.12\%$    & $19.32\%$	& $18.71\%$		\\
+		$\sigma_{\text{ann}}$ & $0.2446$     & $0.2303$		& $0.2292$		\\
+		$\mu_{\text{geom}}$   & $0.0006688$  & $0.0032455$	& $0.0131025$	\\
+		$\max dd$             & $62.20\%$    & $60.89\%$	& $55.40\%$		\\
+		$CR$                  & $0.0202$     & $0.0198$		& $0.0211$		\\
+		$SR$                  & $0.8226$     & $0.8387$		& $0.8164$		\\\hline
+	\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{../Sperimentazione/Tree_best/Tree_best_semilogy}
+	\caption{}
+	\label{fig:treebestsemilogy}
+\end{figure}
+
+\subsection{Metodo del portafoglio universale di Cover}
+La seguente sperimentazione è un applicazione diretta del portafoglio universale a orizzonte infinito di Cover e Thomas descritto in \cite{CTElInfTeo} e nel paragrafo \ref{univinfinite}. L'algoritmo viene applicato sia su $m=2$ asset e gli integrali nelle equazioni \ref{portafuniv} e \ref{capituniv} vengono calcolati grazie a una libreria di python.\newline
+Dalla definizione (il prodotto nell'equazione \ref{capituniv} è telescopico) risulta evidente che i tre periodi di investimento hanno lo stesso andamento, tanto che nei giorni in cui i tre portafogli vengono aggiornati simultaneamente, essi ottengono lo stesso risultato.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Quantità 			  & Giornaliero	 & Settimanale 	& Mensile		\\\hline
+		$S_n$                 & $4764.502$   & $5324.182$	& $4777.275$ 	\\
+		$\mu_{\text{ann}}$    & $16.93\%$    & $17.04\%$	& $16.84\%$		\\
+		$\sigma_{\text{ann}}$ & $0.2058$     & $0.2003$		& $0.1942$		\\
+		$\mu_{\text{geom}}$   & $0.0005786$  & $0.0029356$	& $0.0122462$	\\
+		$\max dd$             & $63.01\%$    & $60.62\%$	& $59.91\%$		\\
+		$CR$                  & $0.0168$     & $0.0176$		& $0.0176$		\\
+		$SR$                  & $0.8225$     & $0.8505$		& $0.8669$		\\\hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{../Sperimentazione/Universal_infinite2_best/Univ_inf2_best_semilogy}
+	\caption{}
+	\label{fig:univinf2bestsemilogy}
+\end{figure}
+
+\subsection{Metodo Nearest-Neighbour}
+Il seguente metodo è descritto in \cite{NN} sia nella forma generale che in quella approssimata utilizzata in questa sperimentazione, ed è un esempio di metodo a finestra scorrevole.\newline
+Scegliamo inizialmente due parametri: $k$, la dimensione della finestra che teniamo in considerazione e $s_l$ ossia la lunghezza di ogni segmento nel passato in cui cerchiamo il vicino a distanza minore dalla finestra attuale.\newline
+Al periodo di investimento $n>s_l+1$, per ogni $1\leq i\leq \lfloor \frac{n-1}{s_l}\rfloor$, definiamo quindi 
+\begin{equation*}
+	N_i = \argmin\limits_{(i-1)s_l+k\leq j < is_l}{\| \X_{j-k}^{j-1}-\X_{n-k}^{n-1}\|}
+\end{equation*}
+dove $\|\cdot \|$ è una qualsiasi norma sullo spazio $\R^{m\times k}$ ($m$ è il numero di asset considerati), e $\X_{j-k}^{j-1}$ indica il vettore $(\X_{j-k},\ldots, \X_{j-1})$. 
+A questo punto scegliamo il portafoglio definito da
+\begin{equation*}
+	\hat{\B} = \argmax\limits_{\B\in \mathcal{B}}\prod_{1\leq i\leq \lfloor \frac{n-1}{s_l}\rfloor}{\B^t\X_{N_i}}
+\end{equation*}
+Nell'articolo citato l'algoritmo combina insieme capitali ottenuti utilizzando diversi valori $k, s_l$, calcolando una media pesata di essi. Nel nostro caso, utilizzeremo diversi valori dei parametri che però non combineremo ma confronteremo tra loro.\newline
+Data l'elevata complessità faremo una ulteriore approssimazione: la finestra scorrevole viene mossa solo nei $10$ anni precedenti al periodo di investimento, ossia circa $2560$ giorni.\newline
+Il portafoglio viene poi scelto in tre modi diversi, ossia con quello descritto precedentemente, sia usando una approssimazione al primo ordine e al secondo ordine sfruttando i dati storici degli $\X_{N_i}$.\newline
+I principali parametri di cui tenere conto sono quindi $s_l$ e $k$. Riportiamo qui sotto le analisi per periodo di investimento.
+\subsubsection{Risultati}
+Si osserva subito che questa strategia, pur mantenendo un drowdown molto alto, ha una performance decisamente migliore rispetto alle precedenti e l'approssimazione al primo ordine ha risultati peggiori del kelly gambling e il Nearest Neighbour standard. Quest'ultimo fornisce in tutti i casi i risultati migliori, nonostante il Kelly Gambling si mantenga sempre sullo stesso ordine di grandezza.
+\begin{itemize}
+	\item Periodo di investimento giornaliero: Sono stati sperimentati i parametri corrispondenti a segmenti di lunghezza $s_l=21,42,63$, ossia $1,2,3$ mesi reali, con finestre lunghe $k=1,5,10$ giorni. Dai risultati ottenuti è apparso chiaramente che il valore di $s_l$ ottimale per qualsiasi finestra è $s_l=21$, inoltre segmenti più lunghi danno risultati peggiori. In generale, la lunghezza ottimale di una finestra è intorno a $k=3$ o $k=5$.
+	\item Periodo di investimento settimanale: i parametri sperimentati in questo caso corrispondono a $s_l = 12,24$ in combinazione con $k = 2,4,6$. Mentre $s_l=12$ si è rivelato essere meno efficiente, a causa dei troppi segmenti e poco spazio dove muovere la finestra, per la lunghezza di quest'ultima i risultati migliori si hanno con $k=4$, all'incirca lo stesso valore del caso giornaliero.
+	\item Periodo di investimento mensile: in quest'ultimo caso sono state provate le due combinazioni di parametri $k=1, s_l=6$ e $k=2,s_l=6$. La migliore è risultata essere la prima.
+\end{itemize}
+Riportiamo dati e grafici per le combinazioni migliori, tutte ottenute utilizzando il metodo standard.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Quantità 			  & Giornaliero	 & Settimanale 	& Mensile		\\\hline
+		$S_n$                 & $1485001 $   & $77065.69$	& $25047.91$ 	\\
+		$\mu_{\text{ann}}$    & $28.13\%$    & $22.97\%$	& $20.65\%$		\\
+		$\sigma_{\text{ann}}$ & $0.2564$     & $0.2541$		& $0.2327$		\\
+		$\mu_{\text{geom}}$   & $0.0009712$  & $0.0098517$	& $0.0146589$	\\
+		$\max dd$             & $64.46\%$    & $66.20\%$	& $59.75\%$		\\
+		$CR$                  & $0.0272$     & $0.0217$		& $0.0216$		\\
+		$SR$                  & $1.0975$     & $0.9404$		& $0.8876$		\\\hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{../Sperimentazione/NN_best/NN_best_semilogy}
+	\caption{}
+	\label{fig:nnbestsemilogy}
+\end{figure}
+
+\appendix
+\chapter{Definizioni}
+Diamo qui una serie di definizioni e risultati che vengono utilizzati nei vari capitoli e stanno alla base di molti argomenti trattati.
+\section{Speranza condizionale e distribuzioni condizionate}
+Qui di seguito definiamo invece alcuni concetti di teoria della probabilità. In ogni caso lavoreremo su uno spazio di probabilità $(\Omega, \F, \Pro)$ e seguiremo il testo \cite{Klenke}:
+\begin{defn}
+	Sia $E$ uno spazio metrico dotato della sigma algebra di Borel $\mathcal{E}$. Una successione limitata di misure positive $\Pro_n$, $n\in \N$ su $(E,\mathcal{E})$ converge debolmente alla misura finita e positiva $\Pro$ se $\forall f$ funzione limitata e continua si ha
+	\begin{equation*}
+	\E_{\Pro_n}[f]\rightarrow \E_{\Pro}[f]
+	\end{equation*}
+\end{defn}
+Sia quindi $\mathcal{G}\subset\F$ e $X\in L^1(\Omega, \F, \Pro)$.\newline
+Per quanto riguarda la speranza condizionale e le distribuzioni condizionali e regolari usiamo le seguenti definizioni.
+\begin{defn}
+	Una variabile aleatoria $Y$ è detta speranza condizionale di $X$ data $\mathcal{G}$, in formule $\E[X|\mathcal{G}]=Y$ se
+	\begin{itemize}
+	\item $Y$ è $\mathcal{G}$-misurabile
+	\item Per ogni $A\in \mathcal{G}$ vale $\E[X\mathbbm{1}_A] = \E[Y\mathbbm{1}_A]$.
+	Inoltre, per $B\in \F$, $\Pro(B|\mathcal{G}) = \E[\mathbbm{1}_B|\mathcal{G}]$ è detta la probabilità condizionale di $B$ rispetto alla $\sigma$-algebra $\mathcal{G}$.
+	\end{itemize}
+La speranza condizionale è unica a meno di equivalenza quasi ovunque.\newline
+Nel caso in cui stiamo condizionando rispetto a una $\sigma$ algebra generata $\sigma(Y)$ scriveremo anche $\E[X|\sigma(Y)]=\E[X|Y]$.	
+\end{defn}
+\begin{defn}
+	Sia $Y\in L^(\Omega, \F, \Pro)$ e $X:(\Omega,\F)\rightarrow (E,\mathcal{E})$. Definiamo la speranza condizionale di $Y$ dato $X=x$  come $\E[Y|X=x]=\phi(x)$ dove $\phi(X)=Z=\E[Y|X]$ è la funzione che fattorizza $\E[Y|X]$ con $X$ (rif. \cite{Klenke}).
+\end{defn}
+\begin{defn}
+	Siano dati due spazi di misura $(\Omega_1,\F_1),(\Omega_2,\F_2)$. Una mappa $\kappa:\Omega_1\times \F_2\rightarrow [0,\infty]$ è detta nucleo di transizione $(\sigma$-)finito se 
+	\begin{itemize}
+		\item $\omega_1\mapsto\kappa(\omega_1,A_2)$ è misurabile per ogni $A_2\in\F_2$.
+		\item $A_2\mapsto \kappa(\omega_1,A_2)$ è una misura $(\sigma$-)finita su $(\Omega_2,\F_2)$ per ogni $\omega_1\in\Omega_1$.
+	\end{itemize}
+Se la misura nel secondo punto è di probabilità allora la funzione è anche detta nucleo stocastico o di Markov.
+\end{defn}
+\begin{defn}
+	Sia $Y$ una variabile aleatoria a valori in $(E,\mathcal{E})$  e sia $\mathcal{G}\subset \F$. Un nucleo stocastico $\kappa_{Y,\mathcal{G}}$ da $(\Omega,\mathcal{G})$ a $(E,\mathcal{E})$ è detto una distribuzione condizionale regolare di $Y$ data $\mathcal{G}$ se 
+	\begin{equation*}
+		\kappa_{Y,\mathcal{G}}(\omega, B) = \Pro[\{Y\in B\}|\mathcal{G}](\omega)
+	\end{equation*}
+	per ogni $B\in \mathcal{G}$ è per quasi ogni $\omega$ (rispetto a $\Pro$) o equivalentemente se
+	\begin{equation*}
+		\int \mathbbm{1}_B(Y)\mathbbm{1}_A\text{d}\Pro = \int \kappa_{Y,\mathcal{G}}(\cdot,B)\mathbbm{1}_A\text{d}\Pro \;\;\;\;\; \text{per ogni } A\in \mathcal{G},\text{ per ogni } B\in \mathcal{E}
+	\end{equation*}
+	Un caso speciale si ha quando $\mathcal{G}=\sigma(X)$ in cui si ha che 
+	\begin{equation*}
+		(x,A)\mapsto \kappa_{Y,X}(x,A) = \Pro(\{Y\in A\}|X=x)=\kappa_{Y,\sigma(X)}(X^{-1}(x),A)
+	\end{equation*}
+\end{defn}
+Nel caso in cui lo spazio in arrivo sia $\R$ con $\sigma$-algebra dei boreliani, esiste sempre una versione della distribuzione condizionale regolare, qualsiasi sia la $\sigma$-algebra di condizionamento (Teorema $8.29$ in \cite{Klenke}).
+\begin{nota}
+	Siano $X$ e $Y$ variabili aleatorie reali con densità congiunta $f(x,y)$ rispetto alla misura di Lebesgue $\lambda$. Per $x\in \R$, consideriamo
+	\begin{equation*}
+		f_X(x) = \int_\R{f(x,y)\lambda(\dy)}
+	\end{equation*}
+	Questa la densità marginale di $X$, ossia la distribuzione $\Pro_X$ su $\R$. La distribuzione condizionata regolare di $Y$ rispetto a $X$ ha densità
+	\begin{equation*}
+		\frac{\Pro(Y\in \dy|X = x)}{\dy}=f_{Y|X}(x,y)=\frac{f(x,y)}{f_X(x)}
+	\end{equation*}
+	Per quasi ogni $x$ rispetto a $\Pro_X$. Questo si verifica facilmente notando che dati $A,B\in \mathcal{B(\R)}$
+	\begin{equation*}
+		\begin{split}
+		\int_A{\Pro(X\in \dx)\int_B{f_{Y|X}(x,y)\lambda(\dy)}} & = \int_A{\Pro(X\in \dx)\frac{1}{f_X(x)}\int_{B}{f(x,y)\lambda(\dy)}} \\
+		& = \int_A{\lambda(\dx)\int_B{f(x,y)\lambda(\dy)}} \\
+		& = \int_{A\times B}{f\text{d}\lambda^2} = \Pro(X\in A, Y\in B)
+		\end{split}
+	\end{equation*}
+\end{nota}
+\section{Martingale}
+Introduciamo ora alcuni concetti riguardo a filtrazioni e martingale. In generale considereremo processi stocastici $X = \{X_t,t\in I\}$.
+\begin{defn}
+	Sia $\mathbb{F}=\{\F_t,t\in I\}$ una famiglia di $\sigma$-algebre con $\F_t\subseteq \F$ per ogni $t\in I$. $\mathbb{F}$ è detta filtrazione se $\F_s\subseteq \F_t$ per ogni $s,t\in I$ con $s\leq t$.
+\end{defn}
+\begin{defn}
+	Un processo stocastico è detto adattato alla filtrazione $\mathbb{F}$ se per ogni $t\in I$ $X_t$ è $\F_t$-misurabile. Se $\F_t=\sigma(X_s,s\leq t)$ per ogni $t$, allora denotiamo $\mathbb{F}=\sigma(X)$ la filtrazione generata dal processo $X$.
+\end{defn}
+\begin{defn}
+	Sia $(\Omega,\F,\Pro)$ uno spazio di probabilità,  $I\subseteq \R$ e $\F$ una filtrazione. Sia $X=(X_t)_{t\in I}$ un processo stocastico a valori reali adattato a $\mathbb{F}$ con $\E[|X_t|]<\infty$ per ogni $t$. $X$ è chiamato una
+	\begin{itemize}
+		\item \textit{Martingala} se $\E[X_t|\F_s] = X_s$ per ogni $s,t\in I$ con $t>s$.
+		\item \textit{Submartingala} se $\E[X_t|\F_s]\geq  X_s$ per ogni $s,t\in I$ con $t>s$. 
+		\item \textit{Supermartingala} se $\E[X_t|\F_s] \leq X_s$ per ogni $s,t\in I$ con $t>s$.
+	\end{itemize}
+\end{defn}
+Enunciamo quindi un importante teorema
+\begin{teo}[Teorema di convergenza per martingale]
+	Sia $(X_n)_{n\in\N}$  una submartingala con $\sup\{\E[X_n^+]:n\geq 0\}<\infty$, allora esiste una variabile aleatoria $X_\infty$ che è $\F_\infty$ misurabile con $\E[|X_\infty|]<\infty$ e $X_n\rightarrow X_\infty$ quasi certamente (dove $\F_\infty$ è la sigma algebra terminale della filtrazione).	
+\end{teo}
+\section{Sistemi dinamici misurabili}
+Definiamo come prima cosa il concetto di processo stazionario
+\begin{defn}
+	Sia $I\subseteq \R$ un insieme chiuso per addizione. Un processo stocastico $X=(X_t)_{t\in I}$ è detto stazionario se 
+	\begin{equation*}
+		\mathcal{L}[(X_{t+s})_{t\in I} ]= \mathcal{L}[(X_t)_{t\in I}]
+	\end{equation*}
+	dove con $\mathcal{L}$ indichiamo la legge del processo.
+\end{defn}
+Come prima cosa definiamo un sistema dinamico misurabile e alcuni concetti ad esso collegato:
+\begin{defn}
+	Un sistema dinamico misurabile è una quadrupla $(\Omega,\F,\Pro,T)$ dove:
+	\begin{itemize}
+		\item $\Omega$ è un insieme.
+		\item $\F$ è una $\sigma$-algebra su $\Omega$.
+		\item $\Pro:\F\rightarrow[0,1]$ è una misura di probabilità.
+		\item $T:\Omega\rightarrow \Omega$ è una trasformazione misurabile che preserva la misura, cioè $\forall A\in \F$ $ \Pro(T^{-1}(A))=\Pro(A)$
+	\end{itemize}
+\end{defn}
+Strettamente collegato a questo è il concetto di ergodicità
+\begin{defn}
+	Un sistema dinamico misurabile è detto ergodico se rispetta una delle seguenti definizioni equivalenti:
+	\begin{itemize}
+		\item Per ogni $A\in \F$
+		\begin{equation*}
+		\lim\limits_{n\to\infty}\frac{1}{n}\sum_{0\leq t <n}\chi_A\circ T^t= \Pro(A)\;\;\;\; \text{q.c.}
+		\end{equation*}
+		\item Per ogni $A\in \F$ $T$-invariante ($T^{-1}(A)=A$) si ha che $\Pro(A)=0$ o $\Pro(A)=1$.
+		\item Ogni integrale primo ($\phi\in L^1(\Omega)$ t.c $\phi = \phi\circ T$ q.c.) è costante q.c.
+		\item Per ogni $\phi\in L^1(\Omega)$ vale
+		\begin{equation*}
+		\lim\limits_{n\to\infty}\frac{1}{n}\sum_{0\leq t <n}\phi\circ T^t = \int_\Omega{\phi\;\text{d}\Pro} \;\;\;\; \text{q.c.}
+		\end{equation*}
+		\item Per ogni $A,B\in\F$ si ha
+		\begin{equation*}
+		\lim\limits_{n\to\infty}\frac{1}{n}\sum_{0\leq t <n}\Pro(T^{-t}(A)\cap B) = \Pro(A)\Pro(B)
+		\end{equation*}
+	\end{itemize}
+\end{defn}
+Inoltre, data una variabile aleatoria $X$ su $(\Omega,\F,\Pro,T)$ sistema dinamico ergodico, considerando il processo $\{X_t\}$ dove $X_t (\omega)= X(T^t(\omega))$ per $t \in \N$ (o in $\Z$ se $T$ è invertibile e l'inversa conserva la misura), si ha che tale processo stocastico è ergodico e stazionario.\newline
+Enunciamo un importante teorema, più volte utilizzato:
+\begin{teo}[Teorema ergodico generalizzato di Breiman]
+	Sia $\{g_t\}$ una successione di variabili aleatorie reali definite su un sistema dinamico ergodico $(\Omega, \F,\Pro,T)$. Se $g_t\rightarrow g$ q.c. e $\{g_t\}$ è dominata in $L^1$, cioè $\E[\sup_t|g_t|]<\infty$, allora
+	\begin{equation}\label{teo:erg1}
+	\frac{1}{n}\sum_{0\leq t <n}{g_t(T^t(\omega))}\rightarrow \E[g]\;\;\;\;\; \text{q.c.}
+	\end{equation}
+	Inoltre, se $\E[\inf_tg_t]>-\infty$, allora
+	\begin{equation}\label{teo:erg2}
+	\liminf_{n\to\infty}\frac{1}{n}\sum_{0\leq t <n}{g_t(T^t(\omega))}\geq \E[\liminf_{t\to\infty}g_t]
+	\end{equation}
+\end{teo}
+
+
+\chapter{Codici}
+In questa sezione riportiamo i codici utilizzati per le sperimentazioni sui dati reali di mercato.
+\section{Metodo delle frequenze empiriche}
+\lstinputlisting[language=Python]{../Sperimentazione/For_Tex/Empirical.py}
+
+\bibliographystyle{alpha}
+\bibliography{Bibliografia}
+\end{document}
+
