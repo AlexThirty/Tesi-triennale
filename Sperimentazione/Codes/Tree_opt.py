@@ -7,6 +7,7 @@ import math
 from scipy.special import gamma
 from scipy.integrate import dblquad
 from scipy import integrate
+from anytree import Node, RenderTree
 
 # Questo algoritmo sfrutta un procedimento suggerito dall'articolo di Algoet
 # che si basa sull'algoritmo di Lempel-Ziv, ad ogni passo aggiorno l'albero
@@ -33,17 +34,23 @@ portfolio2 = 1.
 # Questi valori sono da intendersi in punti per mille di rendimento
 s = [-10000, -1000, -700, -500, -300, -100, -50, -10,  0, 10, 50, 100, 300, 500, 700, 1000, 10000]
 
+
 # Inizializzo il dizionario e variabili utili
 di = {}
 stot = len(s)
 ma = s[stot-2]
 
+states = []
+
+for i in range(0, stot-1):
+	states.append((s[i], s[i+1]))
+
 # L'algoritmo da un peso base di uno per stati gia visitati, qua si puo
 # settare un peso diverso per le transizioni di cui so il numero di occorrenze
-peso = 10.
+peso = 20.
 
 # Qui si puo settare la frequenza, ossia ogni quanti giorni andiamo a operare
-freq = 1	
+freq = 1
 
 # Importiamo i dati del primo asset dal file CSV
 
@@ -108,121 +115,46 @@ for i in range(1,l):
 	
 l = l-1
 
+root = Node(name = "root")
+
+def generateChildren(n):
+	for s in states:
+		for t in states:
+			Node(name=str(s)+"x"+str(t), state1 = s, state2 = t, parent = n, data = 0)
+	return n
+
+generateChildren(root)
+
 # Funzione che ottiene lo stato della catena in cui mi trovo
 # Restituisce la stringa con cui viene salvato uno stato, semplicemente
 # Ogni stato e rappresentato dal rendimento in punti percentuali dei due asset
 # separati da una x
 # Ogni singolo asset, invece, e rappresentato da un intervallo
 
-def obtainword(st, en):
-	w = ''
+def obtainNode(st, en):
+	node = root
+	w = str
 	for t in range(st, en+1):
-		if t == st:
-			approx = (int)(assets[t][0]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = '>' + str(s[a-1]) + '%'
-						else:
-							w = str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-			approx = (int)(assets[t][1]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = w + 'x' + '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = w + 'x' + '>' + str(s[a-1]) + '%'
-						else:
-							w = w + 'x' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-		else:
-			approx = (int)(assets[t][0]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = w + ' ' + '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = w + ' ' + '>' + str(s[a-1]) + '%'
-						else:
-							w = w + ' ' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-			approx = (int)(assets[t][1]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = w + 'x' + '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = w + 'x' + '>' + str(s[a-1]) + '%'
-						else:
-							w = w + 'x' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-	return w		
+		if node.children==():
+			node = generateChildren(node)
+		approx1 = (int)(assets[t][0]*1000.-1000.)
+		approx2 = (int)(assets[t][1]*1000.-1000.)
+		for n in node.children:
+			if approx1 >= n.state1[0] and approx1 <= n.state1[1] and approx2 >= n.state2[0] and approx2 <= n.state2[1]:
+				node = n
+	return node
 
 # Questa funzione aggiorna l'albero, ogni nodo avra infatti come valore
 # Al suo interno la dimensione del suo sottoalbero: ogni volta quindi che continuo
 # A muovermi all'interno di esso senza ripartire dalla radice (come nell'algoritmo di 
 # Lempel-Ziv) vado ad aggiornare tutti i nodi della successione di stati che sto considerando
 
-def aggiornaalbero(st, en):
-	w = ''
-	for t in range(st, en+1):
-		if t == st:
-			approx = (int)(assets[t][0]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = '>' + str(s[a-1]) + '%'
-						else:
-							w = str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-			approx = (int)(assets[t][1]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = w + 'x' + '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = w + 'x' + '>' + str(s[a-1]) + '%'
-						else:
-							w = w + 'x' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-			di[w] = di[w]+1
-		else:
-			approx = (int)(assets[t][0]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = w + ' ' + '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = w + ' ' + '>' + str(s[a-1]) + '%'
-						else:
-							w = w + ' ' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-			approx = (int)(assets[t][1]*1000.-1000.)
-			for a in range(1, stot):
-				if approx <= s[a]:
-					if a == 1:
-						w = w + 'x' + '<' + str(s[1]) + '%'
-					else:
-						if a == stot-1:
-							w = w + 'x' + '>' + str(s[a-1]) + '%'
-						else:
-							w = w + 'x' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-					break
-			di[w] = di[w]+1
-
-
+def aggiornaalbero(n):
+	while n!=root:
+		n.data = n.data+1
+		n = n.parent
+	root.data = root.data + 1
+	
 # Algoritmo vero e proprio
 
 # Inizializzo dei contatori utili per l'analisi
@@ -237,12 +169,12 @@ indecisioni = indecisioni + 1
 
 # Lo stato '' (stringa vuota) rappresenta la radice dell'albero
 # Come valore al suo interno dovra avere il numero di giorni
-di[''] = 1
+root.data=1
 
-state = obtainword(0,0)
-di[state] = 1
+state = obtainNode(0,0)
+state.data=1
 
-state = ''
+state = root
 
 # La variabile profondity serve solamente come aiuto pratico per richiamare
 # La funzione che aggiorna i valori dell'albero
@@ -252,109 +184,67 @@ for i in range(1,l):
 	print(i)
 	
 	# Aggiornamento dei valori del dizionario per l'ultimo outcome
-	agg = ''
-	di[agg] = di[agg]+1
+	agg = root
+	agg.data = agg.data + 1
 	
 	if profondity > 0:
-		aggiornaalbero(i-profondity, i-1)
+		state_agg = obtainNode(i-profondity, i-1)
+		aggiornaalbero(state_agg)
 	
 	# Stima dei valori attesi basandosi sulle dimensioni dei sottoalberi
 	
 	v1 = 0.
 	v2 = 0.
 	
-	if state == '':
-		# Caso in cui mi trovo nella radice
-		for a in range(0,stot):
-			for b in range(0,stot):
-				if a == 0:
-					increment1 = (1. + s[1]/1000.)
-					newstate = state + '<' + str(s[1]) + '%'
-				else:
-					if a == stot-1:
-						increment1 = (1. + s[a-1]/1000.)
-						w = '>' + str(s[a-1]) + '%'
-					else:
-						increment1 = (1. + (s[a-1]+s[a])/2000.)
-						newstate = state + str(s[a-1]) + 'to' + str(s[a]) + '%'
-				if b == 0:
-					increment2 = (1. + s[1]/1000.)
-					newstate = newstate + 'x' + '<' + str(s[1]) + '%'
-				else:
-					if b == stot-1:
-						increment2 = (1. + s[b-1]/1000.)
-						w = '>' + str(s[b-1]) + '%'
-					else:
-						increment2 = (1. + (s[b-1]+s[b])/2000.)
-						newstate = newstate + 'x' + str(s[b-1]) + 'to' + str(s[b]) + '%'
-				if newstate in di:
-					# Se ho gia fatto questo passaggio prima
-					v1 = v1 + increment1*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
-					v2 = v2 + increment2*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
-				else:
-					# Se non c'e mai stata questa transizione di stati
-					v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(di[state]))
-					v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(di[state]))
-	else:
-		# Caso in cui non mi trovo nella radice
-		for a in range(0,stot):
-			for b in range(0,stot):
-				if a == 0:
-					increment1 = (1. + s[1]/1000.)
-					newstate = state + ' ' + '<' + str(s[1]) + '%'
-				else:
-					if a == stot-1:
-						increment1 = (1. + s[a-1]/1000.)
-						w = '>' + str(s[a-1]) + '%'
-					else:
-						increment1 = (1. + (s[a-1]+s[a])/2000.)
-						newstate = state + ' ' + str(s[a-1]) + 'to' + str(s[a]) + '%'
-				if b == 0:
-					increment2 = (1. + s[1]/1000.)
-					newstate = newstate + 'x' + '<' + str(s[1]) + '%'
-				else:
-					if b == stot-1:
-						increment2 = (1. + s[b-1]/1000.)
-						w = '>' + str(s[b-1]) + '%'
-					else:
-						increment2 = (1. + (s[b-1]+s[b])/2000.)
-						newstate = newstate + 'x' + str(s[b-1]) + 'to' + str(s[b]) + '%'
-				if newstate in di:
-					# Se ho gia fatto questo passaggio prima
-					v1 = v1 + increment1*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
-					v2 = v2 + increment2*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
-				else:
-					# Se non c'e mai stata questa transizione di stati
-					v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(di[state]))
-					v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(di[state]))
-	
-	# Scelta e aggiornamento del portafoglio, sto scegliendo l'asset che mi da valore atteso empirico maggiore, trascurando le covarianze
-	if v1 > v2:
-		portfolio = portfolio*assets[i][0]
-		primoasset = primoasset + 1
-	else:
-		if v2 > v1:
-			portfolio = portfolio*assets[i][1]
-			secondoasset = secondoasset + 1
+	if state.data > 0:
+		#print("ci sono già stato\n")
+		# Se sono gia stato in questo stato, semplicemente trovo empiricamente
+		# Facendo un rapporto di frequenze le probabilita di transizione in ogni altro
+		# Stato e calcolo il valore atteso del rendimento
+		for n in state.children:
+			increment1 = (1. + (n.state1[0] + n.state1[1])/2000.)
+			increment2 = (1. + (n.state2[0] + n.state2[1])/2000.)
+			#print(increment1)
+			#print(increment2)
+			if n.data > 0:
+				#print("sono già stato nel figlio\n")
+				# Se ho già fatto questo passaggio di stato
+				v1 = v1 + increment1*(1. + peso*(float)(n.data))/((stot)**2 + peso*(float)(state.data))
+				v2 = v2 + increment2*(1. + peso*(float)(n.data))/((stot)**2 + peso*(float)(state.data))
+			else:
+				#print("non sono mai stato nel figlio\n")
+				# Se non ho ancora fatto questo passaggio di stato
+				v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(state.data))
+				v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(state.data))
+		# Scelgo ora di puntare tutto sull'asset che mi da valore atteso maggiore, sto trascurando le covarianze
+		if v1 > v2:
+			portfolio = portfolio*assets[i][0]
+			primoasset = primoasset + 1
 		else:
-			portfolio = portfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
-			indecisioni = indecisioni + 1	
+			if v2 > v1:
+				portfolio = portfolio*assets[i][1]
+				secondoasset = secondoasset + 1
+			else:
+				portfolio = portfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
+				indecisioni = indecisioni + 1
+	else:
+		# Se non sono mai stato in questo stato
+		portfolio = portfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
+		indecisioni = indecisioni + 1
 	
 	# Aggiornamento della profondita, in base a se sto aggiungendo un nuovo nodo 
 	# o sto muovendomi ancora nell'albero, come secondo Lempel-Ziv
-	state = obtainword(i-profondity,i)
-	if state in di:
+	state = obtainNode(i-profondity,i)
+	if state.data > 0:
 		profondity = profondity + 1
 	else:
-		di[state] = 1
-		state = ''
+		state.data = 1
+		state = root
 		profondity = 0
 	
 	# Aggiornamenti vari
 	portfolios.append(portfolio)
 	print(portfolio)
-
-
 
 # Analisi dei dati
 
@@ -410,7 +300,7 @@ plt.show()
 
 # Output dei dati
 
-filename = "../Results/Tree.txt"
+filename = "../Results/Tree_opt.txt"
 
 file = open(filename, 'w')
 file.write("Massimo drowdown: " + str(ddmax) + "\n")
@@ -428,5 +318,3 @@ for i in range(0,len(portfolios)):
 	file.write(str(portfolios[i]) + "\n")
 
 file.close()
-
-print(RenderTree(root))
