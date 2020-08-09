@@ -1,5 +1,5 @@
-# importing modules 
-import csv 
+# importing modules
+import csv
 import numpy as np
 from matplotlib import pyplot as plt
 import statistics
@@ -10,7 +10,7 @@ from scipy import optimize
 # Questo codice esegue l'algoritmo presentato da Gyorfi, Udina e Walk in un articolo
 # Ad ogni passo vado a ricercare tramite una finestra scorrevole lunga k, i momenti
 # (ciascuno per ogni segmento di lunghezza fissata) in cui una successione di outcome di k
-# k giorni si avvicinava di piu' in norma 1 a quella degli ultimi giorni. 
+# k giorni si avvicinava di piu' in norma 1 a quella degli ultimi giorni.
 # A questo punto trovo il portafoglio ottimale per queste k sequenze nel passato e lo applico al presente
 
 # Qui vengono settati i principali valori
@@ -19,7 +19,7 @@ from scipy import optimize
 k = 4
 
 # Lunghezza dei segmenti nel passato, in ciascuno dei quali cerco il vicino
-sl = 12			
+sl = 12
 
 # Portafoglio di partenza
 portfolio = 1.
@@ -54,43 +54,43 @@ def norm(vec):
 
 # csv file name
 filename = "KO.csv"
-  
-# initializing the titles and rows list 
-titles1 = [] 
-rows1 = [] 
-  
-with open(filename, 'r') as csvfile:  
-    csvreader = csv.reader(csvfile) 
-    titles1 = csvreader.next() 
-    for row in csvreader: 
-        rows1.append(row)  
+
+# initializing the titles and rows list
+titles1 = []
+rows1 = []
+
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    titles1 = csvreader.next()
+    for row in csvreader:
+        rows1.append(row)
 
 
-# csv file name 
+# csv file name
 filename = "IBM.csv"
-  
-# initializing the titles and rows list 
-titles2 = [] 
-rows2 = [] 
 
-with open(filename, 'r') as csvfile:  
-    csvreader = csv.reader(csvfile) 
-    titles2 = csvreader.next() 
-    for row in csvreader: 
-        rows2.append(row) 
+# initializing the titles and rows list
+titles2 = []
+rows2 = []
 
-# csv file name 
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    titles2 = csvreader.next()
+    for row in csvreader:
+        rows2.append(row)
+
+# csv file name
 filename = "GE.csv"
 
-# initializing the titles and rows list 
-titles3 = [] 
-rows3 = [] 
+# initializing the titles and rows list
+titles3 = []
+rows3 = []
 
-with open(filename, 'r') as csvfile:  
-    csvreader = csv.reader(csvfile) 
-    titles3 = csvreader.next() 
-    for row in csvreader: 
-        rows3.append(row)  
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    titles3 = csvreader.next()
+    for row in csvreader:
+        rows3.append(row)
 
 
 # Trovo ora valori utili dell'input e salvo gli incrementi
@@ -182,7 +182,7 @@ for n in range(0, l):
 						mi = nor
 						ind = j
 				Ni.append(ind)
-				
+
 		# Trovo ora il miglior modo di suddividere il mio portafoglio
 		prod1 = 1.
 		prod2 = 1.
@@ -192,34 +192,34 @@ for n in range(0, l):
 			for i in Ni:
 				su = su*(vect[0]*assets[i][0]+vect[1]*assets[i][1]+vect[2]*assets[i][2])
 			return -su
-		
+
 		# Massimizzo grazie a una libreria di python
-		
-		boun=((0,1),(0,1),(0,1))		
+
+		boun=((0,1),(0,1),(0,1))
 		constr={'type': 'eq', 'fun': lambda x: x[0]+x[1]+x[2]-1}
-		
+
 		prov = scipy.optimize.minimize(fun = fu, x0 =(1/3,1/3,1/3), method='SLSQP',bounds=boun, constraints=constr)
-		
-		
+
+
 		# Applichiamo il Kelly ai valori in Ni
 		# Kelly
 		outcomes1 = []
 		outcomes2 = []
 		outcomes3 = []
-		
+
 		for i in Ni:
 			outcomes1.append(assets[i][0])
 			outcomes2.append(assets[i][1])
 			outcomes3.append(assets[i][2])
-		
+
 		me1 = np.mean(outcomes1)-1
 		me2 = np.mean(outcomes2)-1
 		me3 = np.mean(outcomes3)-1
-		
+
 		cov_mat = np.stack((outcomes1,outcomes2, outcomes3), axis = 0)
 		cov = np.cov(cov_mat)
-		
-		
+
+
 		# Trovo i coefficienti del kelly
 		if(np.linalg.det(cov) == 0):
 			print "singular\n"
@@ -228,7 +228,7 @@ for n in range(0, l):
 			C = np.linalg.inv(cov)
 		b = np.array([me1, me2, me3])
 		f = C.dot(b)
-			
+
 		# Sistemo i coefficienti del kelly
 		if f[0] > 0 and f[1] > 0 and f[2] > 0:
 			if f[0] + f[1] + f[2] >= 1:
@@ -246,7 +246,7 @@ for n in range(0, l):
 				b1 = f[0]
 			b2 = 0.
 			b3 = 0.
-		
+
 		if f[1] > 0 and f[0] <= 0 and f[2]<= 0:
 			if f[1] > 1:
 				b2 = 1.
@@ -254,7 +254,7 @@ for n in range(0, l):
 				b2 = f[1]
 			b1 = 0.
 			b3 = 0.
-			
+
 		if f[2] > 0 and f[0] <= 0 and f[1]<= 0:
 			if f[2] > 1:
 				b3 = 1.
@@ -262,7 +262,7 @@ for n in range(0, l):
 				b3 = f[2]
 			b1 = 0.
 			b2 = 0.
-		
+
 		if f[0] > 0 and f[1] > 0 and f[2] <= 0:
 			if f[0] + f[1] >= 1:
 				b1 = f[0]/(f[0]+f[1])
@@ -270,7 +270,7 @@ for n in range(0, l):
 			else:
 				b1 = f[0]
 				b2 = f[1]
-			
+
 			b3 = 0.
 		if f[0] > 0 and f[2] > 0 and f[1] <= 0:
 			if f[0] + f[2] >= 1:
@@ -279,8 +279,8 @@ for n in range(0, l):
 			else:
 				b1 = f[0]
 				b3 = f[2]
-			
-			b2 = 0.	
+
+			b2 = 0.
 		if f[1] > 0 and f[2] > 0 and f[0] <= 0:
 			if f[2] + f[1] >= 1:
 				b3 = f[2]/(f[2]+f[1])
@@ -288,17 +288,17 @@ for n in range(0, l):
 			else:
 				b3 = f[2]
 				b2 = f[1]
-			
+
 			b1 = 0.
 		if f[1] <= 0 and f[0] <= 0 and f[2] <= 0:
 			b1 = 0.
 			b2 = 0.
 			b3 = 0.
-		
+
 		b1s.append(b1)
 		b2s.append(b2)
 		b3s.append(b3)
-		
+
 		# Approssimazione al primo ordine
 		prod1 = 1.
 		prod2 = 1.
@@ -336,16 +336,16 @@ for n in range(0, l):
 					portfolio2 = portfolio2 * assets[n][2]
 					terzoasset= terzoasset+1
 		portfolios2.append(portfolio2)
-		
+
 		# Trovo i coefficienti del metodo base
 		pro1 = prov.x[0]/(prov.x[0]+prov.x[1]+prov.x[2])
 		pro2 = prov.x[1]/(prov.x[0]+prov.x[1]+prov.x[2])
 		pro3 = prov.x[2]/(prov.x[0]+prov.x[1]+prov.x[2])
-		
+
 		# Aggiorno il portafoglio
 		portfolio = portfolio*(assets[n][0]*pro1+assets[n][1]*pro2+assets[n][2]*pro3)
 		portfolios.append(portfolio)
-		
+
 		kellyportfolio = kellyportfolio * (assets[n][0]*b1 + assets[n][1]*b2 + assets[n][2]*b3 + 1.*(1.-b1-b2-b3))
 		kellyportfolios.append(kellyportfolio)
 		#print(portfolio)
@@ -356,7 +356,7 @@ for n in range(0, l):
 		portfolios.append(portfolio)
 		portfolios2.append(portfolio2)
 		kellyportfolios.append(kellyportfolio)
-	
+
 	print portfolio
 	print portfolio2
 	print kellyportfolio
@@ -373,7 +373,7 @@ for i in range(0, len(portfolios)):
 	dd.append(1.-portfolios[i]/wmax)
 	if dd[i] > ddmax:
 		ddmax = dd[i]
-		
+
 cal = []
 for i in range(1,len(portfolios)):
 	cal.append(portfolios[i]/portfolios[i-1]-1)
@@ -395,7 +395,7 @@ for i in range(0, len(kellyportfolios)):
 	kellydd.append(1.-kellyportfolios[i]/kellywmax)
 	if kellydd[i] > kellyddmax:
 		kellyddmax = kellydd[i]
-		
+
 cal = []
 for i in range(1,len(kellyportfolios)):
 	cal.append(kellyportfolios[i]/kellyportfolios[i-1]-1)
@@ -417,7 +417,7 @@ for i in range(0, len(portfolios2)):
 	dd2.append(1.-portfolios2[i]/wmax2)
 	if dd2[i] > ddmax2:
 		ddmax2 = dd2[i]
-		
+
 cal = []
 for i in range(1,len(portfolios2)):
 	cal.append(portfolios2[i]/portfolios2[i-1]-1)
@@ -515,7 +515,7 @@ plt.title("Drowdown per il metodo NN con Kelly")
 plt.show()
 # Output dei dati
 
-filename = "NN.txt"
+filename = "../Results/NN_csv.txt"
 
 file = open(filename, 'w')
 file.write("Standard\n")

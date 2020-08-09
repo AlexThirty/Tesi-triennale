@@ -1,5 +1,5 @@
-# importing modules 
-import csv 
+# importing modules
+import csv
 import numpy as np
 from matplotlib import pyplot as plt
 import statistics
@@ -57,29 +57,29 @@ freq = 1
 # csv file name
 filename = "../Titoli_csv/KO.csv"
 
-# initializing the titles and rows list 
-titles1 = [] 
-rows1 = [] 
-  
-with open(filename, 'r') as csvfile:  
-    csvreader = csv.reader(csvfile) 
-    titles1 = next(csvreader) 
-    for row in csvreader: 
-        rows1.append(row) 
-  
-# csv file name 
-filename = "../Titoli_csv/IBM.csv"
-  
-# initializing the titles and rows list 
-titles2 = [] 
-rows2 = [] 
+# initializing the titles and rows list
+titles1 = []
+rows1 = []
 
-with open(filename, 'r') as csvfile:  
-    csvreader = csv.reader(csvfile) 
-    titles2 = next(csvreader) 
-    for row in csvreader: 
-        rows2.append(row) 
-  
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    titles1 = next(csvreader)
+    for row in csvreader:
+        rows1.append(row)
+
+# csv file name
+filename = "../Titoli_csv/IBM.csv"
+
+# initializing the titles and rows list
+titles2 = []
+rows2 = []
+
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    titles2 = next(csvreader)
+    for row in csvreader:
+        rows2.append(row)
+
 # Qua troviamo l'asset con minore periodo e facciamo partire gli altri al punto giusto
 
 l = min(len(rows1), len(rows2))
@@ -112,7 +112,7 @@ for i in range(1,l):
 	day.append(asset1[i]/asset1[i-1])
 	day.append(asset2[i]/asset2[i-1])
 	assets.append(day)
-	
+
 l = l-1
 
 root = Node(name = "root")
@@ -142,7 +142,7 @@ def obtainNode(st, en, mu0, sigma0, mu1, sigma1):
 		for n in node.children:
 			if approx1 >= n.state1[0] and approx1 <= n.state1[1] and approx2 >= n.state2[0] and approx2 <= n.state2[1]:
 				node = n
-	if node.children==():			
+	if node.children==():
 		node = generateChildren(node)
 	return node
 
@@ -158,7 +158,7 @@ secondoasset = 0
 for i in range(0,l):
 	print(i)
 	if i > tau:
-		
+
 		# Trovo varianze e medie empiriche negli ultimi tau giorni
 		cal = []
 		for j in range(i-tau, i):
@@ -170,31 +170,31 @@ for i in range(0,l):
 			cal.append(np.log(assets[j][1]))
 		sigma1 = np.std(cal)
 		mu1 = np.mean(cal)
-		
-		
+
+
 		# Vediamo in che stato mi trovo ora
 		state = obtainNode(i-k, i-1, mu0, sigma0, mu1, sigma1)
-		
+
 		# Prendo dal dizionario le frequenze passate e stimo il valore atteso
 		v1 = 0.
 		v2 = 0.
-		
+
 		# Troviamo il portafoglio aggiornato, lo facciamo sia con una Kelly che standard
-		
-		
+
+
 		if state.data > 0:
 			# Se sono gia stato in questo stato nel passato
 			# Prendiamo le medie degli outcome per questo stato nel passato
 			me1 = np.mean(outcomes1[state])-1
 			me2 = np.mean(outcomes2[state])-1
-			
+
 			# Calcoliamo la correlazione o la matrice di covarianza
-			
+
 			# ~ for j in range(i-tau, i):
 				# ~ cal.append(((assets[j][0]-1)*(assets[j][1]-1)))
 			# ~ #rho = np.mean(cal)/(sigma0*sigma1)
 			# ~ rho = np.mean(cal)
-			
+
 			cal1 = []
 			cal2 = []
 			for j in range(i-tau ,i):
@@ -202,12 +202,12 @@ for i in range(0,l):
 				cal2.append(assets[j][1])
 			cov_mat = np.stack((cal1,cal2), axis = 0)
 			cov = np.cov(cov_mat)
-			
+
 			# Trovo i coefficienti del kelly
 			C = np.linalg.inv(cov)
 			b = np.array([me1, me2])
 			f = C.dot(b)
-			
+
 			# Sistemo i coefficienti del kelly
 			if f[0] > 0 and f[1] > 0:
 				if f[0] + f[1] >= 1:
@@ -231,10 +231,10 @@ for i in range(0,l):
 			if f[1] <= 0 and f[0] <= 0:
 				b1 = 0
 				b2 = 0
-			
+
 			b1s.append(b1)
 			b2s.append(b2)
-			
+
 			# Qua uso decido su quale asset puntare per il metodo che trascura le incertezze
 			if me1 > me2:
 				primoasset = primoasset + 1
@@ -246,18 +246,18 @@ for i in range(0,l):
 				else:
 					indecisioni = indecisioni + 1
 					portfolio = portfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
-			
+
 			# Aggiorno il portafoglio kelly
 			kellyportfolio = kellyportfolio*(b1*assets[i][0] + b2*assets[i][1]) + kellyportfolio*(1.-b1-b2)
-			
+
 		else:
 			# Se non sono mai stato in questo stato
 			portfolio = portfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
 			kellyportfolio = kellyportfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
 			indecisioni = indecisioni + 1
-		
+
 		# A questo punto aggiorno il dizionario degli stati
-		
+
 		# Trovo varianze e medie empiriche
 		cal = []
 		for j in range(i-tau+1, i+1):
@@ -269,33 +269,33 @@ for i in range(0,l):
 			cal.append(np.log(assets[j][1]))
 		sigma1 = np.std(cal)
 		mu1 = np.mean(cal)
-		
+
 		# Prendo l'ultimo k stato
-		
+
 		state = obtainNode(i-k+1, i, mu0, sigma0, mu1, sigma1)
 		print(state)
 		state.data = state.data + 1
-		
+
 		# Aggiundo al dizionario che salva gli outcomes per ogni stato
-		
+
 		if state in outcomes1:
 			outcomes1[state].append(assets[i][0])
 		else:
 			outcomes1[state] = []
 			outcomes1[state].append(assets[i][0])
-		
+
 		if state in outcomes2:
 			outcomes2[state].append(assets[i][1])
 		else:
 			outcomes2[state] = []
 			outcomes2[state].append(assets[i][1])
-		
+
 	else:
 		# Se e troppo presto
 		portfolio = portfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
 		kellyportfolio = kellyportfolio * (0.5*assets[i][0] + 0.5*assets[i][1])
 		indecisioni = indecisioni + 1
-	
+
 	# Aggiornamenti vari
 	portfolios.append(portfolio)
 	kellyportfolios.append(kellyportfolio)
@@ -313,7 +313,7 @@ for i in range(0, len(portfolios)):
 	dd.append(1.-portfolios[i]/wmax)
 	if dd[i] > ddmax:
 		ddmax = dd[i]
-		
+
 cal = []
 for i in range(1,len(portfolios)):
 	cal.append(portfolios[i]/portfolios[i-1]-1)
@@ -335,7 +335,7 @@ for i in range(0, len(kellyportfolios)):
 	kellydd.append(1.-kellyportfolios[i]/kellywmax)
 	if kellydd[i] > kellyddmax:
 		kellyddmax = kellydd[i]
-		
+
 cal = []
 for i in range(1,len(kellyportfolios)):
 	cal.append(kellyportfolios[i]/kellyportfolios[i-1]-1)
@@ -407,7 +407,7 @@ plt.show()
 
 # Output dei dati su file
 
-filename = "../Results/Empirical3_opt.txt"
+filename = "../Results/Empirical3_csv.txt"
 
 file = open(filename, 'w')
 file.write("Standard\n")

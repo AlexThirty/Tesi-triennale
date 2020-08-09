@@ -12,7 +12,6 @@ from scipy.integrate import dblquad
 from scipy import integrate
 from datetime import datetime as dt
 import re
-from anytree import Node, RenderTree
 
 # Questo algoritmo utilizza un procedimento suggerito dall'articolo di Algoet,
 # Studia l'andamento di due titoli come una catena di Markov a k stati approssimati
@@ -22,6 +21,8 @@ from anytree import Node, RenderTree
 # e' distribuito tutto su un solo titolo
 
 # Qui vengono settate i principali valori
+
+usingzerostate = 0
 
 # Finestra di tempo che vado a considerare, si usa solo 1 in realta
 # Gli altri casi richiederebbero una finestra temporale troppo ampia per diventare efficienti
@@ -36,17 +37,13 @@ portfolio2 = 1.
 # Per come e scritto l'algoritmo ci interessano in realta gli intervalli tra questi valori
 # Il primo e l'ultimo servono solo per considerare valori estremali
 # Questi valori sono da intendersi in punti per mille di rendimento
-s = [-1000, -1000, -100, -50, -10, -7,-5,-2,-1, 0, 1, 2, 5, 7, 10, 50, 100, 1000, 1000]
+s = [-1000, -100, -50, -10, -7,-5,-2,-1, 0, 1, 2, 5, 7, 10, 50, 100, 1000]
 
 # Inizializzo il dizionario e variabili utili
 di = {}
 stot = len(s)
 ma = s[stot-2]
 
-states = []
-
-for i in range(0, stot-1):
-	states.append((s[i], s[i+1]))
 # L'algoritmo da un peso base di uno per stati gia visitati, qua si puo
 # settare un peso diverso per le transizioni di cui so il numero di occorrenze
 peso = 5.
@@ -58,7 +55,7 @@ freq = 1
 
 # Importiamo i dati del primo asset dal file TXT
 
-filename = "../Data/sKO.txt"
+filename = "csKO.txt"
 
 titles1 = []
 rows1 = []
@@ -69,7 +66,7 @@ with open(filename, "r") as filestream:
 		rows1.append(currentline)
 
 # txt file name
-filename = "../Data/sIBM.txt"
+filename = "csIBM.txt"
 
 # initializing the titles and rows list
 titles2 = []
@@ -93,8 +90,8 @@ if(len(rows2)!=l):
 else:
 	start2 = 0
 
-print(start1)
-print(start2)
+print start1
+print start2
 
 # Qui settiamo i vettori con i closing degli asset e quello coi rapporti
 
@@ -131,36 +128,74 @@ for i in range(1,l):
 
 l = l-1
 
-root = Node(name = "root")
-
-def generateChildren(n):
-	for s in states:
-		for t in states:
-			Node(name=str(s)+"x"+str(t), state1 = s, state2 = t, parent = n, data = 0)
-	return n
-
-generateChildren(root)
-
 # Funzione che ottiene lo stato della catena in cui mi trovo
 # Restituisce la stringa con cui viene salvato uno stato, semplicemente
 # Ogni stato e rappresentato dal rendimento in punti percentuali dei due asset
 # separati da una x
 # Ogni singolo asset, invece, e rappresentato da un intervallo
 
-def obtainNode(st, en):
-	node = root
-	w = str
+def obtainword(st, en):
+	w = ''
 	for t in range(st, en+1):
-		if node.children==():
-			node = generateChildren(node)
-		approx1 = (int)(assets[t][0]*1000.-1000.)
-		approx2 = (int)(assets[t][1]*1000.-1000.)
-		for n in node.children:
-			if approx1 >= n.state1[0] and approx1 <= n.state1[1] and approx2 >= n.state2[0] and approx2 <= n.state2[1]:
-				node = n
-	if node.children==():
-		node = generateChildren(node)
-	return node
+		if t == st:
+			if usingzerostate==1 and assets[t][0]==1.:
+				w = 'zero'
+			else:
+				approx = (int)(assets[t][0]*1000.-1000.)
+				for a in range(1, stot):
+					if approx <= s[a]:
+						if a == 1:
+							w = '<' + str(s[1]) + '%'
+						else:
+							if a == stot-1:
+								w = '>' + str(s[a-1]) + '%'
+							else:
+								w = str(s[a-1]) + 'to' + str(s[a]) + '%'
+						break
+			if usingzerostate == 1 and assets[t][1] ==1.:
+				w = w + 'x' + 'zero'
+			else:
+				approx = (int)(assets[t][1]*1000.-1000.)
+				for a in range(1, stot):
+					if approx <= s[a]:
+						if a == 1:
+							w = w + 'x' + '<' + str(s[1]) + '%'
+						else:
+							if a == stot-1:
+								w = w + 'x' + '>' + str(s[a-1]) + '%'
+							else:
+								w = w + 'x' + str(s[a-1]) + 'to' + str(s[a]) + '%'
+						break
+		else:
+			if usingzerostate==1 and assets[t][0]==1.:
+				w = w+' zero'
+			else:
+				approx = (int)(assets[t][0]*1000.-1000.)
+				for a in range(1, stot):
+					if approx <= s[a]:
+						if a == 1:
+							w = w + ' ' + '<' + str(s[1]) + '%'
+						else:
+							if a == stot-1:
+								w = w + ' ' + '>' + str(s[a-1]) + '%'
+							else:
+								w = w + ' ' + str(s[a-1]) + 'to' + str(s[a]) + '%'
+						break
+			if usingzerostate==1 and assets[t][1]==1.:
+				w = w + 'x' + 'zero'
+			else:
+				approx = (int)(assets[t][1]*1000.-1000.)
+				for a in range(1, stot):
+					if approx <= s[a]:
+						if a == 1:
+							w = w + 'x' + '<' + str(s[1]) + '%'
+						else:
+							if a == stot-1:
+								w = w + 'x' + '>' + str(s[a-1]) + '%'
+							else:
+								w = w + 'x' + str(s[a-1]) + 'to' + str(s[a]) + '%'
+						break
+	return w
 
 
 # Algoritmo vero e proprio
@@ -174,33 +209,104 @@ for i in range(0,l):
 	print(i)
 	if i > k:
 		# Vediamo in che stato mi trovo ora, cioe l'ultima finestra lunga k
-		state = obtainNode(i-k, i-1)
+		state = obtainword(i-k, i-1)
 
 		# Prendo dal dizionario le frequenze passate e stimo il valore atteso
 		v1 = 0.
 		v2 = 0.
 
-		if state.data > 0:
-			#print("ci sono già stato\n"+str(state.data))
+		if state in di:
 			# Se sono gia stato in questo stato, semplicemente trovo empiricamente
 			# Facendo un rapporto di frequenze le probabilita di transizione in ogni altro
 			# Stato e calcolo il valore atteso del rendimento
-			for n in state.children:
-				increment1 = (1. + (n.state1[0] + n.state1[1])/2000.)
-				increment2 = (1. + (n.state2[0] + n.state2[1])/2000.)
-				#print(increment1)
-				#print(increment2)
-				if n.data > 0:
-					#print("sono già stato nel figlio\n"+str(n.data))
-					# Se ho già fatto questo passaggio di stato
-					v1 = v1 + increment1*(1. + peso*(float)(n.data))/((stot)**2 + peso*(float)(state.data))
-					v2 = v2 + increment2*(1. + peso*(float)(n.data))/((stot)**2 + peso*(float)(state.data))
-				else:
-					#print("non sono mai stato nel figlio\n")
-					# Se non ho ancora fatto questo passaggio di stato
-					v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(state.data))
-					v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(state.data))
+			for a in range(0,stot):
+				for b in range(0,stot):
+					if a == 0:
+						increment1 = (1. + s[1]/1000.)
+						newstate = state + ' ' + '<' + str(s[1]) + '%'
+					else:
+						if a == stot-1:
+							increment1 = (1. + s[a-1]/1000.)
+							w = '>' + str(s[a-1]) + '%'
+						else:
+							increment1 = (1. + (s[a-1]+s[a])/2000.)
+							newstate = state + ' ' + str(s[a-1]) + 'to' + str(s[a]) + '%'
+					if b == 0:
+						increment2 = (1. + s[1]/1000.)
+						newstate = newstate + 'x' + '<' + str(s[1]) + '%'
+					else:
+						if b == stot-1:
+							increment2 = (1. + s[b-1]/1000.)
+							w = '>' + str(s[b-1]) + '%'
+						else:
+							increment2 = (1. + (s[b-1]+s[b])/2000.)
+							newstate = newstate + 'x' + str(s[b-1]) + 'to' + str(s[b]) + '%'
+					if newstate in di:
+						# Se ho gia fatto questo passaggio prima
+						v1 = v1 + increment1*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+						v2 = v2 + increment2*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+					else:
+						# Se questa transizione di stato non e mai accaduta
+						v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(di[state]))
+						v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(di[state]))
 			# Scelgo ora di puntare tutto sull'asset che mi da valore atteso maggiore, sto trascurando le covarianze
+			if usingzerostate==1:
+				for a in range(0,stot):
+					if a == 0:
+						increment1 = (1. + s[1]/1000.)
+						newstate = state + ' ' + '<' + str(s[1]) + '%'
+					else:
+						if a == stot-1:
+							increment1 = (1. + s[a-1]/1000.)
+							w = '>' + str(s[a-1]) + '%'
+						else:
+							increment1 = (1. + (s[a-1]+s[a])/2000.)
+							newstate = state + ' ' + str(s[a-1]) + 'to' + str(s[a]) + '%'
+					newstate = newstate + 'xzero'
+					increment2 = 1.
+					if newstate in di:
+						# Se ho gia fatto questo passaggio prima
+						v1 = v1 + increment1*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+						v2 = v2 + increment2*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+					else:
+						# Se questa transizione di stato non e mai accaduta
+						v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(di[state]))
+						v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(di[state]))
+			if usingzerostate == 1:
+				for b in range(0,stot):
+					newstate = newstate + ' zero'
+					increment1 = 1.
+					if b == 0:
+						increment2 = (1. + s[1]/1000.)
+						newstate = newstate + 'x' + '<' + str(s[1]) + '%'
+					else:
+						if b == stot-1:
+							increment2 = (1. + s[b-1]/1000.)
+							w = '>' + str(s[b-1]) + '%'
+						else:
+							increment2 = (1. + (s[b-1]+s[b])/2000.)
+							newstate = newstate + 'x' + str(s[b-1]) + 'to' + str(s[b]) + '%'
+					if newstate in di:
+						# Se ho gia fatto questo passaggio prima
+						v1 = v1 + increment1*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+						v2 = v2 + increment2*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+					else:
+						# Se questa transizione di stato non e mai accaduta
+						v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(di[state]))
+						v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(di[state]))
+			if usingzerostate == 1:
+				newstate = newstate + ' zeroxzero'
+				increment1 = 1.
+				increment2 = 1.
+				if newstate in di:
+					# Se ho gia fatto questo passaggio prima
+					v1 = v1 + increment1*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+					v2 = v2 + increment2*(1. + peso*(float)(di[newstate]))/((stot)**2 + peso*(float)(di[state]))
+				else:
+					# Se questa transizione di stato non e mai accaduta
+					v1 = v1 + increment1*(1.)/((stot)**2 + peso*(float)(di[state]))
+					v2 = v2 + increment2*(1.)/((stot)**2 + peso*(float)(di[state]))
+
 			if v1 > v2:
 				portfolio = portfolio*assets[i][0]
 				primoasset = primoasset + 1
@@ -217,11 +323,17 @@ for i in range(0,l):
 			indecisioni = indecisioni + 1
 
 		# A questo punto aggiorno il dizionario degli stati
-		state = obtainNode(i-k+1, i)
-		state.data = state.data+1
+		state = obtainword(i-k+1, i)
+		if state in di:
+			di[state] = di[state] + 1
+		else:
+			di[state] = 1
 
-		state = obtainNode(i-k,i)
-		state.data = state.data+1
+		state = obtainword(i-k,i)
+		if state in di:
+			di[state] = di[state] + 1
+		else:
+			di[state] = 1
 
 	else:
 		# Se e troppo presto
@@ -231,6 +343,7 @@ for i in range(0,l):
 	# Aggiornamenti vari
 	portfolios.append(portfolio)
 	print(portfolio)
+
 
 # Analisi dei dati
 
@@ -253,20 +366,20 @@ sharpe = 20*mum/(sdev*(freq**0.5))
 calmar = 20*mum/(ddmax*freq)
 
 mug = portfolios[len(portfolios)-1]**(1./(len(portfolios)))-1
-print(l)
+print l
 # Stampe varie
 
-print('Massimo drowdown: ' + str(ddmax))
-print('Crescita media giornaliera: ' + str(400*mum/freq))
-print('Deviazione standard giornaliera: ' + str(20*sdev/(freq**0.5)))
-print('Crescita media geometrica: ' + str(mug))
-print('Sharpe ratio: ' + str(sharpe))
-print('Calmar ratio: ' + str(calmar))
-print('Primo: ' + str(primoasset))
-print('Secondo: ' + str(secondoasset))
-print('Indecisioni: ' + str(indecisioni))
+print 'Massimo drowdown: ' + str(ddmax)
+print 'Crescita media giornaliera: ' + str(400*mum/freq)
+print 'Deviazione standard giornaliera: ' + str(20*sdev/(freq**0.5))
+print 'Crescita media geometrica: ' + str(mug)
+print 'Sharpe ratio: ' + str(sharpe)
+print 'Calmar ratio: ' + str(calmar)
+print 'Primo: ' + str(primoasset)
+print 'Secondo: ' + str(secondoasset)
+print 'Indecisioni: ' + str(indecisioni)
 
-print('Portafoglio finale: ' + str(portfolio))
+print 'Portafoglio finale: ' + str(portfolio)
 plt.plot(range(0,len(portfolios)), portfolios)
 plt.title("Capitale")
 plt.ylabel('Capitale: S_t')
@@ -286,7 +399,7 @@ plt.show()
 
 # Output dei dati
 
-filename = "../Results/Empirical_txt.txt"
+filename = "Empirical_txt.txt"
 
 file = open(filename, 'w')
 file.write("Massimo drowdown: " + str(ddmax) + "\n")
